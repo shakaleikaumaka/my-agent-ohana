@@ -1,0 +1,10 @@
+a1be197bed37da6c8ec2ebade4a4e0d9  app.js
+417f4c109cc98e0444a9ba008c3fa989  agents.json
+# v8 GLOBY ENS LANDED (2026-09-27 ~03:5x JST): globy.myagentohana.eth mint confirmed on real Sepolia
+# (Mahalo, 2026-09-26 ~18:24 UTC — ADDRESSES.md §2d: 9th subname, agentId 9 GUIDE, owner 0x7b629239481A8f5E2daf0b5F96345D2Df2525BD5,
+# namehash 0x04caed2c5f3a3e753a03ca2052bd756d8c0a23e816e542a6bcdb177f6fa23b9a, register tx 0xda206f45…dadc75, rests UNBLESSED awaiting the human tap).
+# ensIdentity "globy" added (agents.json + app.js OFFLINE_REGISTRY, byte-parity) → Globy detail renders REAL Sepolia rows at Orbie-parity
+# (owner/namehash/resolver + "Live on real Sepolia" badge). ensQueued marker + render branch RETIRED. Legacy ensIdentity "globie" (agentId 8)
+# KEPT as the honest chain record of the old spelling (never revoked). ensDeployment.status/_ensNote/_comment truthed to 9 subnames minted.
+# Suite 179/179 PASS 0 console errors (was 170: +2/viewport Globy Sepolia rows ×2 viewports, +5 static registry assertions).
+# Supersedes .md5-v7-globy-rename.txt (app.js c791df313103957365240c4c3ea340a5 / agents.json 9fd335f4d6d4136e33a46fd1b2e5b57a).

@@ -227,19 +227,22 @@ async function run() {
     await page.waitForSelector(".grid");
 
     // Globy (renamed from Globie 2026-09-27 — globyagent.com acquired): his NEW subname
-    // globy.myagentohana.eth is scopeMap-live but the ENS mint is still in flight, so his
-    // detail must show the HONEST transition state — real "will be named" row + mint-in-flight
-    // note, and NEVER the old name's chain rows passed off as his.
+    // globy.myagentohana.eth mint LANDED on real Sepolia 2026-09-26 UTC (agentId 9, GUIDE —
+    // ADDRESSES.md §2d), so his detail renders the REAL Sepolia rows at Orbie-parity. The
+    // old-spelling globie.myagentohana.eth (agentId 8) stays minted as honest chain history
+    // in ensIdentity — but is NEVER passed off as Globy's own rows.
     await page.click('.card[data-id="globy"]');
     await page.waitForSelector(".agent-hero");
     const globyKeys = await page.$$eval(".panel .kv .k", (ns) => ns.map((n) => n.textContent));
     const globyBody = await page.$eval(".split .panel", (n) => n.textContent);
     ok(globyKeys.includes("Will be named") && /globy\.myagentohana\.eth/.test(globyBody),
       `${vp.name}: Globy detail names him globy.myagentohana.eth`);
-    ok(!globyKeys.includes("Owner (Sepolia)") && !/Live on real Sepolia/.test(globyBody),
-      `${vp.name}: Globy detail shows NO Sepolia rows while his mint is in flight (honest, never faked)`);
-    ok(/Name mint in flight/.test(globyBody) && /minting on real Sepolia/.test(globyBody),
-      `${vp.name}: Globy detail carries the honest mint-in-flight note`);
+    ok(globyKeys.includes("Owner (Sepolia)") && globyKeys.includes("Namehash") && globyKeys.includes("Resolver (Sepolia)"),
+      `${vp.name}: Globy detail shows real Sepolia rows (owner/namehash/resolver) — mint landed`);
+    ok(/Live on real Sepolia/.test(globyBody), `${vp.name}: Globy detail badged "Live on real Sepolia"`);
+    ok(/0x7b629239…525BD5/.test(globyBody) && /0x04caed2c…a23b9a/.test(globyBody),
+      `${vp.name}: Globy detail carries the real minted owner + namehash (agentId 9)`);
+    ok(!/Name mint in flight/.test(globyBody), `${vp.name}: Globy mint-in-flight note retired (mint landed)`);
     ok(!/globie/i.test(globyBody), `${vp.name}: Globy detail is fully renamed (no globie anywhere)`);
     await page.click("#resetBtn");
     await page.waitForSelector(".grid");
@@ -306,6 +309,22 @@ async function run() {
     ok(bag.length === 0, `${vp.name}: 0 console/page/request errors (got ${bag.length})`);
     await ctx.close();
   }
+
+  // ---- static: agents.json registry truth for the landed globy mint ----
+  log(`\n#### STATIC REGISTRY (agents.json) ####`);
+  const registry = JSON.parse(fs.readFileSync(path.join(DIR, "agents.json"), "utf8"));
+  ok(registry.ensIdentity.globie && registry.ensIdentity.globie.agentId === 8,
+    "registry: legacy globie ensIdentity block KEPT (agentId 8 — honest chain history, never revoked)");
+  ok(/old-spelling globie name stays minted as the honest chain record/.test(registry._ensNote),
+    "registry: _ensNote labels the globie block as the honest chain record of the old spelling");
+  ok(registry.ensIdentity.globy && registry.ensIdentity.globy.agentId === 9 &&
+     registry.ensIdentity.globy.owner === "0x7b629239481A8f5E2daf0b5F96345D2Df2525BD5" &&
+     registry.ensIdentity.globy.namehash === "0x04caed2c5f3a3e753a03ca2052bd756d8c0a23e816e542a6bcdb177f6fa23b9a",
+    "registry: globy ensIdentity = the real landed mint (agentId 9 · owner 0x7b62…5BD5 · namehash 0x04ca…3b9a)");
+  ok(!((registry.featured.find((a) => a.id === "globy") || { detail: {} }).detail || {}).ensQueued,
+    "registry: globy ensQueued marker retired (mint landed)");
+  ok(/9 subnames minted/.test(registry.ensDeployment.status),
+    "registry: ensDeployment.status counts all 9 minted subnames");
 
   // Offline mode
   log(`\n#### OFFLINE MODE (?mode=offline) ####`);

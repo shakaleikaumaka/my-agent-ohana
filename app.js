@@ -451,7 +451,7 @@
     ensRegistrySepolia: "0x62412fcA6437b914EDD87b85455682Ec73968347",
     // ENSv2 LIVE on real Sepolia (Mission 6) — mirror of agents.json.ensDeployment.
     ensDeployment: {
-      status: "LIVE on real Sepolia (Mission 6, 2026-09-25/26) — 8 subnames minted (incl. orbie agentId 7 STORY_BUDDY + globie agentId 8 GUIDE — agent renamed Globy 2026-09-27, globy.myagentohana.eth mint in flight), UniversalResolver resolution verified for all 8, bless proven on-chain (trace + orbie + globie)",
+      status: "LIVE on real Sepolia (Mission 6, 2026-09-25/26) — 9 subnames minted (incl. orbie agentId 7 STORY_BUDDY + globie agentId 8 GUIDE legacy label + globy agentId 9 GUIDE canonical — agent renamed Globy 2026-09-27, new-spelling name minted 2026-09-26 UTC), UniversalResolver resolution verified for all 9, bless proven on-chain (trace + orbie + globie + globy)",
       chain: "Sepolia", chainId: 11155111, parent: "myagentohana.eth",
       userRegistry: "0x62c1e3e88802A5547d0956a6Cf1fa6703D8e3c20",
       resolver: "0x36dAaacD8EdAa24BAEba97B01ad68Fc38e08eBEc",
@@ -460,17 +460,19 @@
       blessTraceTx: "0x32316a31b621dcf55a2c4fb7106e4061d11a0605ac435db50172d2d9eeeeee18",
       orbieEndpoint: "https://orbie-vcnqvzxuo4-ffieyo32.taur.link/"
     },
-    // REAL owner EOAs + namehashes (Mahalo, ADDRESSES.md §3 + §5a orbie / §5b globie).
-    // Mirror of agents.json.ensIdentity — keep in sync. All 8 minted live on Sepolia.
+    // REAL owner EOAs + namehashes (Mahalo, ADDRESSES.md §3 + §5a orbie / §5b globie / §2d globy).
+    // Mirror of agents.json.ensIdentity — keep in sync. All 9 minted live on Sepolia.
     // shaka-twin's minted name stays his though he left the hireable shelf (CAST v3 commons);
     // crops' minted name likewise stays his (CAST v4 commons) — both show read-only on commons cards;
-    // globie minted 2026-09-26 as the 8th subname (agentId 8, GUIDE) — rests UNBLESSED awaiting a real tap.
-    // RENAMED 2026-09-27: the agent is Globy now (globyagent.com acquired); the globie entry below
-    // stays as the honest chain record of the minted old-spelling name — globy.myagentohana.eth
-    // mint in flight, scopeMap-live meanwhile (deploy d37859c4).
+    // globie minted 2026-09-26 as the 8th subname (agentId 8, GUIDE) — rests UNBLESSED as the honest
+    // chain record of the old spelling (legacy immutable label, never revoked).
+    // RENAMED 2026-09-27: the agent is Globy now (globyagent.com acquired); globy.myagentohana.eth
+    // minted 2026-09-26 UTC as the 9th subname (agentId 9, GUIDE — §2d) — rests UNBLESSED awaiting
+    // the human tap, scopeMap-live (deploy d37859c4).
     ensIdentity: {
       "orbie":      { owner: "0x67b3c3b60bc0A3d0bE365AE00218972873e205ff", namehash: "0x9bbd9a00e80da5ffe029a0605bfe47e9ecfa929fa7495636cfbf02141198cf19", agentId: 7 },
       "globie":     { owner: "0x35b3696C4BEb246Db920419Bb37a7faC626A4BF5", namehash: "0xba765f28133ffdae6980dffe95f3481d60cb57415f7be3713b2e5bda0075bdd2", agentId: 8 },
+      "globy":      { owner: "0x7b629239481A8f5E2daf0b5F96345D2Df2525BD5", namehash: "0x04caed2c5f3a3e753a03ca2052bd756d8c0a23e816e542a6bcdb177f6fa23b9a", agentId: 9 },
       "trace":      { owner: "0x5e7d0B5bF18C8f73977d067ceFc211bEfD8ce2D6", namehash: "0xf14544566172f7c94d90d70273cf6f57da915c354f9dd22d09afbe54910b5532" },
       "terri":      { owner: "0xA747095248E0543f7626555cD1cBE31a34ae1054", namehash: "0x3d48d108c78daa17210123f515cb43b57066104dda2b11fc69a963ded14ebe6c" },
       "shaka-twin": { owner: "0x15dA024A78944e463D777fFBb44EA07fB1dc61c5", namehash: "0x968b898e0f2967972c265badc3dd9ce403c74192b56cba7374d8ba570cfad47f" },
@@ -498,8 +500,7 @@
         detail: { does: "I check that the family keeps its promises. I scan the consent flow and report — in plain words — anything that could let an agent act without your yes.", may: "run a read-only consent-security scan & write a signed report on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "SECURITY_SCANNER", utility: "scan" } },
       { id: "globy", name: "Globy", emoji: "🌍", tagline: "The guide — teaches anyone to build", status: "available", sub: "globy", chains: ["Sepolia (ENSv2 + EAC)"],
         home: { queued: true, label: "home being built · follow #globyontour" },
-        detail: { does: "I teach. I take anyone — no code, no fear — from 'I could never build that' to a first page they built with their own hands. Plain words, small steps, your pace.", may: "guide a build session & sign the lesson plan on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "GUIDE", utility: "lesson",
-          ensQueued: "globy.myagentohana.eth is minting on real Sepolia right now — consent session already runs live; the on-chain name row lands when the mint confirms." } }
+        detail: { does: "I teach. I take anyone — no code, no fear — from 'I could never build that' to a first page they built with their own hands. Plain words, small steps, your pace.", may: "guide a build session & sign the lesson plan on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "GUIDE", utility: "lesson" } }
     ],
     // Commons (CAST v3, 2026-09-26): present at the shelf, NEVER hireable — no detail
     // page, no ceremony. (Ohana = the host.) CAST v4 (2026-09-26): Crops joined the
@@ -842,10 +843,6 @@
       } else {
         left.appendChild(el('<p class="hint" style="margin:2px 0 0">Real name-derived values (ENSv2 · Sepolia).</p>'));
       }
-    } else if (d.ensQueued) {
-      // Honest transition state (e.g. Globy post-rename): consent session is live, the
-      // on-chain subname mint is still landing — say so, never fake the chain rows.
-      left.appendChild(el('<p class="hint" style="margin:2px 0 0">⏳ <b style="font-style:normal">Name mint in flight</b> — ' + esc(d.ensQueued) + "</p>"));
     }
     // the 5-part kit each agent carries (honest / fixture-labelled · EMBARGO: no $ token names)
     left.appendChild(el('<h3 style="margin-top:20px">The kit it carries</h3>'));
