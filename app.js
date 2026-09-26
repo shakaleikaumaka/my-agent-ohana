@@ -133,6 +133,62 @@
         .catch(function (e) { if (!done) { done = true; clearTimeout(t); cb(null, "unreachable"); } });
     } catch (e) { if (!done) { done = true; clearTimeout(t); cb(null, "unreachable"); } }
   }
+  // -------- Aqua pool guard, REAL Sepolia lane (2026-09-27, harvest-moon build) --------
+  // Reads come from the ʻohana proxy (/aqua/state -> live eth_calls); the claim write
+  // happens only after a REAL World id_token verifies (one human = one capped slot).
+  var ETHERSCAN = "https://sepolia.etherscan.io/";
+  function fmt18(v) { try { return Number(BigInt(v) / 1000000000000000000n).toLocaleString("en-US"); } catch (e) { return v; } }
+  function loadPoolState() {
+    var box = $("#pgLive");
+    if (!box) return;
+    if (!isLiveOrigin()) {
+      box.innerHTML = '<p class="hint" style="margin:10px 0 0">Pool state renders from the live Sepolia chain on the production origins; this preview keeps the story illustrative.</p>';
+      return;
+    }
+    box.innerHTML = '<p class="hint" style="margin:10px 0 0"><span class="spin"></span> reading the pool from Sepolia…</p>';
+    fetch(PROXY_BASE + "/aqua/state")
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j || !j.ok) throw new Error("state");
+        var A = j.addresses;
+        function link(addr, label) { return '<a href="' + ETHERSCAN + 'address/' + esc(addr) + '" target="_blank" rel="noopener">' + esc(label) + ' ↗</a>'; }
+        box.innerHTML =
+          '<div class="pg-real">' +
+          '<div class="wh" style="color:var(--green)">● LIVE — real 1inch Aqua registry + PoolGuard on Sepolia</div>' +
+          '<div class="wl">virtual balances <b>' + fmt18(j.virtualBalances.gift) + ' GIFT · ' + fmt18(j.virtualBalances.aloha) + ' ALOHA</b> — tokens never left the treasury; Aqua records only accounting (ship = bless, dock = revoke).</div>' +
+          '<div class="wl">wage position ' + (j.position.active ? '<b style="color:var(--green)">ACTIVE</b>' : '<b style="color:var(--red)">docked</b>') + ' for trace.myagentohana.eth · <b>' + esc(String(j.slots)) + '</b> verified-human slot' + (j.slots === 1 ? "" : "s") + ' claimed · cap <b>' + (j.capBps / 100).toFixed(2) + '%</b> each</div>' +
+          '<div class="wl">' + link(A.registry, "Aqua registry") + ' · ' + link(A.blessingPool, "BlessingPool") + ' · ' + link(A.poolGuard, "PoolGuard") + '</div>' +
+          '</div>';
+      })
+      .catch(function () {
+        box.innerHTML = '<p class="hint" style="margin:10px 0 0">chain read unavailable right now — the contracts stay live on Sepolia (registry 0xCE1C…3360 · guard 0xabe7…292f).</p>';
+      });
+  }
+  function claimPoolSlot() {
+    if (!S.wire.idToken || !isLiveOrigin()) return;
+    var box = $("#deviceChip");
+    if (!box) return;
+    var n = el('<div class="wire live"><div class="wh"><span class="spin"></span> 🌊 AQUA POOL GUARD — claiming your one human slot on Sepolia…</div>' +
+      '<div class="wl">same World proof, fourth use: one verified human = one capped share of the blessing pool.</div></div>');
+    box.appendChild(n);
+    fetch(PROXY_BASE + "/aqua/claim", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ id_token: S.wire.idToken }) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j && j.ok) {
+          n.innerHTML = '<div class="wh">🌊 POOL SLOT #' + esc(String(j.index)) + ' — YOURS, ON-CHAIN</div>' +
+            '<div class="wl">one verified human = one capped share (' + (j.capBps / 100).toFixed(2) + '%)' +
+            (j.txHash
+              ? ' · <a href="' + ETHERSCAN + 'tx/' + esc(j.txHash) + '" target="_blank" rel="noopener">real Sepolia tx ↗</a>'
+              : " · claimed on an earlier scan — same human, same slot, by construction") +
+            "</div>";
+        } else if (j && j.error === "personhood_required") {
+          n.innerHTML = '<div class="wh">🚫 POOL GUARD SAID NO</div><div class="wl">no verified World proof, no pool slot — that refusal is the feature.</div>';
+        } else {
+          n.remove();
+        }
+      })
+      .catch(function () { n.remove(); });
+  }
   function renderDeviceChip(kind, detail) {
     var box = $("#deviceChip");
     if (!box) return;
@@ -255,6 +311,7 @@
     if (res && res.j && res.j.ok) {
       S.wire.consentId = res.j.consent_id; S.wire.receiptToken = res.j.receipt_token;
       renderDeviceChip("minted", res.j.consent_id);
+      claimPoolSlot(); // fourth scan: same real proof also secures the human's Aqua pool slot
     } else {
       renderDeviceChip("verifyfail", (res && res.j && res.j.error) || (res && res.status) || "unreachable");
     }
@@ -762,18 +819,20 @@
     right.appendChild(el('<div class="scope-line"><span class="ic">🏷️</span><span>It gets a name in your ohana (ENSv2 subname).</span></div>'));
     right.appendChild(el('<div class="scope-line"><span class="ic">🔑</span><span>It gets a role that says exactly what it may do (on-chain).</span></div>'));
     right.appendChild(el('<div class="scope-line"><span class="ic">🛑</span><span>You can revoke anytime — <em style="color:var(--pink);font-style:normal">one word</em>, and it stops instantly.</span></div>'));
-    // THE FOURTH SCAN — Aqua pool guard (2026-09-26): World ID personhood caps
-    // every liquidity provider — one verified human, one share. Fixture-illustrated here;
-    // the personhood half is real and testable live in the booth lane (booth.html).
+    // THE FOURTH SCAN — Aqua pool guard: World ID personhood caps every liquidity
+    // provider — one verified human, one share. 2026-09-27: the pool is REAL on
+    // Sepolia (1inch Aqua registry + BlessingPool + PoolGuard); live origins read
+    // actual chain state here, and a real verify claims a real slot (tx on-chain).
     if (d.poolGuard) {
       right.appendChild(el(
         '<div class="poolguard">' +
         '<h3>🌊 The Fourth Scan — Aqua pool guard</h3>' +
         '<p class="pg-copy">' + esc(d.poolGuard) + '</p>' +
         '<div class="pg-row"><span class="pg-k">one verified human</span><span class="pg-eq">=</span><span class="pg-k">one capped share</span></div>' +
-        '<p class="hint" style="margin:10px 0 0">Pool state here is illustrative — the personhood check is real and proven live in the booth lane.</p>' +
+        '<div id="pgLive"></div>' +
         '</div>'
       ));
+      loadPoolState();
     }
     split.appendChild(right);
     wrap.appendChild(split);
