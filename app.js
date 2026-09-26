@@ -182,8 +182,8 @@
     if (qb) {
       qb.classList.add("empty");
       qb.innerHTML = "";
-      qb.appendChild(el('<div class="qr-rehearsal">🎭 <b>REHEARSAL RUN</b> — no real code is minted on this run.<br>' +
-        'On the live site a <b>REAL QR + one-time code</b> appear right here: a human scans it with their World App and the blessing mints for real. <span style="color:var(--dim)">(Proven live — a real scan at the World booth, 2026-09-26.)</span><br>' +
+      qb.appendChild(el('<div class="qr-rehearsal">🎭 <b>REHEARSAL RUN</b> — the ceremony is real end-to-end; <b>only the World scan in this run is simulated</b>.<br>' +
+        'On the live origin a <b>REAL QR + one-time code</b> appear right here: a human scans it with their World App and the blessing mints for real, on the real ledger. <span style="color:var(--dim)">(Proven live — a real scan at the World booth, 2026-09-26.)</span><br>' +
         'This run: the human tap happens on the <b>mirrored phone</b> below ↓</div>'));
     }
     var uc = $("#ucode"), vu = $("#vuri"), cap = $("#qrCap"), ps = $("#pollSlot");
