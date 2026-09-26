@@ -326,3 +326,11 @@ footer.fixture b{color:var(--muted);font-weight:600}
 .poolguard .pg-row{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
 .poolguard .pg-k{border:1px solid rgba(126,200,255,.4);border-radius:999px;padding:7px 14px;font-size:12px;font-weight:700;color:#bfe3ff;background:rgba(126,200,255,.08);letter-spacing:.4px}
 .poolguard .pg-eq{color:var(--amber);font-weight:800}
+
+/* Mode-truthful consent panel (Shaka 2026-09-26 23:13 JST — "if we dont need it why are we showing this qr code?") */
+.qrbox.empty{background:transparent;border:0;padding:0;height:auto;min-height:0;width:100%}
+.qr-pending{display:flex;align-items:center;justify-content:center;gap:8px;min-height:96px;color:var(--dim);font-size:13px}
+.qr-rehearsal{border:1.5px dashed var(--pinkline);border-radius:14px;padding:18px 16px;font-size:13.5px;line-height:1.65;color:var(--muted);text-align:left;background:rgba(242,167,195,.05)}
+.qr-rehearsal b{color:var(--ink)}
+.qr-lapsed{border:1.5px dashed rgba(255,210,126,.5);border-radius:14px;padding:18px 16px;font-size:13.5px;line-height:1.65;color:var(--amber);text-align:center;background:rgba(255,210,126,.06)}
+.qr-lapsed b{color:var(--amber)}

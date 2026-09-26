@@ -155,9 +155,10 @@
   }
   function renderRealDevice(d) {
     var uc = $("#ucode"), vu = $("#vuri"), qb = $("#qrbox");
-    if (uc) uc.textContent = d.user_code;
-    if (vu) vu.textContent = d.verification_uri_complete || d.verification_uri;
+    if (uc) { uc.textContent = d.user_code; uc.style.display = ""; }
+    if (vu) { vu.textContent = d.verification_uri_complete || d.verification_uri; vu.style.display = ""; }
     if (qb) {
+      qb.classList.remove("empty");
       try {
         var q = window.qrcode(0, "M");
         q.addData(d.verification_uri_complete || d.verification_uri);
@@ -167,7 +168,39 @@
     }
     var cap = $("#qrCap");
     if (cap) cap.innerHTML = '● <b style="color:var(--green)">REAL — scan with your World App</b>';
+    var ps = $("#pollSlot");
+    if (ps) ps.innerHTML = "";
+    ps && ps.appendChild(el('<div class="poll"><span class="spin"></span> Waiting for the human… <span class="mono" style="color:var(--dim)">live poll</span></div>'));
     renderDeviceChip("realqr", d.user_code);
+  }
+  // The honest rehearsal card — Shaka 2026-09-26 23:13 JST: "if we dont need it why are we
+  // showing this qr code?" No dead QR, no fake code, no fake pending. The tap is the phone.
+  function renderRehearsalQR() {
+    var qb = $("#qrbox");
+    if (qb) {
+      qb.classList.add("empty");
+      qb.innerHTML = "";
+      qb.appendChild(el('<div class="qr-rehearsal">🎭 <b>REHEARSAL RUN</b> — no real code is minted on this run.<br>' +
+        'On the live site a <b>REAL QR + one-time code</b> appear right here: a human scans it with their World App and the blessing mints for real. <span style="color:var(--dim)">(Proven live — a real scan at the World booth, 2026-09-26.)</span><br>' +
+        'This run: the human tap happens on the <b>mirrored phone</b> below ↓</div>'));
+    }
+    var uc = $("#ucode"), vu = $("#vuri"), cap = $("#qrCap"), ps = $("#pollSlot");
+    if (uc) uc.style.display = "none";
+    if (vu) vu.style.display = "none";
+    if (cap) cap.textContent = "";
+    if (ps) ps.innerHTML = "";
+  }
+  function renderLapsedQR(kind) {
+    var qb = $("#qrbox");
+    if (qb) {
+      qb.classList.add("empty");
+      qb.innerHTML = "";
+      qb.appendChild(el(kind === "denied"
+        ? '<div class="qr-lapsed">🚫 <b>The human denied at the device.</b><br>A first-class answer — nothing was minted, nothing moves.</div>'
+        : '<div class="qr-lapsed">⌛ <b>The real code lapsed.</b><br>Restart the walkthrough for a fresh one — it lives ~20 minutes.</div>'));
+    }
+    var ps = $("#pollSlot");
+    if (ps) ps.innerHTML = "";
   }
   function pollDevice(a, sub, interval) {
     var delay = (interval || 5) * 1000;
@@ -184,12 +217,15 @@
             tick(); return;
           }
           S.wire.deviceDead = true; // expired_token / access_denied / anything terminal
+          renderLapsedQR(j.error === "access_denied" ? "denied" : "lapsed");
           renderDeviceChip("lapsed", j.error === "access_denied" ? "denied" : "lapsed");
         });
       }, delay);
     })();
   }
   function onRealToken(a, sub) {
+    var ps = $("#pollSlot");
+    if (ps) ps.innerHTML = "";
     renderDeviceChip("token");
     var body = { id_token: S.wire.idToken, session_id: S.wire.sessionId, agent_subname: sub, scope_requested: [a.detail.utility] };
     var tries = 8;
@@ -227,6 +263,7 @@
         renderRealDevice(res.j);
         pollDevice(a, sub, res.j.interval || 5);
       } else {
+        renderRehearsalQR(); // live session but no device code — honest rehearsal visuals
         renderDeviceChip("unavailable", err || (res && res.j && (res.j.error || res.j.message)) || "proxy " + (res && res.status));
       }
     });
@@ -671,13 +708,16 @@
 
     var right = el('<div class="panel device"></div>');
     right.appendChild(el('<h3>Approve on your World ID app</h3>'));
-    var qr = el('<div class="qrbox" id="qrbox"></div>');
+    // MODE-TRUTHFUL PANEL (Shaka 2026-09-26 23:13 JST: "if we dont need it why are we showing
+    // this qr code?"): the fixture QR + fake code + fake pending line are GONE. Three states:
+    // pending (checking) → REAL (live session: real QR/code/poll) → REHEARSAL (honest card,
+    // the tap happens on the mirrored phone). A dead QR can never again invite a dead scan.
+    var qr = el('<div class="qrbox empty" id="qrbox"><div class="qr-pending"><span class="spin"></span> checking for a live session…</div></div>');
     right.appendChild(qr);
-    right.appendChild(el('<div class="usercode" id="ucode">' + FIXTURE.world.user_code + "</div>"));
-    right.appendChild(el('<div class="vuri" id="vuri">' + esc(FIXTURE.world.verification_uri) + "</div>"));
-    right.appendChild(el('<p class="hint" id="qrCap" style="text-align:center;margin:6px 0 0">rehearsal QR — the human tap happens on the mirrored phone</p>'));
-    var pollBox = el('<div class="poll"><span class="spin"></span> Waiting for approval… <span class="mono" style="color:var(--dim)">authorization_pending</span></div>');
-    right.appendChild(pollBox);
+    right.appendChild(el('<div class="usercode" id="ucode" style="display:none"></div>'));
+    right.appendChild(el('<div class="vuri" id="vuri" style="display:none"></div>'));
+    right.appendChild(el('<p class="hint" id="qrCap" style="text-align:center;margin:6px 0 0"></p>'));
+    right.appendChild(el('<div id="pollSlot"></div>'));
     right.appendChild(el('<div id="deviceChip"></div>'));
     var row = el('<div class="btnrow" style="justify-content:center"></div>');
     var openPhone = el('<button class="btn">📱 Open my World ID app →</button>');
@@ -691,14 +731,8 @@
     split.appendChild(right);
     wrap.appendChild(split);
 
-    // render QR after mount
+    // open the consent session after mount (QR renders ONLY if the session goes live)
     setTimeout(function () {
-      try {
-        var q = window.qrcode(0, "M");
-        q.addData(FIXTURE.world.verification_uri_complete);
-        q.make();
-        $("#qrbox").innerHTML = q.createImgTag(4, 0);
-      } catch (e) { $("#qrbox").textContent = "QR"; }
       var exp = $("#expLink");
       if (exp) exp.addEventListener("click", function (ev) { ev.preventDefault(); S.revoke.reason = "signin-timeout"; go("standdown"); });
       // JOB 2 — open a REAL consent session against the deployed worker. Renders a live
@@ -709,7 +743,9 @@
         if (r.live) {
           S.wire.live = true; S.wire.sessionId = r.sessionId; S.wire.nonce = r.nonce;
           S.wire.expiresAt = r.expiresAt; S.wire.sub = r.sub;
-          wireDevice(a, r.sub); // the main page WORKS: mint the real device code, upgrade the QR
+          wireDevice(a, r.sub); // the main page WORKS: mint the real device code, render the REAL QR
+        } else {
+          renderRehearsalQR(); // honest rehearsal card — no dead QR, no fake pending
         }
         renderWireChip(r.live ? null : (r.reason || "fixture"));
       });
