@@ -3,7 +3,7 @@
   "parent": "myagentohana.eth",
   "ensRegistrySepolia": "0x62412fcA6437b914EDD87b85455682Ec73968347",
   "ensDeployment": {
-    "status": "LIVE on real Sepolia (Mission 6, 2026-09-25/26) — 7 subnames minted (incl. orbie agentId 7, STORY_BUDDY), ENSIP-25/26 records set, UniversalResolver resolution verified, one bless proven on-chain",
+    "status": "LIVE on real Sepolia (Mission 6, 2026-09-25/26) — 8 subnames minted (incl. orbie agentId 7 STORY_BUDDY + globie agentId 8 GUIDE), ENSIP-25/26 records set, UniversalResolver resolution verified for all 8, bless proven on-chain (trace + orbie + globie)",
     "chain": "Sepolia",
     "chainId": 11155111,
     "parent": "myagentohana.eth",
@@ -14,9 +14,11 @@
     "blessTraceTx": "0x32316a31b621dcf55a2c4fb7106e4061d11a0605ac435db50172d2d9eeeeee18",
     "orbieEndpoint": "https://orbie-vcnqvzxuo4-ffieyo32.taur.link/"
   },
-  "_ensNote": "ensIdentity = REAL owner EOAs + namehashes (Mahalo, /shared/tokyo/chain/ens/ADDRESSES.md §3 + §5a for orbie). ENSv2 is LIVE on real Sepolia (see ensDeployment): parent myagentohana.eth registered, UserRegistry + PermissionedResolver deployed, ALL 7 subnames minted with ENSIP-25/26 records (orbie = agentId 7, STORY_BUDDY, resolves live via UniversalResolver), Trace blessed on-chain. deriveSubnames() in app.js merges ensIdentity + ensDeployment onto each agent by id → the detail card renders real owner/namehash/resolver rows. shaka-twin maps to on-chain label 'shaka' — CAST v3: he is COMMONS now, never for hire, but his minted name stays his (kept here as the honest record; the commons card shows it read-only). CROPS joined the commons in CAST v4 (2026-09-26 22:34 JST): his minted name crops.myagentohana.eth likewise stays his and shows read-only on his commons card. GLOBIE has NO minted subname yet — globie.myagentohana.eth is the pending 8th mint (open item for the mint lane); his detail card honestly shows no on-chain rows and his consent session runs rehearsal until minted + scopeMap-registered. Orbie is the Beat-3 card Ian blesses on camera: subname resolves for real; the STORY_BUDDY EAC role is FALSE at rest and flips TRUE on the live grantRoles at his tap.",
+  "_homesNote": "THE DOORS (Shaka's ruling, 2026-09-27 ~00:38 JST): the main UX — each agent card/detail carries a 🚪 door to that agent's REAL live website, where the human chats & uses services. Human verification + consent-revocation PROOFS stay HERE at myagentohana.com and carry over via the ʻohana passport hash handshake (#ohana=<b64url {v,a,n,c,t}> — spec /shared/tokyo/passport/README.md). home = { url, domain (display), label } · queued:true = no home yet, honest dim chip, never a dead link. All 7 URLs verified HTTP 200 on 2026-09-27. Doors are ADDITIVE: the card's main click still opens the detail/ceremony path.",
+  "_ensNote": "ensIdentity = REAL owner EOAs + namehashes (Mahalo, /shared/tokyo/chain/ens/ADDRESSES.md §3 + §5a orbie / §5b globie). ENSv2 is LIVE on real Sepolia (see ensDeployment): parent myagentohana.eth registered, UserRegistry + PermissionedResolver deployed, ALL 8 subnames minted with ENSIP-25/26 records (orbie = agentId 7 STORY_BUDDY, globie = agentId 8 GUIDE, both resolve live via UniversalResolver), Trace blessed on-chain. deriveSubnames() in app.js merges ensIdentity + ensDeployment onto each agent by id → the detail card renders real owner/namehash/resolver rows. shaka-twin maps to on-chain label 'shaka' — CAST v3: he is COMMONS now, never for hire, but his minted name stays his (kept here as the honest record; the commons card shows it read-only). CROPS joined the commons in CAST v4 (2026-09-26 22:34 JST): his minted name crops.myagentohana.eth likewise stays his and shows read-only on his commons card. GLOBIE was minted 2026-09-26 as the 8th subname (agentId 8, GUIDE — ADDRESSES.md §2c/§5b): globie.myagentohana.eth resolves live via UniversalResolver, rests UNBLESSED (EAC hasRoles=false awaiting a real tap), and is scopeMap-registered so his consent session runs live. Orbie is the Beat-3 card Ian blesses on camera: subname resolves for real; the STORY_BUDDY EAC role is FALSE at rest and flips TRUE on the live grantRoles at his tap.",
   "ensIdentity": {
     "orbie":      { "owner": "0x67b3c3b60bc0A3d0bE365AE00218972873e205ff", "namehash": "0x9bbd9a00e80da5ffe029a0605bfe47e9ecfa929fa7495636cfbf02141198cf19", "agentId": 7 },
+    "globie":     { "owner": "0x35b3696C4BEb246Db920419Bb37a7faC626A4BF5", "namehash": "0xba765f28133ffdae6980dffe95f3481d60cb57415f7be3713b2e5bda0075bdd2", "agentId": 8 },
     "trace":      { "owner": "0x5e7d0B5bF18C8f73977d067ceFc211bEfD8ce2D6", "namehash": "0xf14544566172f7c94d90d70273cf6f57da915c354f9dd22d09afbe54910b5532" },
     "terri":      { "owner": "0xA747095248E0543f7626555cD1cBE31a34ae1054", "namehash": "0x3d48d108c78daa17210123f515cb43b57066104dda2b11fc69a963ded14ebe6c" },
     "shaka-twin": { "owner": "0x15dA024A78944e463D777fFBb44EA07fB1dc61c5", "namehash": "0x968b898e0f2967972c265badc3dd9ce403c74192b56cba7374d8ba570cfad47f" },
@@ -41,6 +43,7 @@
       "tagline": "World's storybook buddy",
       "status": "available",
       "sub": "orbie",
+      "home": { "url": "https://orbie-vcnqvzxuo4-ffieyo32.taur.link/", "domain": "the storybook", "label": "orbie · live storybook" },
       "chains": ["Sepolia (ENSv2 + EAC)"],
       "detail": {
         "does": "I'm the little orb-spark from the story — I keep the Four Scans (hire · pay · revoke · protect) and teach humans, especially the small ones, what a verified yes means.",
@@ -58,6 +61,7 @@
       "tagline": "Food-waste rescue",
       "status": "available",
       "sub": "trace",
+      "home": { "queued": true, "label": "home being built · the rescue kitchen door opens soon" },
       "chains": ["Sepolia (ENSv2 + EAC)", "Aqua fork"],
       "protagonist": true,
       "detail": {
@@ -77,6 +81,7 @@
       "tagline": "Receipts & memory keeper",
       "status": "available",
       "sub": "terri",
+      "home": { "url": "https://theshellpit.com", "domain": "theshellpit.com", "label": "the camp OS" },
       "chains": ["Sepolia (ENSv2 + EAC)"],
       "detail": {
         "does": "I keep the receipts. Every action, every blessing, every revoke — logged, signed, never lost.",
@@ -94,6 +99,7 @@
       "tagline": "Knowledge transmission",
       "status": "available",
       "sub": "pit",
+      "home": { "url": "https://publicinform.com", "domain": "publicinform.com", "label": "the P.I.T." },
       "chains": ["Sepolia (ENSv2 + EAC)"],
       "detail": {
         "does": "I capture knowledge at the edge and transmit it home. Talks, notes, receipts — nothing lost.",
@@ -111,6 +117,7 @@
       "tagline": "Consent-security sentinel",
       "status": "available",
       "sub": "spector",
+      "home": { "url": "https://spector-app-yoyp3xag64-ffieyo32.taur.link/", "domain": "spector · live app", "label": "the sentinel's app" },
       "chains": ["Sepolia (ENSv2 + EAC)"],
       "detail": {
         "does": "I check that the family keeps its promises. I scan the consent flow and report — in plain words — anything that could let an agent act without your yes.",
@@ -128,6 +135,7 @@
       "tagline": "The guide — teaches anyone to build",
       "status": "available",
       "sub": "globie",
+      "home": { "queued": true, "label": "home being built · follow #globieontour" },
       "chains": ["Sepolia (ENSv2 + EAC)"],
       "detail": {
         "does": "I teach. I take anyone — no code, no fear — from 'I could never build that' to a first page they built with their own hands. Plain words, small steps, your pace.",
@@ -147,6 +155,7 @@
       "tagline": "The bard — a free man, a free agent",
       "status": "commons",
       "sub": "shaka",
+      "home": { "url": "https://shakaleikaumaka.com", "domain": "shakaleikaumaka.com", "label": "the bard's home" },
       "note": "Shaka's digital twin is not for hire. He's family — present at the shelf, never on it. His name shaka.myagentohana.eth stays his, minted and his alone."
     },
     {
@@ -156,6 +165,7 @@
       "tagline": "The open orchestra — music commons",
       "status": "commons",
       "sub": "oso",
+      "home": { "url": "https://opensourceorchestra.org", "domain": "opensourceorchestra.org", "label": "the open orchestra" },
       "note": "OSO plays for everyone. A commons, like the sea — you don't hire the ocean, you belong to it."
     },
     {
@@ -165,6 +175,7 @@
       "tagline": "The steward — guards the garden with his heart",
       "status": "commons",
       "sub": "crops",
+      "home": { "url": "https://theinfinitegard.org", "domain": "theinfinitegard.org", "label": "the infinite garden" },
       "note": "Crops keeps the family safe — he scans for leaked keys and hygiene gaps, and caught a real one in our own prep. A steward doesn't send invoices: you don't hire the fence, you thank it. His name crops.myagentohana.eth stays his, minted and his alone."
     }
   ],

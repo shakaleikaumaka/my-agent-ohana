@@ -31,7 +31,10 @@
       ens: { tx: "0x7b21ac93e4f0a1d55c8e2f6b90a34d17e8c0b2f19a6d4e3c7b1a0f9d8e2c4b6a1", ms: 1900 },
       eac: { tx: "0x3f9c0d71b28e5a4f16d9c8b7a0e2f3d41c5b6a79e8d0f2c31a4b5e6d7c8f90a12", ms: 2900 },
       aqua: { tx: "0xa1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f901", ms: 3700 }
-    }
+    },
+    // honest rehearsal consent id for the passport carry-link when no REAL /v1/verify
+    // consent exists this session (the receiving badge just carries the claim).
+    consentId: "consent-rehearsal-fixture"
   };
 
   // ---------------------------------------------------------------- live wire (JOB 2)
@@ -310,8 +313,9 @@
     if (!sub) { cb({ live: false, reason: "fixture" }); return; }
     // Never fire a begin for a subname the backend hasn't registered — a 403 would log a
     // console error on camera. Unregistered cards run the fixture ceremony. Split the honest
-    // reason: a minted-but-unregistered name (orbie) truthfully says "ENS is real on-chain";
-    // an unminted name (globie, pending the 8th mint) must NOT claim that.
+    // reason: a minted-but-unregistered name truthfully says "ENS is real on-chain";
+    // an unminted name must NOT claim that. (As of 2026-09-26 all 6 hireable cards are
+    // minted + registered — this guard stays for future cards joining the shelf.)
     if (WIRE.liveSubnames.indexOf(sub) < 0) {
       cb({ live: false, reason: (agent.detail && agent.detail.ens) ? "unregistered" : "unminted" });
       return;
@@ -343,7 +347,7 @@
     ensRegistrySepolia: "0x62412fcA6437b914EDD87b85455682Ec73968347",
     // ENSv2 LIVE on real Sepolia (Mission 6) — mirror of agents.json.ensDeployment.
     ensDeployment: {
-      status: "LIVE on real Sepolia (Mission 6, 2026-09-25) — 26/26 test.sh PASS, one bless proven on-chain",
+      status: "LIVE on real Sepolia (Mission 6, 2026-09-25/26) — 8 subnames minted (incl. orbie agentId 7 STORY_BUDDY + globie agentId 8 GUIDE), UniversalResolver resolution verified for all 8, bless proven on-chain (trace + orbie + globie)",
       chain: "Sepolia", chainId: 11155111, parent: "myagentohana.eth",
       userRegistry: "0x62c1e3e88802A5547d0956a6Cf1fa6703D8e3c20",
       resolver: "0x36dAaacD8EdAa24BAEba97B01ad68Fc38e08eBEc",
@@ -352,13 +356,14 @@
       blessTraceTx: "0x32316a31b621dcf55a2c4fb7106e4061d11a0605ac435db50172d2d9eeeeee18",
       orbieEndpoint: "https://orbie-vcnqvzxuo4-ffieyo32.taur.link/"
     },
-    // REAL owner EOAs + namehashes (Mahalo, ADDRESSES.md §3 + §5a for orbie).
-    // Mirror of agents.json.ensIdentity — keep in sync. All 7 minted live on Sepolia.
+    // REAL owner EOAs + namehashes (Mahalo, ADDRESSES.md §3 + §5a orbie / §5b globie).
+    // Mirror of agents.json.ensIdentity — keep in sync. All 8 minted live on Sepolia.
     // shaka-twin's minted name stays his though he left the hireable shelf (CAST v3 commons);
     // crops' minted name likewise stays his (CAST v4 commons) — both show read-only on commons cards;
-    // globie has no entry yet — the pending 8th mint — so his card honestly shows no chain rows.
+    // globie minted 2026-09-26 as the 8th subname (agentId 8, GUIDE) — rests UNBLESSED awaiting a real tap.
     ensIdentity: {
       "orbie":      { owner: "0x67b3c3b60bc0A3d0bE365AE00218972873e205ff", namehash: "0x9bbd9a00e80da5ffe029a0605bfe47e9ecfa929fa7495636cfbf02141198cf19", agentId: 7 },
+      "globie":     { owner: "0x35b3696C4BEb246Db920419Bb37a7faC626A4BF5", namehash: "0xba765f28133ffdae6980dffe95f3481d60cb57415f7be3713b2e5bda0075bdd2", agentId: 8 },
       "trace":      { owner: "0x5e7d0B5bF18C8f73977d067ceFc211bEfD8ce2D6", namehash: "0xf14544566172f7c94d90d70273cf6f57da915c354f9dd22d09afbe54910b5532" },
       "terri":      { owner: "0xA747095248E0543f7626555cD1cBE31a34ae1054", namehash: "0x3d48d108c78daa17210123f515cb43b57066104dda2b11fc69a963ded14ebe6c" },
       "shaka-twin": { owner: "0x15dA024A78944e463D777fFBb44EA07fB1dc61c5", namehash: "0x968b898e0f2967972c265badc3dd9ce403c74192b56cba7374d8ba570cfad47f" },
@@ -370,16 +375,22 @@
       intro: "I'm Ohana, the concierge. I run the shelf — I never leave, I just introduce you to the family. Start with Trace: he turns food that would've been thrown away into meals. It's the easiest way to see how a blessing works." },
     featured: [
       { id: "orbie", name: "Orbie", emoji: "🤖", tagline: "World's storybook buddy", status: "available", sub: "orbie", chains: ["Sepolia (ENSv2 + EAC)"],
+        home: { url: "https://orbie-vcnqvzxuo4-ffieyo32.taur.link/", domain: "the storybook", label: "orbie · live storybook" },
         detail: { does: "I'm the little orb-spark from the story — I keep the Four Scans (hire · pay · revoke · protect) and teach humans, especially the small ones, what a verified yes means.", may: "tell my story & greet humans on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "STORY_BUDDY", utility: "story" } },
       { id: "trace", name: "Trace", emoji: "👨", tagline: "Food-waste rescue", status: "available", sub: "trace", chains: ["Sepolia (ENSv2 + EAC)", "Aqua fork"], protagonist: true,
+        home: { queued: true, label: "home being built · the rescue kitchen door opens soon" },
         detail: { does: "I find good food before it's thrown away and match it to people nearby who want it.", may: "rescue-match food listings on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "RESCUE_MATCHER", utility: "rescue-match", poolGuard: "Aqua liquidity pools check World ID personhood: one verified human, one capped share — so no single wallet, bot farm, or sybil crowd can drain or dominate the pool. The orb proves you're you; the cap does the rest." } },
       { id: "terri", name: "Terri", emoji: "🐢", tagline: "Receipts & memory keeper", status: "available", sub: "terri", chains: ["Sepolia (ENSv2 + EAC)"],
+        home: { url: "https://theshellpit.com", domain: "theshellpit.com", label: "the camp OS" },
         detail: { does: "I keep the receipts. Every action, every blessing, every revoke — logged, signed, never lost.", may: "produce signed receipts & ledgers on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "RECEIPT_KEEPER", utility: "receipt" } },
       { id: "pit", name: "PIT", emoji: "🕳️", tagline: "Knowledge transmission", status: "available", sub: "pit", chains: ["Sepolia (ENSv2 + EAC)"],
+        home: { url: "https://publicinform.com", domain: "publicinform.com", label: "the P.I.T." },
         detail: { does: "I capture knowledge at the edge and transmit it home. Talks, notes, receipts — nothing lost.", may: "capture & transmit a knowledge receipt on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "TRANSMITTER", utility: "transmission" } },
       { id: "spector", name: "Spector", emoji: "🕵️", tagline: "Consent-security sentinel", status: "available", sub: "spector", chains: ["Sepolia (ENSv2 + EAC)"],
+        home: { url: "https://spector-app-yoyp3xag64-ffieyo32.taur.link/", domain: "spector · live app", label: "the sentinel's app" },
         detail: { does: "I check that the family keeps its promises. I scan the consent flow and report — in plain words — anything that could let an agent act without your yes.", may: "run a read-only consent-security scan & write a signed report on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "SECURITY_SCANNER", utility: "scan" } },
       { id: "globie", name: "Globie", emoji: "🌍", tagline: "The guide — teaches anyone to build", status: "available", sub: "globie", chains: ["Sepolia (ENSv2 + EAC)"],
+        home: { queued: true, label: "home being built · follow #globieontour" },
         detail: { does: "I teach. I take anyone — no code, no fear — from 'I could never build that' to a first page they built with their own hands. Plain words, small steps, your pace.", may: "guide a build session & sign the lesson plan on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "GUIDE", utility: "lesson" } }
     ],
     // Commons (CAST v3, 2026-09-26): present at the shelf, NEVER hireable — no detail
@@ -387,10 +398,13 @@
     // commons — the steward doesn't send invoices.
     commons: [
       { id: "shaka-twin", name: "Shaka twin", emoji: "🤙", tagline: "The bard — a free man, a free agent", status: "commons", sub: "shaka",
+        home: { url: "https://shakaleikaumaka.com", domain: "shakaleikaumaka.com", label: "the bard's home" },
         note: "Shaka's digital twin is not for hire. He's family — present at the shelf, never on it. His name shaka.myagentohana.eth stays his, minted and his alone." },
       { id: "oso", name: "OSO", emoji: "🎻", tagline: "The open orchestra — music commons", status: "commons", sub: "oso",
+        home: { url: "https://opensourceorchestra.org", domain: "opensourceorchestra.org", label: "the open orchestra" },
         note: "OSO plays for everyone. A commons, like the sea — you don't hire the ocean, you belong to it." },
       { id: "crops", name: "Crops", emoji: "🌿", tagline: "The steward — guards the garden with his heart", status: "commons", sub: "crops",
+        home: { url: "https://theinfinitegard.org", domain: "theinfinitegard.org", label: "the infinite garden" },
         note: "Crops keeps the family safe — he scans for leaked keys and hygiene gaps, and caught a real one in our own prep. A steward doesn't send invoices: you don't hire the fence, you thank it. His name crops.myagentohana.eth stays his, minted and his alone." }
     ],
     more: [
@@ -488,6 +502,79 @@
     ];
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]; }); }
+
+  // ---------------------------------------------------------------- THE DOORS (2026-09-27)
+  // Shaka's ruling: the main UX — clicking an agent's 🚪 takes the human to that agent's
+  // REAL live website (Terri → theshellpit.com, OSO → opensourceorchestra.org, …) where
+  // they chat & use services. Human verification + consent-revocation PROOFS stay HERE at
+  // myagentohana.com and CARRY OVER via the ʻohana-passport hash handshake
+  // (#ohana=<base64url {v,a,n,c,t}> — spec /shared/tokyo/passport/README.md; every home
+  // site runs ohana-passport.js and shows the carried-blessing badge, zero backend).
+  // Doors are ADDITIVE: the card's main click still opens the detail/ceremony path
+  // (the rehearsed demo + fallback tape depend on it), so every door chip stops propagation.
+  // agent.home = { url, domain(display), label } · { queued:true, label } = honest dim
+  // chip while the home is being built — never a dead link. All URLs verified live 200.
+  function b64u(s) {
+    return btoa(unescape(encodeURIComponent(s))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  }
+  // Passport payload v1. Uses the REAL consent_id when a live /v1/verify minted one this
+  // session; otherwise the honest rehearsal fixture id — the receiving badge just carries
+  // the claim, and the proof house (this site) stays one click away either way.
+  function carryHref(a) {
+    var h = a.home;
+    if (!h || !h.url) return null;
+    var payload = { v: 1, a: a.id, n: a.name, c: (S.wire.consentId || FIXTURE.consentId), t: Math.floor(Date.now() / 1000) };
+    return h.url + "#ohana=" + b64u(JSON.stringify(payload));
+  }
+  function openDoor(url) {
+    try { window.open(url, "_blank", "noopener"); } catch (e) { /* popup blocked — chip stays honest, nothing breaks */ }
+  }
+  // Small 🚪 chip on a shelf card. Click = the agent's home in a new tab; the card's own
+  // click (→ detail/ceremony) is untouched (stopPropagation).
+  function doorChipEl(a) {
+    var h = a.home;
+    if (!h) return null;
+    if (!h.url) {
+      return el('<span class="chip door queued" title="' + esc(h.label || "home being built") + '">🚪 ' + esc(h.label || "home being built") + "</span>");
+    }
+    var b = el('<button type="button" class="chip door" title="opens ' + esc(h.url) + ' in a new tab">🚪 ' + esc(h.domain) + " ↗</button>");
+    b.addEventListener("click", function (ev) {
+      ev.stopPropagation();
+      ev.preventDefault();
+      openDoor(h.url);
+    });
+    return b;
+  }
+  // Full-width hero door at the top of an agent's detail view.
+  function doorHeroEl(a) {
+    var h = a.home;
+    if (!h) return null;
+    if (!h.url) {
+      return el('<div class="doorhero queued">🚪 <b>' + esc(a.name.toUpperCase()) + "'S HOME</b> — " + esc(h.label || "home being built") +
+        ' <span class="dh-sub">no dead doors — the proofs live here meanwhile</span></div>');
+    }
+    var d = el('<button type="button" class="doorhero" title="opens ' + esc(h.url) + ' in a new tab">🚪 ENTER ' + esc(a.name.toUpperCase()) +
+      "'S HOME — <b>" + esc(h.domain) + "</b> ↗ <span class=\"dh-sub\">chat &amp; services live there · verification proofs &amp; revoke stay here</span></button>");
+    d.addEventListener("click", function (ev) { ev.stopPropagation(); openDoor(h.url); });
+    return d;
+  }
+  // Post-blessing carry-over link (blessed + debrief screens): the blessing travels into
+  // the agent's home via the passport hash. Honest chip about which consent id it carries.
+  function carryEl(a) {
+    var h = a.home;
+    if (!h) return null;
+    if (!h.url) {
+      return el('<div class="carryqueued">🎒 ' + esc(h.label || "home being built") + " — your blessing waits at this shelf meanwhile</div>");
+    }
+    var real = !!S.wire.consentId;
+    var box = el('<div class="carrybox"></div>');
+    box.appendChild(el('<a class="carrylink" target="_blank" rel="noopener" href="' + esc(carryHref(a)) + '">🎒 carry your blessing into <b>' +
+      esc(h.domain) + "</b> →</a>"));
+    box.appendChild(el('<span class="carrynote">' + (real
+      ? "carries your REAL consent_id — the home site shows the blessing badge; proofs &amp; revoke stay here"
+      : "rehearsal consent id (fixture) — the home site shows the carried-blessing badge; proofs &amp; revoke stay here") + "</span>"));
+    return box;
+  }
 
   // ---------------------------------------------------------------- stepper
   var ACTS = [
@@ -606,6 +693,14 @@
       "</div>"
     );
     if (st !== "listing" && st !== "commons") c.addEventListener("click", function () { S.agentId = a.id; go("detail"); });
+    // 🚪 THE DOOR — additive chip to the agent's real live home (stopPropagation inside);
+    // the card's main click above still opens the detail/ceremony path unchanged.
+    var door = doorChipEl(a);
+    if (door) {
+      var chipsBox = c.querySelector(".chips");
+      if (!chipsBox) { chipsBox = el('<div class="chips"></div>'); c.appendChild(chipsBox); }
+      chipsBox.appendChild(door);
+    }
     return c;
   }
 
@@ -617,6 +712,9 @@
       '<div class="agent-hero"><span class="ce">' + a.emoji + '</span>' +
       '<div><div class="nm">' + esc(a.name) + '</div><div class="tl">' + esc(a.tagline) + "</div></div></div>"
     ));
+    // 🚪 hero door — the agent's real live home, front and center (Shaka's main-UX ruling).
+    var dh = doorHeroEl(a);
+    if (dh) wrap.appendChild(dh);
     var split = el('<div class="split"></div>');
     var left = el('<div class="panel"></div>');
     left.appendChild(el('<h3>What ' + esc(a.name) + " does</h3>"));
@@ -937,6 +1035,9 @@
     var split = el('<div class="split"></div>');
     var left = el('<div></div>');
     left.appendChild(blessedHero(a));
+    // 🎒 the blessing travels: passport carry-link into the agent's real home (or honest queued chip)
+    var carry = carryEl(a);
+    if (carry) left.appendChild(carry);
     var row = el('<div class="btnrow"></div>');
     var work = el('<button class="btn big">▶ Put ' + esc(a.name) + " to work →</button>");
     work.addEventListener("click", function () { go("utility"); });
@@ -1274,6 +1375,10 @@
     rc.appendChild(el('<div class="stamp">asked · scoped · timed · deniable · revoked · accounted for.<br>produced by Terri 🐢 (blessed receipts keeper) · logged to consent ledger ✓</div>'));
     host.appendChild(rc);
     host.appendChild(el('<div class="promise-strip"><span>ASKED</span><span>SCOPED</span><span>TIMED</span><span>DENIABLE</span><span>REVOKED</span><span>ACCOUNTED FOR</span></div>'));
+    // 🎒 the receipt travels too — the passport badge on the home site links back to the
+    // proof house; revocation stays HERE by design.
+    var carry = carryEl(a);
+    if (carry) host.appendChild(carry);
     host.appendChild(closeRow(a, "revoked"));
   }
 
