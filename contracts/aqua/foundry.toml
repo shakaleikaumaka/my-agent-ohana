@@ -1,0 +1,28 @@
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+libs = ["lib", "node_modules"]
+solc = "0.8.30"
+optimizer = true
+optimizer_runs = 1_000_000
+# via_ir mirrors the real 1inch Aqua build profile so our fork interaction
+# compiles against identical codegen assumptions.
+via_ir = true
+# The SwapVM-native BlessingSwap inherits 1inch's real AquaApp, whose reentrancy
+# lock uses EIP-1153 transient storage (tstore/tload) -> requires cancun.
+evm_version = "cancun"
+# We pin remappings explicitly so Foundry does NOT read the nested remappings of
+# the lib/aqua submodule (that auto-detection is a classic build-hell scar).
+auto_detect_remappings = false
+remappings = [
+    "forge-std/=lib/forge-std/src/",
+    "aqua/=lib/aqua/",
+    "@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/",
+    "@1inch/solidity-utils/=node_modules/@1inch/solidity-utils/",
+]
+
+# Public mainnet RPC endpoints for the authentic fork test. Override with
+# FORK_RPC=<url> if any of these rate-limit. Fork tests only run when RUN_FORK=1.
+[rpc_endpoints]
+mainnet = "${FORK_RPC}"

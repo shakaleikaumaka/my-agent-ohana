@@ -1,0 +1,12 @@
+{
+  "name": "blessing-pool-aqua",
+  "version": "0.2.0",
+  "private": true,
+  "description": "GLOBY squad — 1inch Aqua Blessing Pool (rung-1 wrapper + SwapVM-native BlessingSwap app). ETHGlobal Tokyo 2026.",
+  "license": "CC0-1.0",
+  "comment": "Solidity deps are referenced, not vendored. Versions mirror 1inch/aqua's own build (@openzeppelin 5.4.0, @1inch/solidity-utils 6.9.9). The 1inch Aqua source (AquaApp/Aqua/IAqua) is a pinned git submodule at lib/aqua (its own non-CC0 license applies to THOSE files; nothing is copied into this CC0 repo). Run `npm install` then `forge test`.",
+  "dependencies": {
+    "@openzeppelin/contracts": "5.4.0",
+    "@1inch/solidity-utils": "6.9.9"
+  }
+}
