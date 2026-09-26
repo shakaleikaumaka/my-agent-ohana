@@ -1,0 +1,34 @@
+# Secrets — NEVER commit (Crops leak-scan enforces this every push)
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+secrets/
+.secrets/
+
+# JS / tooling
+node_modules/
+dist/
+build/
+.cache/
+
+# Foundry
+out/
+cache/
+broadcast/
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Workers / python / misc (assembly belt-and-braces)
+.wrangler/
+.dev.vars
+*.log
+__pycache__/
+*.pyc
+.last-test-output.txt
