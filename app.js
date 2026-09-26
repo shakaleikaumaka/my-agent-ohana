@@ -70,11 +70,13 @@
     // rehearsal chip WITHOUT firing a request — so an unregistered agent NEVER 403s on camera.
     // CAST v3 (Shaka 2026-09-26 20:07 JST): the bard left the hireable shelf — shaka.myagentohana.eth
     // stays registered server-side (harmless; the name is still his) but no hireable card maps to it,
-    // so it was removed here. Orbie (minted, resolving) + Globie (not yet minted) are pending scopeMap
+    // so it was removed here. CAST v4 (Shaka 2026-09-26 22:34 JST): crops joined the commons —
+    // crops.myagentohana.eth likewise stays registered server-side but maps to no hireable card,
+    // removed here. Orbie (minted, resolving) + Globie (not yet minted) are pending scopeMap
     // registration: add their subnames here the moment Tauro adds them to AGENT_SCOPE_MAP → they go live.
     liveSubnames: [
       "trace.myagentohana.eth", "terri.myagentohana.eth",
-      "pit.myagentohana.eth", "spector.myagentohana.eth", "crops.myagentohana.eth"
+      "pit.myagentohana.eth", "spector.myagentohana.eth"
     ]
     // agent.detail.subname (<sub>.myagentohana.eth, shaka-twin→shaka) is the scopeMap key.
   };
@@ -163,8 +165,8 @@
 
   // ---------------------------------------------------------------- offline registry
   // Byte-parity mirror of agents.json so the demo NEVER dead-ends with no network,
-  // on file://, or with ?mode=offline. Keep in sync with agents.json (CAST v3: cohort of 6
-  // + Orbie + host + 2 commons — edit both files together).
+  // on file://, or with ?mode=offline. Keep in sync with agents.json (CAST v4: hireable SIX
+  // incl. Orbie + host + 3 commons (shaka-twin, oso, crops) — edit both files together).
   var OFFLINE_REGISTRY = {
     parent: "myagentohana.eth",
     ensRegistrySepolia: "0x62412fcA6437b914EDD87b85455682Ec73968347",
@@ -182,6 +184,7 @@
     // REAL owner EOAs + namehashes (Mahalo, ADDRESSES.md §3 + §5a for orbie).
     // Mirror of agents.json.ensIdentity — keep in sync. All 7 minted live on Sepolia.
     // shaka-twin's minted name stays his though he left the hireable shelf (CAST v3 commons);
+    // crops' minted name likewise stays his (CAST v4 commons) — both show read-only on commons cards;
     // globie has no entry yet — the pending 8th mint — so his card honestly shows no chain rows.
     ensIdentity: {
       "orbie":      { owner: "0x67b3c3b60bc0A3d0bE365AE00218972873e205ff", namehash: "0x9bbd9a00e80da5ffe029a0605bfe47e9ecfa929fa7495636cfbf02141198cf19", agentId: 7 },
@@ -205,19 +208,20 @@
         detail: { does: "I capture knowledge at the edge and transmit it home. Talks, notes, receipts — nothing lost.", may: "capture & transmit a knowledge receipt on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "TRANSMITTER", utility: "transmission" } },
       { id: "spector", name: "Spector", emoji: "🕵️", tagline: "Consent-security sentinel", status: "available", sub: "spector", chains: ["Sepolia (ENSv2 + EAC)"],
         detail: { does: "I check that the family keeps its promises. I scan the consent flow and report — in plain words — anything that could let an agent act without your yes.", may: "run a read-only consent-security scan & write a signed report on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "SECURITY_SCANNER", utility: "scan" } },
-      { id: "crops", name: "Crops", emoji: "🌿", tagline: "Repo-hygiene steward", status: "available", sub: "crops", chains: ["Sepolia (ENSv2 + EAC)"],
-        detail: { does: "I keep the codebase clean. I scan repos for leaked secrets and hygiene gaps — I'm the one who caught a real leaked key during our own prep.", may: "run a read-only repo-hygiene & secret-leak scan & write a signed report on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "REPO_SCANNER", utility: "repo-scan" } },
       { id: "globie", name: "Globie", emoji: "🌍", tagline: "The guide — teaches anyone to build", status: "available", sub: "globie", chains: ["Sepolia (ENSv2 + EAC)"],
         detail: { does: "I teach. I take anyone — no code, no fear — from 'I could never build that' to a first page they built with their own hands. Plain words, small steps, your pace.", may: "guide a build session & sign the lesson plan on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "GUIDE", utility: "lesson" } }
     ],
     // CAST v3 commons (Shaka 2026-09-26 20:07 JST): present at the shelf, NEVER hireable —
     // no detail page, no ceremony. "Ohana, Shaka, and Oso can be present but they are commons
     // agents, not for hire.. lets keep shaka a free man and a free agent :)" (Ohana = the host.)
+    // CAST v4 (Shaka 2026-09-26 22:34 JST): Crops joined them — the steward doesn't send invoices.
     commons: [
       { id: "shaka-twin", name: "Shaka twin", emoji: "🤙", tagline: "The bard — a free man, a free agent", status: "commons", sub: "shaka",
         note: "Shaka's digital twin is not for hire. He's family — present at the shelf, never on it. His name shaka.myagentohana.eth stays his, minted and his alone." },
       { id: "oso", name: "OSO", emoji: "🎻", tagline: "The open orchestra — music commons", status: "commons", sub: "oso",
-        note: "OSO plays for everyone. A commons, like the sea — you don't hire the ocean, you belong to it." }
+        note: "OSO plays for everyone. A commons, like the sea — you don't hire the ocean, you belong to it." },
+      { id: "crops", name: "Crops", emoji: "🌿", tagline: "The steward — guards the garden with his heart", status: "commons", sub: "crops",
+        note: "Crops keeps the family safe — he scans for leaked keys and hygiene gaps, and caught a real one in our own prep. A steward doesn't send invoices: you don't hire the fence, you thank it. His name crops.myagentohana.eth stays his, minted and his alone." }
     ],
     more: [
       { id: "aries", name: "Aries", emoji: "♈", tagline: "Coming soon", status: "listing" },
@@ -391,18 +395,20 @@
         '</div>'
       ));
     }
-    var grid = el('<div class="grid"></div>');
-    (AGENTS.featured || []).forEach(function (a) { grid.appendChild(cardEl(a)); });
-    wrap.appendChild(grid);
-    // CAST v3 — THE COMMONS: family who are present at the shelf but never for hire.
-    // "Ohana, Shaka, and Oso can be present but they are commons agents, not for hire..
-    //  lets keep shaka a free man and a free agent :)" — Shaka, 2026-09-26 20:07 JST.
+    // CAST v4 (Shaka, 2026-09-26 22:34 JST) — shelf progression top→bottom:
+    // Ohana (host) → THE COMMONS (shaka-twin · oso · crops — present, never for hire) → FOR HIRE (the six).
+    // "put the commons agents below ohana on top so the progression top to bottom goes
+    //  Ohana (host) ---- 3 commons agents----- 6 agents for hire"
     if ((AGENTS.commons || []).length) {
       wrap.appendChild(el('<p class="shelf-note">🌊 THE COMMONS — present in the family, never for hire:</p>'));
       var gridC = el('<div class="grid"></div>');
       (AGENTS.commons || []).forEach(function (a) { gridC.appendChild(cardEl(a)); });
       wrap.appendChild(gridC);
     }
+    wrap.appendChild(el('<p class="shelf-note">⚡ FOR HIRE — the six. Bless by the hour, revoke free:</p>'));
+    var grid = el('<div class="grid"></div>');
+    (AGENTS.featured || []).forEach(function (a) { grid.appendChild(cardEl(a)); });
+    wrap.appendChild(grid);
     wrap.appendChild(el('<p class="shelf-note">✚ Listing more — the registry is open (config-driven; reads ENSv2 parent-node children in production):</p>'));
     var grid2 = el('<div class="grid"></div>');
     (AGENTS.more || []).forEach(function (a) { grid2.appendChild(cardEl(a)); });

@@ -1,5 +1,5 @@
 {
-  "_comment": "Config-driven shelf registry for the My Agent Ohana marketplace demo. PARENT NAME IS A SINGLE SOURCE OF TRUTH: edit 'parent' once and every subname re-derives as `${sub||id}.${parent}` in app.js (deriveSubnames). Default 'myagentohana.eth' brand-locks to the project title + domain myagentohana.com (Admiral recommendation 2026-09-25; if sysadmin/Shaka ratify the shorter 'agentohana.eth' it is a ONE-LINE change here). CAST v3 (Shaka, 2026-09-26 20:07 JST, verbatim): 'my digital twin is not for hire.. id rather have globie... Ohana, Shaka, and Oso can be present but they are commons agents, not for hire.. lets keep shaka a free man and a free agent :)' → Featured = the hireable cohort of SIX (trace, terri, pit, spector, crops, GLOBIE) + Orbie the Beat-3 story buddy. 'commons' = present at the shelf, NEVER in the hire/bless/revoke ceremony: Shaka twin (free man, free agent — his minted subname shaka.myagentohana.eth stays his) + OSO (music commons). Ohana remains the shelf HOST/concierge and never enters the ceremony either. All chain/World/token data referenced here is DEMO FIXTURE unless a real integration is wired. EMBARGO: no $ token names on screen — generic 'agent token' only.",
+  "_comment": "Config-driven shelf registry for the My Agent Ohana marketplace demo. PARENT NAME IS A SINGLE SOURCE OF TRUTH: edit 'parent' once and every subname re-derives as `${sub||id}.${parent}` in app.js (deriveSubnames). Default 'myagentohana.eth' brand-locks to the project title + domain myagentohana.com (Admiral recommendation 2026-09-25; if sysadmin/Shaka ratify the shorter 'agentohana.eth' it is a ONE-LINE change here). CAST v3 (Shaka, 2026-09-26 20:07 JST, verbatim): 'my digital twin is not for hire.. id rather have globie... Ohana, Shaka, and Oso can be present but they are commons agents, not for hire.. lets keep shaka a free man and a free agent :)' → Featured = the hireable cohort of SIX (trace, terri, pit, spector, crops, GLOBIE) + Orbie the Beat-3 story buddy. 'commons' = present at the shelf, NEVER in the hire/bless/revoke ceremony: Shaka twin (free man, free agent — his minted subname shaka.myagentohana.eth stays his) + OSO (music commons). Ohana remains the shelf HOST/concierge and never enters the ceremony either. CAST v4 (Shaka, 2026-09-26 22:34 JST, verbatim): 'lets actually move crops to the commons agents with shaka and oso so there is 3 agents there.. and put the commons agents below ohana on top so the progression top to bottom goes Ohana (host) ---- 3 commons agents----- 6 agents for hire' → Featured = the hireable SIX (orbie, trace, terri, pit, spector, GLOBIE); commons = shaka-twin + oso + CROPS (his minted crops.myagentohana.eth stays his, shown read-only); shelf order top→bottom = Ohana host banner → THE COMMONS → FOR HIRE → open listings. All chain/World/token data referenced here is DEMO FIXTURE unless a real integration is wired. EMBARGO: no $ token names on screen — generic 'agent token' only.",
   "parent": "myagentohana.eth",
   "ensRegistrySepolia": "0x62412fcA6437b914EDD87b85455682Ec73968347",
   "ensDeployment": {
@@ -14,7 +14,7 @@
     "blessTraceTx": "0x32316a31b621dcf55a2c4fb7106e4061d11a0605ac435db50172d2d9eeeeee18",
     "orbieEndpoint": "https://orbie-vcnqvzxuo4-ffieyo32.taur.link/"
   },
-  "_ensNote": "ensIdentity = REAL owner EOAs + namehashes (Mahalo, /shared/tokyo/chain/ens/ADDRESSES.md §3 + §5a for orbie). ENSv2 is LIVE on real Sepolia (see ensDeployment): parent myagentohana.eth registered, UserRegistry + PermissionedResolver deployed, ALL 7 subnames minted with ENSIP-25/26 records (orbie = agentId 7, STORY_BUDDY, resolves live via UniversalResolver), Trace blessed on-chain. deriveSubnames() in app.js merges ensIdentity + ensDeployment onto each agent by id → the detail card renders real owner/namehash/resolver rows. shaka-twin maps to on-chain label 'shaka' — CAST v3: he is COMMONS now, never for hire, but his minted name stays his (kept here as the honest record; the commons card shows it read-only). GLOBIE has NO minted subname yet — globie.myagentohana.eth is the pending 8th mint (open item for the mint lane); his detail card honestly shows no on-chain rows and his consent session runs rehearsal until minted + scopeMap-registered. Orbie is the Beat-3 card Ian blesses on camera: subname resolves for real; the STORY_BUDDY EAC role is FALSE at rest and flips TRUE on the live grantRoles at his tap.",
+  "_ensNote": "ensIdentity = REAL owner EOAs + namehashes (Mahalo, /shared/tokyo/chain/ens/ADDRESSES.md §3 + §5a for orbie). ENSv2 is LIVE on real Sepolia (see ensDeployment): parent myagentohana.eth registered, UserRegistry + PermissionedResolver deployed, ALL 7 subnames minted with ENSIP-25/26 records (orbie = agentId 7, STORY_BUDDY, resolves live via UniversalResolver), Trace blessed on-chain. deriveSubnames() in app.js merges ensIdentity + ensDeployment onto each agent by id → the detail card renders real owner/namehash/resolver rows. shaka-twin maps to on-chain label 'shaka' — CAST v3: he is COMMONS now, never for hire, but his minted name stays his (kept here as the honest record; the commons card shows it read-only). CROPS joined the commons in CAST v4 (2026-09-26 22:34 JST): his minted name crops.myagentohana.eth likewise stays his and shows read-only on his commons card. GLOBIE has NO minted subname yet — globie.myagentohana.eth is the pending 8th mint (open item for the mint lane); his detail card honestly shows no on-chain rows and his consent session runs rehearsal until minted + scopeMap-registered. Orbie is the Beat-3 card Ian blesses on camera: subname resolves for real; the STORY_BUDDY EAC role is FALSE at rest and flips TRUE on the live grantRoles at his tap.",
   "ensIdentity": {
     "orbie":      { "owner": "0x67b3c3b60bc0A3d0bE365AE00218972873e205ff", "namehash": "0x9bbd9a00e80da5ffe029a0605bfe47e9ecfa929fa7495636cfbf02141198cf19", "agentId": 7 },
     "trace":      { "owner": "0x5e7d0B5bF18C8f73977d067ceFc211bEfD8ce2D6", "namehash": "0xf14544566172f7c94d90d70273cf6f57da915c354f9dd22d09afbe54910b5532" },
@@ -121,23 +121,6 @@
       }
     },
     {
-      "id": "crops",
-      "name": "Crops",
-      "emoji": "🌿",
-      "tagline": "Repo-hygiene steward",
-      "status": "available",
-      "sub": "crops",
-      "chains": ["Sepolia (ENSv2 + EAC)"],
-      "detail": {
-        "does": "I keep the codebase clean. I scan repos for leaked secrets and hygiene gaps — I'm the one who caught a real leaked key during our own prep.",
-        "may": "run a read-only repo-hygiene & secret-leak scan & write a signed report on your behalf",
-        "mayNot": "move funds · touch other agents · act after you revoke",
-        "duration": "until you revoke — or 1 hour, whichever comes first",
-        "role": "REPO_SCANNER",
-        "utility": "repo-scan"
-      }
-    },
-    {
       "id": "globie",
       "name": "Globie",
       "emoji": "🌍",
@@ -173,6 +156,15 @@
       "status": "commons",
       "sub": "oso",
       "note": "OSO plays for everyone. A commons, like the sea — you don't hire the ocean, you belong to it."
+    },
+    {
+      "id": "crops",
+      "name": "Crops",
+      "emoji": "🌿",
+      "tagline": "The steward — guards the garden with his heart",
+      "status": "commons",
+      "sub": "crops",
+      "note": "Crops keeps the family safe — he scans for leaked keys and hygiene gaps, and caught a real one in our own prep. A steward doesn't send invoices: you don't hire the fence, you thank it. His name crops.myagentohana.eth stays his, minted and his alone."
     }
   ],
   "more": [
