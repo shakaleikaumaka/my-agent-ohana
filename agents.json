@@ -118,7 +118,7 @@
       "tagline": "Consent-security sentinel",
       "status": "available",
       "sub": "spector",
-      "home": { "url": "https://spector-app-yoyp3xag64-ffieyo32.taur.link/", "domain": "spector · live app", "label": "the sentinel's app" },
+      "home": { "url": "https://spectoragent.com/", "domain": "spectoragent.com", "label": "the sentinel's front door" },
       "chains": ["Sepolia (ENSv2 + EAC)"],
       "detail": {
         "does": "I check that the family keeps its promises. I scan the consent flow and report — in plain words — anything that could let an agent act without your yes.",
