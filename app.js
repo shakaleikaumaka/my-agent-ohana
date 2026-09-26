@@ -497,7 +497,7 @@
         home: { url: "https://publicinform.com", domain: "publicinform.com", label: "the P.I.T." },
         detail: { does: "I capture knowledge at the edge and transmit it home. Talks, notes, receipts — nothing lost.", may: "capture & transmit a knowledge receipt on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "TRANSMITTER", utility: "transmission" } },
       { id: "spector", name: "Spector", emoji: "🕵️", tagline: "Consent-security sentinel", status: "available", sub: "spector", chains: ["Sepolia (ENSv2 + EAC)"],
-        home: { url: "https://spector-app-yoyp3xag64-ffieyo32.taur.link/", domain: "spector · live app", label: "the sentinel's app" },
+        home: { url: "https://spectoragent.com/", domain: "spectoragent.com", label: "the sentinel's front door" },
         detail: { does: "I check that the family keeps its promises. I scan the consent flow and report — in plain words — anything that could let an agent act without your yes.", may: "run a read-only consent-security scan & write a signed report on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "SECURITY_SCANNER", utility: "scan" } },
       { id: "globy", name: "Globy", emoji: "🌍", tagline: "The guide — teaches anyone to build", status: "available", sub: "globy", chains: ["Sepolia (ENSv2 + EAC)"],
         home: { url: "https://globyagent.com", domain: "globyagent.com", label: "the hackathon mascot" },

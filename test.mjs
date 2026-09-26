@@ -45,7 +45,7 @@ const HOMES = {
   trace: "https://tracewaste.org",
   terri: "https://theshellpit.com",
   pit: "https://publicinform.com",
-  spector: "https://spector-app-yoyp3xag64-ffieyo32.taur.link/",
+  spector: "https://spectoragent.com/",
   globy: "https://globyagent.com"
 };
 const QUEUED_HOMES = []; // (empty since 2026-09-27 — globyagent.com went live, every hireable agent has a real door)
