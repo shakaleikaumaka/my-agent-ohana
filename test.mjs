@@ -64,6 +64,12 @@ function log(s) { console.log(s); lines.push(s); }
 function ok(cond, msg) { if (cond) { pass++; log("  [PASS] " + msg); } else { fail++; log("  [FAIL] " + msg); } }
 
 async function attachErrorSinks(page, bag) {
+  // 🚪 stub window.open: "Put to work" pops the agent's front door in a new tab on live
+  // lanes — in tests we record the URL instead of actually loading external sites.
+  await page.addInitScript(() => {
+    window.__doors = [];
+    window.open = (u) => { window.__doors.push(String(u)); return null; };
+  });
   page.on("console", (m) => { if (m.type() === "error") bag.push("console.error: " + m.text()); });
   page.on("pageerror", (e) => bag.push("pageerror: " + e.message));
   page.on("requestfailed", (r) => {
@@ -117,16 +123,37 @@ async function walk(page, agentId, { deny = false } = {}) {
   } else {
     ok(await page.$(".carryqueued") !== null, `${agentId}: queued home → honest carry chip on blessed screen`);
   }
-  await page.click(".btn.big"); // Put to work → utility
+  // 🚪 Put to work TAKES you to the front door with the door code (live lanes only;
+  // ?mode=offline keeps one tab for the film lane). window.open is stubbed → __doors.
+  const isOffline = (await page.$("#offlineBadge")) !== null;
+  await page.evaluate(() => { window.__doors = []; if (!window.open || String(window.open).indexOf('__doors') < 0) window.open = (u) => { window.__doors.push(String(u)); return null; }; });
+  await page.click(".btn.big"); // Put to work → utility (+ front-door tab when homed & live)
   await page.waitForSelector("#runBtn");
+  const doorOpens = await page.evaluate(() => (window.__doors || []).map(String));
+  if (HOMES[agentId] && !isOffline) {
+    ok(doorOpens.some((u) => u.startsWith(HOMES[agentId]) && u.includes("#ohana=")),
+      `${agentId}: Put to work opened the front door with the door code (#ohana passport)`);
+  } else {
+    ok(doorOpens.length === 0,
+      `${agentId}: ${isOffline ? "offline film lane keeps one tab" : "queued home"} — no door pop (got ${doorOpens.length})`);
+  }
+  // the front-door carry lane rides along on the utility screen too
+  ok((await page.$(HOMES[agentId] ? ".carrylink" : ".carryqueued")) !== null,
+    `${agentId}: utility screen keeps the carry ${HOMES[agentId] ? "link" : "chip"} in reach`);
   await page.click("#runBtn"); // run utility
   await page.waitForSelector(".receipt .stamp", { timeout: 4000 });
   const stamp = await page.textContent(".receipt .stamp");
   const sub = await page.$eval(".subname-pill", (n) => n.textContent);
   ok(/myagentohana\.eth/.test(sub), `${agentId}: subname derived from parent (${sub.trim().slice(0, 40)})`);
-  // REVOKE — one word "Stop"
-  await page.fill("#revokeIn", "Stop");
-  await page.press("#revokeIn", "Enter");
+  // REVOKE — one tap + confirmation ask (no typing). Exercise the cancel path first.
+  await page.click("#revokeBtn");
+  await page.waitForSelector("#revokeYes");
+  await page.click("#revokeNo"); // ✕ keep the blessing
+  await page.waitForSelector("#revokeBtn");
+  ok((await page.$(".countdown")) !== null, `${agentId}: revoke cancel keeps the blessing (still working)`);
+  await page.click("#revokeBtn");
+  await page.waitForSelector("#revokeYes");
+  await page.click("#revokeYes");
   await page.waitForSelector(".standdown.halt-flash");
   await page.waitForSelector(".promise-strip", { timeout: 6000 });
   const debrief = await page.textContent("#debriefHost");
@@ -140,7 +167,7 @@ async function walk(page, agentId, { deny = false } = {}) {
 
 // F1 regression: revoke landing DURING the ~900ms utility spinner must render EXACTLY ONE
 // debrief receipt (not a stacked double). `delayMs` = when "Stop" lands inside the spinner
-// window; `useEnter` toggles Enter-key vs button revoke path.
+// window; `useEnter` varies how the tap-to-revoke confirm lands (keyboard vs click).
 async function walkRevokeMidSpinner(page, agentId, { delayMs = 0, useEnter = true } = {}) {
   await page.click(`.card[data-id="${agentId}"]`);
   await page.waitForSelector(".agent-hero");
@@ -162,8 +189,11 @@ async function walkRevokeMidSpinner(page, agentId, { delayMs = 0, useEnter = tru
   await page.waitForSelector(".poll .spin"); // spinner is up
   if (delayMs > 0) await page.waitForTimeout(delayMs); // let the stale timer arm
   // REVOKE mid-spinner
-  if (useEnter) { await page.fill("#revokeIn", "Stop"); await page.press("#revokeIn", "Enter"); }
-  else { await page.click(".btn.danger"); }
+  // one tap + confirm — `useEnter` now varies HOW the confirm lands (keyboard vs click)
+  await page.click("#revokeBtn");
+  await page.waitForSelector("#revokeYes");
+  if (useEnter) { await page.focus("#revokeYes"); await page.press("#revokeYes", "Enter"); }
+  else { await page.click("#revokeYes"); }
   await page.waitForSelector(".standdown.halt-flash");
   await page.waitForSelector("#debriefHost .promise-strip", { timeout: 6000 });
   // give the stale 900ms timer + full leg choreography ample time to (mis)fire

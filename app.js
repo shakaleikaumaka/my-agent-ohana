@@ -880,7 +880,7 @@
     right.appendChild(el('<div class="scope-line"><span class="ic">🌍</span><span>You verify you\'re a real human (World ID, orb-grade).</span></div>'));
     right.appendChild(el('<div class="scope-line"><span class="ic">🏷️</span><span>It gets a name in your ohana (ENSv2 subname).</span></div>'));
     right.appendChild(el('<div class="scope-line"><span class="ic">🔑</span><span>It gets a role that says exactly what it may do (on-chain).</span></div>'));
-    right.appendChild(el('<div class="scope-line"><span class="ic">🛑</span><span>You can revoke anytime — <em style="color:var(--pink);font-style:normal">one word</em>, and it stops instantly.</span></div>'));
+    right.appendChild(el('<div class="scope-line"><span class="ic">🛑</span><span>You can revoke anytime — <em style="color:var(--pink);font-style:normal">one tap</em>, and it stops instantly.</span></div>'));
     // THE FOURTH SCAN — Aqua pool guard: World ID personhood caps every liquidity
     // provider — one verified human, one share. 2026-09-27: the pool is REAL on
     // Sepolia (1inch Aqua registry + BlessingPool + PoolGuard); live origins read
@@ -1167,9 +1167,21 @@
     if (carry) left.appendChild(carry);
     var row = el('<div class="btnrow"></div>');
     var work = el('<button class="btn big">▶ Put ' + esc(a.name) + " to work →</button>");
-    work.addEventListener("click", function () { go("utility"); });
+    // 🚪 2026-09-27 (Shaka): putting a homed agent to work TAKES you to its front door,
+    // door code carried in the passport hash — the agent operates cleaner at home. THIS
+    // tab stays the proof house (work receipts + revoke). ?mode=offline (film lane) keeps
+    // one tab — no network there anyway.
+    var doorHome = a.home && a.home.url && !isOfflineMode();
+    work.addEventListener("click", function () {
+      if (doorHome) { var href = carryHref(a); if (href) openDoor(href); }
+      go("utility");
+    });
     row.appendChild(work);
     left.appendChild(row);
+    if (doorHome) {
+      left.appendChild(el('<p class="hint" style="margin-top:8px">🚪 this opens <b>' + esc(a.home.domain) +
+        "</b> — " + esc(a.name) + "'s front door — with your door code carried. Proofs &amp; revoke stay in this tab.</p>"));
+    }
     left.appendChild(revokeControl(a));
     split.appendChild(left);
 
@@ -1186,21 +1198,30 @@
     return wrap;
   }
 
+  // 2026-09-27 (Shaka): no typing to revoke — one tap on the button is enough, with a
+  // confirmation ask. The old "type Stop + Enter" input is retired; the confirm step is
+  // inline (never window.confirm — testable, styleable, honest).
   function revokeControl(a) {
     var box = el('<div class="panel" style="margin-top:18px"></div>');
-    box.appendChild(el('<h3 style="margin-bottom:8px">🛑 Revoke anytime — one word</h3>'));
-    box.appendChild(el('<p class="hint" style="margin-top:0">Type <b style="color:var(--pink)">Stop</b> and press Enter, or tap the button. It halts instantly.</p>'));
-    var inp = el('<input class="field" id="revokeIn" placeholder="type one word…" autocomplete="off" style="margin-bottom:12px">');
-    inp.addEventListener("keydown", function (e) {
-      if (e.key === "Enter") {
-        if (inp.value.trim().toLowerCase() === "stop") { S.revoke.reason = "stop"; go("standdown"); }
-        else { inp.style.borderColor = "var(--amber)"; inp.value = ""; inp.placeholder = 'say the word: "Stop"'; }
-      }
+    box.appendChild(el('<h3 style="margin-bottom:8px">🛑 Revoke anytime — one tap</h3>'));
+    box.appendChild(el('<p class="hint" style="margin-top:0">No typing, no forms. Tap <b style="color:var(--pink)">Stop</b>, confirm, and it halts instantly.</p>'));
+    var row = el('<div id="revokeRow"></div>');
+    var rbtn = el('<button class="btn danger" id="revokeBtn">🛑 Stop ' + esc(a.name) + " — revoke now</button>");
+    rbtn.addEventListener("click", function () {
+      row.innerHTML = "";
+      row.appendChild(el('<p class="hint" style="margin:0 0 10px">Stop <b style="color:var(--pink)">' + esc(a.name) +
+        "</b> right now? It halts at the very next step — nothing keeps running.</p>"));
+      var crow = el('<div class="btnrow" style="margin-top:0"></div>');
+      var yes = el('<button class="btn danger" id="revokeYes">🛑 Yes — stop it now</button>');
+      yes.addEventListener("click", function () { S.revoke.reason = "stop"; go("standdown"); });
+      var no = el('<button class="link" id="revokeNo">✕ keep the blessing</button>');
+      no.addEventListener("click", function () { row.innerHTML = ""; row.appendChild(rbtn); });
+      crow.appendChild(yes);
+      crow.appendChild(no);
+      row.appendChild(crow);
     });
-    box.appendChild(inp);
-    var rbtn = el('<button class="btn danger">🛑 REVOKE ' + esc(a.name) + " NOW</button>");
-    rbtn.addEventListener("click", function () { S.revoke.reason = "stop"; go("standdown"); });
-    box.appendChild(rbtn);
+    row.appendChild(rbtn);
+    box.appendChild(row);
     return box;
   }
 
@@ -1276,6 +1297,10 @@
     var right = el('<div></div>');
     right.appendChild(blessedHeroCompact(a));
     right.appendChild(revokeControl(a));
+    // 🎒 the front-door lane rides along here too — if the door tab was blocked or closed,
+    // the carry-link + door code stay one tap away while the agent works.
+    var ucarry = carryEl(a);
+    if (ucarry) right.appendChild(ucarry);
     split.appendChild(right);
     wrap.appendChild(split);
     setTimeout(startCountdown, 0);
@@ -1355,17 +1380,17 @@
       out.appendChild(rc);
       S.utilityOutput = { summary: summary, receiptNo: receiptNo, detail: detailLine, meals: meals };
       var footers = {
-        "rescue-match": "A real match, in your name. Run again, or revoke anytime — one word.",
-        receipt: "Slow and steady — nothing lost. Run again, or revoke anytime — one word.",
-        verse: "Signed in your name, and only yours. Run again, or revoke anytime — one word.",
-        transmission: "One item home, receipt written. Run again, or revoke anytime — one word.",
-        concierge: "A suggestion, not a decision — the choice stays yours. Revoke anytime — one word.",
-        scan: "Read-only — I look, I never touch. Run again, or revoke anytime — one word.",
-        "repo-scan": "Read-only — I scan, I never edit. Run again, or revoke anytime — one word.",
-        story: "A story, in your name — and I only speak while you say yes. Run again, or revoke anytime — one word.",
-        lesson: "A lesson in your name — what you build stays yours. Run again, or revoke anytime — one word. #globyontour"
+        "rescue-match": "A real match, in your name. Run again, or revoke anytime — one tap.",
+        receipt: "Slow and steady — nothing lost. Run again, or revoke anytime — one tap.",
+        verse: "Signed in your name, and only yours. Run again, or revoke anytime — one tap.",
+        transmission: "One item home, receipt written. Run again, or revoke anytime — one tap.",
+        concierge: "A suggestion, not a decision — the choice stays yours. Revoke anytime — one tap.",
+        scan: "Read-only — I look, I never touch. Run again, or revoke anytime — one tap.",
+        "repo-scan": "Read-only — I scan, I never edit. Run again, or revoke anytime — one tap.",
+        story: "A story, in your name — and I only speak while you say yes. Run again, or revoke anytime — one tap.",
+        lesson: "A lesson in your name — what you build stays yours. Run again, or revoke anytime — one tap. #globyontour"
       };
-      out.appendChild(el('<p class="hint">' + esc(footers[a.detail.utility] || "Blessing still live. Run again, or revoke anytime — one word.") + "</p>"));
+      out.appendChild(el('<p class="hint">' + esc(footers[a.detail.utility] || "Blessing still live. Run again, or revoke anytime — one tap.") + "</p>"));
     }, 900);
   }
 
@@ -1435,11 +1460,11 @@
     var a2 = a;
     var hasAqua = (a2.chains || []).some(function (c) { return /aqua/i.test(c); });
     var halt = el('<div class="standdown halt-flash"></div>');
-    halt.appendChild(el('<p class="eyebrow center">ONE WORD · INSTANT HALT</p>'));
+    halt.appendChild(el('<p class="eyebrow center">ONE TAP · INSTANT HALT</p>'));
     halt.appendChild(el('<div class="ce">' + a2.emoji + "🛑</div>"));
     halt.appendChild(el('<div class="said">“Consent withdrawn at ' + nowStamp() +
       '. I’ve stopped — mid-task, no arguments. Finalizing nothing, releasing stewardship. Thank you for the trust. Goodbye.”</div>'));
-    halt.appendChild(el('<p class="sub">The moment you said <b style="color:var(--pink)">Stop</b>, the blessing died. ' +
+    halt.appendChild(el('<p class="sub">The moment you tapped <b style="color:var(--pink)">Stop</b>, the blessing died. ' +
       esc(a2.name) + " halted at the very next step — it checks its authority before <em style=\"font-style:normal;color:var(--pink)\">every</em> single act, so “stop” means now, not “eventually.” The on-chain paperwork clears behind, as receipts.</p>"));
     wrap.appendChild(halt);
 
@@ -1496,7 +1521,7 @@
     rc.appendChild(el('<div class="kv"><span class="k rk">blessed</span><span class="rv mono">' + esc(d.subname) + " · role " + esc(d.role) + "</span></div>"));
     rc.appendChild(el('<div class="kv"><span class="k rk">scope</span><span class="rv">' + esc(d.may) + "</span></div>"));
     rc.appendChild(el('<div class="kv"><span class="k rk">granted</span><span class="rv mono">' + blessedAt + "</span></div>"));
-    rc.appendChild(el('<div class="kv"><span class="k rk">revoked</span><span class="rv mono">' + revokedAt + " (one word: “Stop”)</span></div>"));
+    rc.appendChild(el('<div class="kv"><span class="k rk">revoked</span><span class="rv mono">' + revokedAt + " (one tap: 🛑 Stop)</span></div>"));
     rc.appendChild(el('<div class="kv"><span class="k rk">did while blessed</span><span class="rv">' + esc(did) + "</span></div>"));
     rc.appendChild(el('<div class="kv"><span class="k rk">denied-path</span><span class="rv">tested — denial returns no action</span></div>'));
     rc.appendChild(el('<div class="stamp">asked · scoped · timed · deniable · revoked · accounted for.<br>produced by Terri 🐢 (blessed receipts keeper) · logged to consent ledger ✓</div>'));

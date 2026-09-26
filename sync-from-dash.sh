@@ -17,7 +17,7 @@ python3 - <<'PY'
 import io
 p = "/workspace/gh-site/index.html"
 s = io.open(p, encoding="utf-8").read()
-anchor = '<span class="promise">hire an agent · bless it · revoke anytime — one word.</span>'
+anchor = '<span class="promise">hire an agent · bless it · revoke anytime — one tap.</span>'
 block = '''        <!-- SITENAV (mirror-only — re-apply after every freeze mirror-sync; Shaka 2026-09-26 22:26 JST) -->
     <nav class="sitenav" aria-label="site">
       <a href="/team/">👥 Team</a>
