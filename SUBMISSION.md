@@ -45,7 +45,7 @@ Draft form answers, ready to paste into the Hacker Dashboard. Fields marked **TB
 
 ## Links
 
-- **Repo:** https://github.com/shakaleikaumaka/triproto-launchpad
+- **Repo:** https://github.com/shakaleikaumaka/my-agent-ohana
 - **Live demo (pad front door):** **TBD** — `web/index.html` deploys to `myagentohana.com` (owned) post-deploy; preview mode runs today from spec seeds.
 - **Video (2–4 min):** **TBD** — screen recording + Shaka's real narration (script: `docs/demo-script.md`).
 - **White paper:** `specs/whitepaper.html` (in-repo, per spec-driven AI rules)

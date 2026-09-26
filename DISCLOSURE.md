@@ -12,7 +12,7 @@
 
 | Fact | Value |
 |---|---|
-| Repo URL | **https://github.com/shakaleikaumaka/triproto-launchpad** (public) |
+| Repo URL | **https://github.com/shakaleikaumaka/my-agent-ohana** (public) |
 | `main` HEAD | `2a93412241e961dae7cbefb8350abd37889b60d9` (2026-09-13 14:24 UTC) |
 | Contracts pin, branch `lane/act1-gift-market` | **`c103d36f0333fc5c92e4fde7350067aa333df50c`** (2026-09-14 19:49 UTC) |
 | Frontend integration tip, branch `lane/aliveline-integration` | `3770d441e191a43954df35d8d9559660e5100ddb` (2026-09-14 20:21 UTC) |
@@ -74,7 +74,7 @@ This base was built **2026-09-12 → 09-14 during the ETHOnline 2026 window**, t
 
 ### 1.6 The sentence judges read
 
-> **Built before Sep 25:** the triproto-launchpad base — AgentLaunchRegistry + ENSv2SubnameIssuer + GiftMarket contracts (69/69 tests, re-run green), deployed to Sepolia and Base Sepolia on Sep 13–14 at the pinned addresses above, plus subgraph, World Selfie sandbox, and the triforce frontend — all at the pinned commits above, public since mid-September.
+> **Built before Sep 25:** the pre-hackathon base (repo since renamed `my-agent-ohana`) — AgentLaunchRegistry + ENSv2SubnameIssuer + GiftMarket contracts (69/69 tests, re-run green), deployed to Sepolia and Base Sepolia on Sep 13–14 at the pinned addresses above, plus subgraph, World Selfie sandbox, and the triforce frontend — all at the pinned commits above, public since mid-September.
 > **Built during the hackathon (Sep 25–27):** everything in §2 — nothing in §2 exists in the repo yet; judges can confirm by reading the repo history before/after `c103d36` / `3770d44`.
 
 ---
@@ -101,7 +101,7 @@ Every delta commit lands **after** Fri Sep 25 13:00 JST with lane-tagged message
 ## 4. Verification recipe (for a judge with 5 minutes)
 
 ```bash
-git clone https://github.com/shakaleikaumaka/triproto-launchpad && cd triproto-launchpad
+git clone https://github.com/shakaleikaumaka/my-agent-ohana && cd triproto-launchpad
 git checkout c103d36f0333fc5c92e4fde7350067aa333df50c        # pre-Tokyo contracts pin
 git log --format='%h %ad %s' --date=iso -5                   # every commit ≤ 2026-09-14
 cd contracts && forge test                                   # => 69 passed, 0 failed
