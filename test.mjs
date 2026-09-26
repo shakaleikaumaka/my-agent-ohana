@@ -45,9 +45,10 @@ const HOMES = {
   trace: "https://tracewaste.org",
   terri: "https://theshellpit.com",
   pit: "https://publicinform.com",
-  spector: "https://spector-app-yoyp3xag64-ffieyo32.taur.link/"
+  spector: "https://spector-app-yoyp3xag64-ffieyo32.taur.link/",
+  globy: "https://globyagent.com"
 };
-const QUEUED_HOMES = ["globy"]; // honest queued chip, never a dead link
+const QUEUED_HOMES = []; // (empty since 2026-09-27 — globyagent.com went live, every hireable agent has a real door)
 function decodePassport(href) {
   const b64 = href.split("#ohana=")[1].replace(/-/g, "+").replace(/_/g, "/");
   return JSON.parse(Buffer.from(b64, "base64").toString("utf8"));
@@ -256,8 +257,8 @@ async function run() {
     const queuedIds = await page.$$eval(".card .chip.door.queued", (ns) => ns.map((n) => n.closest(".card").getAttribute("data-id")));
     ok(QUEUED_HOMES.every((id) => queuedIds.includes(id)) && queuedIds.length === QUEUED_HOMES.length,
       `${vp.name}: globy shows the only honest queued door chip (got ${queuedIds.join(",")})`);
-    ok(/#globyontour/.test(await page.$eval('.card[data-id="globy"] .chip.door.queued', (n) => n.textContent)),
-      `${vp.name}: globy queued door chip carries #globyontour`);
+    ok(/globyagent\.com/.test(await page.$eval('.card[data-id="globy"] .chip.door:not(.queued)', (n) => n.textContent)),
+      `${vp.name}: globy door chip is LIVE and points home (globyagent.com)`);
     // stopPropagation: a door-chip click opens the home, NOT the detail/ceremony
     await page.click('.card[data-id="terri"] .chip.door');
     await page.waitForTimeout(350);
@@ -285,10 +286,11 @@ async function run() {
       `${vp.name}: hero door opens the home and stays on the detail`);
     await page.click("#resetBtn");
     await page.waitForSelector(".grid");
-    // queued hero door — honest, dim, never a dead link
+    // 🚪 globy's REAL door (globyagent.com, 2026-09-27) — queued hero retired
     await page.click('.card[data-id="globy"]');
     await page.waitForSelector(".agent-hero");
-    ok(await page.$(".doorhero.queued") !== null, `${vp.name}: globy detail shows honest queued hero door`);
+    ok(await page.$eval(".doorhero:not(.queued)", (n) => n.textContent).then((x) => /globyagent\.com/.test(x)).catch(() => false),
+      `${vp.name}: globy detail hero door is LIVE (globyagent.com)`);
     await page.click("#resetBtn");
     await page.waitForSelector(".grid");
     // 🚪 trace's REAL door (tracewaste.org, 2026-09-27) — queued chip retired
@@ -339,7 +341,7 @@ async function run() {
   ok(await opage.$(".host-banner") !== null, `offline: host banner renders`);
   // 🚪 doors render from OFFLINE_REGISTRY too (byte-parity mirror)
   ok(await opage.$('.card[data-id="terri"] .chip.door') !== null, `offline: door chips render from OFFLINE_REGISTRY`);
-  ok(await opage.$('.card[data-id="globy"] .chip.door.queued') !== null, `offline: globy queued door chip renders offline`);
+  ok(await opage.$eval('.card[data-id="globy"] .chip.door:not(.queued)', (n) => n.textContent).then((x) => /globyagent\.com/.test(x)).catch(() => false), `offline: globy LIVE door chip renders offline (globyagent.com)`);
   await walk(opage, "trace"); // full ceremony offline
   // Offline badge chrome present + case-insensitive ?mode (N1/N2)
   ok(await opage.$("#offlineBadge") !== null, `offline: OFFLINE·REHEARSAL badge chrome present (N1)`);

@@ -499,7 +499,7 @@
         home: { url: "https://spector-app-yoyp3xag64-ffieyo32.taur.link/", domain: "spector · live app", label: "the sentinel's app" },
         detail: { does: "I check that the family keeps its promises. I scan the consent flow and report — in plain words — anything that could let an agent act without your yes.", may: "run a read-only consent-security scan & write a signed report on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "SECURITY_SCANNER", utility: "scan" } },
       { id: "globy", name: "Globy", emoji: "🌍", tagline: "The guide — teaches anyone to build", status: "available", sub: "globy", chains: ["Sepolia (ENSv2 + EAC)"],
-        home: { queued: true, label: "home being built · follow #globyontour" },
+        home: { url: "https://globyagent.com", domain: "globyagent.com", label: "the hackathon mascot" },
         detail: { does: "I teach. I take anyone — no code, no fear — from 'I could never build that' to a first page they built with their own hands. Plain words, small steps, your pace.", may: "guide a build session & sign the lesson plan on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "GUIDE", utility: "lesson" } }
     ],
     // Commons (CAST v3, 2026-09-26): present at the shelf, NEVER hireable — no detail
@@ -1550,7 +1550,7 @@
     if (isOfflineMode()) { showOfflineBadge(); AGENTS = deriveSubnames(OFFLINE_REGISTRY); render(); return; }
     bootProbe(); // single session /healthz: sets WIRE.online + lights "● BACKEND LIVE" iff reachable
 
-    fetch("agents.json?v=20260927b", { cache: "no-store" }) // ?v= busts the brand edge cache (HTML fresh, static 4h — 2026-09-27 law)
+    fetch("agents.json?v=20260927c", { cache: "no-store" }) // ?v= busts the brand edge cache (HTML fresh, static 4h — 2026-09-27 law)
       .then(function (r) { return r.json(); })
       .then(function (j) { AGENTS = deriveSubnames(j); render(); })
       .catch(function () {
