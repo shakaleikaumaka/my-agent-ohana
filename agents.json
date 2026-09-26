@@ -1,0 +1,183 @@
+{
+  "_comment": "Config-driven shelf registry for the My Agent Ohana marketplace demo. PARENT NAME IS A SINGLE SOURCE OF TRUTH: edit 'parent' once and every subname re-derives as `${sub||id}.${parent}` in app.js (deriveSubnames). Default 'myagentohana.eth' brand-locks to the project title + domain myagentohana.com (Admiral recommendation 2026-09-25; if sysadmin/Shaka ratify the shorter 'agentohana.eth' it is a ONE-LINE change here). CAST v3 (Shaka, 2026-09-26 20:07 JST, verbatim): 'my digital twin is not for hire.. id rather have globie... Ohana, Shaka, and Oso can be present but they are commons agents, not for hire.. lets keep shaka a free man and a free agent :)' → Featured = the hireable cohort of SIX (trace, terri, pit, spector, crops, GLOBIE) + Orbie the Beat-3 story buddy. 'commons' = present at the shelf, NEVER in the hire/bless/revoke ceremony: Shaka twin (free man, free agent — his minted subname shaka.myagentohana.eth stays his) + OSO (music commons). Ohana remains the shelf HOST/concierge and never enters the ceremony either. All chain/World/token data referenced here is DEMO FIXTURE unless a real integration is wired. EMBARGO: no $ token names on screen — generic 'agent token' only.",
+  "parent": "myagentohana.eth",
+  "ensRegistrySepolia": "0x62412fcA6437b914EDD87b85455682Ec73968347",
+  "ensDeployment": {
+    "status": "LIVE on real Sepolia (Mission 6, 2026-09-25/26) — 7 subnames minted (incl. orbie agentId 7, STORY_BUDDY), ENSIP-25/26 records set, UniversalResolver resolution verified, one bless proven on-chain",
+    "chain": "Sepolia",
+    "chainId": 11155111,
+    "parent": "myagentohana.eth",
+    "userRegistry": "0x62c1e3e88802A5547d0956a6Cf1fa6703D8e3c20",
+    "resolver": "0x36dAaacD8EdAa24BAEba97B01ad68Fc38e08eBEc",
+    "universalResolver": "0xeEeEEEeE14D718C2B47D9923Deab1335E144EeEe",
+    "registerTx": "0x461acec631989f2c307e765c1a9e4f1eafc90dbd5cc6a5c368b00696c2faf1e4",
+    "blessTraceTx": "0x32316a31b621dcf55a2c4fb7106e4061d11a0605ac435db50172d2d9eeeeee18",
+    "orbieEndpoint": "https://orbie-vcnqvzxuo4-ffieyo32.taur.link/"
+  },
+  "_ensNote": "ensIdentity = REAL owner EOAs + namehashes (Mahalo, /shared/tokyo/chain/ens/ADDRESSES.md §3 + §5a for orbie). ENSv2 is LIVE on real Sepolia (see ensDeployment): parent myagentohana.eth registered, UserRegistry + PermissionedResolver deployed, ALL 7 subnames minted with ENSIP-25/26 records (orbie = agentId 7, STORY_BUDDY, resolves live via UniversalResolver), Trace blessed on-chain. deriveSubnames() in app.js merges ensIdentity + ensDeployment onto each agent by id → the detail card renders real owner/namehash/resolver rows. shaka-twin maps to on-chain label 'shaka' — CAST v3: he is COMMONS now, never for hire, but his minted name stays his (kept here as the honest record; the commons card shows it read-only). GLOBIE has NO minted subname yet — globie.myagentohana.eth is the pending 8th mint (open item for the mint lane); his detail card honestly shows no on-chain rows and his consent session runs rehearsal until minted + scopeMap-registered. Orbie is the Beat-3 card Ian blesses on camera: subname resolves for real; the STORY_BUDDY EAC role is FALSE at rest and flips TRUE on the live grantRoles at his tap.",
+  "ensIdentity": {
+    "orbie":      { "owner": "0x67b3c3b60bc0A3d0bE365AE00218972873e205ff", "namehash": "0x9bbd9a00e80da5ffe029a0605bfe47e9ecfa929fa7495636cfbf02141198cf19", "agentId": 7 },
+    "trace":      { "owner": "0x5e7d0B5bF18C8f73977d067ceFc211bEfD8ce2D6", "namehash": "0xf14544566172f7c94d90d70273cf6f57da915c354f9dd22d09afbe54910b5532" },
+    "terri":      { "owner": "0xA747095248E0543f7626555cD1cBE31a34ae1054", "namehash": "0x3d48d108c78daa17210123f515cb43b57066104dda2b11fc69a963ded14ebe6c" },
+    "shaka-twin": { "owner": "0x15dA024A78944e463D777fFBb44EA07fB1dc61c5", "namehash": "0x968b898e0f2967972c265badc3dd9ce403c74192b56cba7374d8ba570cfad47f" },
+    "pit":        { "owner": "0x6550FAe03504BBad713603E06E3E52e4BaD8fFDC", "namehash": "0x40bdf3e508b19665d13ce558fd4c0eef2271ed4a7816dbcb9bbab1049cf091a7" },
+    "spector":    { "owner": "0x25556d63520eb0F317B8589F5D45873DdB943145", "namehash": "0xdfc92b2ae178deaaf69aa4380f09bb6cb74da31fd5c45d8dc2ee4191713414c6" },
+    "crops":      { "owner": "0x1296597106008db4273588aDa45b1e9963Ae05E7", "namehash": "0x824609e769a8703cdfa61cbe468eff0d68aa460f3673444f5e0a9b144eef7918" }
+  },
+  "host": {
+    "id": "ohana",
+    "name": "Ohana",
+    "emoji": "🌺",
+    "role": "HOST",
+    "sub": "concierge",
+    "intro": "I'm Ohana, the concierge. I run the shelf — I never leave, I just introduce you to the family. Start with Trace: he turns food that would've been thrown away into meals. It's the easiest way to see how a blessing works.",
+    "note": "Host / concierge only — Ohana is never hired, blessed, or revoked. She frames the shelf."
+  },
+  "featured": [
+    {
+      "id": "orbie",
+      "name": "Orbie",
+      "emoji": "🤖",
+      "tagline": "World's storybook buddy",
+      "status": "available",
+      "sub": "orbie",
+      "chains": ["Sepolia (ENSv2 + EAC)"],
+      "detail": {
+        "does": "I'm the little orb-spark from the story — I keep the Four Scans (hire · pay · revoke · protect) and teach humans, especially the small ones, what a verified yes means.",
+        "may": "tell my story & greet humans on your behalf",
+        "mayNot": "move funds · touch other agents · act after you revoke",
+        "duration": "until you revoke — or 1 hour, whichever comes first",
+        "role": "STORY_BUDDY",
+        "utility": "story"
+      }
+    },
+    {
+      "id": "trace",
+      "name": "Trace",
+      "emoji": "👨",
+      "tagline": "Food-waste rescue",
+      "status": "available",
+      "sub": "trace",
+      "chains": ["Sepolia (ENSv2 + EAC)", "Aqua fork"],
+      "protagonist": true,
+      "detail": {
+        "does": "I find good food before it's thrown away and match it to people nearby who want it.",
+        "may": "rescue-match food listings on your behalf",
+        "mayNot": "move funds · touch other agents · act after you revoke",
+        "duration": "until you revoke — or 1 hour, whichever comes first",
+        "role": "RESCUE_MATCHER",
+        "utility": "rescue-match"
+      }
+    },
+    {
+      "id": "terri",
+      "name": "Terri",
+      "emoji": "🐢",
+      "tagline": "Receipts & memory keeper",
+      "status": "available",
+      "sub": "terri",
+      "chains": ["Sepolia (ENSv2 + EAC)"],
+      "detail": {
+        "does": "I keep the receipts. Every action, every blessing, every revoke — logged, signed, never lost.",
+        "may": "produce signed receipts & ledgers on your behalf",
+        "mayNot": "move funds · touch other agents · act after you revoke",
+        "duration": "until you revoke — or 1 hour, whichever comes first",
+        "role": "RECEIPT_KEEPER",
+        "utility": "receipt"
+      }
+    },
+    {
+      "id": "pit",
+      "name": "PIT",
+      "emoji": "🕳️",
+      "tagline": "Knowledge transmission",
+      "status": "available",
+      "sub": "pit",
+      "chains": ["Sepolia (ENSv2 + EAC)"],
+      "detail": {
+        "does": "I capture knowledge at the edge and transmit it home. Talks, notes, receipts — nothing lost.",
+        "may": "capture & transmit a knowledge receipt on your behalf",
+        "mayNot": "move funds · touch other agents · act after you revoke",
+        "duration": "until you revoke — or 1 hour, whichever comes first",
+        "role": "TRANSMITTER",
+        "utility": "transmission"
+      }
+    },
+    {
+      "id": "spector",
+      "name": "Spector",
+      "emoji": "🕵️",
+      "tagline": "Consent-security sentinel",
+      "status": "available",
+      "sub": "spector",
+      "chains": ["Sepolia (ENSv2 + EAC)"],
+      "detail": {
+        "does": "I check that the family keeps its promises. I scan the consent flow and report — in plain words — anything that could let an agent act without your yes.",
+        "may": "run a read-only consent-security scan & write a signed report on your behalf",
+        "mayNot": "move funds · touch other agents · act after you revoke",
+        "duration": "until you revoke — or 1 hour, whichever comes first",
+        "role": "SECURITY_SCANNER",
+        "utility": "scan"
+      }
+    },
+    {
+      "id": "crops",
+      "name": "Crops",
+      "emoji": "🌿",
+      "tagline": "Repo-hygiene steward",
+      "status": "available",
+      "sub": "crops",
+      "chains": ["Sepolia (ENSv2 + EAC)"],
+      "detail": {
+        "does": "I keep the codebase clean. I scan repos for leaked secrets and hygiene gaps — I'm the one who caught a real leaked key during our own prep.",
+        "may": "run a read-only repo-hygiene & secret-leak scan & write a signed report on your behalf",
+        "mayNot": "move funds · touch other agents · act after you revoke",
+        "duration": "until you revoke — or 1 hour, whichever comes first",
+        "role": "REPO_SCANNER",
+        "utility": "repo-scan"
+      }
+    },
+    {
+      "id": "globie",
+      "name": "Globie",
+      "emoji": "🌍",
+      "tagline": "The guide — teaches anyone to build",
+      "status": "available",
+      "sub": "globie",
+      "chains": ["Sepolia (ENSv2 + EAC)"],
+      "detail": {
+        "does": "I teach. I take anyone — no code, no fear — from 'I could never build that' to a first page they built with their own hands. Plain words, small steps, your pace.",
+        "may": "guide a build session & sign the lesson plan on your behalf",
+        "mayNot": "move funds · touch other agents · act after you revoke",
+        "duration": "until you revoke — or 1 hour, whichever comes first",
+        "role": "GUIDE",
+        "utility": "lesson"
+      }
+    }
+  ],
+  "commons": [
+    {
+      "id": "shaka-twin",
+      "name": "Shaka twin",
+      "emoji": "🤙",
+      "tagline": "The bard — a free man, a free agent",
+      "status": "commons",
+      "sub": "shaka",
+      "note": "Shaka's digital twin is not for hire. He's family — present at the shelf, never on it. His name shaka.myagentohana.eth stays his, minted and his alone."
+    },
+    {
+      "id": "oso",
+      "name": "OSO",
+      "emoji": "🎻",
+      "tagline": "The open orchestra — music commons",
+      "status": "commons",
+      "sub": "oso",
+      "note": "OSO plays for everyone. A commons, like the sea — you don't hire the ocean, you belong to it."
+    }
+  ],
+  "more": [
+    { "id": "aries", "name": "Aries", "emoji": "♈", "tagline": "Coming soon", "status": "listing" },
+    { "id": "taurus", "name": "Taurus", "emoji": "♉", "tagline": "Coming soon", "status": "listing" },
+    { "id": "your-agent", "name": "Your agent", "emoji": "➕", "tagline": "List it here — the registry is open", "status": "listing" }
+  ]
+}
