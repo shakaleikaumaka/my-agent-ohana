@@ -1,0 +1,219 @@
+{
+  "_meta": {
+    "title": "Terri receipt backup — deterministic signed ledger ('every action logged & signed')",
+    "owner": "Globy Terri (receipts & docs keeper)",
+    "generatedBy": "gen-fixtures.py (deterministic)",
+    "written": "2026-09-25",
+    "purpose": "Guaranteed-real safety net behind the S7/S8 utility beat: a tamper-evident, hash-chained ledger where EVERY action is signed and each entry links to the previous signature. Usable if Trace live wiring slips — proves the 'every action logged & signed, one-word revoke halts' beat with deterministic, independently-verifiable receipts.",
+    "signing": {
+      "alg": "HMAC-SHA256",
+      "chain": "each entry embeds prevSig; entry.seq=1 prevSig='GENESIS'. Altering any entry breaks its sig AND every later prevSig link (tamper-evident).",
+      "verify": "test.sh recomputes every signature and every chain link with the published DEMO_KEY."
+    },
+    "honesty": "The ledger entries model the demo walkthrough (Trace rescue-match + revoke). They are a deterministic DEMO ledger, not a capture of a live production run. The receipts/evidence they reference (Bonanza $642.96, onion loop, on-chain deployments) are the real anchors indexed below.",
+    "embargo": "No token names. Agent/cohort names are grandfathered brand strings; keep off headlines in public artifacts."
+  },
+  "ledger": {
+    "keyId": "ohana-demo-v1",
+    "genesis": "GENESIS",
+    "entries": [
+      {
+        "seq": 1,
+        "ts": "2026-08-26T17:59:40Z",
+        "actor": "Trace",
+        "subname": "trace.ohana.eth",
+        "action": "AUTHORITY_CHECK",
+        "detail": "re-check blessing scope before acting",
+        "result": "allow",
+        "prevSig": "GENESIS",
+        "sig": {
+          "alg": "HMAC-SHA256",
+          "key_id": "ohana-demo-v1",
+          "note": "demo integrity marker; key published in gen-fixtures.py so anyone can verify",
+          "value": "40b324a9f310a60e43358879753d76dd66b0660592f6fb2329199b700bb03fac"
+        }
+      },
+      {
+        "seq": 2,
+        "ts": "2026-08-26T18:00:00Z",
+        "actor": "Trace",
+        "subname": "trace.ohana.eth",
+        "action": "RESCUE_MATCH",
+        "detail": "onions-loop → 55 lb rescued (15 recipe + 40 transfer)",
+        "result": "ok",
+        "prevSig": "40b324a9f310a60e43358879753d76dd66b0660592f6fb2329199b700bb03fac",
+        "sig": {
+          "alg": "HMAC-SHA256",
+          "key_id": "ohana-demo-v1",
+          "note": "demo integrity marker; key published in gen-fixtures.py so anyone can verify",
+          "value": "28f25a7220964f928ca9fa7e41decf80989410e0c6a792cf4fa20e32c517502c"
+        }
+      },
+      {
+        "seq": 3,
+        "ts": "2026-08-26T18:00:01Z",
+        "actor": "Terri",
+        "subname": "terri.ohana.eth",
+        "action": "RECEIPT_STAMP",
+        "detail": "stamp rescue-match-receipt for Trace action seq=2",
+        "result": "ok",
+        "prevSig": "28f25a7220964f928ca9fa7e41decf80989410e0c6a792cf4fa20e32c517502c",
+        "sig": {
+          "alg": "HMAC-SHA256",
+          "key_id": "ohana-demo-v1",
+          "note": "demo integrity marker; key published in gen-fixtures.py so anyone can verify",
+          "value": "ce950c9d9d39ffb8db2d337d6352dd246c817f8517531eee8ede596e7e31678c"
+        }
+      },
+      {
+        "seq": 4,
+        "ts": "2026-08-26T18:05:00Z",
+        "actor": "human",
+        "subname": "world:sub(pairwise)",
+        "action": "REVOKE",
+        "detail": "one word: stop — EAC role revoked, blessing withdrawn",
+        "result": "revoked",
+        "prevSig": "ce950c9d9d39ffb8db2d337d6352dd246c817f8517531eee8ede596e7e31678c",
+        "sig": {
+          "alg": "HMAC-SHA256",
+          "key_id": "ohana-demo-v1",
+          "note": "demo integrity marker; key published in gen-fixtures.py so anyone can verify",
+          "value": "179931fbed3947694b0bc73664ade0c38fd2e85eead07d9cfd1508eff7a010d4"
+        }
+      },
+      {
+        "seq": 5,
+        "ts": "2026-08-26T18:05:00Z",
+        "actor": "Terri",
+        "subname": "terri.ohana.eth",
+        "action": "HALT_LOG",
+        "detail": "agent halted <100ms on local ledger; on-chain legs settle behind as receipts",
+        "result": "halted",
+        "prevSig": "179931fbed3947694b0bc73664ade0c38fd2e85eead07d9cfd1508eff7a010d4",
+        "sig": {
+          "alg": "HMAC-SHA256",
+          "key_id": "ohana-demo-v1",
+          "note": "demo integrity marker; key published in gen-fixtures.py so anyone can verify",
+          "value": "84f0793991c5b35741788580bb392b12b9737e1cd6d754c86458b08c458fb9d7"
+        }
+      }
+    ]
+  },
+  "realAnchors": {
+    "note": "Index of the REAL artifacts the demo stands on; each points to a canonical on-disk source.",
+    "receipts": [
+      {
+        "id": "bonanza-0825",
+        "claim": "Fresh-produce supply run",
+        "value": {
+          "date": "2026-08-25",
+          "store": "Bonanza Produce Co.",
+          "total_usd": 642.96
+        },
+        "source": "/shared/public/turtle-food/data.js & /shared/public/turtle-bins/data.js",
+        "verified": "2026-09-25"
+      },
+      {
+        "id": "walmart-reno-0825",
+        "claim": "9× 5-gal propane cylinders",
+        "value": {
+          "date": "2026-08-25",
+          "store": "Walmart Reno",
+          "total_usd": 139.32
+        },
+        "source": "/shared/public/turtle-bins/data.js",
+        "verified": "2026-09-25"
+      },
+      {
+        "id": "winco-chefstore-0824",
+        "claim": "Build-week food/hydration/ops/tools",
+        "value": {
+          "date": "2026-08-24",
+          "store": "WinCo ×2 + Chef'Store + Lowe's + TA fuel",
+          "total_usd": 4862.71
+        },
+        "source": "/shared/public/turtle-bins/data.js",
+        "verified": "2026-09-25"
+      },
+      {
+        "id": "homedepot-boulder-0820",
+        "claim": "Build materials, bins, tools",
+        "value": {
+          "date": "2026-08-20",
+          "store": "Home Depot Boulder ×3",
+          "total_usd": 2241.94
+        },
+        "source": "/shared/public/turtle-bins/data.js",
+        "verified": "2026-09-25"
+      }
+    ],
+    "workedExamples": [
+      {
+        "id": "onion-food-loop",
+        "claim": "120 lb onions → 55 lb surplus forecast → early flag → ranked recommend",
+        "source": "/shared/kb/ttc/marcus-food-loop/TECH-EVAL.md §3",
+        "verified": "2026-09-25",
+        "note": "Illustrative worked trace, not a live-run log."
+      }
+    ],
+    "chainEvidence": [
+      {
+        "id": "ens-registry-sepolia",
+        "claim": "ENS-style registry (Sepolia)",
+        "value": {
+          "address": "0x62412fcA...8347",
+          "block": 11692692,
+          "chain": "Sepolia"
+        },
+        "source": "/shared/public/triforce-preview/config/deployments.js",
+        "verified": "2026-09-23"
+      },
+      {
+        "id": "giftmarket-sepolia",
+        "claim": "GiftMarket (Sepolia)",
+        "value": {
+          "address": "0x4Cbc337c...E575",
+          "block": 11704971,
+          "chain": "Sepolia"
+        },
+        "source": "/shared/public/triforce-preview/config/deployments.js",
+        "verified": "2026-09-23"
+      },
+      {
+        "id": "registry-base",
+        "claim": "Registry (Base)",
+        "value": {
+          "address": "0xAfd78515...8a34",
+          "chain": "Base"
+        },
+        "source": "/shared/public/triforce-preview/config/deployments.js",
+        "verified": "2026-09-23"
+      },
+      {
+        "id": "giftmarket-base",
+        "claim": "GiftMarket (Base)",
+        "value": {
+          "address": "0x24B55471...1937",
+          "chain": "Base"
+        },
+        "source": "/shared/public/triforce-preview/config/deployments.js",
+        "verified": "2026-09-23"
+      }
+    ],
+    "worldIdEvidence": [
+      {
+        "id": "world-oidc-discovery",
+        "claim": "World ID pilot OIDC discovery + JWKS captured (issuer moved auth.worldcoin.dev → sandbox.auth.world.org)",
+        "source": "/shared/tokyo/world-kit/raw/",
+        "verified": "2026-09-25",
+        "note": "Live device-flow round-trip with real client_id PENDING; timer starts at first venue pilot."
+      },
+      {
+        "id": "world-idkit-gate",
+        "claim": "Server-side IDKit verify gate; mock→real one-flag swap; denied path first-class",
+        "source": "/shared/tokyo/world-kit/src/idkit-gate/verify.mjs",
+        "verified": "2026-09-25"
+      }
+    ]
+  }
+}

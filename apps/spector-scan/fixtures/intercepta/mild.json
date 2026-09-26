@@ -1,0 +1,6 @@
+{
+  "toxicScore": 22,
+  "traits": [
+    { "risk": 2, "name": "mixer_transfers", "txsCount": 4, "description": "Address has interacted with a coin-mixing service" }
+  ]
+}

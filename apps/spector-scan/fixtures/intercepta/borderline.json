@@ -1,0 +1,6 @@
+{
+  "toxicScore": 48,
+  "traits": [
+    { "risk": 3, "name": "non_kyc_transfers", "txsCount": 11, "description": "Repeated transfers with non-KYC counterparties" }
+  ]
+}

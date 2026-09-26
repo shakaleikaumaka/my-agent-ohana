@@ -1,0 +1,260 @@
+{
+  "_meta": {
+    "title": "Trace food-loop seed fixtures — My Agent Ohana marketplace demo (S7 utility beat)",
+    "owner": "Globy Terri (receipts & docs keeper)",
+    "generatedBy": "gen-fixtures.py (deterministic)",
+    "written": "2026-09-25",
+    "chain": "input listing(s) -> match result -> signed receipt",
+    "purpose": "Give the Trace 'rescue-match' utility card REAL seed data mirroring the shape agentohana-demo/app.js expects (SURPLUS = {id,label,out,meals}) so the shell can load it cleanly, PLUS a full listing->match->signed-receipt chain for the S7 beat.",
+    "honesty": {
+      "receipt": "REAL — the $642.96 Bonanza Produce Co. receipt (2026-08-25) is a genuine kitchen supply-run receipt held by the squad.",
+      "loop": "REAL WORKED EXAMPLE — the 120→55 lb onion loop is Chef Marcus's own operator example; an illustrative worked trace, NOT a live-run log.",
+      "listings": "MIXED — 'onions-loop' is rooted in the real receipt + Marcus loop. The other two are ILLUSTRATIVE surplus projections derived from real bulk items on the same real receipt; flagged per-item via 'basis'.",
+      "match.partner": "ILLUSTRATIVE demo partner — not a named live organization.",
+      "meals": "ESTIMATE — ~1.2 lb food = 1 meal (Feeding America). Marked 'est'.",
+      "embargo": "No token names. Agent name 'Trace' is grandfathered brand."
+    },
+    "sources": {
+      "receipt": "/shared/public/turtle-food/data.js (Fresh Produce group) + /shared/public/turtle-bins/data.js (supply[] 8/25 Bonanza $642.96)",
+      "loop": "/shared/kb/ttc/marcus-food-loop/TECH-EVAL.md §3 (120 lb onions worked as a data trace)",
+      "shellShape": "/shared/public/agentohana-demo/app.js (var SURPLUS = [{id,label,out,meals}]) + agents.json (id 'trace')"
+    },
+    "howToUse": "Shell replaces its hardcoded SURPLUS array with fixtures.listings (identical shape). fixtures.match + fixtures.receipt render the completed-work + signed-receipt panels (S7/S8). Verify signatures with test.sh."
+  },
+  "agentId": "trace",
+  "name": "Trace",
+  "utility": "rescue-match",
+  "subname": "trace.ohana.eth",
+  "role": "RESCUE_MATCHER",
+  "supplyReceipt": {
+    "kind": "real-supply-receipt",
+    "date": "2026-08-25",
+    "store": "Bonanza Produce Co.",
+    "location": "Reno, NV",
+    "currency": "USD",
+    "total": 642.96,
+    "context": "Fresh-produce supply run for the camp kitchen (build week). One of four documented supply runs.",
+    "items": [
+      {
+        "item": "Bell peppers (green, 5#)",
+        "qty": "2 bags"
+      },
+      {
+        "item": "Red potatoes (5 lb lot)",
+        "qty": "2"
+      },
+      {
+        "item": "Tomatoes (5# basket)",
+        "qty": "3"
+      },
+      {
+        "item": "12\" flour tortillas (10/10 ct)",
+        "qty": "2"
+      },
+      {
+        "item": "Granny Smith apples (5#)",
+        "qty": "1"
+      },
+      {
+        "item": "Bananas (#3 color)",
+        "qty": "2"
+      },
+      {
+        "item": "Strawberries",
+        "qty": "1 case"
+      },
+      {
+        "item": "Green cabbage",
+        "qty": "2"
+      },
+      {
+        "item": "Poly carrots jumbo (25 lb)",
+        "qty": "1"
+      },
+      {
+        "item": "Cucumbers (6 ct)",
+        "qty": "2"
+      },
+      {
+        "item": "Garlic (colossal 5#)",
+        "qty": "1"
+      },
+      {
+        "item": "Lemons",
+        "qty": "2 bags"
+      },
+      {
+        "item": "Romaine lettuce",
+        "qty": "4"
+      },
+      {
+        "item": "Limes",
+        "qty": "2 bags"
+      },
+      {
+        "item": "Yellow onions jumbo (50 lb)",
+        "qty": "1"
+      },
+      {
+        "item": "Red onions (5#)",
+        "qty": "2"
+      },
+      {
+        "item": "Oranges",
+        "qty": "4 bags"
+      }
+    ]
+  },
+  "loop": {
+    "kind": "real-worked-example",
+    "sourceNote": "Chef Marcus's own 120 lb onion example, modeled end-to-end against the food-loop event types. Illustrative worked trace, not a live-run log.",
+    "item": "onion, yellow",
+    "unit": "lb",
+    "received": 120,
+    "forecastSurplus": 55,
+    "events": [
+      {
+        "t": "t0",
+        "type": "RECEIPT",
+        "detail": "receive 120 lb yellow onions",
+        "onhand_lb": 120
+      },
+      {
+        "t": "t1",
+        "type": "PRODUCTION",
+        "detail": "Mon chili draws 38 lb",
+        "onhand_lb": 82,
+        "burn_lb_per_day": 38
+      },
+      {
+        "t": "t2",
+        "type": "ALLOCATION",
+        "detail": "Tue menu BOM allocates 27 lb",
+        "available_unallocated_lb": 55
+      },
+      {
+        "t": "t3",
+        "type": "FORECAST",
+        "detail": "projected on-hand Tue close = 55 lb; ~1.4 days cover vs 5-day horizon",
+        "surplus_risk": true
+      },
+      {
+        "t": "t4",
+        "type": "FLAG",
+        "detail": "SURPLUS: 55 lb onions projected unneeded by Tue close — flagged EARLY (4+ days runway, not dumpster-night)"
+      },
+      {
+        "t": "t5",
+        "type": "RECOMMEND",
+        "detail": "ranked options",
+        "options": [
+          {
+            "kind": "PURCHASE",
+            "detail": "cut next order by ~55 lb (dollar saving, zero waste)"
+          },
+          {
+            "kind": "RECIPE",
+            "detail": "onion-forward specials Wed/Fri to absorb internally"
+          },
+          {
+            "kind": "TRANSFER",
+            "detail": "offer 25-40 lb to participating kitchen B (attestation + handoff record)"
+          },
+          {
+            "kind": "RECOVERY",
+            "detail": "schedule refrigerated pickup Thu -> partner manifest"
+          }
+        ]
+      }
+    ]
+  },
+  "listings": [
+    {
+      "id": "onions-loop",
+      "label": "Kitchen — 55 lb yellow onions forecast surplus (Tue close)",
+      "out": "55 lb onions → onion-forward specials + 25–40 lb transfer to partner kitchen",
+      "meals": 45,
+      "mealsBasis": "est · 55 lb ÷ ~1.2 lb/meal ≈ 45 meal-equivalents (Feeding America convention)",
+      "basis": "REAL — from Marcus's 120→55 lb onion worked loop (loop.events); onions on the real Bonanza 8/25 receipt (50 lb jumbo + 10 lb red)"
+    },
+    {
+      "id": "carrots-25",
+      "label": "Kitchen — 25 lb jumbo carrots nearing turn, Reno",
+      "out": "25 lb carrots → community kitchen soup + slaw batch",
+      "meals": 20,
+      "mealsBasis": "est · 25 lb ÷ ~1.2 lb/meal ≈ 20 meal-equivalents",
+      "basis": "ILLUSTRATIVE projection — 'Poly carrots jumbo (25 lb)' is a real line on the Bonanza 8/25 receipt; the surplus event is a demo fixture, not a logged flag"
+    },
+    {
+      "id": "oranges-4bags",
+      "label": "Kitchen — 4 bags oranges ripe fast, Reno",
+      "out": "4 bags oranges → fresh-fruit share to neighbors + juice",
+      "meals": 24,
+      "mealsBasis": "est · ~4 bags ≈ 30 lb ÷ ~1.2 lb/meal ≈ 24 meal-equivalents",
+      "basis": "ILLUSTRATIVE projection — 'Oranges ×4 bags' is a real line on the Bonanza 8/25 receipt; the surplus event is a demo fixture, not a logged flag"
+    }
+  ],
+  "match": {
+    "listingId": "onions-loop",
+    "listingLabel": "Kitchen — 55 lb yellow onions forecast surplus (Tue close)",
+    "matched": true,
+    "partner": {
+      "name": "Partner Community Kitchen B",
+      "kind": "ILLUSTRATIVE — demo partner (participating-kitchen slot); not a named live org",
+      "distance_km": 2.1,
+      "accepts_lb": 40
+    },
+    "allocation": [
+      {
+        "channel": "RECIPE (internal)",
+        "lb": 15,
+        "basis": "onion-forward specials Wed/Fri (loop.events t5)"
+      },
+      {
+        "channel": "TRANSFER (partner kitchen)",
+        "lb": 40,
+        "basis": "partner accepts up to 40 lb"
+      }
+    ],
+    "totalRescued_lb": 55,
+    "meals": 45,
+    "mealsBasis": "est · 55 lb ÷ ~1.2 lb/meal ≈ 45 meal-equivalents",
+    "wasteAvoided_lb": 55,
+    "note": "Match logic is deterministic: selected listing → ranked options from loop.events → allocate to internal recipe then partner transfer until surplus is zeroed."
+  },
+  "receipt": {
+    "type": "rescue-match-receipt",
+    "agent": {
+      "name": "Trace",
+      "subname": "trace.ohana.eth",
+      "role": "RESCUE_MATCHER"
+    },
+    "action": "match-and-route-surplus",
+    "authority": {
+      "blessedBy": "verified-human (World ID sub, pairwise)",
+      "scope": "route surplus-food listings to rescue partners",
+      "note": "demo authority handle; real World ID sub bound at live pilot"
+    },
+    "timestamp": "2026-08-26T18:00:00Z",
+    "input": {
+      "listingId": "onions-loop",
+      "listingLabel": "Kitchen — 55 lb yellow onions forecast surplus (Tue close)"
+    },
+    "result": {
+      "matched": true,
+      "totalRescued_lb": 55,
+      "meals": 45,
+      "partner": "Partner Community Kitchen B (illustrative demo partner)"
+    },
+    "provenance": {
+      "receipt": "Bonanza Produce Co. 2026-08-25 $642.96 (real)",
+      "loop": "Marcus 120→55 lb onion worked example (real operator example, illustrative trace)"
+    },
+    "sig": {
+      "alg": "HMAC-SHA256",
+      "key_id": "ohana-demo-v1",
+      "note": "demo integrity marker; key published in gen-fixtures.py so anyone can verify",
+      "value": "fcaa8bd5549d45c54d3e07573a37dfdbc1da310a09381724f37d3c8688e5d4b9"
+    }
+  }
+}

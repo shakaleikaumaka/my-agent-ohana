@@ -1,0 +1,7 @@
+{
+  "toxicScore": 96,
+  "traits": [
+    { "risk": 9, "name": "sanction_address", "txsCount": 1, "description": "Address appears on a sanctions list (OFAC)" },
+    { "risk": 8, "name": "known_scammer", "txsCount": 27, "description": "Address attributed to known scam campaigns" }
+  ]
+}

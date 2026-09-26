@@ -1,0 +1,8 @@
+# Intercepta / W3A sandbox key — NEVER commit. Provide via env INTERCEPTA_API_KEY.
+.env
+.env.*
+*.key
+intercepta.key
+INTERCEPTA_API_KEY*
+.intercepta-key
+reports/*.json
