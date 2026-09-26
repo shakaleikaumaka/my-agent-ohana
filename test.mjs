@@ -42,11 +42,12 @@ const COMMONS = ["shaka-twin", "oso", "crops"];
 // 🚪 THE DOORS — agents with a real live home site (mirror of agents.json home.url)
 const HOMES = {
   orbie: "https://orbie-vcnqvzxuo4-ffieyo32.taur.link/",
+  trace: "https://tracewaste.org",
   terri: "https://theshellpit.com",
   pit: "https://publicinform.com",
   spector: "https://spector-app-yoyp3xag64-ffieyo32.taur.link/"
 };
-const QUEUED_HOMES = ["trace", "globie"]; // honest queued chip, never a dead link
+const QUEUED_HOMES = ["globie"]; // honest queued chip, never a dead link
 function decodePassport(href) {
   const b64 = href.split("#ohana=")[1].replace(/-/g, "+").replace(/_/g, "/");
   return JSON.parse(Buffer.from(b64, "base64").toString("utf8"));
@@ -247,7 +248,7 @@ async function run() {
     ok(COMMONS.every((id) => doorIds.includes(id)), `${vp.name}: door chips on all three commons cards (real live homes)`);
     const queuedIds = await page.$$eval(".card .chip.door.queued", (ns) => ns.map((n) => n.closest(".card").getAttribute("data-id")));
     ok(QUEUED_HOMES.every((id) => queuedIds.includes(id)) && queuedIds.length === QUEUED_HOMES.length,
-      `${vp.name}: trace + globie show honest queued door chips (got ${queuedIds.join(",")})`);
+      `${vp.name}: globie shows the only honest queued door chip (got ${queuedIds.join(",")})`);
     ok(/#globieontour/.test(await page.$eval('.card[data-id="globie"] .chip.door.queued', (n) => n.textContent)),
       `${vp.name}: globie queued door chip carries #globieontour`);
     // stopPropagation: a door-chip click opens the home, NOT the detail/ceremony
@@ -281,6 +282,14 @@ async function run() {
     await page.click('.card[data-id="globie"]');
     await page.waitForSelector(".agent-hero");
     ok(await page.$(".doorhero.queued") !== null, `${vp.name}: globie detail shows honest queued hero door`);
+    await page.click("#resetBtn");
+    await page.waitForSelector(".grid");
+    // 🚪 trace's REAL door (tracewaste.org, 2026-09-27) — queued chip retired
+    await page.click('.card[data-id="trace"] .nm');
+    await page.waitForSelector(".agent-hero");
+    const traceHero = await page.$eval(".doorhero:not(.queued)", (n) => n.textContent);
+    ok(/ENTER TRACE'S HOME/.test(traceHero) && /tracewaste\.org/.test(traceHero) && /revoke stay here/i.test(traceHero),
+      `${vp.name}: trace detail hero door → tracewaste.org + proofs-stay-here line`);
     await page.click("#resetBtn");
     await page.waitForSelector(".grid");
 

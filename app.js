@@ -253,6 +253,33 @@
     if (cap) cap.textContent = "";
     if (ps) ps.innerHTML = "";
   }
+  // THE LIVE-ORIGIN RULE (2026-09-27): on a live origin the ceremony never shows the
+  // rehearsal card — the live site runs real only. If the live lane hiccups (wifi blink,
+  // cold worker), the QR box says so honestly and offers a retry; the tap re-opens the
+  // real session and a REAL QR + one-time code renders the moment the lane answers.
+  function renderLiveRetry(reason, retryFn) {
+    var qb = $("#qrbox");
+    if (qb) {
+      qb.classList.add("empty");
+      qb.innerHTML = "";
+      qb.appendChild(el('<div class="qr-rehearsal">📡 <b>THE LIVE LANE DIDN’T ANSWER</b> (' + esc(reason || "unreachable") + ') — so there is deliberately <b>no QR</b> here: this site mints blessings only on real sessions.<br>' +
+        'Almost always a wifi blink or a cold start. <b>Tap retry</b> — a REAL QR + one-time code appears here the moment the lane answers.</div>'));
+      var row = el('<div class="btnrow" style="justify-content:center;margin-top:10px"></div>');
+      var btn = el('<button class="btn">↻ RETRY THE LIVE LANE</button>');
+      btn.addEventListener("click", function () {
+        qb.innerHTML = "";
+        qb.appendChild(el('<div class="qr-pending"><span class="spin"></span> retrying the live lane…</div>'));
+        retryFn();
+      });
+      row.appendChild(btn);
+      qb.appendChild(row);
+    }
+    var uc = $("#ucode"), vu = $("#vuri"), cap = $("#qrCap"), ps = $("#pollSlot");
+    if (uc) uc.style.display = "none";
+    if (vu) vu.style.display = "none";
+    if (cap) cap.textContent = "";
+    if (ps) ps.innerHTML = "";
+  }
   function renderLapsedQR(kind) {
     var qb = $("#qrbox");
     if (qb) {
@@ -326,8 +353,14 @@
         S.wire.device = res.j;
         renderRealDevice(res.j);
         pollDevice(a, sub, res.j.interval || 5);
+      } else if (isLiveOrigin()) {
+        renderLiveRetry(err || (res && res.j && (res.j.error || res.j.message)) || "device proxy " + (res && res.status), function () {
+          S.wire.deviceTried = false;
+          wireDevice(a, sub); // re-mint a REAL code on the still-open session
+        });
+        renderDeviceChip("unavailable", err || (res && res.j && (res.j.error || res.j.message)) || "proxy " + (res && res.status));
       } else {
-        renderRehearsalQR(); // live session but no device code — honest rehearsal visuals
+        renderRehearsalQR(); // previews: honest rehearsal visuals
         renderDeviceChip("unavailable", err || (res && res.j && (res.j.error || res.j.message)) || "proxy " + (res && res.status));
       }
     });
@@ -377,8 +410,20 @@
       cb({ live: false, reason: (agent.detail && agent.detail.ens) ? "unregistered" : "unminted" });
       return;
     }
-    onHealthResolved(function (online) {
-      if (!online) { cb({ live: false, reason: "unreachable" }); return; } // gate closed => fixtures
+    // Live-lane hardening (2026-09-27): a single bad boot probe must not lock the whole
+    // session into fixtures — every HIRE re-probes the gate once before giving up.
+    var reprobed = false;
+    onHealthResolved(function gated(online) {
+      if (!online) {
+        if (!reprobed && isLiveOrigin()) {
+          reprobed = true;
+          WIRE.online = null; // re-arm the waiter queue, then re-fire the probe
+          onHealthResolved(gated);
+          bootProbe();
+          return;
+        }
+        cb({ live: false, reason: "unreachable" }); return; // gate stayed closed
+      }
       wireFetch("/v1/consent/begin", {
         method: "POST", headers: { "content-type": "application/json" },
         body: JSON.stringify({ agent_subname: sub })
@@ -435,7 +480,7 @@
         home: { url: "https://orbie-vcnqvzxuo4-ffieyo32.taur.link/", domain: "the storybook", label: "orbie · live storybook" },
         detail: { does: "I'm the little orb-spark from the story — I keep the Four Scans (hire · pay · revoke · protect) and teach humans, especially the small ones, what a verified yes means.", may: "tell my story & greet humans on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "STORY_BUDDY", utility: "story" } },
       { id: "trace", name: "Trace", emoji: "👨", tagline: "Food-waste rescue", status: "available", sub: "trace", chains: ["Sepolia (ENSv2 + EAC)", "Aqua fork"], protagonist: true,
-        home: { queued: true, label: "home being built · the rescue kitchen door opens soon" },
+        home: { url: "https://tracewaste.org", domain: "tracewaste.org", label: "the rescue kitchen" },
         detail: { does: "I find good food before it's thrown away and match it to people nearby who want it.", may: "rescue-match food listings on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "RESCUE_MATCHER", utility: "rescue-match", poolGuard: "Aqua liquidity pools check World ID personhood: one verified human, one capped share — so no single wallet, bot farm, or sybil crowd can drain or dominate the pool. The orb proves you're you; the cap does the rest." } },
       { id: "terri", name: "Terri", emoji: "🐢", tagline: "Receipts & memory keeper", status: "available", sub: "terri", chains: ["Sepolia (ENSv2 + EAC)"],
         home: { url: "https://theshellpit.com", domain: "theshellpit.com", label: "the camp OS" },
@@ -555,7 +600,7 @@
       { ic: "🏷️", k: "ENSv2 subname", v: d.subname, note: (d.ensDeploy ? "Sepolia · live" : "Sepolia registry") },
       { ic: "🌍", k: "World IDKit gate", v: "orb-grade verify", note: "fixture" },
       { ic: "📱", k: "World mini app", v: "MiniKit card", note: "template" },
-      { ic: "🌊", k: "1inch Aqua position", v: hasAqua ? "wage position · ship/dock" : "none — moves no funds", note: hasAqua ? "Aqua fork · fixture" : "by scope" }
+      { ic: "🌊", k: "1inch Aqua position", v: hasAqua ? "wage position · ship/dock" : "none — moves no funds", note: hasAqua ? "Sepolia · live" : "by scope" }
     ];
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]; }); }
@@ -867,9 +912,10 @@
     var right = el('<div class="panel device"></div>');
     right.appendChild(el('<h3>Approve on your World ID app</h3>'));
     // MODE-TRUTHFUL PANEL (2026-09-26): the fixture QR + fake code + fake pending line
-    // are GONE. Three states:
-    // pending (checking) → REAL (live session: real QR/code/poll) → REHEARSAL (honest card,
-    // the tap happens on the mirrored phone). A dead QR can never again invite a dead scan.
+    // are GONE. States: pending (checking) → REAL (live session: real QR/code/poll).
+    // Failure truth (2026-09-27): LIVE ORIGINS show the live-retry card (honest reason +
+    // ↻ retry — never a rehearsal); previews show the rehearsal card. A dead QR can never
+    // again invite a dead scan, and a fake run can never again wear the live site's name.
     var qr = el('<div class="qrbox empty" id="qrbox"><div class="qr-pending"><span class="spin"></span> checking for a live session…</div></div>');
     right.appendChild(qr);
     right.appendChild(el('<div class="usercode" id="ucode" style="display:none"></div>'));
@@ -895,18 +941,23 @@
       if (exp) exp.addEventListener("click", function (ev) { ev.preventDefault(); S.revoke.reason = "signin-timeout"; go("standdown"); });
       // JOB 2 — open a REAL consent session against the deployed worker. Renders a live
       // chip on success (session_id + nonce) or an honest rehearsal chip otherwise.
-      renderWireChip("opening…");
-      wireBegin(a, function (r) {
-        if (S.screen !== "consent") return; // navigated away; drop the async result
-        if (r.live) {
-          S.wire.live = true; S.wire.sessionId = r.sessionId; S.wire.nonce = r.nonce;
-          S.wire.expiresAt = r.expiresAt; S.wire.sub = r.sub;
-          wireDevice(a, r.sub); // the main page WORKS: mint the real device code, render the REAL QR
-        } else {
-          renderRehearsalQR(); // honest rehearsal card — no dead QR, no fake pending
-        }
-        renderWireChip(r.live ? null : (r.reason || "fixture"));
-      });
+      function attemptLive() {
+        renderWireChip("opening…");
+        wireBegin(a, function (r) {
+          if (S.screen !== "consent") return; // navigated away; drop the async result
+          if (r.live) {
+            S.wire.live = true; S.wire.sessionId = r.sessionId; S.wire.nonce = r.nonce;
+            S.wire.expiresAt = r.expiresAt; S.wire.sub = r.sub;
+            wireDevice(a, r.sub); // the main page WORKS: mint the real device code, render the REAL QR
+          } else if (isLiveOrigin()) {
+            renderLiveRetry(r.reason, attemptLive); // live origins run real only — honest card + retry
+          } else {
+            renderRehearsalQR(); // previews only: honest rehearsal card — no dead QR, no fake pending
+          }
+          renderWireChip(r.live ? null : (r.reason || "fixture"));
+        });
+      }
+      attemptLive();
     }, 0);
     return wrap;
   }

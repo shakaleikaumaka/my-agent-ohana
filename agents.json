@@ -61,7 +61,7 @@
       "tagline": "Food-waste rescue",
       "status": "available",
       "sub": "trace",
-      "home": { "queued": true, "label": "home being built · the rescue kitchen door opens soon" },
+      "home": { "url": "https://tracewaste.org", "domain": "tracewaste.org", "label": "the rescue kitchen" },
       "chains": ["Sepolia (ENSv2 + EAC)", "Aqua fork"],
       "protagonist": true,
       "detail": {
