@@ -1,6 +1,6 @@
 // Playwright walkthrough test for My Agent Ohana demo shell.
 // Covers CAST v4 (2026-09-26): hireable SIX (orbie, trace, terri, pit,
-// spector, GLOBIE) + Ohana host banner (NOT hireable) + commons row of THREE
+// spector, GLOBY) + Ohana host banner (NOT hireable) + commons row of THREE
 // (shaka-twin + oso + crops — present, NEVER for hire, no ceremony) rendered ABOVE
 // the hire grid (Ohana host → commons → for hire) + offline mode + denied path.
 // THE DOORS (2026-09-27, Shaka's main-UX ruling): 🚪 door chips on homed cards
@@ -37,7 +37,7 @@ async function startServer() {
 }
 
 const BASE = process.env.BASE || `http://127.0.0.1:${PORT}`;
-const AGENTS = ["orbie", "trace", "terri", "pit", "spector", "globie"];
+const AGENTS = ["orbie", "trace", "terri", "pit", "spector", "globy"];
 const COMMONS = ["shaka-twin", "oso", "crops"];
 // 🚪 THE DOORS — agents with a real live home site (mirror of agents.json home.url)
 const HOMES = {
@@ -47,7 +47,7 @@ const HOMES = {
   pit: "https://publicinform.com",
   spector: "https://spector-app-yoyp3xag64-ffieyo32.taur.link/"
 };
-const QUEUED_HOMES = ["globie"]; // honest queued chip, never a dead link
+const QUEUED_HOMES = ["globy"]; // honest queued chip, never a dead link
 function decodePassport(href) {
   const b64 = href.split("#ohana=")[1].replace(/-/g, "+").replace(/_/g, "/");
   return JSON.parse(Buffer.from(b64, "base64").toString("utf8"));
@@ -211,8 +211,8 @@ async function run() {
     ok(await page.$(".agent-hero") === null && (await page.$(".grid")) !== null, `${vp.name}: clicking crops' commons card does NOT enter the hire ceremony`);
     ok(!featured.includes("crops") && !featured.includes("shaka-twin"), `${vp.name}: crops + shaka-twin are NOT among the hireable featured`);
     ok(cardIds.indexOf("crops") > -1 && cardIds.indexOf("crops") < cardIds.indexOf("orbie"), `${vp.name}: commons row renders ABOVE the hire grid (CAST v4 progression)`);
-    // globie joined the cohort
-    ok(cardIds.includes("globie"), `${vp.name}: globie is on the shelf (hireable)`);
+    // globy joined the cohort
+    ok(cardIds.includes("globy"), `${vp.name}: globy is on the shelf (hireable)`);
 
     // Orbie (Beat-3, Ian's card) must render REAL Sepolia ENS rows — no auto-derived path.
     ok(featured[0] === "orbie", `${vp.name}: Orbie is first among the hireable (got ${featured[0]})`);
@@ -226,17 +226,21 @@ async function run() {
     await page.click("#resetBtn");
     await page.waitForSelector(".grid");
 
-    // Globie (8th subname, minted 2026-09-26 — agentId 8, GUIDE) must render REAL Sepolia
-    // ENS rows too, Trace/Orbie-parity (moon-freeze step 3).
-    await page.click('.card[data-id="globie"]');
+    // Globy (renamed from Globie 2026-09-27 — globyagent.com acquired): his NEW subname
+    // globy.myagentohana.eth is scopeMap-live but the ENS mint is still in flight, so his
+    // detail must show the HONEST transition state — real "will be named" row + mint-in-flight
+    // note, and NEVER the old name's chain rows passed off as his.
+    await page.click('.card[data-id="globy"]');
     await page.waitForSelector(".agent-hero");
-    const globieKeys = await page.$$eval(".panel .kv .k", (ns) => ns.map((n) => n.textContent));
-    const globieBody = await page.$eval(".split .panel", (n) => n.textContent);
-    ok(globieKeys.includes("Owner (Sepolia)") && globieKeys.includes("Namehash") && globieKeys.includes("Resolver (Sepolia)"),
-      `${vp.name}: Globie detail shows real Sepolia rows (owner/namehash/resolver)`);
-    ok(/Live on real Sepolia/.test(globieBody), `${vp.name}: Globie detail badged "Live on real Sepolia"`);
-    ok(/0x35b3696C4BEb246Db920419Bb37a7faC626A4BF5/i.test(globieBody) || /0x35b3696c/i.test(globieBody),
-      `${vp.name}: Globie owner row shows Mahalo's real pinned EOA`);
+    const globyKeys = await page.$$eval(".panel .kv .k", (ns) => ns.map((n) => n.textContent));
+    const globyBody = await page.$eval(".split .panel", (n) => n.textContent);
+    ok(globyKeys.includes("Will be named") && /globy\.myagentohana\.eth/.test(globyBody),
+      `${vp.name}: Globy detail names him globy.myagentohana.eth`);
+    ok(!globyKeys.includes("Owner (Sepolia)") && !/Live on real Sepolia/.test(globyBody),
+      `${vp.name}: Globy detail shows NO Sepolia rows while his mint is in flight (honest, never faked)`);
+    ok(/Name mint in flight/.test(globyBody) && /minting on real Sepolia/.test(globyBody),
+      `${vp.name}: Globy detail carries the honest mint-in-flight note`);
+    ok(!/globie/i.test(globyBody), `${vp.name}: Globy detail is fully renamed (no globie anywhere)`);
     await page.click("#resetBtn");
     await page.waitForSelector(".grid");
 
@@ -248,9 +252,9 @@ async function run() {
     ok(COMMONS.every((id) => doorIds.includes(id)), `${vp.name}: door chips on all three commons cards (real live homes)`);
     const queuedIds = await page.$$eval(".card .chip.door.queued", (ns) => ns.map((n) => n.closest(".card").getAttribute("data-id")));
     ok(QUEUED_HOMES.every((id) => queuedIds.includes(id)) && queuedIds.length === QUEUED_HOMES.length,
-      `${vp.name}: globie shows the only honest queued door chip (got ${queuedIds.join(",")})`);
-    ok(/#globieontour/.test(await page.$eval('.card[data-id="globie"] .chip.door.queued', (n) => n.textContent)),
-      `${vp.name}: globie queued door chip carries #globieontour`);
+      `${vp.name}: globy shows the only honest queued door chip (got ${queuedIds.join(",")})`);
+    ok(/#globyontour/.test(await page.$eval('.card[data-id="globy"] .chip.door.queued', (n) => n.textContent)),
+      `${vp.name}: globy queued door chip carries #globyontour`);
     // stopPropagation: a door-chip click opens the home, NOT the detail/ceremony
     await page.click('.card[data-id="terri"] .chip.door');
     await page.waitForTimeout(350);
@@ -279,9 +283,9 @@ async function run() {
     await page.click("#resetBtn");
     await page.waitForSelector(".grid");
     // queued hero door — honest, dim, never a dead link
-    await page.click('.card[data-id="globie"]');
+    await page.click('.card[data-id="globy"]');
     await page.waitForSelector(".agent-hero");
-    ok(await page.$(".doorhero.queued") !== null, `${vp.name}: globie detail shows honest queued hero door`);
+    ok(await page.$(".doorhero.queued") !== null, `${vp.name}: globy detail shows honest queued hero door`);
     await page.click("#resetBtn");
     await page.waitForSelector(".grid");
     // 🚪 trace's REAL door (tracewaste.org, 2026-09-27) — queued chip retired
@@ -316,7 +320,7 @@ async function run() {
   ok(await opage.$(".host-banner") !== null, `offline: host banner renders`);
   // 🚪 doors render from OFFLINE_REGISTRY too (byte-parity mirror)
   ok(await opage.$('.card[data-id="terri"] .chip.door') !== null, `offline: door chips render from OFFLINE_REGISTRY`);
-  ok(await opage.$('.card[data-id="globie"] .chip.door.queued') !== null, `offline: globie queued door chip renders offline`);
+  ok(await opage.$('.card[data-id="globy"] .chip.door.queued') !== null, `offline: globy queued door chip renders offline`);
   await walk(opage, "trace"); // full ceremony offline
   // Offline badge chrome present + case-insensitive ?mode (N1/N2)
   ok(await opage.$("#offlineBadge") !== null, `offline: OFFLINE·REHEARSAL badge chrome present (N1)`);

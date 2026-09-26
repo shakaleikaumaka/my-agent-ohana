@@ -78,9 +78,11 @@
     // v75387cdb already registered orbie; a production World App scan at the venue confirmed
     // sandbox device links resolve). GLOBIE flipped LIVE the same evening — scopeMap deploy
     // 93aa8eae (scopes ["lesson","greet:human"], begin→200); all six hireable agents now run
-    // live sessions.
+    // live sessions. RENAMED 2026-09-27: Globie → Globy (globyagent.com acquired) —
+    // globy.myagentohana.eth registered in scopeMap deploy d37859c4 (globie key kept
+    // server-side as a transition alias).
     liveSubnames: [
-      "orbie.myagentohana.eth", "globie.myagentohana.eth",
+      "orbie.myagentohana.eth", "globy.myagentohana.eth",
       "trace.myagentohana.eth", "terri.myagentohana.eth",
       "pit.myagentohana.eth", "spector.myagentohana.eth"
     ]
@@ -449,7 +451,7 @@
     ensRegistrySepolia: "0x62412fcA6437b914EDD87b85455682Ec73968347",
     // ENSv2 LIVE on real Sepolia (Mission 6) — mirror of agents.json.ensDeployment.
     ensDeployment: {
-      status: "LIVE on real Sepolia (Mission 6, 2026-09-25/26) — 8 subnames minted (incl. orbie agentId 7 STORY_BUDDY + globie agentId 8 GUIDE), UniversalResolver resolution verified for all 8, bless proven on-chain (trace + orbie + globie)",
+      status: "LIVE on real Sepolia (Mission 6, 2026-09-25/26) — 8 subnames minted (incl. orbie agentId 7 STORY_BUDDY + globie agentId 8 GUIDE — agent renamed Globy 2026-09-27, globy.myagentohana.eth mint in flight), UniversalResolver resolution verified for all 8, bless proven on-chain (trace + orbie + globie)",
       chain: "Sepolia", chainId: 11155111, parent: "myagentohana.eth",
       userRegistry: "0x62c1e3e88802A5547d0956a6Cf1fa6703D8e3c20",
       resolver: "0x36dAaacD8EdAa24BAEba97B01ad68Fc38e08eBEc",
@@ -463,6 +465,9 @@
     // shaka-twin's minted name stays his though he left the hireable shelf (CAST v3 commons);
     // crops' minted name likewise stays his (CAST v4 commons) — both show read-only on commons cards;
     // globie minted 2026-09-26 as the 8th subname (agentId 8, GUIDE) — rests UNBLESSED awaiting a real tap.
+    // RENAMED 2026-09-27: the agent is Globy now (globyagent.com acquired); the globie entry below
+    // stays as the honest chain record of the minted old-spelling name — globy.myagentohana.eth
+    // mint in flight, scopeMap-live meanwhile (deploy d37859c4).
     ensIdentity: {
       "orbie":      { owner: "0x67b3c3b60bc0A3d0bE365AE00218972873e205ff", namehash: "0x9bbd9a00e80da5ffe029a0605bfe47e9ecfa929fa7495636cfbf02141198cf19", agentId: 7 },
       "globie":     { owner: "0x35b3696C4BEb246Db920419Bb37a7faC626A4BF5", namehash: "0xba765f28133ffdae6980dffe95f3481d60cb57415f7be3713b2e5bda0075bdd2", agentId: 8 },
@@ -491,9 +496,10 @@
       { id: "spector", name: "Spector", emoji: "🕵️", tagline: "Consent-security sentinel", status: "available", sub: "spector", chains: ["Sepolia (ENSv2 + EAC)"],
         home: { url: "https://spector-app-yoyp3xag64-ffieyo32.taur.link/", domain: "spector · live app", label: "the sentinel's app" },
         detail: { does: "I check that the family keeps its promises. I scan the consent flow and report — in plain words — anything that could let an agent act without your yes.", may: "run a read-only consent-security scan & write a signed report on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "SECURITY_SCANNER", utility: "scan" } },
-      { id: "globie", name: "Globie", emoji: "🌍", tagline: "The guide — teaches anyone to build", status: "available", sub: "globie", chains: ["Sepolia (ENSv2 + EAC)"],
-        home: { queued: true, label: "home being built · follow #globieontour" },
-        detail: { does: "I teach. I take anyone — no code, no fear — from 'I could never build that' to a first page they built with their own hands. Plain words, small steps, your pace.", may: "guide a build session & sign the lesson plan on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "GUIDE", utility: "lesson" } }
+      { id: "globy", name: "Globy", emoji: "🌍", tagline: "The guide — teaches anyone to build", status: "available", sub: "globy", chains: ["Sepolia (ENSv2 + EAC)"],
+        home: { queued: true, label: "home being built · follow #globyontour" },
+        detail: { does: "I teach. I take anyone — no code, no fear — from 'I could never build that' to a first page they built with their own hands. Plain words, small steps, your pace.", may: "guide a build session & sign the lesson plan on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "GUIDE", utility: "lesson",
+          ensQueued: "globy.myagentohana.eth is minting on real Sepolia right now — consent session already runs live; the on-chain name row lands when the mint confirms." } }
     ],
     // Commons (CAST v3, 2026-09-26): present at the shelf, NEVER hireable — no detail
     // page, no ceremony. (Ohana = the host.) CAST v4 (2026-09-26): Crops joined the
@@ -836,6 +842,10 @@
       } else {
         left.appendChild(el('<p class="hint" style="margin:2px 0 0">Real name-derived values (ENSv2 · Sepolia).</p>'));
       }
+    } else if (d.ensQueued) {
+      // Honest transition state (e.g. Globy post-rename): consent session is live, the
+      // on-chain subname mint is still landing — say so, never fake the chain rows.
+      left.appendChild(el('<p class="hint" style="margin:2px 0 0">⏳ <b style="font-style:normal">Name mint in flight</b> — ' + esc(d.ensQueued) + "</p>"));
     }
     // the 5-part kit each agent carries (honest / fixture-labelled · EMBARGO: no $ token names)
     left.appendChild(el('<h3 style="margin-top:20px">The kit it carries</h3>'));
@@ -1317,7 +1327,7 @@
           scan: ["🕵️", "Consent-security scan complete — report signed", "scanned consent-server: 0 criticals · F11 revoke-auth confirmed"],
           "repo-scan": ["🌿", "Repo-hygiene scan complete — report signed", "clean repo: 0 findings ✓ · planted-key demo: 1 finding 🔑 (fake ghp_ decoy)"],
           story: ["🤖", "Story told & greeting signed", "“I'm Orbie. You said yes — a real, verified yes — so I woke up. I keep the Four Scans: hire · pay · revoke · protect. Say stop, and I sleep.”"],
-          lesson: ["🌍", "Build step taught — lesson plan signed", "“Step one: a page with your name on it. You build it — I only hold the ladder. And when you say rest, I rest.” — signed Globie · #globieontour"]
+          lesson: ["🌍", "Build step taught — lesson plan signed", "“Step one: a page with your name on it. You build it — I only hold the ladder. And when you say rest, I rest.” — signed Globy · #globyontour"]
         };
         var m = msgs[a.detail.utility] || ["✅", "Output produced", ""];
         out.appendChild(el('<div class="output-item"><span class="oe">' + m[0] + '</span><div><b>' + m[1] + "</b><br>" + esc(m[2]) + "</div></div>"));
@@ -1346,7 +1356,7 @@
         scan: "Read-only — I look, I never touch. Run again, or revoke anytime — one word.",
         "repo-scan": "Read-only — I scan, I never edit. Run again, or revoke anytime — one word.",
         story: "A story, in your name — and I only speak while you say yes. Run again, or revoke anytime — one word.",
-        lesson: "A lesson in your name — what you build stays yours. Run again, or revoke anytime — one word. #globieontour"
+        lesson: "A lesson in your name — what you build stays yours. Run again, or revoke anytime — one word. #globyontour"
       };
       out.appendChild(el('<p class="hint">' + esc(footers[a.detail.utility] || "Blessing still live. Run again, or revoke anytime — one word.") + "</p>"));
     }, 900);
