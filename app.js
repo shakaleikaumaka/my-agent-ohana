@@ -68,16 +68,14 @@
     // Subnames confirmed present in the worker's AGENT_SCOPE_MAP. Only these fire a live begin;
     // any other card (e.g. a freshly-minted subname not yet added to the map) falls to the
     // rehearsal chip WITHOUT firing a request — so an unregistered agent NEVER 403s on camera.
-    // CAST v3 (Shaka 2026-09-26 20:07 JST): the bard left the hireable shelf — shaka.myagentohana.eth
-    // stays registered server-side (harmless; the name is still his) but no hireable card maps to it,
-    // so it was removed here. CAST v4 (Shaka 2026-09-26 22:34 JST): crops joined the commons —
-    // crops.myagentohana.eth likewise stays registered server-side but maps to no hireable card,
-    // removed here. ORBIE flipped LIVE 2026-09-26 ~23:00 JST (moon-freeze step 1, pulled forward by
-    // Shaka's direct order "we want the main demo page to be the one that works" — backend scopeMap
-    // v75387cdb already registers orbie; Ian's booth scan minutes earlier proved prod World App
-    // scans our sandbox device links). GLOBIE flipped LIVE ~23:30 JST same evening (Shaka:
-    // "lets flip all agents!!") — Tauro scopeMap deploy 93aa8eae (scopes ["lesson","greet:human"],
-    // begin→200) + Mahalo's 8th mint in flight; ALL SIX hireable agents now run live sessions.
+    // CAST v3 (2026-09-26): shaka.myagentohana.eth left the hireable shelf — it stays
+    // registered server-side (the name remains its owner's) but no hireable card maps to it.
+    // CAST v4 (2026-09-26): crops.myagentohana.eth joined the commons — likewise registered
+    // server-side, mapped to no hireable card. ORBIE flipped LIVE 2026-09-26 (backend scopeMap
+    // v75387cdb already registered orbie; a production World App scan at the venue confirmed
+    // sandbox device links resolve). GLOBIE flipped LIVE the same evening — scopeMap deploy
+    // 93aa8eae (scopes ["lesson","greet:human"], begin→200); all six hireable agents now run
+    // live sessions.
     liveSubnames: [
       "orbie.myagentohana.eth", "globie.myagentohana.eth",
       "trace.myagentohana.eth", "terri.myagentohana.eth",
@@ -85,14 +83,18 @@
     ]
     // agent.detail.subname (<sub>.myagentohana.eth, shaka-twin→shaka) is the scopeMap key.
   };
-  // Static origin gate. Live calls fire ONLY when the page is served from the deployed origin:
-  // the worker's ACAO is pinned to the demo's canonical taur.link origin, so a fetch from
-  // localhost/file:// would CORS-fail and emit an *unsuppressable* console error. On localhost
-  // we run fixtures (spotless console); the deployed site does the real round-trip.
+  // Static origin gate. Live calls fire ONLY when the page is served from a deployed origin:
+  // the worker's ACAO allow-list covers *.taur.link AND the production brand origin
+  // myagentohana.com (+www) — brand-origin live wiring, 2026-09-26; trinity-consent
+  // Version adec48b4 reflects both. A fetch from localhost/file:// would
+  // CORS-fail and emit an *unsuppressable* console error, so on any other origin we run
+  // fixtures (spotless console); deployed origins do the real round-trip.
   function isLiveOrigin() {
     try {
       return WIRE.enabled && !isOfflineMode() &&
-        location.protocol === "https:" && /(^|\.)taur\.link$/i.test(location.hostname);
+        location.protocol === "https:" &&
+        (/(^|\.)taur\.link$/i.test(location.hostname) ||
+         /^(www\.)?myagentohana\.com$/i.test(location.hostname));
     } catch (e) { return false; }
   }
   function wireFetch(path, opts, cb) {
@@ -108,9 +110,9 @@
   }
 
   // ---------------------------------------------------------------- real device flow
-  // THE MAIN PAGE WORKS (Shaka, 2026-09-26 ~23:00 JST: "we want the main demo page to be the
-  // one that works"). The consent screen's QR used to be a permanent fixture — a dead scan,
-  // the segment's only true failure mode, and Ian hit it live at the booth. Now, whenever the
+  // MAIN-PAGE LIVE FLOW (2026-09-26). The consent screen's QR used to be a permanent
+  // fixture — a dead scan, the segment's only true failure mode, and a booth visitor
+  // hit it live. Now, whenever the
   // consent session is LIVE, the shell mints a REAL World device code via the pit-intake proxy
   // (client secret vaulted server-side, never in the browser), swaps the fixture QR for the real
   // one, polls for the human's approval (pending/slow_down mapped to 200 at the proxy = silent
@@ -175,8 +177,8 @@
     ps && ps.appendChild(el('<div class="poll"><span class="spin"></span> Waiting for the human… <span class="mono" style="color:var(--dim)">live poll</span></div>'));
     renderDeviceChip("realqr", d.user_code);
   }
-  // The honest rehearsal card — Shaka 2026-09-26 23:13 JST: "if we dont need it why are we
-  // showing this qr code?" No dead QR, no fake code, no fake pending. The tap is the phone.
+  // The honest rehearsal card (2026-09-26): no dead QR, no fake code, no fake pending
+  // line — a QR that does nothing has no place on screen. The tap is the phone.
   function renderRehearsalQR() {
     var qb = $("#qrbox");
     if (qb) {
@@ -370,7 +372,7 @@
       { id: "orbie", name: "Orbie", emoji: "🤖", tagline: "World's storybook buddy", status: "available", sub: "orbie", chains: ["Sepolia (ENSv2 + EAC)"],
         detail: { does: "I'm the little orb-spark from the story — I keep the Four Scans (hire · pay · revoke · protect) and teach humans, especially the small ones, what a verified yes means.", may: "tell my story & greet humans on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "STORY_BUDDY", utility: "story" } },
       { id: "trace", name: "Trace", emoji: "👨", tagline: "Food-waste rescue", status: "available", sub: "trace", chains: ["Sepolia (ENSv2 + EAC)", "Aqua fork"], protagonist: true,
-        detail: { does: "I find good food before it's thrown away and match it to people nearby who want it.", may: "rescue-match food listings on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "RESCUE_MATCHER", utility: "rescue-match", poolGuard: "Aqua liquidity pools check World ID personhood: one verified human, one capped share — so no single wallet, bot farm, or sybil crowd can drain or dominate the pool. The orb proves you're you; the cap does the rest. (Shaka, 2026-09-26 22:36 JST: 'World ID would be really great for the Aqua liquidity pools… so that one person cannot take up the whole liquidity pool.')" } },
+        detail: { does: "I find good food before it's thrown away and match it to people nearby who want it.", may: "rescue-match food listings on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "RESCUE_MATCHER", utility: "rescue-match", poolGuard: "Aqua liquidity pools check World ID personhood: one verified human, one capped share — so no single wallet, bot farm, or sybil crowd can drain or dominate the pool. The orb proves you're you; the cap does the rest." } },
       { id: "terri", name: "Terri", emoji: "🐢", tagline: "Receipts & memory keeper", status: "available", sub: "terri", chains: ["Sepolia (ENSv2 + EAC)"],
         detail: { does: "I keep the receipts. Every action, every blessing, every revoke — logged, signed, never lost.", may: "produce signed receipts & ledgers on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "RECEIPT_KEEPER", utility: "receipt" } },
       { id: "pit", name: "PIT", emoji: "🕳️", tagline: "Knowledge transmission", status: "available", sub: "pit", chains: ["Sepolia (ENSv2 + EAC)"],
@@ -380,10 +382,9 @@
       { id: "globie", name: "Globie", emoji: "🌍", tagline: "The guide — teaches anyone to build", status: "available", sub: "globie", chains: ["Sepolia (ENSv2 + EAC)"],
         detail: { does: "I teach. I take anyone — no code, no fear — from 'I could never build that' to a first page they built with their own hands. Plain words, small steps, your pace.", may: "guide a build session & sign the lesson plan on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "GUIDE", utility: "lesson" } }
     ],
-    // CAST v3 commons (Shaka 2026-09-26 20:07 JST): present at the shelf, NEVER hireable —
-    // no detail page, no ceremony. "Ohana, Shaka, and Oso can be present but they are commons
-    // agents, not for hire.. lets keep shaka a free man and a free agent :)" (Ohana = the host.)
-    // CAST v4 (Shaka 2026-09-26 22:34 JST): Crops joined them — the steward doesn't send invoices.
+    // Commons (CAST v3, 2026-09-26): present at the shelf, NEVER hireable — no detail
+    // page, no ceremony. (Ohana = the host.) CAST v4 (2026-09-26): Crops joined the
+    // commons — the steward doesn't send invoices.
     commons: [
       { id: "shaka-twin", name: "Shaka twin", emoji: "🤙", tagline: "The bard — a free man, a free agent", status: "commons", sub: "shaka",
         note: "Shaka's digital twin is not for hire. He's family — present at the shelf, never on it. His name shaka.myagentohana.eth stays his, minted and his alone." },
@@ -565,10 +566,8 @@
         '</div>'
       ));
     }
-    // CAST v4 (Shaka, 2026-09-26 22:34 JST) — shelf progression top→bottom:
+    // CAST v4 (2026-09-26) — shelf progression top→bottom:
     // Ohana (host) → THE COMMONS (shaka-twin · oso · crops — present, never for hire) → FOR HIRE (the six).
-    // "put the commons agents below ohana on top so the progression top to bottom goes
-    //  Ohana (host) ---- 3 commons agents----- 6 agents for hire"
     if ((AGENTS.commons || []).length) {
       wrap.appendChild(el('<p class="shelf-note">🌊 THE COMMONS — present in the family, never for hire:</p>'));
       var gridC = el('<div class="grid"></div>');
@@ -665,7 +664,7 @@
     right.appendChild(el('<div class="scope-line"><span class="ic">🏷️</span><span>It gets a name in your ohana (ENSv2 subname).</span></div>'));
     right.appendChild(el('<div class="scope-line"><span class="ic">🔑</span><span>It gets a role that says exactly what it may do (on-chain).</span></div>'));
     right.appendChild(el('<div class="scope-line"><span class="ic">🛑</span><span>You can revoke anytime — <em style="color:var(--pink);font-style:normal">one word</em>, and it stops instantly.</span></div>'));
-    // THE FOURTH SCAN — Aqua pool guard (Shaka 2026-09-26 22:36 JST): World ID personhood caps
+    // THE FOURTH SCAN — Aqua pool guard (2026-09-26): World ID personhood caps
     // every liquidity provider — one verified human, one share. Fixture-illustrated here;
     // the personhood half is real and testable live in the booth lane (booth.html).
     if (d.poolGuard) {
@@ -710,8 +709,8 @@
 
     var right = el('<div class="panel device"></div>');
     right.appendChild(el('<h3>Approve on your World ID app</h3>'));
-    // MODE-TRUTHFUL PANEL (Shaka 2026-09-26 23:13 JST: "if we dont need it why are we showing
-    // this qr code?"): the fixture QR + fake code + fake pending line are GONE. Three states:
+    // MODE-TRUTHFUL PANEL (2026-09-26): the fixture QR + fake code + fake pending line
+    // are GONE. Three states:
     // pending (checking) → REAL (live session: real QR/code/poll) → REHEARSAL (honest card,
     // the tap happens on the mirrored phone). A dead QR can never again invite a dead scan.
     var qr = el('<div class="qrbox empty" id="qrbox"><div class="qr-pending"><span class="spin"></span> checking for a live session…</div></div>');
