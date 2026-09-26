@@ -1,0 +1,78 @@
+{
+  "$comment": "M5-5 World IDKit gate config — ONE gate, parameterized x6. THESIS = minimum-sufficient-credential (consent minimization). Each agent action declares the LOWEST World ID credential proportionate to the trust moment. World IDKit prize scores 'the best decision about which credential is needed, why, and how it improves the product' — NOT the most credentials used. Mock->real swap = flip `mockProof` + fill `rpId`/`appId`. Labels: mock/pilot data must stay badged; mock IDP is NOT prize-eligible, so `mockProof:false` + a real rp_id is REQUIRED for the Sunday judged run.",
+
+  "verifyApi": "https://developer.world.org/api/v4/verify",
+  "protocolVersion": "3.0",
+  "environment": "staging",
+  "mockProof": true,
+  "rpId": "",
+  "appId": "",
+
+  "agentsOidcIssuer": "https://sandbox.auth.world.org",
+  "agentsJwksUri": "https://sandbox.auth.world.org/.well-known/jwks.json",
+
+  "credentialCatalog": {
+    "device":          { "identifier": "device",          "assurance": 1, "label": "Proof of Human (Device)",     "docs": "https://docs.world.org/world-id/credentials/1" },
+    "selfie":          { "identifier": "selfie",          "assurance": 2, "label": "Selfie Check (Sybil score)",  "issuerSchemaId": 11, "docs": "https://docs.world.org/world-id/credentials/11" },
+    "document":        { "identifier": "document",        "assurance": 3, "label": "Passport / NFC document",     "docs": "https://docs.world.org/world-id/credentials/9303" },
+    "secure_document": { "identifier": "secure_document", "assurance": 4, "label": "Secure document (NFC + chip)", "docs": "https://docs.world.org/world-id/credentials/9303" },
+    "orb":             { "identifier": "orb",             "assurance": 5, "label": "Orb (verified unique human)", "docs": "https://docs.world.org/world-id/credentials/1" }
+  },
+
+  "agents": {
+    "pit": {
+      "displayName": "PIT 🕳️",
+      "ens": "pit.myagentohana.eth",
+      "action": "bless.pit",
+      "credential": "orb",
+      "rationale": "PIT custodies the consent-issuance key (issue/revoke blessings). This is an account-protecting action: whoever holds it can bless or halt other agents. The minimum sufficient assurance is Orb-grade unique-human proof, so one human cannot spin up a bot farm of consent-issuers.",
+      "scope": ["consent:issue", "consent:revoke", "receipt:read"],
+      "duration": "PT1H"
+    },
+    "shaka": {
+      "displayName": "SHAKA 🤙",
+      "ens": "shaka.myagentohana.eth",
+      "action": "bless.shaka",
+      "credential": "orb",
+      "rationale": "Shaka's twin acts as the human's own delegate. It must map 1:1 to a verified unique human, so Orb is the proportionate credential — anything weaker would let the human's namespace be impersonated.",
+      "scope": ["delegate:act", "sign:agentverse"],
+      "duration": "PT1H"
+    },
+    "trace": {
+      "displayName": "Trace 🐢",
+      "ens": "trace.myagentohana.eth",
+      "action": "bless.trace",
+      "credential": "document",
+      "rationale": "Trace stewards real-world food gifts (surplus routed to real recipients). Fair access to a scarce physical benefit is proportionate to a Passport/NFC document credential — enough to gate eligibility and prevent gift-farming, without demanding Orb of every recipient.",
+      "scope": ["gift:steward", "surplus:route"],
+      "duration": "PT30M"
+    },
+    "terri": {
+      "displayName": "Terri 🐢",
+      "ens": "terri.myagentohana.eth",
+      "action": "bless.terri",
+      "credential": "device",
+      "rationale": "Terri keeps receipt backups — low-stakes bookkeeping with no value movement. Proof of Human (Device) is the minimum sufficient assurance; anything stronger would be friction with no added protection.",
+      "scope": ["receipt:backup", "ledger:read"],
+      "duration": "PT30M"
+    },
+    "spector": {
+      "displayName": "Spector 🕵️",
+      "ens": "spector.myagentohana.eth",
+      "action": "bless.spector",
+      "credential": "device",
+      "rationale": "Spector runs read-only consent-security scans. It changes nothing on-chain and moves no value, so Device Proof of Human is proportionate — gate out anonymous bot abuse, nothing more.",
+      "scope": ["scan:run", "report:emit"],
+      "duration": "PT30M"
+    },
+    "crops": {
+      "displayName": "Crops 🌿",
+      "ens": "crops.myagentohana.eth",
+      "action": "bless.crops",
+      "credential": "device",
+      "rationale": "Crops runs read-only repo-hygiene / secret-leak scans. Read-only, no value movement → Device Proof of Human is the minimum sufficient credential.",
+      "scope": ["scan:repo", "report:emit"],
+      "duration": "PT30M"
+    }
+  }
+}

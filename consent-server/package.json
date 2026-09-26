@@ -1,0 +1,25 @@
+{
+  "name": "trinity-consent-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Minimal hosted World-token verifier + consent ledger (Cloudflare Worker + Durable Object). ETHGlobal Tokyo 2026 — kills F6 (secure backend for World token validation).",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "keys": "node scripts/mkkeys.mjs",
+    "e2e": "bash test.sh"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.5.40",
+    "@cloudflare/workers-types": "^4.20260702.1",
+    "typescript": "^5.6.3",
+    "vitest": "2.1.9",
+    "wrangler": "^3.99.0"
+  },
+  "dependencies": {
+    "jose": "^5.9.6"
+  }
+}

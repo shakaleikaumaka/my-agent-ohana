@@ -1,0 +1,54 @@
+# Trinity Consent Server — Cloudflare Worker + Durable Object.
+# Ready for `wrangler deploy` once a Cloudflare account + Workers Paid ($5/mo, required
+# for Durable Objects) land. Do NOT deploy without an account. Local dev needs nothing.
+#
+# LOCAL DEV (offline, no client_id, no account):
+#   1) npm run keys           # generates a self-signed RS256 JWKS + saves .dev.vars
+#   2) npm run dev            # wrangler dev  (binds 127.0.0.1 — NEVER 0.0.0.0)
+#   3) bash test.sh           # walks begin->verify->check->revoke->receipt + fail-closed
+# The mock issuer (ISSUER_OVERRIDE + MOCK_JWKS in .dev.vars) exercises the WHOLE pipeline
+# offline. When the real World client_id + JWKS land, it's a config swap (see README).
+
+name = "trinity-consent"
+main = "src/index.ts"
+compatibility_date = "2024-11-06"
+compatibility_flags = ["nodejs_compat"]
+
+# CF account (family-internal, DO-capable in prod; account_id is not a secret).
+account_id = "f4c27480e870fc5788a1e1b8095bc744"
+
+# --- Durable Object: the single consent store (atomic jti burn + session + ledger) ---
+[[durable_objects.bindings]]
+name = "CONSENT_DO"
+class_name = "ConsentStore"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ConsentStore"]
+
+# --- Non-secret vars (safe to commit). Secrets go via `wrangler secret put`. ---
+[vars]
+# The World ID pilot issuer domain MOVED: auth.worldcoin.dev -> sandbox.auth.world.org.
+WID_ISSUER = "https://sandbox.auth.world.org"
+JWKS_URL = "https://sandbox.auth.world.org/.well-known/jwks.json"
+REQUIRE_ORB_ACR = "true"
+ORB_ACR_VALUE = "https://world.org/oidc/acr/orb-v3"
+# Agent -> allowed action scopes. verify() enforces scope_requested ⊆ this set; begin()
+# rejects any agent NOT a key here (unknown_agent 403), so a consent-lapse visibly halts
+# the right agent. REAL Sepolia subnames (parent myagentohana.eth, Mahalo M5-4) + the
+# codename-safe demo placeholders (kept — offline fixtures + old curl tests use them).
+AGENT_SCOPE_MAP = '{"globy.myagentohana.eth":["lesson","greet:human"],"globie.myagentohana.eth":["lesson","greet:human"],"orbie.myagentohana.eth":["story:tell","greet:human"],"trace.myagentohana.eth":["steward:gift","food:surplus-alert"],"terri.myagentohana.eth":["receipt:issue","ledger:write"],"shaka.myagentohana.eth":["verse:perform"],"pit.myagentohana.eth":["knowledge:capture","receipt:issue"],"spector.myagentohana.eth":["security:scan","report:write"],"crops.myagentohana.eth":["repo:scan","report:write"],"tauro.demo.eth":["steward:gift"],"trace.demo.eth":["steward:gift","food:surplus-alert"]}'
+# begin DoS bound (per-IP fixed window). Defaults if omitted: 30 begins / 60s.
+# Set BEGIN_RATE_LIMIT = "0" to disable. (M5-2b hardening.)
+BEGIN_RATE_LIMIT = "30"
+BEGIN_RATE_WINDOW_SEC = "60"
+
+# SECRETS (set at deploy time, NEVER commit real values):
+#   wrangler secret put WID_CLIENT_ID   # booth Q#1 kill dependency for the live leg
+#   wrangler secret put ADMIN_KEY       # guards /v1/ledger + /v1/admin/* (F11)
+#   wrangler secret put EXPECTED_SUB    # OPTIONAL (F10): pin one human's pairwise `sub`
+# For LOCAL dev these + MOCK_JWKS + ISSUER_OVERRIDE come from .dev.vars (generated,
+# git-ignored). See scripts/mkkeys.mjs.
+
+[observability]
+enabled = true

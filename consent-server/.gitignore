@@ -1,0 +1,9 @@
+node_modules/
+.dev.vars
+.wrangler/
+dist/
+*.log
+# NOTE: test/fixtures/mock-*.jwk.json ARE committed on purpose — they are throwaway,
+# self-signed RS256 TEST keys that sign nothing real (see test/fixtures/README.md), so
+# `npm test` runs out-of-the-box. The only git-ignored secret is .dev.vars (regenerate
+# with `npm run keys`), which also carries the throwaway dev ADMIN_KEY.
