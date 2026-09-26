@@ -75,9 +75,11 @@
     // removed here. ORBIE flipped LIVE 2026-09-26 ~23:00 JST (moon-freeze step 1, pulled forward by
     // Shaka's direct order "we want the main demo page to be the one that works" — backend scopeMap
     // v75387cdb already registers orbie; Ian's booth scan minutes earlier proved prod World App
-    // scans our sandbox device links). Globie (not yet minted) stays out until mint + scopeMap.
+    // scans our sandbox device links). GLOBIE flipped LIVE ~23:30 JST same evening (Shaka:
+    // "lets flip all agents!!") — Tauro scopeMap deploy 93aa8eae (scopes ["lesson","greet:human"],
+    // begin→200) + Mahalo's 8th mint in flight; ALL SIX hireable agents now run live sessions.
     liveSubnames: [
-      "orbie.myagentohana.eth",
+      "orbie.myagentohana.eth", "globie.myagentohana.eth",
       "trace.myagentohana.eth", "terri.myagentohana.eth",
       "pit.myagentohana.eth", "spector.myagentohana.eth"
     ]
