@@ -318,3 +318,11 @@ footer.fixture b{color:var(--muted);font-weight:600}
   .aurora{animation:none}
   .halt-flash{animation:none}
 }
+
+/* CAST v4 addendum — the Fourth Scan: Aqua pool guard on Trace's detail (Shaka 2026-09-26 22:36 JST) */
+.poolguard{margin-top:20px;border:1px solid rgba(126,200,255,.32);border-radius:16px;padding:16px 18px;background:linear-gradient(135deg,rgba(126,200,255,.08),transparent 70%)}
+.poolguard h3{margin:0 0 8px;font-size:16px;color:#bfe3ff}
+.poolguard .pg-copy{font-size:13px;line-height:1.55;color:var(--muted);margin:0 0 12px}
+.poolguard .pg-row{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.poolguard .pg-k{border:1px solid rgba(126,200,255,.4);border-radius:999px;padding:7px 14px;font-size:12px;font-weight:700;color:#bfe3ff;background:rgba(126,200,255,.08);letter-spacing:.4px}
+.poolguard .pg-eq{color:var(--amber);font-weight:800}

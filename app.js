@@ -201,7 +201,7 @@
       { id: "orbie", name: "Orbie", emoji: "🤖", tagline: "World's storybook buddy", status: "available", sub: "orbie", chains: ["Sepolia (ENSv2 + EAC)"],
         detail: { does: "I'm the little orb-spark from the story — I keep the Four Scans (hire · pay · revoke · protect) and teach humans, especially the small ones, what a verified yes means.", may: "tell my story & greet humans on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "STORY_BUDDY", utility: "story" } },
       { id: "trace", name: "Trace", emoji: "👨", tagline: "Food-waste rescue", status: "available", sub: "trace", chains: ["Sepolia (ENSv2 + EAC)", "Aqua fork"], protagonist: true,
-        detail: { does: "I find good food before it's thrown away and match it to people nearby who want it.", may: "rescue-match food listings on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "RESCUE_MATCHER", utility: "rescue-match" } },
+        detail: { does: "I find good food before it's thrown away and match it to people nearby who want it.", may: "rescue-match food listings on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "RESCUE_MATCHER", utility: "rescue-match", poolGuard: "Aqua liquidity pools check World ID personhood: one verified human, one capped share — so no single wallet, bot farm, or sybil crowd can drain or dominate the pool. The orb proves you're you; the cap does the rest. (Shaka, 2026-09-26 22:36 JST: 'World ID would be really great for the Aqua liquidity pools… so that one person cannot take up the whole liquidity pool.')" } },
       { id: "terri", name: "Terri", emoji: "🐢", tagline: "Receipts & memory keeper", status: "available", sub: "terri", chains: ["Sepolia (ENSv2 + EAC)"],
         detail: { does: "I keep the receipts. Every action, every blessing, every revoke — logged, signed, never lost.", may: "produce signed receipts & ledgers on your behalf", mayNot: "move funds · touch other agents · act after you revoke", duration: "until you revoke — or 1 hour, whichever comes first", role: "RECEIPT_KEEPER", utility: "receipt" } },
       { id: "pit", name: "PIT", emoji: "🕳️", tagline: "Knowledge transmission", status: "available", sub: "pit", chains: ["Sepolia (ENSv2 + EAC)"],
@@ -495,6 +495,19 @@
     right.appendChild(el('<div class="scope-line"><span class="ic">🏷️</span><span>It gets a name in your ohana (ENSv2 subname).</span></div>'));
     right.appendChild(el('<div class="scope-line"><span class="ic">🔑</span><span>It gets a role that says exactly what it may do (on-chain).</span></div>'));
     right.appendChild(el('<div class="scope-line"><span class="ic">🛑</span><span>You can revoke anytime — <em style="color:var(--pink);font-style:normal">one word</em>, and it stops instantly.</span></div>'));
+    // THE FOURTH SCAN — Aqua pool guard (Shaka 2026-09-26 22:36 JST): World ID personhood caps
+    // every liquidity provider — one verified human, one share. Fixture-illustrated here;
+    // the personhood half is real and testable live in the booth lane (booth.html).
+    if (d.poolGuard) {
+      right.appendChild(el(
+        '<div class="poolguard">' +
+        '<h3>🌊 The Fourth Scan — Aqua pool guard</h3>' +
+        '<p class="pg-copy">' + esc(d.poolGuard) + '</p>' +
+        '<div class="pg-row"><span class="pg-k">one verified human</span><span class="pg-eq">=</span><span class="pg-k">one capped share</span></div>' +
+        '<p class="hint" style="margin:10px 0 0">Pool state here is illustrative — the personhood check is real and proven live in the booth lane.</p>' +
+        '</div>'
+      ));
+    }
     split.appendChild(right);
     wrap.appendChild(split);
     return wrap;

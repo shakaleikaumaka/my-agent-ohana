@@ -66,7 +66,8 @@
         "mayNot": "move funds · touch other agents · act after you revoke",
         "duration": "until you revoke — or 1 hour, whichever comes first",
         "role": "RESCUE_MATCHER",
-        "utility": "rescue-match"
+        "utility": "rescue-match",
+        "poolGuard": "Aqua liquidity pools check World ID personhood: one verified human, one capped share — so no single wallet, bot farm, or sybil crowd can drain or dominate the pool. The orb proves you're you; the cap does the rest. (Shaka, 2026-09-26 22:36 JST: 'World ID would be really great for the Aqua liquidity pools… so that one person cannot take up the whole liquidity pool.')"
       }
     },
     {
