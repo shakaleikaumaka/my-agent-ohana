@@ -72,9 +72,12 @@
     // stays registered server-side (harmless; the name is still his) but no hireable card maps to it,
     // so it was removed here. CAST v4 (Shaka 2026-09-26 22:34 JST): crops joined the commons —
     // crops.myagentohana.eth likewise stays registered server-side but maps to no hireable card,
-    // removed here. Orbie (minted, resolving) + Globie (not yet minted) are pending scopeMap
-    // registration: add their subnames here the moment Tauro adds them to AGENT_SCOPE_MAP → they go live.
+    // removed here. ORBIE flipped LIVE 2026-09-26 ~23:00 JST (moon-freeze step 1, pulled forward by
+    // Shaka's direct order "we want the main demo page to be the one that works" — backend scopeMap
+    // v75387cdb already registers orbie; Ian's booth scan minutes earlier proved prod World App
+    // scans our sandbox device links). Globie (not yet minted) stays out until mint + scopeMap.
     liveSubnames: [
+      "orbie.myagentohana.eth",
       "trace.myagentohana.eth", "terri.myagentohana.eth",
       "pit.myagentohana.eth", "spector.myagentohana.eth"
     ]
@@ -100,6 +103,133 @@
         .then(function (res) { if (!done) { done = true; clearTimeout(t); cb(res, null); } })
         .catch(function (e) { if (!done) { done = true; clearTimeout(t); cb(null, "unreachable"); } });
     } catch (e) { if (!done) { done = true; clearTimeout(t); cb(null, "unreachable"); } }
+  }
+
+  // ---------------------------------------------------------------- real device flow
+  // THE MAIN PAGE WORKS (Shaka, 2026-09-26 ~23:00 JST: "we want the main demo page to be the
+  // one that works"). The consent screen's QR used to be a permanent fixture — a dead scan,
+  // the segment's only true failure mode, and Ian hit it live at the booth. Now, whenever the
+  // consent session is LIVE, the shell mints a REAL World device code via the pit-intake proxy
+  // (client secret vaulted server-side, never in the browser), swaps the fixture QR for the real
+  // one, polls for the human's approval (pending/slow_down mapped to 200 at the proxy = silent
+  // console), and on the real id_token mints the REAL consent on the open session (scope-fallback
+  // = booth pattern). The mirrored-phone tap still drives the ceremony arc either way; the chips
+  // always tell the truth about what is real. Fixture fallback everywhere, never a console error.
+  var PROXY_BASE = "https://pit-intake.shakaverse.workers.dev";
+  function proxyFetch(path, body, cb) {
+    var done = false;
+    var t = setTimeout(function () { if (!done) { done = true; cb(null, "timeout"); } }, 8000);
+    try {
+      fetch(PROXY_BASE + path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body || {}) })
+        .then(function (r) { return r.json().then(function (j) { return { status: r.status, j: j }; }); })
+        .then(function (res) { if (!done) { done = true; clearTimeout(t); cb(res, null); } })
+        .catch(function (e) { if (!done) { done = true; clearTimeout(t); cb(null, "unreachable"); } });
+    } catch (e) { if (!done) { done = true; clearTimeout(t); cb(null, "unreachable"); } }
+  }
+  function renderDeviceChip(kind, detail) {
+    var box = $("#deviceChip");
+    if (!box) return;
+    box.innerHTML = "";
+    if (kind === "minting") {
+      box.appendChild(el('<div class="wire rehearsal"><div class="wh"><span class="spin"></span> MINTING REAL DEVICE CODE…</div>' +
+        '<div class="wl">World device flow via the ʻohana proxy — the QR upgrades itself in a moment.</div></div>'));
+    } else if (kind === "realqr") {
+      box.appendChild(el('<div class="wire live"><div class="wh">● REAL QR — SCAN IT WITH A WORLD APP</div>' +
+        '<div class="wl">user_code <b>' + esc(detail) + '</b> · this code is live for ~20 minutes · approve on the phone and this page mints the REAL blessing.</div></div>'));
+    } else if (kind === "token") {
+      box.appendChild(el('<div class="wire live"><div class="wh">✅ REAL WORLD TOKEN RECEIVED</div>' +
+        '<div class="wl">a real orb-grade human approved — minting the blessing on the open session…</div></div>'));
+    } else if (kind === "minted") {
+      box.appendChild(el('<div class="wire live"><div class="wh">✅ REAL BLESSING MINTED — consent_id <b>' + esc(detail) + '</b></div>' +
+        '<div class="wl">the ledger holds the receipt; the mirrored-phone tap below drives the ceremony arc. This blessing is real.</div></div>'));
+    } else if (kind === "verifyfail") {
+      box.appendChild(el('<div class="wire rehearsal"><div class="wh">📴 token received; ledger verify answered ' + esc(detail || "?") + '</div>' +
+        '<div class="wl">the ceremony continues on the open session — the mirrored-phone tap drives the arc.</div></div>'));
+    } else if (kind === "lapsed") {
+      box.appendChild(el('<div class="wire rehearsal"><div class="wh">⌛ REAL CODE ' + esc((detail || "lapsed").toUpperCase()) + '</div>' +
+        '<div class="wl">restart the walkthrough for a fresh code — or tap 📱 below and run the arc on the mirrored phone.</div></div>'));
+    } else if (kind === "unavailable") {
+      box.appendChild(el('<div class="wire rehearsal"><div class="wh">📴 real device code unavailable (' + esc(detail || "?") + ')</div>' +
+        '<div class="wl">rehearsal QR below — the human tap happens on the mirrored phone. Every leg still completes.</div></div>'));
+    }
+  }
+  function renderRealDevice(d) {
+    var uc = $("#ucode"), vu = $("#vuri"), qb = $("#qrbox");
+    if (uc) uc.textContent = d.user_code;
+    if (vu) vu.textContent = d.verification_uri_complete || d.verification_uri;
+    if (qb) {
+      try {
+        var q = window.qrcode(0, "M");
+        q.addData(d.verification_uri_complete || d.verification_uri);
+        q.make();
+        qb.innerHTML = q.createImgTag(4, 0);
+      } catch (e) { /* QR stays — the code text is the fallback */ }
+    }
+    var cap = $("#qrCap");
+    if (cap) cap.innerHTML = '● <b style="color:var(--green)">REAL — scan with your World App</b>';
+    renderDeviceChip("realqr", d.user_code);
+  }
+  function pollDevice(a, sub, interval) {
+    var delay = (interval || 5) * 1000;
+    (function tick() {
+      if (!S.wire.device || S.wire.idToken || S.wire.deviceDead) return;
+      if (S.screen !== "consent" && S.screen !== "world") { S.wire.deviceDead = true; return; }
+      setTimeout(function () {
+        if (!S.wire.device || S.wire.idToken || S.wire.deviceDead) return;
+        proxyFetch("/world/token", { device_code: S.wire.device.device_code }, function (res) {
+          var j = (res && res.j) || {};
+          if (j.id_token) { S.wire.idToken = j.id_token; onRealToken(a, sub); return; }
+          if (j.error === "authorization_pending" || j.error === "slow_down") {
+            if (j.error === "slow_down") delay += 5000;
+            tick(); return;
+          }
+          S.wire.deviceDead = true; // expired_token / access_denied / anything terminal
+          renderDeviceChip("lapsed", j.error === "access_denied" ? "denied" : "lapsed");
+        });
+      }, delay);
+    })();
+  }
+  function onRealToken(a, sub) {
+    renderDeviceChip("token");
+    var body = { id_token: S.wire.idToken, session_id: S.wire.sessionId, agent_subname: sub, scope_requested: [a.detail.utility] };
+    var tries = 8;
+    (function tryVerify() {
+      if (!S.wire.sessionId) { // begin hasn't resolved yet — wait a beat (race is unlikely but cheap)
+        if (tries-- > 0) setTimeout(tryVerify, 500);
+        return;
+      }
+      wireFetch("/v1/verify", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) }, function (res) {
+        if (res && res.status === 403 && res.j && res.j.error === "scope_not_allowed" && body.scope_requested.length) {
+          body.scope_requested = []; // scope not in map — token NOT burned, per design (booth pattern)
+          wireFetch("/v1/verify", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) }, onVerified);
+          return;
+        }
+        onVerified(res);
+      });
+    })();
+  }
+  function onVerified(res) {
+    if (res && res.j && res.j.ok) {
+      S.wire.consentId = res.j.consent_id; S.wire.receiptToken = res.j.receipt_token;
+      renderDeviceChip("minted", res.j.consent_id);
+    } else {
+      renderDeviceChip("verifyfail", (res && res.j && res.j.error) || (res && res.status) || "unreachable");
+    }
+  }
+  function wireDevice(a, sub) {
+    if (S.wire.deviceTried) return;
+    S.wire.deviceTried = true;
+    renderDeviceChip("minting");
+    proxyFetch("/world/device", {}, function (res, err) {
+      if (S.screen !== "consent" && S.screen !== "world") return;
+      if (res && res.status === 200 && res.j && res.j.device_code) {
+        S.wire.device = res.j;
+        renderRealDevice(res.j);
+        pollDevice(a, sub, res.j.interval || 5);
+      } else {
+        renderDeviceChip("unavailable", err || (res && res.j && (res.j.error || res.j.message)) || "proxy " + (res && res.status));
+      }
+    });
   }
   // CONNECTIVITY BOOT-GATE (wave 2c / gauntlet FINDING-1). One and only one network probe per
   // session: a single boot /healthz. Its verdict (WIRE.online) decides whether ANY later live
@@ -280,7 +410,8 @@
       revoke: { reason: null }, // 'stop' | 'declined' | 'expired'
       // live consent session (JOB 2). Filled by a real /v1/consent/begin when the backend
       // is reachable; consentId/receiptToken would come from a real /v1/verify (booth token).
-      wire: { live: false, sessionId: null, nonce: null, expiresAt: null, sub: null, consentId: null, receiptToken: null }
+      wire: { live: false, sessionId: null, nonce: null, expiresAt: null, sub: null, consentId: null,
+        receiptToken: null, device: null, deviceTried: false, idToken: null, deviceDead: false }
     };
   }
   var S = freshState();
@@ -516,6 +647,10 @@
   // ---------------------------------------------------------------- S3 consent
   function viewConsent() {
     var a = findAgent(S.agentId), d = a.detail;
+    // fresh card, fresh wire state — a previous card's LIVE session/QR must never leak
+    // into this card's chips (pre-existing leak, caught 2026-09-26 while flipping orbie live).
+    S.wire = { live: false, sessionId: null, nonce: null, expiresAt: null, sub: null, consentId: null,
+      receiptToken: null, device: null, deviceTried: false, idToken: null, deviceDead: false };
     var wrap = el('<div class="screen"></div>');
     wrap.appendChild(el('<div><p class="eyebrow">BLESS & RELEASE · CONSENT REQUEST</p>' +
       '<h1 class="big">' + esc(a.name) + " requests your blessing</h1>" +
@@ -538,10 +673,12 @@
     right.appendChild(el('<h3>Approve on your World ID app</h3>'));
     var qr = el('<div class="qrbox" id="qrbox"></div>');
     right.appendChild(qr);
-    right.appendChild(el('<div class="usercode">' + FIXTURE.world.user_code + "</div>"));
-    right.appendChild(el('<div class="vuri">' + esc(FIXTURE.world.verification_uri) + "</div>"));
+    right.appendChild(el('<div class="usercode" id="ucode">' + FIXTURE.world.user_code + "</div>"));
+    right.appendChild(el('<div class="vuri" id="vuri">' + esc(FIXTURE.world.verification_uri) + "</div>"));
+    right.appendChild(el('<p class="hint" id="qrCap" style="text-align:center;margin:6px 0 0">rehearsal QR — the human tap happens on the mirrored phone</p>'));
     var pollBox = el('<div class="poll"><span class="spin"></span> Waiting for approval… <span class="mono" style="color:var(--dim)">authorization_pending</span></div>');
     right.appendChild(pollBox);
+    right.appendChild(el('<div id="deviceChip"></div>'));
     var row = el('<div class="btnrow" style="justify-content:center"></div>');
     var openPhone = el('<button class="btn">📱 Open my World ID app →</button>');
     openPhone.addEventListener("click", function () { go("world"); });
@@ -572,6 +709,7 @@
         if (r.live) {
           S.wire.live = true; S.wire.sessionId = r.sessionId; S.wire.nonce = r.nonce;
           S.wire.expiresAt = r.expiresAt; S.wire.sub = r.sub;
+          wireDevice(a, r.sub); // the main page WORKS: mint the real device code, upgrade the QR
         }
         renderWireChip(r.live ? null : (r.reason || "fixture"));
       });
@@ -595,7 +733,7 @@
         '<div class="wl">POST <b>/v1/consent/begin</b> → 200 · agent <b>' + esc(S.wire.sub) + '</b></div>' +
         '<div class="wl">session_id <b>' + esc(S.wire.sessionId) + '</b></div>' +
         '<div class="wl">nonce <b>' + esc(S.wire.nonce || "—") + '</b>' + (exp ? ' · expires <b>' + exp + '</b>' : '') + '</div>' +
-        '<div class="wl">Approval below mints the blessing from a real orb-grade World token (booth). This session is real; the approval is rehearsed here.</div></div>'));
+        '<div class="wl">Scan the REAL QR with a World App → the blessing mints for real on this session. The mirrored-phone tap drives the ceremony arc either way.</div></div>'));
     } else {
       var why = ({ offline: "offline mode — network skipped",
         local: "local preview — the live consent round-trip runs on the deployed site (CORS is pinned to it)",
@@ -622,7 +760,7 @@
       '<div class="warn">“Only approve a sign-in you started.”</div>' +
       '<div class="req"><b>' + esc(a.name) + '</b> wants to verify you as a real human and receive your blessing.<br>' +
       '<span style="color:var(--muted)">scope:</span> ' + esc(a.detail.may) + '<br>' +
-      '<span style="color:var(--muted)">code:</span> <span class="mono">' + FIXTURE.world.user_code + '</span></div>' +
+      '<span style="color:var(--muted)">code:</span> <span class="mono">' + esc((S.wire.device && S.wire.device.user_code) || FIXTURE.world.user_code) + '</span></div>' +
       '<button class="approve">✓ Approve</button>' +
       '<button class="deny">Deny</button>' +
       '<div class="mirror">— MIRRORED TO SCREEN —</div>' +
