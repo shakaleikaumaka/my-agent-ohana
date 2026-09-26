@@ -109,6 +109,11 @@ async function walk(page, agentId, { deny = false } = {}) {
     ok(href.startsWith(HOMES[agentId]) && href.includes("#ohana="), `${agentId}: blessed carry-link → home with #ohana= passport`);
     const p = decodePassport(href);
     ok(p.v === 1 && p.a === agentId && !!p.c && !!p.t, `${agentId}: passport payload {v:1,a,c,t} valid (c=${String(p.c).slice(0, 28)})`);
+    // 🎒 door code: typeable cross-device carry (AGENT-XXXXXX from the same consent id)
+    const dc = await page.$eval(".carrycode code", (n) => n.textContent.trim());
+    const expSuffix = String(p.c).replace(/[^A-Za-z0-9]/g, "").toUpperCase().slice(-6);
+    ok(dc === `${agentId.toUpperCase().replace(/[^A-Z0-9]/g, "")}-${expSuffix}`,
+      `${agentId}: blessed door code ${dc} matches consent id suffix`);
   } else {
     ok(await page.$(".carryqueued") !== null, `${agentId}: queued home → honest carry chip on blessed screen`);
   }

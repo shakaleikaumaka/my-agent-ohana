@@ -17,6 +17,7 @@
   #ohanaTalkRoot .ot-fab .ot-dot{width:8px;height:8px;border-radius:50%;background:var(--green,#7ef0b2);box-shadow:0 0 8px var(--green,#7ef0b2);flex:none;animation:otPulse 2.2s infinite}
   @keyframes otPulse{0%{box-shadow:0 0 0 0 rgba(126,240,178,.55)}70%{box-shadow:0 0 0 7px rgba(126,240,178,0)}100%{box-shadow:0 0 0 0 rgba(126,240,178,0)}}
   #ohanaTalkRoot .ot-back{position:fixed;inset:0;background:rgba(6,7,20,.45);border:0;padding:0;cursor:default}
+  #ohanaTalkRoot .ot-panel[hidden]{display:none}
   #ohanaTalkRoot .ot-panel{position:absolute;right:0;bottom:calc(100% + 12px);width:min(360px,calc(100vw - 36px));height:min(520px,calc(100vh - 120px));display:flex;flex-direction:column;border-radius:18px;border:1px solid var(--line,rgba(255,255,255,.15));background:linear-gradient(170deg,rgba(20,26,68,.97),rgba(10,14,42,.97));box-shadow:0 18px 54px rgba(3,6,24,.6),inset 0 1px 0 rgba(255,255,255,.10);overflow:hidden;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
   #ohanaTalkRoot .ot-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:15px 16px 10px;border-bottom:1px solid var(--line,rgba(255,255,255,.12));flex:none}
   #ohanaTalkRoot .ot-title{font-size:16px;font-weight:750;color:var(--ink,#f2f3ff)}

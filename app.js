@@ -160,6 +160,7 @@
           '<div class="wl">virtual balances <b>' + fmt18(j.virtualBalances.gift) + ' GIFT · ' + fmt18(j.virtualBalances.aloha) + ' ALOHA</b> — tokens never left the treasury; Aqua records only accounting (ship = bless, dock = revoke).</div>' +
           '<div class="wl">wage position ' + (j.position.active ? '<b style="color:var(--green)">ACTIVE</b>' : '<b style="color:var(--red)">docked</b>') + ' for trace.myagentohana.eth · <b>' + esc(String(j.slots)) + '</b> verified-human slot' + (j.slots === 1 ? "" : "s") + ' claimed · cap <b>' + (j.capBps / 100).toFixed(2) + '%</b> each</div>' +
           '<div class="wl">' + link(A.registry, "Aqua registry") + ' · ' + link(A.blessingPool, "BlessingPool") + ' · ' + link(A.poolGuard, "PoolGuard") + '</div>' +
+          '<div class="wl">🎭 GIFT + ALOHA are <b>valueless MockERC20 testnet props by design</b> — the mechanism is real, the money is not (yet). <a href="#roadmap">why + what comes after judging ↓</a></div>' +
           '</div>';
       })
       .catch(function () {
@@ -669,6 +670,13 @@
   }
   // Post-blessing carry-over link (blessed + debrief screens): the blessing travels into
   // the agent's home via the passport hash. Honest chip about which consent id it carries.
+  // Door code (2026-09-27): a short typeable code, derived from the same consent id, that
+  // the passport badge on the agent's front door accepts ("have a carry code?") — so the
+  // blessing carries cross-device even without the link.
+  function carryCode(a) {
+    var c = String(S.wire.consentId || FIXTURE.consentId).replace(/[^A-Za-z0-9]/g, "").toUpperCase();
+    return String(a.id || "").toUpperCase().replace(/[^A-Z0-9]/g, "") + "-" + c.slice(-6);
+  }
   function carryEl(a) {
     var h = a.home;
     if (!h) return null;
@@ -679,8 +687,10 @@
     var box = el('<div class="carrybox"></div>');
     box.appendChild(el('<a class="carrylink" target="_blank" rel="noopener" href="' + esc(carryHref(a)) + '">🎒 carry your blessing into <b>' +
       esc(h.domain) + "</b> →</a>"));
+    box.appendChild(el('<div class="carrycode">door code <code>' + esc(carryCode(a)) + "</code> — opening <b>" + esc(h.domain) +
+      '</b> on another device? tap “🎒 have a carry code?” on its 🌺 badge and type this</div>'));
     box.appendChild(el('<span class="carrynote">' + (real
-      ? "carries your REAL consent_id — the home site shows the blessing badge; proofs &amp; revoke stay here"
+      ? "link &amp; code carry your REAL consent_id — the home site shows the blessing badge; proofs &amp; revoke stay here"
       : "rehearsal consent id (fixture) — the home site shows the carried-blessing badge; proofs &amp; revoke stay here") + "</span>"));
     return box;
   }
