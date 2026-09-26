@@ -1550,7 +1550,7 @@
     if (isOfflineMode()) { showOfflineBadge(); AGENTS = deriveSubnames(OFFLINE_REGISTRY); render(); return; }
     bootProbe(); // single session /healthz: sets WIRE.online + lights "● BACKEND LIVE" iff reachable
 
-    fetch("agents.json?v=20260927a", { cache: "no-store" }) // ?v= busts the brand edge cache (HTML fresh, static 4h — 2026-09-27 law)
+    fetch("agents.json?v=20260927b", { cache: "no-store" }) // ?v= busts the brand edge cache (HTML fresh, static 4h — 2026-09-27 law)
       .then(function (r) { return r.json(); })
       .then(function (j) { AGENTS = deriveSubnames(j); render(); })
       .catch(function () {
