@@ -38,11 +38,13 @@
   The ENS <b>namehashes and owner addresses</b> shown are <b>real</b>, name-derived values (Sepolia); live on-chain resolution wires in at deploy.
   Trace's rescue receipt is seeded from a <b>real</b> $642.96 supply receipt and a real worked onion-surplus loop — the partner kitchen and the other surplus rows are illustrative projections, labelled per row.
   The <b>instant halt</b> on revoke is driven by the app-layer authority flag — that beat is real and always instant; on-chain legs settle behind it as receipts.
-  The consent backend is <b>really deployed</b> (trinity-consent.shakaverse.workers.dev · issuer sandbox.auth.world.org, orb-grade): when the browser can reach it, the hire screen opens a <b>real</b> consent session (<span class="mono">POST /v1/consent/begin</span>) and shows the live <span class="mono">● BACKEND LIVE</span> badge; verification needs a real orb-grade World token (minted by a human at the booth), so the approve→bless legs stay rehearsed here.
-  The <b>Aqua pool guard</b> on Trace's card (the Fourth Scan — one verified human, one capped liquidity share) is an <b>illustrative fixture</b>: no real pool moves here — but the World ID personhood check that would gate it is real, and it is testable live in the <b>booth lane</b> (booth.html).
+  The consent backend is <b>really deployed</b> (trinity-consent.shakaverse.workers.dev · issuer sandbox.auth.world.org, orb-grade): on live origins the hire screen opens a <b>real</b> consent session (<span class="mono">POST /v1/consent/begin</span>, live <span class="mono">● BACKEND LIVE</span> badge) and the bless step runs the <b>real World device flow right in this page</b> — a live QR + one-time code, approved in the human's World App, minting a <b>real consent on the real ledger</b>. Offline previews show a clearly-labeled rehearsal card instead; no real code is minted there.
+  The <b>Aqua pool guard</b> on Trace's card (the Fourth Scan — one verified human, one capped liquidity share) is <b>live on Sepolia</b>: on live origins the panel reads real chain state from the deployed 1inch Aqua registry, BlessingPool, and PoolGuard contracts, and the moment a real blessing mints, the same World proof claims the human's <b>on-chain pool slot</b> — one human, one capped share, idempotent on re-scan; wallets without personhood are refused (<span class="mono">401 personhood_required</span>). Offline previews keep the panel illustrative, labeled as such.
+  Once blessed, the ceremony hands you the agent's <b>front door</b>: the blessing carries into the agent's own home site via the ʻohana passport hash, where the verified badge greets you — proofs and revoke stay here.
   No metrics on this page are presented as live production data. Agent names are grandfathered brand.
 </footer>
 <script src="vendor/qrcode.min.js"></script>
 <script src="app.js?v=20260927a"></script>
+<script src="ohana-talk.js?v=20260927a"></script>
 </body>
 </html>
