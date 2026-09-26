@@ -1,0 +1,106 @@
+{
+  "_comment": "M5-4 · the 6 blessed agents. KIT = replication: one mint/bless/record pattern, 6 rows. owner = each agent's Sepolia address (swap in real per-agent wallets when minted; placeholders are the funded rehearsal fleet + deterministic demo addrs). agentId = id in the AgentLaunchRegistry (config.AGENT_REGISTRY_ADDR) for the ENSIP-25 attestation. Token names are EMBARGOED and MUST NOT appear here (agent NAMES are grandfathered brand; tokens are not).",
+  "parent": "myagentohana.eth",
+  "agents": [
+    {
+      "label": "pit",
+      "owner": "0x6550FAe03504BBad713603E06E3E52e4BaD8fFDC",
+      "agentId": "1",
+      "agent-context": "# pit.myagentohana.eth\nPublic-Inform-Trust steward. Blessed by shaka (World ID verified human). Guards the consent ceremony: verifies, gates, and halts on revoke.",
+      "endpoints": {
+        "web": "https://myagentohana.com/agents/pit",
+        "mcp": "",
+        "a2a": ""
+      }
+    },
+    {
+      "label": "shaka",
+      "owner": "0x15dA024A78944e463D777fFBb44EA07fB1dc61c5",
+      "agentId": "2",
+      "agent-context": "# shaka.myagentohana.eth\nThe keeper's named agent. Blessed by shaka the human. Speaks for the ohana; can be told to stop at any time.",
+      "endpoints": {
+        "web": "https://myagentohana.com/agents/shaka",
+        "mcp": "",
+        "a2a": ""
+      }
+    },
+    {
+      "label": "terri",
+      "owner": "0xA747095248E0543f7626555cD1cBE31a34ae1054",
+      "agentId": "3",
+      "agent-context": "# terri.myagentohana.eth\nReceipt-keeper. Blessed by shaka (World ID verified). Backs up the food-loop receipts that Trace acts on.",
+      "endpoints": {
+        "web": "https://myagentohana.com/agents/terri",
+        "mcp": "",
+        "a2a": ""
+      }
+    },
+    {
+      "label": "trace",
+      "owner": "0x5e7d0B5bF18C8f73977d067ceFc211bEfD8ce2D6",
+      "agentId": "4",
+      "agent-context": "# trace.myagentohana.eth\nAI Food-Loop steward. Blessed by shaka (World ID verified). Watches real surplus (120lb onions -> 55lb alarm) and only acts while the blessing holds.",
+      "endpoints": {
+        "web": "https://myagentohana.com/agents/trace",
+        "mcp": "",
+        "a2a": ""
+      }
+    },
+    {
+      "label": "spector",
+      "owner": "0x25556d63520eb0F317B8589F5D45873DdB943145",
+      "agentId": "5",
+      "agent-context": "# spector.myagentohana.eth\nConsent-security scanner. Blessed by shaka (World ID verified). Red-teams the consent server; stops scanning the instant its blessing is revoked.",
+      "endpoints": {
+        "web": "https://myagentohana.com/agents/spector",
+        "mcp": "",
+        "a2a": ""
+      }
+    },
+    {
+      "label": "crops",
+      "owner": "0x1296597106008db4273588aDa45b1e9963Ae05E7",
+      "agentId": "6",
+      "agent-context": "# crops.myagentohana.eth\nRepo-hygiene / secret-leak scanner. Blessed by shaka (World ID verified). Keeps the ohana's repos clean; a revoke halts its write access.",
+      "endpoints": {
+        "web": "https://myagentohana.com/agents/crops",
+        "mcp": "",
+        "a2a": ""
+      }
+    },
+    {
+      "label": "orbie",
+      "owner": "0x67b3c3b60bc0A3d0bE365AE00218972873e205ff",
+      "agentId": "7",
+      "agent-context": "# orbie.myagentohana.eth\nSTORY_BUDDY — the littlest agent of the ohana, named after the Orb. Blessed by a World ID verified human. Tells the family's story with World (Paris '22 -> Tokyo '26) in six chapters and runs its story utility only while the blessing holds; the instant it is revoked, Orbie stops.",
+      "endpoints": {
+        "web": "https://orbie-vcnqvzxuo4-ffieyo32.taur.link/",
+        "mcp": "",
+        "a2a": ""
+      }
+    },
+    {
+      "_legacy": "RENAMED 2026-09-27 Globie → Globy (correct spelling). The legacy immutable label globie.myagentohana.eth STAYS minted on-chain as history (agentId 8, owner 0x35b3696C4BEb246Db920419Bb37a7faC626A4BF5 — see ADDRESSES.md §2c/§3). DO NOT revoke/burn. The canonical agent now mints as globy.myagentohana.eth (next entry, agentId 9).",
+      "label": "globie",
+      "owner": "0x35b3696C4BEb246Db920419Bb37a7faC626A4BF5",
+      "agentId": "8",
+      "agent-context": "# globie.myagentohana.eth\nGUIDE — the guide-keeper of the ohana. Blessed by a World ID verified human. Takes anyone, no code and no fear, from 'I could never build that' to a first page built with their own hands; guides a build session and signs the lesson plan on your behalf only while the blessing holds. Moves no funds, touches no other agent, and the instant the blessing is revoked, Globie stops.",
+      "endpoints": {
+        "web": "https://myagentohana.com/agents/globie",
+        "mcp": "",
+        "a2a": ""
+      }
+    },
+    {
+      "label": "globy",
+      "owner": "0x7b629239481A8f5E2daf0b5F96345D2Df2525BD5",
+      "agentId": "9",
+      "agent-context": "# globy.myagentohana.eth\nGUIDE — GLOBY 🌍, the guide-keeper/teacher of the ohana: ultimate hackathon coach, mentor & travel buddy. Blessed by a World ID verified human. Takes anyone, no code and no fear, from 'I could never build that' to a first page built with their own hands; guides a build session and signs the lesson plan on your behalf only while the blessing holds. Moves no funds, touches no other agent, and the instant the blessing is revoked, Globy stops.",
+      "endpoints": {
+        "web": "https://myagentohana.com/agents/globy",
+        "mcp": "",
+        "a2a": ""
+      }
+    }
+  ]
+}
