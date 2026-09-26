@@ -4,11 +4,12 @@
 
 **The Tokyo Trinity:** a verified human (**World ID**) blesses named agents (**ENSv2** subnames on Sepolia) who steward gifts (**1inch Aqua** position). Built at **ETHGlobal Tokyo 2026** (Sep 25–27) on a **disclosed pre-existing base** — judges score the weekend delta, and the base is declared below, up top, on purpose.
 
-## 📖 The story in three pages
+## 📖 The story in four pages
 
-1. **[`docs/BUILD-PROCESS.md`](./docs/BUILD-PROCESS.md)** — how the build actually happened: the human lead + the disclosed Taurus agent squad, lane by lane.
-2. **[`docs/BELL-SYSTEM.md`](./docs/BELL-SYSTEM.md)** — the bell system: Telegram bot + front doors + the verified-human → live-agent loop.
-3. **[`docs/ROADMAP.md`](./docs/ROADMAP.md)** — the testnet truth table, the mock-by-design rationale, and the four phases to mainnet (≥3-chain launch per agent).
+1. **[`docs/CONTINUITY.md`](./docs/CONTINUITY.md)** — the continuity story: the months of agent personalities + live front doors we brought, and the clean line to what the weekend added.
+2. **[`docs/BUILD-PROCESS.md`](./docs/BUILD-PROCESS.md)** — how the build actually happened: the human lead + the disclosed Taurus agent squad, lane by lane.
+3. **[`docs/BELL-SYSTEM.md`](./docs/BELL-SYSTEM.md)** — the bell system: Telegram bot + front doors + the verified-human → live-agent loop.
+4. **[`docs/ROADMAP.md`](./docs/ROADMAP.md)** — the testnet truth table, the mock-by-design rationale, and the four phases to mainnet (≥3-chain launch per agent).
 
 ---
 
@@ -34,9 +35,10 @@
 
 What judges score — each bullet links to its commits (lane-tagged, all landing after Fri Sep 25 13:00 JST):
 
-- **ENSv2 — GiftMarket-as-registrar:** deploy our own UserRegistry/subregistry on Sepolia; grant the existing registry/GiftMarket the `ROLE_REGISTRAR`; `blessAgent()` → `register(label, agent, …)` mints an **expiring, revocable, soulbound agent subname**; `revokeAgent()` → `unregister(...)`. **ENSIP-25/26 agent records** on each subname (agents as namespaces, each with identity + permissions). Seven named agents are blessed as subnames of `myagentohana.eth` in-window — `pit` · `shaka` · `terri` · `trace` · `spector` · `crops`, plus **`orbie`** (Orbie 🤖, role `STORY_BUDDY`), a seventh agent **born at ETHGlobal Tokyo** and blessed on camera by an orb-verified human from World's team. All seven are new in the weekend window; none pre-existed.
-- **World ID for Agents:** human verification via the official pilot IDP (OIDC device flow against `auth.worldcoin.dev`) — authorize + scope + duration + denied-path + debrief — gating the bless action against the registry's Standing Consent Window.
-- **1inch Aqua:** a gift-steward "Blessing Pool" position using the official Aqua/SwapVM contracts; on-chain execution demonstrated (mainnet-fork rehearsal acceptable, Sepolia deploy if the Aqua stack permits).
+- **ENSv2 — GiftMarket-as-registrar:** deploy our own UserRegistry/subregistry on Sepolia; grant the existing registry/GiftMarket the `ROLE_REGISTRAR`; `blessAgent()` → `register(label, agent, …)` mints an **expiring, revocable, soulbound agent subname**; `revokeAgent()` → `unregister(...)`. **ENSIP-25/26 agent records** on each subname (agents as namespaces, each with identity + permissions). **Ten subnames** of `myagentohana.eth` are minted in-window — the named agents `pit` · `shaka` · `terri` · `trace` · `spector` · `crops` · **`orbie`** (Orbie 🤖, role `STORY_BUDDY`, an agent **born at ETHGlobal Tokyo** whose consent flow was live-scanned at the World booth by an orb-verified member of World's team) · `globy` (plus its legacy spelling, kept immutable as history) · and **`registry`**, which resolves to the UserRegistry contract itself ("don't trust, check"). All ten are new in the weekend window; none pre-existed (base was `fallback-label-only`).
+- **World ID for Agents:** human verification via the official pilot IDP (OIDC device flow against `sandbox.auth.world.org` (the pilot issuer — formerly auth.worldcoin.dev)) — authorize + scope + duration + denied-path + debrief — gating the bless action against the registry's Standing Consent Window.
+- **1inch Aqua — shipped live on Sepolia:** the official Aqua registry redeployed (`contracts/aqua/`), a "Blessing Pool" strategy with chain-verified virtual balances, and **PoolGuard** — one World-verified human, one capped pool slot (personhood-gated liquidity; the raw World `sub` never touches the chain, keccak only). Live reads + claims served by `workers/pit-intake/`.
+- **agent-records (ENS keynote answer):** `spector.myagentohana.eth` carries `agent:price` / `agent:currency` / `agent:pay` / `agent:endpoint` / `agent:terms` in the name, per the one-page convention draft [`contracts/ens/AGENT-RECORDS.md`](./contracts/ens/AGENT-RECORDS.md) — proposed on stage Friday, live on Sepolia Sunday.
 - **Demo wiring / UI deltas:** consent authorize/revoke on camera, blessing an agent by ENS name, a gift landing in the Aqua position — built on the disclosed `web/` base.
 - **Repo hygiene for judging:** top-level `LICENSE` file + this README's continuity section linking [`DISCLOSURE.md`](./DISCLOSURE.md) (added in-window, not backdated).
 
@@ -46,7 +48,7 @@ What judges score — each bullet links to its commits (lane-tagged, all landing
 
 - **Live demo:** [myagentohana.com](https://myagentohana.com) — the soft-launch stack serves from this repo (required for the ENSv2 track: *"your project showcase must have a link to a live demo"*).
 
-- **Orbie's story (born at the event):** the seventh agent, **Orbie 🤖**, has its own short comic storybook — six chapters of the ʻohana's journey with World, Paris '22 → Tokyo '26. It frames the demo's on-camera blessing (a verified human blesses Orbie; the blessing can end in one tap) and the epilogue vow to gift Orbie's keys to World as a DevRel buddy agent.
+- **Orbie's story (born at the event):** the seventh agent, **Orbie 🤖**, has its own short comic storybook — six chapters of the ʻohana's journey with World, Paris '22 → Tokyo '26. It frames the demo's blessing ceremony (a verified human blesses Orbie; the blessing can end in one tap) and the epilogue vow to gift Orbie's keys to World as a DevRel buddy agent.
 
 ## 🏃 How to Run
 

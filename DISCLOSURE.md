@@ -79,21 +79,21 @@ This base was built **2026-09-12 → 09-14 during the ETHOnline 2026 window**, t
 
 ---
 
-## 2. Weekend delta — what we build Fri–Sun (planned, clearly separated)
+## 2. Weekend delta — what we built Fri–Sun (shipped; written as the Friday plan, updated Sunday to the shipped truth)
 
 Every delta commit lands **after** Fri Sep 25 13:00 JST with lane-tagged messages; deploys go out from the rehearsal deployer and are logged same-hour in the squad chain-ledger.
 
 | # | Delta item | Track it serves | How a judge confirms it's new |
 |---|---|---|---|
-| D1 | **World IDP consent flow** — OIDC device flow against the pilot env (`auth.worldcoin.dev`): authorize + scope + duration + denied-path + debrief, wired to the registry's consent window | World IDP $7.5k | new `integrations/world-idp/` + UI flow; absent at pins |
-| D2 | **ENSv2 subname issuance, live** — deploy our own UserRegistry/subregistry on Sepolia; make the existing registry/GiftMarket the registrar (`ROLE_REGISTRAR`); `blessAgent()` → `register(label,…)`, `revokeAgent()` → `unregister(...)`; ENSIP-25/26 agent records. **Seven agent subnames of `myagentohana.eth` minted in-window** — `pit` · `shaka` · `terri` · `trace` · `spector` · `crops` · **`orbie`** (role `STORY_BUDDY`). These seven are **new weekend mints**, distinct from the pre-existing 4-agent registry cohort (tokenIds 1–4, §1.2); Orbie is a seventh agent **born at the event**, blessed on camera by an orb-verified member of World's team. | ENSv2-into-Existing $4k | new contracts + new Sepolia deployments after Sep 25; base has only fallback-label mode (`"mode":"fallback-label-only"` in the deployment JSONs proves no subnames existed) |
-| D3 | **1inch Aqua position** ("Blessing Pool position") — gift-stewarding position contract; mainnet-fork dev acceptable, Sepolia deploy if the Aqua stack permits; decision gate vs Uniswap alt: Sat Sep 26 12:00 JST | 1inch Aqua $2k | new `contracts/src/` + fork test logs; absent at pins |
+| D1 | **World IDP consent flow** — OIDC device flow against the pilot env (`sandbox.auth.world.org` (the pilot issuer — formerly auth.worldcoin.dev)): authorize + scope + duration + denied-path + debrief, wired to the registry's consent window | World IDP $7.5k | new `integrations/world-idp/` + UI flow; absent at pins |
+| D2 | **ENSv2 subname issuance, live** — deploy our own UserRegistry/subregistry on Sepolia; make the existing registry/GiftMarket the registrar (`ROLE_REGISTRAR`); `blessAgent()` → `register(label,…)`, `revokeAgent()` → `unregister(...)`; ENSIP-25/26 agent records. **Ten subnames of `myagentohana.eth` minted in-window** — `pit` · `shaka` · `terri` · `trace` · `spector` · `crops` · **`orbie`** (role `STORY_BUDDY`) · `globy` (+ its legacy spelling, kept immutable as history) · **`registry`** (resolves to the UserRegistry itself — "don't trust, check"). All are **new weekend mints**, distinct from the pre-existing 4-agent registry cohort (tokenIds 1–4, §1.2); Orbie is an agent **born at the event**, whose consent flow was live-scanned at the World booth by an orb-verified member of World's team. Bonus in-window: the **agent-records convention** (`AGENT-RECORDS.md` + live `agent:price`/`agent:endpoint`/`agent:pay` records on `spector`). | ENSv2-into-Existing $4k | new contracts + new Sepolia deployments after Sep 25; base has only fallback-label mode (`"mode":"fallback-label-only"` in the deployment JSONs proves no subnames existed) |
+| D3 | **1inch Aqua — SHIPPED LIVE on Sepolia**: official Aqua registry redeployed (`0xCE1C50ce…3360`) + BlessingPool strategy (`0xd29110bE…F2e51`, chain-verified virtual balances) + **PoolGuard** (`0xabe7F81D…c292f`) — one verified human, one capped pool slot; raw World `sub` never on-chain (keccak only). Live reads/claims via `workers/pit-intake/` | 1inch Aqua $2k | new `contracts/aqua/` + `workers/pit-intake/` + Sepolia deploys dated after Sep 25; absent at pins |
 | D4 | **Demo UI wiring** — consent authorize/revoke on camera, blessing an agent by ENS name, gift landing in the Aqua position; built on the disclosed `web/` base | all tracks (functional live demo) | new commits under `web/` after Sep 25 |
 | D5 | **Repo hygiene** — top-level LICENSE file, README continuity section linking this declaration | continuity transparency | currently absent (see §3) |
 
 ## 3. License + provenance
 
-- **Our source license:** all four contract sources carry `SPDX-License-Identifier: MIT`; tests/scripts same repo. ⚠️ **GAP:** no top-level `LICENSE` file exists in the repo today — flagged honestly; adding one is weekend delta D5 (must not be backdated).
+- **Our source license:** all four contract sources carry `SPDX-License-Identifier: MIT`; tests/scripts same repo. ⚠️ **GAP (as of the Friday declaration):** no top-level `LICENSE` file existed — flagged honestly then; **closed in-window** by delta D5 (root CC0-1.0 `LICENSE`, committed Sun, not backdated).
 - **Third-party dependencies:** `forge-std` (dual MIT/Apache-2.0, vendored under `contracts/lib/forge-std`) · `ensdomains/contracts-v2` submodule (ENSv2 canonical interfaces, SPDX MIT — bump to the 2026-09-15 Sepolia redeploy tip `deployments/sepolia @ 71a3b733` for the weekend integration) · `openzeppelin-contracts` (MIT, transitive) · `ethers.js 6.15.0` vendored in `web/vendor/` (MIT) · test mocks are our own.
 - **AI disclosure:** `AI-USAGE.md` at repo root — human-directed, spec-driven build by a disclosed AI agent collective on the Taurus platform; humans held all keys, funds, and decisions. Same doctrine applies to the weekend delta.
 - **Provenance discipline:** every commit message is lane-tagged; deployment JSONs are machine-readable in-repo; the chain-ledger logs every weekend tx within the hour.
@@ -115,7 +115,7 @@ cast code 0x4Cbc337c8F63FFc0e8e96D5F5ea89A75eD31E575 --rpc-url <sepolia>   # gif
 1. ⚠️ Subgraph "answering" status — CLAIM-LEVEL (Studio key needed; source in-repo).
 2. ⚠️ BSC testnet leg — documented as **blocked on a free Agentverse API key**; not claimed as done.
 3. ⚠️ World Selfie Check ran in **sandbox** only at the pins; the IDP *consent* flow is weekend delta D1.
-4. ⚠️ Orbie's on-camera blessing by a member of World's team is **arranged pending that person's in-person consent** at the venue; if consent is not given, the same ceremony runs with a different orb-verified human (or in rehearsal/`?mode=offline`) and the storybook chapter is adjusted — the mechanism is identical either way.
+4. ✅→⚠️ (updated Sunday) A member of World's DevRel team **did live-scan the flow at the World booth on Saturday** — a real orb-verified human, real device flow, first try; that moment is recounted (as history, not footage) in Orbie's storybook. It was **not filmed**, so no splice appears in the video: the submission cut uses the honest offline/rehearsal-badged capture, and the live demo invites any orb-verified human present to bless — the mechanism is identical with any verified human, which is the point.
 5. ✅ Everything else in §1 was independently re-verified (remote refs, commit dates, test pass, live bytecode on both Sepolia contracts).
 
 ---
