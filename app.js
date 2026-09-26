@@ -832,7 +832,7 @@
         '<div id="pgLive"></div>' +
         '</div>'
       ));
-      loadPoolState();
+      setTimeout(loadPoolState, 0); // view mounts after return — populate post-mount
     }
     split.appendChild(right);
     wrap.appendChild(split);
