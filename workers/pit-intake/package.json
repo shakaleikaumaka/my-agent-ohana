@@ -1,0 +1,12 @@
+{
+  "name": "pit-intake",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "jose": "^5.9.6",
+    "viem": "^2.21.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260926.1"
+  }
+}

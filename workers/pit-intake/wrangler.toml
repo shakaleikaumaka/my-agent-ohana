@@ -1,0 +1,32 @@
+# pit-intake — the "Feed the Pit" intake worker.
+# Two doors per pit: Google Drive links (the phone path) + direct clip uploads (R2).
+# Storage: one Durable Object (sqlite-backed; this account rejects new_classes err 10099).
+name = "pit-intake"
+main = "src/index.ts"
+compatibility_date = "2024-11-06"
+compatibility_flags = ["nodejs_compat"]
+account_id = "f4c27480e870fc5788a1e1b8095bc744"
+
+[[durable_objects.bindings]]
+name = "INTAKE_DO"
+class_name = "IntakeStore"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["IntakeStore"]
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "pit-intake"
+
+[vars]
+MAX_UPLOAD_MB = "45"
+FEED_CAP = "50"
+SUBMIT_RATE_LIMIT = "12"
+SUBMIT_RATE_WINDOW_SEC = "60"
+
+# SECRETS (never commit):
+#   wrangler secret put ADMIN_KEY   # guards DELETE /entry
+
+[observability]
+enabled = true
