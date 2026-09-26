@@ -101,7 +101,7 @@ Every delta commit lands **after** Fri Sep 25 13:00 JST with lane-tagged message
 ## 4. Verification recipe (for a judge with 5 minutes)
 
 ```bash
-git clone https://github.com/shakaleikaumaka/my-agent-ohana && cd triproto-launchpad
+git clone https://github.com/shakaleikaumaka/my-agent-ohana && cd my-agent-ohana
 git checkout c103d36f0333fc5c92e4fde7350067aa333df50c        # pre-Tokyo contracts pin
 git log --format='%h %ad %s' --date=iso -5                   # every commit ≤ 2026-09-14
 cd contracts && forge test                                   # => 69 passed, 0 failed
