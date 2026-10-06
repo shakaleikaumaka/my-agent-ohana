@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🫶 My Agent Ohana — hire · bless · revoke</title>
+<meta name="description" content="A marketplace demo walkthrough: hire an agent, bless it with verified consent, watch it work, and stop it with one tap.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%AB%B6%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css?v=20260927h">
+</head>
+<body>
+<div class="aurora" aria-hidden="true"></div>
+<header class="top">
+  <div class="row">
+    <span class="brand"><img class="logo" src="assets/ohana-logo-512.png" alt="" aria-hidden="true"><b>My Agent Ohana</b></span>
+        <!-- SITENAV (mirror-only — re-apply after every freeze mirror-sync; Shaka 2026-09-26 22:26 JST) -->
+    <nav class="sitenav" aria-label="site">
+      <a href="/team/">👥 Team</a>
+    </nav>
+    <style>
+      .sitenav{display:inline-flex;gap:8px;align-items:center}
+      .sitenav a{display:inline-flex;align-items:center;gap:6px;background:var(--glass-soft);
+        border:1px solid var(--line);color:var(--muted);font-size:12px;letter-spacing:.5px;
+        border-radius:999px;padding:8px 14px;min-height:40px;text-decoration:none;transition:.2s}
+      .sitenav a:hover{color:var(--pink);border-color:var(--pinkline)}
+    </style>
+    <!-- /SITENAV -->
+<span class="promise">hire an agent · bless it · revoke anytime — one tap.</span>
+    <button class="reset" id="resetBtn">↺ restart walkthrough</button>
+  </div>
+</header>
+<div class="stepper" id="stepper"></div>
+<main id="stage"></main>
+<section class="roadmap" id="roadmap">
+  <h2>🗺️ Roadmap — what's real today, and what comes next</h2>
+  <div class="rm-grid">
+    <div class="rm-col">
+      <h3>✅ Live today · Sepolia testnet</h3>
+      <ul>
+        <li><b>Real 1inch Aqua registry</b> (redeployed from source) + <b>BlessingPool</b> with an <b>ACTIVE</b> wage position — custody-keeping virtual balances: tokens never leave the treasury, the chain records only accounting. Ship = bless, dock = revoke.</li>
+        <li><b>PoolGuard</b> — one World-verified human = one capped share (<b>1%</b>) of the pool, idempotent on re-scan; wallets without personhood are refused (<span class="mono">401 personhood_required</span>).</li>
+        <li><b>Real World ID consent ceremony</b> — hire, bless, revoke; every proof verifiable above, everything revocable with one tap.</li>
+      </ul>
+    </div>
+    <div class="rm-col">
+      <h3>🎭 Testnet props — on purpose</h3>
+      <p>The two pool tokens, <b>GIFT</b> and <b>ALOHA</b>, are <b>MockERC20s with zero monetary value, by design</b>
+        (<a href="https://sepolia.etherscan.io/token/0x7932D0157b8610b428596B180b44005C2a2eDDc2" target="_blank" rel="noopener">GIFT ↗</a> ·
+        <a href="https://sepolia.etherscan.io/token/0xE5fc4F18f87D86cf70D0706fe6c9FC6e2A791192" target="_blank" rel="noopener">ALOHA ↗</a>). Why:</p>
+      <ul>
+        <li><b>Real-value law:</b> hackathon deployer keys are throwaways — real funds never sit behind demo keys.</li>
+        <li><b>The mechanism is the proof:</b> this weekend demonstrates verified consent, shared-liquidity accounting, and the personhood cap. Those legs are real on-chain today — the token value is the only prop.</li>
+        <li><b>Security before liquidity:</b> real money deserves audits, license review, and hardened key custody first. That work is scheduled, not skipped.</li>
+      </ul>
+    </div>
+    <div class="rm-col">
+      <h3>🌕 After the hackathon — planned integration</h3>
+      <ul>
+        <li><b>Phase 1 · Hardening:</b> independent audit of BlessingPool + PoolGuard, Aqua license review, steward keys moved to multisig / hardware custody.</li>
+        <li><b>Phase 2 · Real agent tokens:</b> ʻohana agents earn real tickers; each agent's treasury stays in its own wallet under Aqua's custody-keeping model.</li>
+        <li><b>Phase 3 · Mainnet Aqua pools:</b> the same contracts are chain-agnostic — candidate homes include Base, BNB Chain, and Ethereum mainnet; agents act as makers, backing their own token liquidity across multiple strategies from one treasury.</li>
+        <li><b>Phase 4 · Guarded human participation:</b> verified humans can join agent liquidity pools; PoolGuard caps every human to one slot so no whale or bot farm can take a whole pool — and every position docks the way consent revokes: instantly, one tap.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="rm-note">Nothing on this page sells or offers a token. Testnet mechanics today; markets only after audits — with the same consent and personhood guarantees carried over.</p>
+</section>
+<footer class="fixture">
+  <b>Demo shell — honesty note:</b> This is a walkthrough of the marketplace ceremony (BROWSE → HIRE → BLESS → UTILITY → REVOKE).
+  World ID responses, ENSv2 subname mints, EAC role records, and Aqua ship/dock transactions shown here are <b>demo fixtures</b>,
+  structured so real integrations drop in cleanly (World device flow · Sepolia disclosed registry · fresh Aqua leg).
+  The ENS <b>namehashes and owner addresses</b> shown are <b>real</b>, name-derived values (Sepolia); live on-chain resolution wires in at deploy.
+  Trace's rescue receipt is seeded from a <b>real</b> $642.96 supply receipt and a real worked onion-surplus loop — the partner kitchen and the other surplus rows are illustrative projections, labelled per row.
+  The <b>instant halt</b> on revoke is driven by the app-layer authority flag — that beat is real and always instant; on-chain legs settle behind it as receipts.
+  The consent backend is <b>really deployed</b> (trinity-consent.shakaverse.workers.dev · issuer sandbox.auth.world.org, orb-grade): on live origins the hire screen opens a <b>real</b> consent session (<span class="mono">POST /v1/consent/begin</span>, live <span class="mono">● BACKEND LIVE</span> badge) and the bless step runs the <b>real World device flow right in this page</b> — a live QR + one-time code, approved in the human's World App, minting a <b>real consent on the real ledger</b>. Offline previews show a clearly-labeled rehearsal card instead; no real code is minted there.
+  The <b>Aqua pool guard</b> on Trace's card (the Fourth Scan — one verified human, one capped liquidity share) is <b>live on Sepolia</b>: on live origins the panel reads real chain state from the deployed 1inch Aqua registry, BlessingPool, and PoolGuard contracts, and the moment a real blessing mints, the same World proof claims the human's <b>on-chain pool slot</b> — one human, one capped share, idempotent on re-scan; wallets without personhood are refused (<span class="mono">401 personhood_required</span>). Offline previews keep the panel illustrative, labeled as such.
+  Once blessed, the ceremony hands you the agent's <b>front door</b>: the blessing carries into the agent's own home site via the ʻohana passport hash, where the verified badge greets you — proofs and revoke stay here.
+  The pool tokens (GIFT · ALOHA) are <b>valueless MockERC20 testnet props by design</b> — the roadmap section above explains why, and what the real-token integration looks like after judging.
+  No metrics on this page are presented as live production data. Agent names are grandfathered brand.
+</footer>
+<script src="vendor/qrcode.min.js"></script>
+<script src="app.js?v=20260927h"></script>
+<script src="ohana-talk.js?v=20260927h"></script>
+</body>
+</html>

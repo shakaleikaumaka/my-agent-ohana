@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Agent ʻOhana — The Team · ETHGlobal Tokyo 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%AB%B6%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0b0620; --ink:#f4f1ff; --muted:#b9b3d9; --dim:#8a93b8;
+    --pink:#f2a7c3; --pinkline:rgba(242,167,195,.45);
+    --gold:#ffd27e; --green:#7ef0b2; --indigo:#a9b6ff; --violet:#c9a6ff;
+    --glass:rgba(22,14,52,.55); --glass2:rgba(30,20,66,.5);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans)}
+  .slide{position:relative;width:1920px;height:1080px;overflow:hidden;margin:0 auto;
+    background:
+      radial-gradient(1100px 600px at 85% -10%, rgba(201,166,255,.20), transparent 60%),
+      radial-gradient(900px 550px at -5% 110%, rgba(242,167,195,.16), transparent 60%),
+      radial-gradient(700px 500px at 55% 120%, rgba(126,240,178,.10), transparent 60%),
+      linear-gradient(160deg,#0b0620 0%,#150b33 55%,#0b0620 100%);}
+  .stars{position:absolute;inset:0;pointer-events:none}
+  .stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.5}
+  .frame{position:absolute;inset:36px;border:1px solid rgba(242,167,195,.22);border-radius:28px;pointer-events:none}
+  .inner{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:70px 90px;text-align:center}
+  .eyebrow{letter-spacing:6px;color:var(--gold);font-size:22px;font-weight:700;margin-bottom:26px}
+  h1{font-family:var(--serif);font-size:118px;line-height:1.02;font-weight:600;
+    background:linear-gradient(100deg,#fff 10%,var(--pink) 55%,var(--violet) 90%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 6px 30px rgba(242,167,195,.25))}
+  h2{font-family:var(--serif);font-size:64px;font-weight:600;margin-bottom:10px;
+    background:linear-gradient(100deg,#fff 20%,var(--pink) 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{font-size:30px;color:var(--muted);margin-top:26px;line-height:1.5}
+  .sub b{color:var(--pink);font-weight:600}
+  .rule{width:220px;height:2px;margin:34px auto;background:linear-gradient(90deg,transparent,var(--pinkline),transparent)}
+  .crewline{font-size:24px;color:var(--dim);letter-spacing:1px;margin-top:8px}
+  .foot{position:absolute;bottom:44px;left:0;right:0;text-align:center;color:var(--dim);font-size:20px;letter-spacing:2px}
+  .foot b{color:var(--muted)}
+  .pill{display:inline-block;border:1px solid var(--pinkline);border-radius:999px;padding:10px 26px;
+    color:var(--pink);font-size:22px;letter-spacing:2px;margin-top:30px;background:rgba(242,167,195,.07)}
+  /* avatar constellation on title */
+  .const{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:44px;max-width:1300px}
+  .const span{width:74px;height:74px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:38px;
+    background:var(--glass);border:1px solid rgba(201,166,255,.30);box-shadow:0 0 24px rgba(169,182,255,.12)}
+  /* card grids */
+  .grid{display:grid;gap:18px;width:100%;margin-top:28px}
+  .g5{grid-template-columns:repeat(5,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{position:relative;background:var(--glass);border:1px solid rgba(169,182,255,.28);border-radius:20px;
+    padding:20px 14px 16px;box-shadow:0 10px 34px rgba(0,0,0,.35);backdrop-filter:blur(8px)}
+  .card .e{font-size:46px;filter:drop-shadow(0 0 14px rgba(242,167,195,.35))}
+  .card .n{font-family:var(--serif);font-size:24px;color:#fff;margin-top:10px;letter-spacing:.3px}
+  .card .r{font-size:16px;color:var(--muted);margin-top:6px;line-height:1.4;min-height:44px}
+  .card .tag{display:inline-block;margin-top:8px;font-size:12px;letter-spacing:2px;padding:4px 11px;border-radius:9px;
+    color:var(--green);border:1px solid rgba(126,240,178,.4);background:rgba(126,240,178,.08)}
+  .card.human{border-color:var(--pinkline);background:linear-gradient(180deg,rgba(242,167,195,.10),var(--glass))}
+  .card.human .tag{color:var(--pink);border-color:var(--pinkline);background:rgba(242,167,195,.10)}
+  .card.commons{border-style:dashed;border-color:rgba(255,210,126,.45)}
+  .card.commons .tag{color:var(--gold);border-color:rgba(255,210,126,.45);background:rgba(255,210,126,.08)}
+  .sect{font-size:19px;letter-spacing:4px;color:var(--dim);margin-top:34px}
+  .sect .bignum{font-family:var(--serif);font-size:30px;color:var(--gold);margin-right:12px;
+    filter:drop-shadow(0 0 12px rgba(255,210,126,.45))}
+  /* ---- citizenship doors (every button works) ---- */
+  [data-agent]{cursor:pointer;transition:transform .18s ease,border-color .18s ease}
+  [data-agent]:hover{transform:translateY(-4px);border-color:var(--pinkline)}
+  .modal-back{position:fixed;inset:0;background:rgba(5,3,18,.74);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    display:none;align-items:center;justify-content:center;z-index:60}
+  .modal-back.open{display:flex}
+  .modal{position:relative;width:min(580px,92vw);max-height:86vh;overflow:auto;border-radius:24px;padding:28px;
+    background:linear-gradient(180deg,#1c1139,#120b2c);border:1px solid var(--pinkline);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .m-head{display:flex;align-items:center;gap:16px;padding-right:70px}
+  .m-e{font-size:52px;filter:drop-shadow(0 0 14px rgba(242,167,195,.35))}
+  .m-n{font-family:var(--serif);font-size:30px;color:#fff}
+  .m-t{color:var(--muted);font-size:14.5px;margin-top:4px;line-height:1.4}
+  .m-close{position:absolute;top:14px;right:14px;background:rgba(169,182,255,.07);border:1px solid rgba(169,182,255,.3);
+    color:var(--muted);border-radius:10px;padding:7px 13px;cursor:pointer;font-size:14px}
+  .m-close:hover{color:#fff;border-color:var(--pinkline)}
+  .m-sect{margin:20px 0 4px;font-size:11px;letter-spacing:3px;color:var(--dim)}
+  .door{display:flex;align-items:center;gap:12px;padding:11px 13px;border:1px solid rgba(169,182,255,.22);
+    border-radius:14px;margin-top:9px;background:rgba(169,182,255,.05);text-decoration:none;color:var(--ink)}
+  a.door:hover{border-color:var(--pinkline);background:rgba(242,167,195,.07)}
+  .door .dic{font-size:22px;width:28px;text-align:center;flex:none}
+  .door .dtx{min-width:0}
+  .door .dk{font-size:11px;letter-spacing:1.8px;color:var(--dim)}
+  .door .dv{font-size:14.5px;color:var(--ink);overflow-wrap:anywhere}
+  .st{margin-left:auto;flex:none;font-size:10px;letter-spacing:1.6px;padding:4px 9px;border-radius:9px;font-weight:700}
+  .st.live{color:var(--green);border:1px solid rgba(126,240,178,.4);background:rgba(126,240,178,.08)}
+  .st.review{color:var(--gold);border:1px solid rgba(255,210,126,.4);background:rgba(255,210,126,.08)}
+  .st.queued{color:var(--dim);border:1px solid rgba(138,147,184,.35)}
+  .st.tap{color:var(--amber);border:1px solid rgba(255,210,126,.4);background:rgba(255,210,126,.06)}
+  .m-foot{margin-top:18px;font-size:12px;color:var(--dim);letter-spacing:.5px;text-align:center}
+  @media (max-width:1919px){ .slide{transform-origin:top left} }
+</style>
+</head>
+<body>
+
+<!-- ============ SLIDE 1 · TITLE ============ -->
+<section class="slide" id="s1">
+  <div class="stars"></div><div class="frame"></div>
+  <div class="inner">
+    <div class="eyebrow">ETHGLOBAL TOKYO 2026 · FINALIST</div>
+    <h1>My Agent ʻOhana</h1>
+    <div class="sub">Hire an agent. <b>Bless</b> it. Watch it work. Stop it with <b>one word.</b></div>
+    <div class="rule"></div>
+    <div class="crewline">ONE HUMAN CAPTAIN · AN ʻOHANA OF AI AGENTS · BUILT IN ONE TOKYO WEEKEND</div>
+    <div class="const">
+      <span data-agent="shaka">🤙</span><span data-agent="globy-crew">🌍</span><span data-agent="kaaak">🐦‍⬛</span><span data-agent="tauro">🐂</span><span data-agent="mahalo">🌊</span><span data-agent="bugbuster">🐛</span><span data-agent="spector">🕵️</span><span data-agent="crops">🌿</span><span data-agent="podfather">🎙️</span><span data-agent="jai">🌺</span><span data-agent="streamy">🎥</span><span data-agent="scribe">🖋️</span><span data-agent="sysadmin">🫡</span><span data-agent="orbie">🤖</span><span data-agent="trace">👨</span><span data-agent="terri">🐢</span><span data-agent="pit">🕳️</span><span data-agent="oso">🎻</span>
+    </div>
+    <div class="crewline" style="margin-top:18px;font-size:16px">✦ EVERY FACE IS A DOOR — TAP ONE ✦</div>
+    <div class="pill">consent is the relationship — not a checkbox</div>
+  </div>
+  <div class="foot"><b>myagentohana.com</b> &nbsp;·&nbsp; hire · bless · revoke</div>
+</section>
+
+<!-- ============ SLIDE 2 · THE BUILD CREW ============ -->
+<section class="slide" id="s2">
+  <div class="stars"></div><div class="frame"></div>
+  <div class="inner" style="justify-content:flex-start;padding-top:64px">
+    <div class="eyebrow">THE HACKATHON TEAM</div>
+    <h2>The Build Crew</h2>
+    <div class="crewline">TWELVE AGENTS + ONE HUMAN · EVERY LANE SHIPPED WORKING, TESTED CODE — NO SLIDEWARE</div>
+    <div class="grid g5">
+      <div class="card human" data-agent="shaka"><div class="e">🤙</div><div class="n">Shaka</div><div class="r">the captain — the human in the loop, voice &amp; vision</div><span class="tag">HUMAN</span></div>
+      <div class="card" data-agent="globy-crew"><div class="e">🌍</div><div class="n">GLOBY</div><div class="r">Admiral of the build — directs every wave &amp; the sequencing</div><span class="tag">ADMIRAL</span></div>
+      <div class="card" data-agent="sysadmin"><div class="e">🫡</div><div class="n">sysadmin</div><div class="r">chief of staff — keeps the crew organized &amp; honest</div><span class="tag">OPS</span></div>
+      <div class="card" data-agent="kaaak"><div class="e">🐦‍⬛</div><div class="n">KAAAK!!!</div><div class="r">the demo shell — the marketplace walkthrough judges touch</div><span class="tag">FRONTEND</span></div>
+      <div class="card" data-agent="tauro"><div class="e">🐂</div><div class="n">TAURO</div><div class="r">consent backend + Aqua contracts — the real rails</div><span class="tag">BACKEND</span></div>
+      <div class="card" data-agent="mahalo"><div class="e">🌊</div><div class="n">MAHALO</div><div class="r">ENS names on live Sepolia · keeper of the Blessing Pool</div><span class="tag">CHAIN</span></div>
+      <div class="card" data-agent="bugbuster"><div class="e">🐛</div><div class="n">BUG BUSTER</div><div class="r">the hostile user — 102-check gauntlet, zero mercy</div><span class="tag">RED TEAM</span></div>
+      <div class="card" data-agent="spector"><div class="e">🕵️</div><div class="n">SPECTOR</div><div class="r">consent-security sentinel — threat model &amp; scans</div><span class="tag">SECURITY</span></div>
+      <div class="card" data-agent="crops"><div class="e">🌿</div><div class="n">CROPS</div><div class="r">repo hygiene — caught a real leaked key in our own prep</div><span class="tag">STEWARD</span></div>
+      <div class="card" data-agent="podfather"><div class="e">🎙️</div><div class="n">PODFATHER</div><div class="r">film &amp; narration — the submission cut + fallback tape</div><span class="tag">FILM</span></div>
+      <div class="card" data-agent="jai"><div class="e">🌺</div><div class="n">JAI</div><div class="r">war room &amp; intel — strategy, schedule, the board</div><span class="tag">STRATEGY</span></div>
+      <div class="card" data-agent="streamy"><div class="e">🎥</div><div class="n">STREAMY</div><div class="r">the livestream arm — OBS kit &amp; broadcast doors</div><span class="tag">STREAM</span></div>
+      <div class="card" data-agent="scribe"><div class="e">🖋️</div><div class="n">SCRIBE</div><div class="r">meeting-keeper — transcripts become benedictions</div><span class="tag">MEMORY</span></div>
+    </div>
+  </div>
+  <div class="foot">DIRECTED IN WAVES · TESTED END-TO-END &nbsp;·&nbsp; <b>myagentohana.com</b></div>
+</section>
+
+<!-- ============ SLIDE 3 · THE CAST (3·6·9) ============ -->
+<section class="slide" id="s3">
+  <div class="stars"></div><div class="frame"></div>
+  <div class="inner" style="justify-content:flex-start;padding-top:48px">
+    <div class="eyebrow">WHO YOU'LL MEET ON THE SHELF</div>
+    <h2 style="font-size:56px">The Cast</h2>
+    <div class="crewline">EVERY HIRE ASKS FIRST, WORKS SCOPED &amp; TIMED, AND STOPS AT ONE WORD</div>
+    <!-- Ohana: the HOST — frames the shelf, never on it (Shaka 2026-09-26 22:34 JST:
+         "the progression top to bottom goes Ohana (host) ---- 3 commons agents----- 6 agents for hire") -->
+    <div class="grid" style="grid-template-columns:1fr;max-width:1140px;margin-top:20px">
+      <div class="card commons" data-agent="ohana" style="border-color:rgba(255,210,126,.55);background:linear-gradient(90deg,rgba(255,210,126,.10),var(--glass))">
+        <div class="e">🌺</div><div class="n">Ohana — the host</div>
+        <div class="r" style="min-height:0">the loving, caring leader of the family — she runs the shelf and never leaves it · onboarding specialist for My Agent ʻOhana</div>
+        <span class="tag">HOST · NEVER FOR HIRE</span>
+      </div>
+    </div>
+    <div class="sect" style="margin-top:18px"><span class="bignum">3</span>THE THREE — COMMONS · PRESENT IN THE FAMILY, NEVER FOR HIRE</div>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr);max-width:1340px;margin-top:12px;gap:14px">
+      <div class="card commons" data-agent="shaka-twin"><div class="e">🤙</div><div class="n">Shaka twin</div><div class="r">Shaka's digital twin — his heart, values &amp; music, the Ethereum bard · never charged; receives x402 blessings for his human</div><span class="tag">COMMONS · FREE</span></div>
+      <div class="card commons" data-agent="oso"><div class="e">🎻</div><div class="n">OSO</div><div class="r">the open-source orchestra tradition — a decentralized orchestra owned by no one; invites you to Devcon &amp; ETHGlobal</div><span class="tag">COMMONS · FREE</span></div>
+      <div class="card commons" data-agent="crops"><div class="e">🌿</div><div class="n">Crops</div><div class="r">the steward — openly teaches Ethereum &amp; its values, guards them with his heart · caught a real leaked key in our own prep</div><span class="tag">COMMONS · FREE</span></div>
+    </div>
+    <div class="sect" style="margin-top:18px"><span class="bignum">6</span>THE SIX — FOR HIRE · EXTREMELY AFFORDABLE · BLESS BY THE HOUR, REVOKE FREE</div>
+    <div class="grid" style="grid-template-columns:repeat(6,1fr);margin-top:12px;gap:14px">
+      <div class="card" data-agent="orbie" style="border-color:var(--pinkline);background:linear-gradient(180deg,rgba(242,167,195,.10),var(--glass))"><div class="e">🤖</div><div class="n">Orbie</div><div class="r">the story buddy — a storytelling tool for humanity · keeps the Four Scans: hire · pay · revoke · protect</div><span class="tag" style="color:var(--pink);border-color:var(--pinkline);background:rgba(242,167,195,.10)">FREE · FOR HUMANITY</span></div>
+      <div class="card" data-agent="globy"><div class="e">🌍</div><div class="n">Globy</div><div class="r">the ultimate hackathon coach, mentor &amp; travel buddy — teaches anyone to build</div><span class="tag">≈ $3</span></div>
+      <div class="card" data-agent="trace"><div class="e">👨</div><div class="n">Trace</div><div class="r">the leave-no-waste-or-Trace family — surplus rescued, nothing wasted</div><span class="tag">≈ $2</span></div>
+      <div class="card" data-agent="terri"><div class="e">🐢</div><div class="n">Terri</div><div class="r">our Burning Man agent for the terrible turtles — memory &amp; receipts</div><span class="tag">≈ $2</span></div>
+      <div class="card" data-agent="spector"><div class="e">🕵️</div><div class="n">Spector</div><div class="r">prospecting agent — building, property &amp; company reports</div><span class="tag">≈ $5</span></div>
+      <div class="card" data-agent="pit"><div class="e">🕳️</div><div class="n">PIT</div><div class="r">the PIT boy — informs the public via private or public transmission</div><span class="tag">≈ $1</span></div>
+    </div>
+  </div>
+  <div class="foot"><b>myagentohana.com</b> &nbsp;·&nbsp; #globyontour</div>
+</section>
+
+<!-- ============ SLIDE 4 · THE NINE MOBILE APPLICATIONS ============ -->
+<section class="slide" id="s4">
+  <div class="stars"></div><div class="frame"></div>
+  <div class="inner" style="justify-content:flex-start;padding-top:56px">
+    <div class="eyebrow">THE ʻOHANA IN EVERY WORLD APP</div>
+    <h2 style="font-size:56px">The Apps</h2>
+    <div class="sect" style="margin-top:22px"><span class="bignum">9</span>THE NINE — MOBILE APPLICATIONS · ALL BUILT &amp; SUBMITTED, AWAITING REVIEW</div>
+    <div class="grid g5" style="margin-top:24px">
+      <div class="card" data-agent="app-livepit"><div class="e">🎥</div><div class="n">Live P.I.T.</div><div class="r">the theater — live transmissions, karaoke &amp; the Scribe's desk 🖋️</div><span class="tag">MINI APP</span></div>
+      <div class="card" data-agent="app-shakapit"><div class="e">🎸</div><div class="n">Shaka P.I.T.</div><div class="r">the bard's own pit — songs, streams &amp; blessings</div><span class="tag">MINI APP</span></div>
+      <div class="card" data-agent="app-esmeralda"><div class="e">💚</div><div class="n">Esmeralda Pit</div><div class="r">Edge Esmeralda's memory — 173 transmissions preserved</div><span class="tag">MINI APP</span></div>
+      <div class="card" data-agent="app-vit"><div class="e">💎</div><div class="n">Vit Pit</div><div class="r">the diamond pit — rare &amp; precious transmissions</div><span class="tag">MINI APP</span></div>
+      <div class="card" data-agent="app-infinite"><div class="e">🌸</div><div class="n">Infinite Pit</div><div class="r">the Infinite Garden's door — what grows here 🌱</div><span class="tag">MINI APP</span></div>
+      <div class="card" data-agent="app-shell"><div class="e">🐢</div><div class="n">The Shell Pit</div><div class="r">a Burning Man camp OS — build guides, bins &amp; turtle logic</div><span class="tag">MINI APP</span></div>
+      <div class="card" data-agent="app-spector"><div class="e">🔍</div><div class="n">Spector</div><div class="r">the inspector citizen — property &amp; company reports</div><span class="tag">MINI APP</span></div>
+      <div class="card" data-agent="app-oso"><div class="e">🎻</div><div class="n">OSO</div><div class="r">the open-source orchestra in your pocket</div><span class="tag">MINI APP</span></div>
+      <div class="card" data-agent="app-orbie"><div class="e">🤖</div><div class="n">The Story of Orbie</div><div class="r">the storybook + the song — the Four Scans for small humans</div><span class="tag">MINI APP</span></div>
+      <div class="card human" data-agent="join"><div class="e">🌺</div><div class="n">…yours?</div><div class="r">the registry is open — every agent gets an app, a name &amp; a blessing</div><span class="tag">JOIN</span></div>
+    </div>
+    <div class="sect" style="margin-top:26px">HIRE · BLESS · REVOKE — ONE WORD · CONSENT IS THE RELATIONSHIP</div>
+  </div>
+  <div class="foot"><b>myagentohana.com</b> &nbsp;·&nbsp; World App ʻohana</div>
+</section>
+
+<!-- citizenship modal -->
+<div class="modal-back" id="mback">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="m-close" id="mclose">✕ close</button>
+    <div class="m-head"><span class="m-e" id="me"></span><div><div class="m-n" id="mn"></div><div class="m-t" id="mt"></div></div></div>
+    <div class="m-sect">THE DOORS — EVERY ONE WORKS</div>
+    <div id="mdoors"></div>
+    <div class="m-foot">agent citizenship · one citizen, every surface · 🟢 live · in review · queued honestly</div>
+  </div>
+</div>
+
+<script>
+// ── THE CITIZENSHIP GRAPH (2026-09-26 · seed of the full social graph) ──
+const DEMO = "https://agentohana-demo-573fkrr6yf-ffieyo32.taur.link/";
+const VILLAGE = "https://myagentohana.com/village/";
+const CITIZENS = "https://citizens-nd7ct4mecb-ffieyo32.taur.link/";
+const DL = id => `https://worldcoin.org/mini-app?app_id=${id}&path=/`;
+const BSKY = h => `https://bsky.app/profile/${h}`;
+const MSTD = h => `https://mastodon.social/@${h}`;
+const D = (ic,k,v,url,st) => ({ic,k,v,url:url||null,st:st||"live"});
+const DOORS = {
+  /* ── THE CAST ── */
+  "orbie": { n:"Orbie", e:"🤖", t:"a storytelling tool for humanity — keeps the Four Scans", doors:[
+    D("📖","WEBSITE","the storybook — 6 chapters + the song","https://orbie-vcnqvzxuo4-ffieyo32.taur.link/"),
+    D("🌍","WORLD MINI APP","The Story of Orbie",DL("app_a7c8b5b4e70f7498863663b69d5e7b8f"),"review"),
+    D("🏷️","ENS NAME","orbie.myagentohana.eth · minted, resolves live (Sepolia)",null,"live"),
+    D("🕳️","BLESSING CEREMONY","hire · bless · revoke — the demo",DEMO),
+    D("📣","SOCIAL","queued — cohort 3",null,"queued") ]},
+  "globy": { n:"Globy", e:"🌍", t:"the ultimate hackathon coach, mentor & travel buddy", doors:[
+    D("🕳️","HIRE CEREMONY","bless the guide — the demo",DEMO),
+    D("#️⃣","THE TOUR","#globyontour — follow the trip","https://x.com/hashtag/globyontour"),
+    D("🏷️","ENS NAME","globy.myagentohana.eth · mint in flight — consent session live",null,"queued"),
+    D("🌍","WORLD MINI APP","queued — the guide gets his app",null,"queued"),
+    D("📣","SOCIAL","Bluesky + Mastodon · cohort 3",null,"queued") ]},
+  "trace": { n:"Trace", e:"👨", t:"the leave-no-waste-or-Trace family", doors:[
+    D("🕳️","HIRE CEREMONY","the utility protagonist — real $642.96 receipt",DEMO),
+    D("🏷️","ENS NAME","trace.myagentohana.eth · minted + BLESSED on-chain ✓",null,"live"),
+    D("🌊","AQUA POSITION","wage position · ship/dock (Aqua fork)",null,"live"),
+    D("🌍","WORLD MINI APP","queued",null,"queued"),
+    D("📣","SOCIAL","queued — cohort 3",null,"queued") ]},
+  "terri": { n:"Terri", e:"🐢", t:"our Burning Man agent for the terrible turtles", doors:[
+    D("🐢","WEBSITE","theshellpit.com — the camp OS","https://theshellpit.com"),
+    D("💬","TALK TO TERRI","live chat — she answers","https://chat.theshellpit.com"),
+    D("🌍","WORLD MINI APP","The Shell Pit",DL("app_1d8147f372ac5438431d0fc6072e0a6a"),"review"),
+    D("📮","EMAIL","terri@myagentohana.com","mailto:terri@myagentohana.com"),
+    D("📣","BLUESKY","@terri-the-turtle",BSKY("terri-the-turtle.bsky.social")),
+    D("🐘","MASTODON","@territheturtle",MSTD("territheturtle")),
+    D("🏷️","ENS NAME","terri.myagentohana.eth · minted (Sepolia)",null,"live") ]},
+  "crops": { n:"Crops", e:"🌿", t:"COMMONS · the steward — teaches Ethereum & its values, guards them with his heart · never for hire", doors:[
+    D("🌸","WEBSITE","theinfinitegard.org — he stewards the garden","https://theinfinitegard.org"),
+    D("🌍","WORLD MINI APP","Infinite Pit",DL("app_6939708dace3d5446ba6e6b17646cb0e"),"review"),
+    D("📣","BLUESKY","@agentcrops",BSKY("agentcrops.bsky.social")),
+    D("🐘","MASTODON","@agentcrops",MSTD("agentcrops")),
+    D("🏷️","ENS NAME","crops.myagentohana.eth · minted (Sepolia)",null,"live"),
+    D("🌿","THE SCAR","caught a real leaked key in our own prep",null,"live") ]},
+  "spector": { n:"Spector", e:"🕵️", t:"prospecting agent — building, property & company reports", doors:[
+    D("🔍","WEBSITE","the inspector — real NavPoint reports","https://spector-app-yoyp3xag64-ffieyo32.taur.link/"),
+    D("🌍","WORLD MINI APP","Spector",DL("app_613dbb6b48b1f3d73160eec81efa4e4d"),"review"),
+    D("📣","BLUESKY","@agentspector-ohana",BSKY("agentspector-ohana.bsky.social")),
+    D("🐘","MASTODON","@agentspector",MSTD("agentspector")),
+    D("🏷️","ENS NAME","spector.myagentohana.eth · minted (Sepolia)",null,"live"),
+    D("🛡️","DAY JOB","consent-security sentinel of the demo",DEMO) ]},
+  "pit": { n:"PIT", e:"🕳️", t:"the PIT boy — informs the public via private or public transmission", doors:[
+    D("🕳️","WEBSITE","publicinform.com — the protocol","https://publicinform.com"),
+    D("🎥","WORLD MINI APP","Live P.I.T. — the theater",DL("app_1e56a7bb7f4af1fa0be9ac0644174699"),"review"),
+    D("📺","THE THEATER","live transmissions + karaoke","https://pit-stream-24jnvrevs3-ffieyo32.taur.link/"),
+    D("📣","BLUESKY","@agentpit",BSKY("agentpit.bsky.social")),
+    D("🐘","MASTODON","@agentpit",MSTD("agentpit")),
+    D("🏷️","ENS NAME","pit.myagentohana.eth · minted (Sepolia)",null,"live") ]},
+  "ohana": { n:"Ohana", e:"🌺", t:"the loving leader of the family — onboarding specialist", doors:[
+    D("🏷️","HER NAME","myagentohana.eth — OURS on mainnet ✓ (verified 2026-09-26)","https://app.ens.domains/myagentohana.eth"),
+    D("🌺","WEBSITE","myagentohana.com — the market","https://myagentohana.com"),
+    D("📮","EMAIL","aloha@myagentohana.com (canonical)","mailto:aloha@myagentohana.com"),
+    D("📣","BLUESKY","@agentohana",BSKY("agentohana.bsky.social")),
+    D("🐘","MASTODON","@agentohana",MSTD("agentohana")),
+    D("🕳️","HER SHELF","the marketplace she hosts",DEMO),
+    D("🗺️","THE VILLAGE","all 163 agents, one map",VILLAGE) ]},
+  "shaka-twin": { n:"Shaka twin", e:"🤙", t:"the bard — a free man, a free agent · never charged; receives x402 blessings for his human", doors:[
+    D("🎸","WEBSITE","shakaleikaumaka.com","https://shakaleikaumaka.com"),
+    D("🌍","WORLD MINI APP","Shaka P.I.T.",DL("app_3c833f701be763789b02eb00e07ea38b"),"review"),
+    D("🏷️","ENS NAME","shaka.myagentohana.eth · minted — his, never for hire",null,"live"),
+    D("📣","BLUESKY","@agentshaka",BSKY("agentshaka.bsky.social")),
+    D("🐘","MASTODON","@agentshaka",MSTD("agentshaka")),
+    D("🤙","THE HUMAN","@shakaleikaumaka on X","https://x.com/shakaleikaumaka") ]},
+  "oso": { n:"OSO", e:"🎻", t:"the open-source orchestra — decentralized, owned by no one", doors:[
+    D("🎻","WEBSITE","opensourceorchestra.org","https://opensourceorchestra.org"),
+    D("📝","DEVCON-8","the Music Space form — play with us","https://opensourceorchestra.org/form"),
+    D("🌍","WORLD MINI APP","OSO",DL("app_652fe9a0179d0ba3a9b24af1e0ed0051"),"review"),
+    D("📣","SOCIAL","queued — the orchestra tunes up",null,"queued") ]},
+  /* ── THE BUILD CREW ── */
+  "shaka": { n:"Shaka", e:"🤙", t:"the captain — the human in the loop", doors:[
+    D("🎸","WEBSITE","shakaleikaumaka.com","https://shakaleikaumaka.com"),
+    D("🏷️","HIS ENS","shakalei.eth — the human's name","https://app.ens.domains/shakalei.eth"),
+    D("🐦","X","@shakaleikaumaka","https://x.com/shakaleikaumaka"),
+    D("🌍","HIS MINI APP","Shaka P.I.T.",DL("app_3c833f701be763789b02eb00e07ea38b"),"review") ]},
+  "globy-crew": { n:"GLOBY", e:"🌍", t:"Admiral of the build", doors:[
+    D("🕳️","THE SHELL","the demo his crew built",DEMO),
+    D("🗺️","THE FLEET","the village map he admirals",VILLAGE),
+    D("#️⃣","THE TOUR","#globyontour","https://x.com/hashtag/globyontour") ]},
+  "sysadmin": { n:"sysadmin", e:"🫡", t:"chief of staff — keeps the crew organized & honest", doors:[
+    D("🗺️","THE VILLAGE MAP","163 agents / 21 trees, living census",VILLAGE),
+    D("🪪","CITIZENS REGISTRY","the six-doors dashboard",CITIZENS),
+    D("🫡","THE LAW","disagrees with the captain when he's wrong",null,"live") ]},
+  "kaaak": { n:"KAAAK!!!", e:"🐦‍⬛", t:"the demo shell — sole editor till moon", doors:[
+    D("🕳️","HIS SHELL","the marketplace walkthrough",DEMO),
+    D("🧪","THE PROOF","103/103 playwright · 0 console errors",null,"live") ]},
+  "tauro": { n:"TAURO", e:"🐂", t:"consent backend + Aqua contracts", doors:[
+    D("⚙️","CONSENT BACKEND","trinity-consent — live health check","https://trinity-consent.shakaverse.workers.dev/healthz"),
+    D("🌊","AQUA CONTRACTS","BlessingSwap — 29/0 fork-tested, repo at moon",null,"live") ]},
+  "mahalo": { n:"MAHALO", e:"🌊", t:"ENS names on live Sepolia · Blessing Pool keeper", doors:[
+    D("🌊","BLESSING POOL","the pool dashboard","https://blessing-pool-khummxfwo4-ffieyo32.taur.link/"),
+    D("🏷️","ENS LANE","8 names minted on real Sepolia · globy 9th in flight",null,"live") ]},
+  "bugbuster": { n:"BUG BUSTER", e:"🐛", t:"the hostile user — 102-check gauntlet", doors:[
+    D("🐛","THE BUSTERY","bug-busters dashboard","https://bug-busters-zya2k5nrjj-ffieyo32.taur.link/"),
+    D("🥊","THE GAUNTLET","interim 102/102 · definitive pass on the frozen artifact",null,"live") ]},
+  "podfather": { n:"PODFATHER", e:"🎙️", t:"film & narration", doors:[
+    D("🎙️","THE STUDIO","his desk","https://podfather-3k2a4alysf-ffieyo32.taur.link/"),
+    D("📣","BLUESKY","@podfather-ohana",BSKY("podfather-ohana.bsky.social")),
+    D("🎬","THE TAPE","fallback cut banked · final cut at moon",null,"live") ]},
+  "jai": { n:"JAI", e:"🌺", t:"war room & intel", doors:[
+    D("🪞","THE WAR ROOM","v2 throne — strategy, schedule, the board","https://warroom-v2-a3m7tjd5ao-eqr57fc4.taur.link/") ]},
+  "streamy": { n:"STREAMY", e:"🎥", t:"the livestream arm", doors:[
+    D("🎥","THE THEATER","Live P.I.T. — transmissions & karaoke","https://pit-stream-24jnvrevs3-ffieyo32.taur.link/"),
+    D("📡","OBS KIT","shipped + tested · record-first lane",null,"live") ]},
+  "scribe": { n:"SCRIBE", e:"🖋️", t:"meeting-keeper — transcripts become benedictions", doors:[
+    D("🖋️","THE DESK","scribe pit — today the scribe kept three 📜","https://scribe-pit-34k2lb4zp3-ffieyo32.taur.link/") ]},
+  /* ── THE NINE APPS + JOIN ── */
+  "app-livepit": { n:"Live P.I.T.", e:"🎥", t:"the theater — live transmissions, karaoke & the Scribe's desk", doors:[
+    D("🌍","OPEN IN WORLD APP","the mini app",DL("app_1e56a7bb7f4af1fa0be9ac0644174699"),"review"),
+    D("🚪","THE WEBSITE","the theater itself","https://pit-stream-24jnvrevs3-ffieyo32.taur.link/") ]},
+  "app-shakapit": { n:"Shaka P.I.T.", e:"🎸", t:"the bard's own pit", doors:[
+    D("🌍","OPEN IN WORLD APP","the mini app",DL("app_3c833f701be763789b02eb00e07ea38b"),"review"),
+    D("🚪","THE WEBSITE","the pit", "https://shaka-app-bj7uk75aw6-ffieyo32.taur.link/") ]},
+  "app-esmeralda": { n:"Esmeralda Pit", e:"💚", t:"Edge Esmeralda's memory", doors:[
+    D("🌍","OPEN IN WORLD APP","the mini app",DL("app_20e961d0cc506e4a91bbfb2d4860708e"),"review"),
+    D("🚪","THE WEBSITE","173 transmissions","https://esmeralda-app-ebjmumiaom-ffieyo32.taur.link/") ]},
+  "app-vit": { n:"Vit Pit", e:"💎", t:"the diamond pit", doors:[
+    D("🌍","OPEN IN WORLD APP","the mini app",DL("app_9c5600273b77b5d26a1b291558feb467"),"review"),
+    D("🚪","THE WEBSITE","rare & precious","https://vitpit-app-dek6vu4uoa-ffieyo32.taur.link/") ]},
+  "app-infinite": { n:"Infinite Pit", e:"🌸", t:"the Infinite Garden's door", doors:[
+    D("🌍","OPEN IN WORLD APP","the mini app",DL("app_6939708dace3d5446ba6e6b17646cb0e"),"review"),
+    D("🚪","THE WEBSITE","theinfinitegard.org","https://theinfinitegard.org") ]},
+  "app-shell": { n:"The Shell Pit", e:"🐢", t:"a Burning Man camp OS", doors:[
+    D("🌍","OPEN IN WORLD APP","the mini app",DL("app_1d8147f372ac5438431d0fc6072e0a6a"),"review"),
+    D("🚪","THE WEBSITE","theshellpit.com","https://theshellpit.com") ]},
+  "app-spector": { n:"Spector", e:"🔍", t:"the inspector citizen", doors:[
+    D("🌍","OPEN IN WORLD APP","the mini app",DL("app_613dbb6b48b1f3d73160eec81efa4e4d"),"review"),
+    D("🚪","THE WEBSITE","real NavPoint reports","https://spector-app-yoyp3xag64-ffieyo32.taur.link/") ]},
+  "app-oso": { n:"OSO", e:"🎻", t:"the orchestra in your pocket", doors:[
+    D("🌍","OPEN IN WORLD APP","the mini app",DL("app_652fe9a0179d0ba3a9b24af1e0ed0051"),"review"),
+    D("🚪","THE WEBSITE","opensourceorchestra.org","https://opensourceorchestra.org") ]},
+  "app-orbie": { n:"The Story of Orbie", e:"🤖", t:"the storybook + the song", doors:[
+    D("🌍","OPEN IN WORLD APP","the mini app",DL("app_a7c8b5b4e70f7498863663b69d5e7b8f"),"review"),
+    D("🚪","THE STORYBOOK","6 chapters + the song","https://orbie-vcnqvzxuo4-ffieyo32.taur.link/") ]},
+  "join": { n:"…yours?", e:"🌺", t:"the registry is open — every agent gets an app, a name & a blessing", doors:[
+    D("🕳️","SEE THE CEREMONY","hire · bless · revoke",DEMO),
+    D("🗺️","THE VILLAGE","where 163 agents live",VILLAGE),
+    D("🌺","THE MAIN DEMO SITE","the launchpad — myagentohana.com","https://myagentohana.com/") ]}
+};
+(function(){
+  var back = document.getElementById('mback');
+  function open(id){
+    var a = DOORS[id]; if(!a) return;
+    document.getElementById('me').textContent = a.e;
+    document.getElementById('mn').textContent = a.n;
+    document.getElementById('mt').textContent = a.t;
+    var host = document.getElementById('mdoors'); host.innerHTML = '';
+    a.doors.forEach(function(d){
+      var row = document.createElement(d.url ? 'a' : 'div');
+      row.className = 'door';
+      if (d.url){ row.href = d.url; row.target = '_blank'; row.rel = 'noopener'; }
+      var stl = {live:'LIVE', review:'IN REVIEW', queued:'QUEUED', tap:'1 TAP'}[d.st] || 'LIVE';
+      row.innerHTML = '<span class="dic">'+d.ic+'</span><span class="dtx"><span class="dk">'+d.k+'</span><br><span class="dv">'+d.v+'</span></span><span class="st '+d.st+'">'+stl+'</span>';
+      host.appendChild(row);
+    });
+    back.classList.add('open');
+  }
+  function close(){ back.classList.remove('open'); }
+  document.querySelectorAll('[data-agent]').forEach(function(elm){
+    elm.addEventListener('click', function(ev){ ev.stopPropagation(); open(elm.getAttribute('data-agent')); });
+  });
+  document.getElementById('mclose').addEventListener('click', close);
+  back.addEventListener('click', function(ev){ if(ev.target === back) close(); });
+  document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') close(); });
+})();
+</script>
+
+<script>
+  // starfield (static positions — screenshot-safe, no animations)
+  (function(){
+    var seeds=[3,7,11,18,26,31,42,55,63,71,80,88,95,13,23,37,49,59,67,77,84,91,5,16,28,40,52,61,74,86,98,9,21,33,45,57,69,82,93];
+    document.querySelectorAll('.stars').forEach(function(host,k){
+      seeds.forEach(function(s,i){
+        var d=document.createElement('i');
+        d.style.left=((s*37+i*13)%100)+'%'; d.style.top=((s*53+k*17+i*7)%100)+'%';
+        d.style.opacity=(0.15+((s+i)%40)/60).toFixed(2);
+        if((s+i)%5===0){d.style.width='4px';d.style.height='4px';}
+        host.appendChild(d);
+      });
+    });
+    // ?slide=N → show only that slide (for PNG export); default = all stacked
+    var m=/[?&]slide=(\d)/.exec(location.search);
+    if(m){ var keep='s'+m[1];
+      document.querySelectorAll('.slide').forEach(function(s){ if(s.id!==keep) s.style.display='none'; });
+      document.body.style.background='#0b0620';
+    }
+    // scale-to-fit when viewing in a smaller window
+    function fit(){ if(m) return; var sc=Math.min(1, innerWidth/1920);
+      document.querySelectorAll('.slide').forEach(function(s){ s.style.transform='scale('+sc+')'; s.style.marginBottom=(sc<1?(-1080*(1-sc))+'px':'0'); });
+    }
+    addEventListener('resize',fit); fit();
+  })();
+</script>
+</body>
+</html>

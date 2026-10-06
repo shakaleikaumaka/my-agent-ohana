@@ -1,0 +1,9 @@
+# Secrets must never reach the branch that publishes.
+# 2026-09-13: a real integrations/world/.env was committed to gh-pages and stayed
+# anonymously fetchable for 23 days. main/.gitignore was correct; this branch had none.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.secrets/
