@@ -8,7 +8,25 @@
 (function () {
   'use strict';
   if (document.getElementById('ohanaTalkRoot')) return;
-  var HUB = 'https://ohana-chat.shakaverse.workers.dev';
+  /* GFW lane (2026-10-14): *.workers.dev is DNS-sinkholed in mainland China, zone routes on
+     our own domains are not. On myagentohana.com we use the same-origin proxy /api/chat
+     (Worker `ohana-api`), which forwards to this very hub edge-side; everywhere else, and if
+     the proxy's first poll fails, we fall straight back to the direct origin. Chat can only
+     become MORE reachable, never less. */
+  var HUB_DIRECT = 'https://ohana-chat.shakaverse.workers.dev';
+  var HUB = HUB_DIRECT;
+  try {
+    if (location.protocol === 'https:' && /^(www\.)?myagentohana\.com$/i.test(location.hostname)) {
+      HUB = location.origin + '/api/chat';
+    }
+  } catch (e) { HUB = HUB_DIRECT; }
+  var hubFellBack = false;
+  function hubFallback() {
+    if (hubFellBack || HUB === HUB_DIRECT) return false;
+    hubFellBack = true;
+    HUB = HUB_DIRECT;
+    return true;
+  }
 
   var css = `
   #ohanaTalkRoot{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:9000;font-family:var(--sans,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif)}
@@ -131,10 +149,16 @@
   }
   function catchUp() {
     // full-history render once per page load — any stuck client self-heals on open
-    return fetch(HUB + '/poll?session=' + encodeURIComponent(sess) + '&after=0')
-      .then(function (r) { return r.json(); })
-      .then(function (d) { (d.messages || []).forEach(render); caughtUp = true; greet(); })
-      .catch(function () { caughtUp = true; greet(); });
+    function go() {
+      return fetch(HUB + '/poll?session=' + encodeURIComponent(sess) + '&after=0')
+        .then(function (r) { return r.json(); })
+        .then(function (d) { (d.messages || []).forEach(render); caughtUp = true; greet(); })
+        .catch(function () {
+          if (hubFallback()) return go(); // same-origin proxy unreachable → direct origin, once
+          caughtUp = true; greet();
+        });
+    }
+    return go();
   }
   function poll() {
     if (polling) return; polling = true;
@@ -148,7 +172,7 @@
           if (d.typing) scroll();
           loop();
         })
-        .catch(function () { setTimeout(loop, 4000); });
+        .catch(function () { hubFallback(); setTimeout(loop, 4000); });
     })();
   }
 
@@ -178,7 +202,10 @@
         if (d && d.seq) seen[d.seq] = 1;
         if (d && d.error) note(d.error);
       })
-      .catch(function () { note('connection hiccup — that message may not have sent; try again 🫶'); });
+      .catch(function () {
+        if (hubFallback()) { note('switching to the direct line — please send that once more 🫶'); return; }
+        note('connection hiccup — that message may not have sent; try again 🫶');
+      });
   });
   input.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.dispatchEvent(new Event('submit', { cancelable: true })); }

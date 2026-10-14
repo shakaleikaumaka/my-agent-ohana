@@ -61,7 +61,8 @@
     // registered our 6 real subnames in AGENT_SCOPE_MAP, so a cross-origin
     // POST /v1/consent/begin now returns 200 from the browser.
     enabled: true,
-    base: "https://trinity-consent.shakaverse.workers.dev",
+    base: "https://trinity-consent.shakaverse.workers.dev", // overwritten below by the GFW lane
+
     clientId: "a8cb41bd-833a-48b7-ab90-bb94b2485bb3", // PUBLIC World client_id — NEVER the secret
     healthy: false,
     issuer: null,
@@ -88,6 +89,26 @@
     ]
     // agent.detail.subname (<sub>.myagentohana.eth, shaka-twin→shaka) is the scopeMap key.
   };
+  // ---------------------------------------------------------------- GFW lane (2026-10-14)
+  // `*.workers.dev` is DNS-sinkholed in mainland China; zone routes on our own domains are
+  // not. So on myagentohana.com we talk to the SAME-ORIGIN proxy /api/<lane> (Worker
+  // `ohana-api`, route myagentohana.com/api/*), which forwards to the very same backends
+  // edge-side. The workers.dev URLs below stay as the automatic fallback: if the proxy ever
+  // fails, wireFetch/proxyFetch retry once on the direct origin, so this can only add
+  // reachability, never remove it. Nothing about the consent backends changed.
+  var WD = {
+    consent: "https://trinity-consent.shakaverse.workers.dev",
+    pit: "https://pit-intake.shakaverse.workers.dev"
+  };
+  function sameOriginApi(lane) {
+    try {
+      if (location.protocol !== "https:") return null;
+      if (!/^(www\.)?myagentohana\.com$/i.test(location.hostname)) return null;
+      return location.origin + "/api/" + lane;
+    } catch (e) { return null; }
+  }
+  WIRE.base = sameOriginApi("consent") || WD.consent;
+  WIRE.baseFallback = WD.consent;
   // Static origin gate. Live calls fire ONLY when the page is served from a deployed origin:
   // the worker's ACAO allow-list covers *.taur.link AND the production brand origin
   // myagentohana.com (+www) — brand-origin live wiring, 2026-09-26; trinity-consent
@@ -104,14 +125,30 @@
   }
   function wireFetch(path, opts, cb) {
     if (!WIRE.enabled) { cb(null, "disabled"); return; }
-    var done = false;
-    var t = setTimeout(function () { if (!done) { done = true; cb(null, "timeout"); } }, 6000);
-    try {
-      fetch(WIRE.base + path, opts)
-        .then(function (r) { return r.json().then(function (j) { return { status: r.status, j: j }; }); })
-        .then(function (res) { if (!done) { done = true; clearTimeout(t); cb(res, null); } })
-        .catch(function (e) { if (!done) { done = true; clearTimeout(t); cb(null, "unreachable"); } });
-    } catch (e) { if (!done) { done = true; clearTimeout(t); cb(null, "unreachable"); } }
+    var fellBack = false;
+    function attempt() {
+      var done = false;
+      var t = setTimeout(function () { if (!done) { done = true; fail("timeout"); } }, 6000);
+      // GFW lane: one silent retry on the direct workers.dev origin if the same-origin
+      // proxy is the one that failed. Never the other way round, and never twice.
+      function fail(reason) {
+        clearTimeout(t);
+        if (!fellBack && WIRE.base !== WIRE.baseFallback) {
+          fellBack = true;
+          WIRE.base = WIRE.baseFallback;
+          attempt();
+          return;
+        }
+        cb(null, reason);
+      }
+      try {
+        fetch(WIRE.base + path, opts)
+          .then(function (r) { return r.json().then(function (j) { return { status: r.status, j: j }; }); })
+          .then(function (res) { if (!done) { done = true; clearTimeout(t); cb(res, null); } })
+          .catch(function (e) { if (!done) { done = true; fail("unreachable"); } });
+      } catch (e) { if (!done) { done = true; fail("unreachable"); } }
+    }
+    attempt();
   }
 
   // ---------------------------------------------------------------- real device flow
@@ -124,16 +161,32 @@
   // console), and on the real id_token mints the REAL consent on the open session (scope-fallback
   // = booth pattern). The mirrored-phone tap still drives the ceremony arc either way; the chips
   // always tell the truth about what is real. Fixture fallback everywhere, never a console error.
-  var PROXY_BASE = "https://pit-intake.shakaverse.workers.dev";
+  // GFW lane (2026-10-14): same-origin /api/pit when we're on the brand domain, with the
+  // direct workers.dev origin kept as a one-shot fallback (see proxyFetch).
+  var PROXY_BASE = sameOriginApi("pit") || WD.pit;
   function proxyFetch(path, body, cb) {
-    var done = false;
-    var t = setTimeout(function () { if (!done) { done = true; cb(null, "timeout"); } }, 8000);
-    try {
-      fetch(PROXY_BASE + path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body || {}) })
-        .then(function (r) { return r.json().then(function (j) { return { status: r.status, j: j }; }); })
-        .then(function (res) { if (!done) { done = true; clearTimeout(t); cb(res, null); } })
-        .catch(function (e) { if (!done) { done = true; clearTimeout(t); cb(null, "unreachable"); } });
-    } catch (e) { if (!done) { done = true; clearTimeout(t); cb(null, "unreachable"); } }
+    var fellBack = false;
+    function attempt() {
+      var done = false;
+      var t = setTimeout(function () { if (!done) { done = true; fail("timeout"); } }, 8000);
+      function fail(reason) {
+        clearTimeout(t);
+        if (!fellBack && PROXY_BASE !== WD.pit) {
+          fellBack = true;
+          PROXY_BASE = WD.pit;
+          attempt();
+          return;
+        }
+        cb(null, reason);
+      }
+      try {
+        fetch(PROXY_BASE + path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body || {}) })
+          .then(function (r) { return r.json().then(function (j) { return { status: r.status, j: j }; }); })
+          .then(function (res) { if (!done) { done = true; clearTimeout(t); cb(res, null); } })
+          .catch(function (e) { if (!done) { done = true; fail("unreachable"); } });
+      } catch (e) { if (!done) { done = true; fail("unreachable"); } }
+    }
+    attempt();
   }
   // -------- Aqua pool guard, REAL Sepolia lane (2026-09-27, harvest-moon build) --------
   // Reads come from the ʻohana proxy (/aqua/state -> live eth_calls); the claim write
