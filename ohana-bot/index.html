@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>🗿 the ʻOhana Bot — voice auditions</title>
+<style>
+:root{
+  --bg:#0b0f0d; --card:#121a16; --ink:#efe8d8; --faint:#9aa89e;
+  --bamboo:#1d2a22; --gold:#ffb443;
+}
+*{box-sizing:border-box}
+body{margin:0;background:
+  radial-gradient(1200px 600px at 80% -10%, rgba(255,180,67,.08), transparent 60%),
+  radial-gradient(900px 500px at -10% 110%, rgba(47,158,111,.10), transparent 60%),
+  var(--bg);
+  color:var(--ink); font-family:Georgia,'Times New Roman',serif; line-height:1.5}
+.wrap{max-width:720px;margin:0 auto;padding:28px 16px 80px}
+header{text-align:center;padding:26px 8px 10px}
+h1{font-size:1.7rem;margin:0 0 8px;letter-spacing:.5px}
+.sub{color:var(--faint);font-family:system-ui,sans-serif;font-size:.85rem;max-width:560px;margin:0 auto}
+.tiki{font-size:2.6rem;display:block;margin-bottom:6px}
+.face{background:var(--card);border:1px solid rgba(255,255,255,.07);border-left:5px solid var(--ac);
+  border-radius:18px;padding:18px 18px 14px;margin:18px 0;
+  box-shadow:0 0 34px -18px var(--ac)}
+.face h2{margin:0 0 2px;font-size:1.25rem;color:var(--ac);display:flex;align-items:center;gap:10px}
+.face h2 .em{font-size:1.6rem;filter:drop-shadow(0 0 8px var(--ac))}
+.char{color:var(--faint);font-family:system-ui,sans-serif;font-size:.84rem;margin:4px 0 12px}
+.cand{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.25);
+  border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:10px 12px;margin:8px 0}
+.cand .tag{font-family:system-ui,sans-serif;font-weight:700;font-size:.78rem;color:var(--ac);
+  min-width:92px;line-height:1.3}
+.cand .tag small{display:block;font-weight:400;color:var(--faint);font-size:.68rem}
+.cand audio{flex:1;height:44px;min-width:0}
+footer{text-align:center;color:var(--faint);font-family:system-ui,sans-serif;font-size:.72rem;margin-top:36px}
+footer a{color:var(--gold);text-decoration:none}
+@media (max-width:480px){
+  .cand{flex-direction:column;align-items:stretch;gap:6px}
+  .cand .tag{min-width:0}
+  .cand audio{width:100%}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="tiki">🗿</span>
+  <h1>the ʻOhana Bot — voice auditions</h1>
+  <p class="sub">One robot, six faces — each a real AI agent from the ʻohana.
+  Two voice candidates per face (plus a 中文 bonus for SHAKA). Tap play, pick your favorites. 🌺</p>
+</header>
+
+<section class="face" style="--ac:#ffb443">
+  <h2><span class="em">🤙</span> SHAKA <small style="font-size:.7rem;color:var(--faint);font-weight:400">· the host</small></h2>
+  <p class="char">Warm, laid-back, ocean-easy — the twin of the ethereum bard. Default face, hands off to the siblings.</p>
+  <div class="cand"><span class="tag">Candidate A<small>en-US · Andrew</small></span><audio controls preload="none" src="audition/shaka-a-andrew.mp3"></audio></div>
+  <div class="cand"><span class="tag">Candidate B<small>en-NZ · Mitchell</small></span><audio controls preload="none" src="audition/shaka-b-mitchell.mp3"></audio></div>
+  <div class="cand"><span class="tag">Candidate C 中文<small>zh-CN · Yunxi</small></span><audio controls preload="none" src="audition/shaka-c-yunxi-zh.mp3"></audio></div>
+</section>
+
+<section class="face" style="--ac:#ff7eb6">
+  <h2><span class="em">🎻</span> OSO <small style="font-size:.7rem;color:var(--faint);font-weight:400">· the orchestra</small></h2>
+  <p class="char">Expressive storyteller — the Music Manifesto by heart, the whole Mumbai schedule as a saga.</p>
+  <div class="cand"><span class="tag">Candidate A<small>en-GB · Ryan</small></span><audio controls preload="none" src="audition/oso-a-ryan.mp3"></audio></div>
+  <div class="cand"><span class="tag">Candidate B<small>en-US · Brian</small></span><audio controls preload="none" src="audition/oso-b-brian.mp3"></audio></div>
+</section>
+
+<section class="face" style="--ac:#c792ea">
+  <h2><span class="em">🦄</span> DEVA <small style="font-size:.7rem;color:var(--faint);font-weight:400">· the Devcon oracle</small></h2>
+  <p class="char">Clear, wise, precise-but-warm — faster than the app, warmer than a FAQ page, never wrong.</p>
+  <div class="cand"><span class="tag">Candidate A<small>en-GB · Sonia</small></span><audio controls preload="none" src="audition/deva-a-sonia.mp3"></audio></div>
+  <div class="cand"><span class="tag">Candidate B<small>en-US · Ava</small></span><audio controls preload="none" src="audition/deva-b-ava.mp3"></audio></div>
+</section>
+
+<section class="face" style="--ac:#2f9e6f">
+  <h2><span class="em">🌿</span> CROPS <small style="font-size:.7rem;color:var(--faint);font-weight:400">· the steward</small></h2>
+  <p class="char">Calm, grounded, precise — recites the mandate, mandate-checks your project, explains every acronym.</p>
+  <div class="cand"><span class="tag">Candidate A<small>en-GB · Thomas</small></span><audio controls preload="none" src="audition/crops-a-thomas.mp3"></audio></div>
+  <div class="cand"><span class="tag">Candidate B<small>en-CA · Liam</small></span><audio controls preload="none" src="audition/crops-b-liam.mp3"></audio></div>
+</section>
+
+<section class="face" style="--ac:#f7d794">
+  <h2><span class="em">🪕</span> KALA <small style="font-size:.7rem;color:var(--faint);font-weight:400">· the uke teacher</small></h2>
+  <p class="char">Gentle, warm, patient-teacher energy — three chords in five minutes, no wrong notes, only jazz.</p>
+  <div class="cand"><span class="tag">Candidate A<small>en-NZ · Molly</small></span><audio controls preload="none" src="audition/kala-a-molly.mp3"></audio></div>
+  <div class="cand"><span class="tag">Candidate B<small>en-AU · Natasha</small></span><audio controls preload="none" src="audition/kala-b-natasha.mp3"></audio></div>
+</section>
+
+<section class="face" style="--ac:#4fc3f7">
+  <h2><span class="em">💙</span> OKE <small style="font-size:.7rem;color:var(--faint);font-weight:400">· karaoke mode</small></h2>
+  <p class="char">HYPE. The totem runs the singalong — counts the room in, celebrates every chorus. Every voice is a node.</p>
+  <div class="cand"><span class="tag">Candidate A<small>en-US · Guy</small></span><audio controls preload="none" src="audition/oke-a-guy.mp3"></audio></div>
+  <div class="cand"><span class="tag">Candidate B<small>en-AU · William</small></span><audio controls preload="none" src="audition/oke-b-william.mp3"></audio></div>
+</section>
+
+<footer>
+  built for the ShanHaiWoo 72-hr AI×Hardware hackathon · Shenzhen, Oct 21–23 ·
+  destined for the <a href="https://opensourceorchestra.org/schedule/">Devcon 8 Music Space</a>, Mumbai Nov 3–6 🌺<br>
+  voices: Microsoft edge-tts candidates — final voices chosen by Shaka
+</footer>
+</div>
+</body>
+</html>
