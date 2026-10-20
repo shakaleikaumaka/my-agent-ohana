@@ -58,6 +58,16 @@
   .v-mk{color:var(--dim)}
   .v-may{color:var(--blue)}
   .cn{font-family:'Noto Sans SC',system-ui,sans-serif}
+  @media(max-width:620px){
+    .jdt,.jdt tbody,.jdt tr,.jdt td{display:block;width:100%}
+    .jdt tr:first-child{display:none}
+    .jdt tr{background:#10131b;border:1px solid var(--line);border-radius:10px;padding:9px 11px;margin-bottom:7px}
+    .jdt td{border:none!important;padding:2px 0}
+    .jdt td:first-child{color:var(--gold);font-size:.9rem;white-space:normal}
+    .jdt td.cp{font-size:1rem;padding:4px 0}
+    .jdt td:nth-child(3)::before{content:'JD ';color:var(--dim)}
+    .jdt td:nth-child(4){font-size:.8rem;margin-top:3px}
+  }
 </style>
 </head>
 <body>
