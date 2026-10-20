@@ -1666,6 +1666,16 @@ const STATIC_LINES = {
   kala:  "🪕 My strings are here but my teacher-brain lives on the laptop bridge. Tap ⚡ demo — beat five teaches you C major with one finger.",
   oke:   "💙 The karaoke machine is backstage on the laptop bridge. Tap ⚡ demo and stay for the singalong finale!"
 };
+// 中文 variants — picked when the typed message contains any CJK character
+const STATIC_LINES_ZH = {
+  shaka: "阿罗哈！🤙 你找到的是我的身体——六个大脑在演示现场跑在 Shaka 的笔记本上，断电我也记得你的名字。点 ⚡ demo 看带配音的完整演出。",
+  oso:   "乐团正在后台热身 🎻——我的大脑跑在笔记本的本地桥接上。点 ⚡ demo 听整场演出。",
+  deva:  "事实：这里是静态镜像 🦄——我的神谕大脑在演示现场的笔记本上。此刻能做的：点 ⚡ demo，看第二拍。",
+  crops: "🌿 诚实汇报：这个公开镜像没有接大脑——它跑在笔记本上，开源且本地。章程欣赏诚实。点 ⚡ demo 看录好的演出。",
+  kala:  "🪕 我的琴弦在这儿，但教琴的大脑在笔记本桥接上。点 ⚡ demo——第五拍用一根手指教你 C 大调。",
+  oke:   "💙 卡拉OK机在后台的笔记本上。点 ⚡ demo，留到大合唱压轴！"
+};
+const CJK_RE = /[一-鿿]/;
 let voiceOn = qs.get('mute') !== '1';
 let busy = false, demoRunning = false, demoAbort = false;
 let visitor = '';
@@ -1780,7 +1790,8 @@ async function send(text){
     // never leave the stage stuck on THINKING
     await new Promise(r2=>setTimeout(r2, 700));
     if(myGen === gen){
-      await say(active, STATIC_LINES[active] || STATIC_LINES.shaka);
+      const lines = CJK_RE.test(text) ? STATIC_LINES_ZH : STATIC_LINES;
+      await say(active, lines[active] || lines.shaka);
       busy = false; inEl.focus();
     }
     return;
