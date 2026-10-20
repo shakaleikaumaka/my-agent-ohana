@@ -43,6 +43,21 @@
   .sticky{position:fixed;bottom:0;left:0;right:0;background:#10131bde;backdrop-filter:blur(8px);
     border-top:1px solid var(--line);padding:10px 16px;text-align:center;font-family:ui-monospace,monospace;font-size:.9rem}
   .sticky b{color:var(--gold)}
+  .box.jd{background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.3)}
+  .jdt{width:100%;border-collapse:collapse;margin-top:8px;font-size:.8rem}
+  .jdt th{text-align:left;color:var(--dim);font-weight:400;font-size:.72rem;text-transform:uppercase;
+    letter-spacing:.06em;padding:4px 6px;border-bottom:1px solid var(--line)}
+  .jdt td{padding:7px 6px;border-bottom:1px dashed #262b3a;vertical-align:top}
+  .jdt td:first-child{color:var(--ink);white-space:nowrap}
+  .jdt td.cp{color:#fff;cursor:pointer;font-size:.88rem;border-bottom:1px dashed #3a4055}
+  .jdt td.cp:active{color:var(--gold)}
+  .jdt td.cp::after{content:' ⧉';color:var(--dim);font-size:.72rem}
+  .jdt td.cp.ok::after{content:' ✓copied';color:var(--green);font-size:.7rem}
+  .jdt td:nth-child(3){font-family:ui-monospace,monospace;color:var(--gold);white-space:nowrap}
+  .v-jd{color:var(--green)}
+  .v-mk{color:var(--dim)}
+  .v-may{color:var(--blue)}
+  .cn{font-family:'Noto Sans SC',system-ui,sans-serif}
 </style>
 </head>
 <body>
@@ -104,6 +119,37 @@
   <p style="margin-top:8px"><b>3 · DRK Lab (the inviter):</b> they already sponsor the trip — a ¥800 parts add-on with "supported by DRK Lab" on the base is a natural, tiny extension. Ask 石佳芸 (Jiayun Shi) only if doors 1–2 close.</p>
 </div>
 
+<div class="box jd">
+  <h3>📦 Buying it on 京东 JD instead? — read this first</h3>
+  <p style="color:var(--dim);font-size:.88rem">Everything on this list exists on JD. The question is never stock — it's <b style="color:var(--ink)">whether it lands before Demo Day (Thu 23)</b>. JD tells you per item: tap <b style="color:var(--ink)">京东物流</b> + <b style="color:var(--ink)">配送时效 → 当日达/明日达</b> and only buy what carries that badge. 自营 in Shenzhen = same/next day; 第三方商家 = JD's own policy says 48h to even ship, <b style="color:var(--red)">3–7 days to arrive</b>. Most Pi/sensor flagship stores are 第三方.</p>
+  <p style="margin-top:10px;color:var(--red)"><b>⚠️ Two traps in the 树莓派 search results:</b></p>
+  <ul class="tips">
+    <li><b style="color:var(--red)">树莓派 Pico / RP2040 kits (~¥329)</b> — a Pico is a <i>microcontroller</i>, not a computer. No Linux, ~264KB RAM. It cannot run our stack. The words "Raspberry Pi" in the title are the only match.</li>
+    <li><b style="color:var(--red)">鲁班猫 / LubanCat RK3588 (~¥2,164)</b> — a real Linux board, but 3× our whole budget and our GPIO code assumes Pi.</li>
+    <li><b style="color:var(--green)">What you want:</b> <span class="cn">树莓派5 4GB 主板</span> or <span class="cn">树莓派4B 4GB</span>. Trusted sellers: 微雪 Waveshare (authorized reseller) · 亚博智能 · 创乐博.</li>
+  </ul>
+  <p style="margin-top:12px;color:var(--dim);font-size:.86rem">Tap any 中文 search string to copy it, then paste into JD:</p>
+  <table class="jdt">
+    <tr><th>part</th><th>JD search 搜索词</th><th>JD ¥</th><th>where to buy</th></tr>
+    <tr><td>Pi 5 / used 4B</td><td class="cp">树莓派5 4GB 主板</td><td>450–700</td><td class="v-may">JD if badge says 明日达 · 闲鱼 面交 is cheaper &amp; testable</td></tr>
+    <tr><td>MicroSD ×2</td><td class="cp">三星 EVO Plus 32GB 内存卡</td><td>35–50 ea</td><td class="v-jd">🏆 BUY ON JD 自营 — HQB fake cards corrupt memory.json mid-demo</td></tr>
+    <tr><td>Power bank</td><td class="cp">PD 充电宝 20000mAh 65W</td><td>120–200</td><td class="v-jd">🏆 BUY ON JD 自营 — genuine capacity, next-day</td></tr>
+    <tr><td>USB mic</td><td class="cp">USB 全向 会议 麦克风</td><td>40–130</td><td class="v-may">either — JD 自营 next-day is fine</td></tr>
+    <tr><td>USB speaker</td><td class="cp">USB 小音箱 3W 音量旋钮</td><td>25–50</td><td class="v-may">either</td></tr>
+    <tr><td>LED strip</td><td class="cp">WS2812B 灯带 5V 60灯 1米</td><td>15–30/m</td><td class="v-mk">market — 3rd-party JD = 3–7 days</td></tr>
+    <tr><td>LED rings ×6</td><td class="cp">WS2812B 12位 RGB 灯环</td><td>6–12 ea</td><td class="v-mk">market</td></tr>
+    <tr><td>Level shifter</td><td class="cp">74AHCT125 电平转换模块</td><td>5–10</td><td class="v-mk">market</td></tr>
+    <tr><td>Resistors + caps</td><td class="cp">330欧 电阻 1000uF 电解电容</td><td>3–8</td><td class="v-mk">market — pennies at a stall, 10-packs on JD</td></tr>
+    <tr><td>Touch pads ×8</td><td class="cp">TTP223 触摸感应模块</td><td>2–4 ea</td><td class="v-mk">market</td></tr>
+    <tr><td>Wires + breadboard</td><td class="cp">杜邦线 公母 面包板</td><td>15–25</td><td class="v-mk">market</td></tr>
+    <tr><td>Mute switch</td><td class="cp">船型开关 两脚 带线</td><td>5–10</td><td class="v-mk">market</td></tr>
+    <tr><td>Servo</td><td class="cp">MG996R 舵机 金属齿 支架</td><td>25–45</td><td class="v-mk">market · cut-first item anyway</td></tr>
+    <tr><td>Spine + rope + glue</td><td class="cp">PVC管 直径100mm · 剑麻绳 10米</td><td>30–80</td><td class="v-mk">market / hardware shop — bulky &amp; slow to ship</td></tr>
+    <tr><td>Face plates</td><td class="cp">PP磨砂板 A4 半透明</td><td>20–45</td><td class="v-mk">market — or the hackathon's laser cutter</td></tr>
+  </table>
+  <p style="margin-top:12px;color:var(--dim);font-size:.86rem"><b style="color:var(--ink)">💳 Before you build a cart:</b> domestic JD needs WeChat Pay / Alipay / a Chinese card (a foreign Visa bound inside WeChat Pay works). <span class="cn">global.jd.com</span> takes foreign cards but it's the cross-border portal — useless for next-day. Couriers <i>call</i>: use the hostel address with floor + a number someone will answer. The 国家补贴 / 以旧换新 banners need a mainland ID — assume they're not for you.</p>
+</div>
+
 <div class="box ask">
   <h3>💡 Market tips</h3>
   <ul class="tips">
@@ -120,5 +166,16 @@
 </footer>
 </div>
 <div class="sticky">💚 lean <b>¥480–700</b> · ⭐ full <b>¥950–1,400</b> · 🎁 with kit <b>¥150–300</b></div>
+<script>
+document.querySelectorAll('.jdt td.cp').forEach(function(td){
+  td.addEventListener('click',function(){
+    var t=td.textContent.replace(/\s*⧉\s*$/,'').trim();
+    var done=function(){td.classList.add('ok');setTimeout(function(){td.classList.remove('ok')},1400)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fallback)}else{fallback()}
+    function fallback(){try{var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done()}catch(e){}}
+  });
+});
+</script>
 </body>
 </html>
