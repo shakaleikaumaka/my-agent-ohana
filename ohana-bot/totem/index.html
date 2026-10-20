@@ -1655,6 +1655,17 @@ const whoEl = q('#chatWho'), modeEl = q('#chatMode');
 let active = 'shaka';
 let gen = 0;                       // bumped whenever the stage state changes;
                                    // a finishing say() must not stomp a newer state
+let STATIC = false;                // deployed mirror with no bridge behind it:
+                                   // chat answers honestly in persona, DEMO MODE
+                                   // plays from the bundled script.json + mp3s
+const STATIC_LINES = {
+  shaka: "Aloha! 🤙 You found my body — my six brains ride on Shaka's laptop at the demo, where I remember your name even through a power cut. Tap ⚡ demo for the full show with voices.",
+  oso:   "The orchestra is warming up backstage 🎻 — my live brain runs on the laptop bridge. Tap ⚡ demo to hear the show, or find the family at opensourceorchestra.org.",
+  deva:  "Fact: this is the static mirror 🦄 — my oracle brain runs on the laptop bridge at the demo. What still works right here: tap ⚡ demo and watch beat two.",
+  crops: "🌿 Honest report: no brain is wired to this public mirror — it runs on the laptop bridge, open-source and local. The mandate smiles on honesty. Tap ⚡ demo for the recorded show.",
+  kala:  "🪕 My strings are here but my teacher-brain lives on the laptop bridge. Tap ⚡ demo — beat five teaches you C major with one finger.",
+  oke:   "💙 The karaoke machine is backstage on the laptop bridge. Tap ⚡ demo and stay for the singalong finale!"
+};
 let voiceOn = qs.get('mute') !== '1';
 let busy = false, demoRunning = false, demoAbort = false;
 let visitor = '';
@@ -1716,6 +1727,7 @@ function speak(text, face, url){
     a.play().catch(()=>{ setTimeout(fin, estimate(text)); });
   });
   if(url) return play(url);
+  if(STATIC) return play(null);                 // no bridge — text + timer only
   return api('/tts', {face: face, text: text}, 30000)
     .then(r => play(r && r.url))
     .catch(()=> new Promise(r=>setTimeout(r, estimate(text))));
@@ -1763,6 +1775,16 @@ async function send(text){
   const f0 = faceOf(active);
   T.summon(active, 'thinking');
   T.caption(f0.em + ' ' + f0.nm + ' — thinking', 'persona + domain pack → reply', 'THINKING', f0.col);
+  if(STATIC){
+    // the mirror has no brain: answer honestly, in persona, and move on —
+    // never leave the stage stuck on THINKING
+    await new Promise(r2=>setTimeout(r2, 700));
+    if(myGen === gen){
+      await say(active, STATIC_LINES[active] || STATIC_LINES.shaka);
+      busy = false; inEl.focus();
+    }
+    return;
+  }
   let r = null;
   try{
     r = await api('/chat', {face: active, text: text, visitor: visitor || undefined}, 60000);
@@ -1836,7 +1858,7 @@ async function runDemo(){
           // say the judge's NAME if we can synthesize it right now; if the
           // network is dead, fall back to the pre-rendered generic take —
           // the on-screen line always carries the name either way
-          if(voiceOn){
+          if(voiceOn && !STATIC){
             const r = await api('/tts', {face: b.face, text: personal}, 12000).catch(()=>null);
             if(r && r.url) url = r.url;
           }
@@ -1916,7 +1938,7 @@ q('#chatVoice').onclick = ()=>{
 };
 q('#chatForget').onclick = async ()=>{
   stopDemo();
-  await api('/forget', {}).catch(()=>{});
+  if(!STATIC) await api('/forget', {}).catch(()=>{});
   visitor = ''; memPill(); logEl.innerHTML = '';
   sys('memory.json wiped — fresh judge, fresh totem');
   setActive('shaka', 'listening');
@@ -1938,17 +1960,25 @@ if(window.innerWidth < 620){
 }
 
 (async function boot(){
-  try{
-    const h = await api('/health', null, 8000);
+  let h = null;
+  try{ h = await api('/health', null, 8000); }catch(e){ h = null; }
+  if(h && h.mode){
     modeEl.textContent = (h.mode === 'mock' ? 'mock brain · ¥0' : 'llm: ' + h.mode);
     modeEl.title = h.mode === 'mock'
       ? 'no LLM key: canned in-persona answers from the real persona + pack files'
       : 'live LLM lane';
-  }catch(e){
-    modeEl.textContent = 'bridge?'; sys('bridge not reachable — is serve.py running?');
+  }else{
+    // a 404/{} from a static host and a dead local bridge look the same:
+    // no h.mode. Treat both as the public mirror — never hang the stage.
+    STATIC = true;
+    modeEl.textContent = 'static mirror · demo plays';
+    modeEl.title = 'public mirror — the talking brains run on the laptop bridge at the demo; ⚡ demo plays the recorded 6-beat show with voices';
+    sys('🔌 public mirror — the six brains ride on the laptop bridge at Demo Day. ⚡ demo plays the recorded show with voices; tap any part of the totem to explore the build.');
   }
-  try{ SCRIPT = await api('/script', null, 8000); }catch(e){ SCRIPT = null; }
-  try{
+  try{ SCRIPT = await api(STATIC ? 'script.json' : '/script', null, 8000); }
+  catch(e){ SCRIPT = null; }
+  if(SCRIPT && !SCRIPT.beats) SCRIPT = null;    // an html 404 parsed to {}
+  if(!STATIC) try{
     const r = await api('/resume', null, 15000);
     if(r && r.reply){
       visitor = r.visitor || ''; memPill();
