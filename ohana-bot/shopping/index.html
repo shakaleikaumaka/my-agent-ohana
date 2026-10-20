@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛒 ʻOhana Bot — Huaqiangbei Shopping List 华强北采购单</title>
+<style>
+  :root{--bg:#0d0f14;--card:#161a24;--card2:#1b2030;--ink:#e8e4da;--dim:#9a93a8;--line:#2a2f3f;
+    --gold:#ffb443;--green:#53c98f;--red:#ff6b6b;--blue:#4fc3f7}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:Georgia,'Noto Serif SC',serif;line-height:1.5;padding-bottom:70px}
+  .wrap{max-width:760px;margin:0 auto;padding:0 14px}
+  header{text-align:center;padding:34px 10px 10px}
+  h1{font-size:1.6rem}
+  .sub{color:var(--dim);font-style:italic;margin-top:6px;font-size:.92rem}
+  h2{font-size:1.2rem;margin:34px 0 4px}
+  h2 .tag{font-size:.75rem;padding:3px 10px;border-radius:999px;vertical-align:middle;margin-left:8px;font-family:ui-monospace,monospace}
+  .t-must{background:rgba(83,201,143,.15);color:var(--green)}
+  .t-nice{background:rgba(255,180,67,.15);color:var(--gold)}
+  .t-skip{background:rgba(255,107,107,.12);color:var(--red)}
+  .note{color:var(--dim);font-size:.88rem;margin-bottom:12px}
+  .item{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);
+    border-radius:12px;padding:12px 14px;margin-bottom:8px}
+  .item input{width:22px;height:22px;margin-top:4px;accent-color:var(--gold);flex:none}
+  .item .zh{font-size:1.05rem;color:#fff}
+  .item .en{color:var(--dim);font-size:.86rem}
+  .item .why{color:var(--dim);font-size:.82rem;margin-top:3px;font-style:italic}
+  .item .price{margin-left:auto;flex:none;text-align:right;font-family:ui-monospace,monospace;color:var(--gold);font-size:.95rem;padding-top:3px}
+  .totals{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:26px}
+  .totals .row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed #262b3a}
+  .totals .row:last-child{border:none;font-size:1.1rem}
+  .totals b{color:var(--gold)}
+  .box{border-radius:14px;padding:16px 18px;margin-top:22px;font-size:.92rem}
+  .box.ask{background:rgba(79,195,247,.07);border:1px solid rgba(79,195,247,.35)}
+  .box.sponsor{background:rgba(255,180,67,.07);border:1px solid rgba(255,180,67,.35)}
+  .box h3{margin-bottom:8px}
+  .say{background:#10131b;border-left:3px solid var(--blue);padding:10px 12px;border-radius:0 8px 8px 0;margin:8px 0;font-size:.95rem}
+  .say .cn{display:block;color:#fff;font-size:1.02rem}
+  .say .pin{display:block;color:var(--dim);font-size:.8rem}
+  .tips li{margin:7px 0 7px 18px;color:var(--dim);font-size:.9rem}
+  .tips b{color:var(--ink)}
+  .sticky{position:fixed;bottom:0;left:0;right:0;background:#10131bde;backdrop-filter:blur(8px);
+    border-top:1px solid var(--line);padding:10px 16px;text-align:center;font-family:ui-monospace,monospace;font-size:.9rem}
+  .sticky b{color:var(--gold)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>🛒 ʻOhana Bot parts run · 华强北</h1>
+  <p class="sub">Tue Oct 20 · show vendors the 中文 line · tap to check off · prices = typical Huaqiangbei stall range<br>
+  SEG Plaza 赛格广场 &amp; surrounding market floors · bargain gently, bundle items at one stall for discounts</p>
+</header>
+
+<h2>🧠 The brain <span class="tag t-must">MUST</span></h2>
+<p class="note">Ask the 万象有声 track FIRST if they provide kits — every ¥ saved below goes to the shell. If buying: a used Pi 4B runs our whole stack (STT/TTS/LLM are all API-side) — the Pi 5 is nicer, not necessary.</p>
+<div class="item"><input type="checkbox"><div><div class="zh">树莓派5代 8GB（或 二手树莓派4B 4GB）</div><div class="en">Raspberry Pi 5 8GB — OR used Pi 4B 4GB (budget hero)</div><div class="why">Pi 5 new ¥650–780 · used Pi 4B ¥250–350 · Orange Pi 5 ¥420–500 also works</div></div><div class="price">¥250–780</div></div>
+<div class="item"><input type="checkbox"><div><div class="zh">官方电源 USB-C 27W（派5）或 15W（派4）</div><div class="en">Official USB-C PSU (27W for Pi5 / 15W for Pi4)</div><div class="why">cheap PSUs brown-out under LED + audio load — don't skimp here</div></div><div class="price">¥35–60</div></div>
+<div class="item"><input type="checkbox"><div><div class="zh">MicroSD 卡 32GB ×2（闪迪/三星 A1）</div><div class="en">MicroSD 32GB ×2 (SanDisk/Samsung A1)</div><div class="why">one runs, one is the cloned backup with memory.json snapshot</div></div><div class="price">¥50–70</div></div>
+
+<h2>🎤🔊 Ears &amp; mouth <span class="tag t-must">MUST</span></h2>
+<div class="item"><input type="checkbox"><div><div class="zh">USB 全向会议麦克风（或 ReSpeaker 2-Mic 麦克风阵列）</div><div class="en">USB omni conference mic — or ReSpeaker 2-Mic HAT</div><div class="why">USB conference puck ¥40–80 is the budget pick and honestly easier than the HAT</div></div><div class="price">¥40–130</div></div>
+<div class="item"><input type="checkbox"><div><div class="zh">USB 小音箱 3W–5W（带音量旋钮更好）</div><div class="en">Small USB speaker 3–5W (volume knob = bonus)</div><div class="why">USB-powered = zero amp wiring; must fill a demo hall corner</div></div><div class="price">¥25–50</div></div>
+
+<h2>✨ The glow &amp; the touch <span class="tag t-must">MUST</span></h2>
+<div class="item"><input type="checkbox"><div><div class="zh">WS2812B 灯带 1米 60灯 ×2（5V）</div><div class="en">WS2812B LED strip, 1m 60-LED ×2 (5V)</div><div class="why">six glowing faces + one spare strip — highest charisma per ¥ in the build</div></div><div class="price">¥30–60</div></div>
+<div class="item"><input type="checkbox"><div><div class="zh">TTP223 触摸感应模块 ×8</div><div class="en">TTP223 touch sensor modules ×8 (6 + 2 spares)</div><div class="why">tap a face to summon it — demo-proof in a loud room</div></div><div class="price">¥12–20</div></div>
+<div class="item"><input type="checkbox"><div><div class="zh">杜邦线 公母/母母 各一排 + 面包板 ×1</div><div class="en">Dupont jumper wires (M-F + F-F) + 1 breadboard</div><div class="why">everything connects with these — grab extras, they're pennies</div></div><div class="price">¥15–25</div></div>
+
+<h2>🔋 Power &amp; safety <span class="tag t-must">MUST</span></h2>
+<div class="item"><input type="checkbox"><div><div class="zh">PD 充电宝 20000mAh（支持 USB-C 输出 ≥27W）</div><div class="en">PD power bank 20,000mAh (USB-C out ≥27W) — SKIP if yours can do it</div><div class="why">untethered demo + survives venue power weirdness · check your own bank first!</div></div><div class="price">¥0–150</div></div>
+<div class="item"><input type="checkbox"><div><div class="zh">船型开关（拨动开关）×2</div><div class="en">Rocker/toggle switch ×2</div><div class="why">THE PHYSICAL MUTE — kill switch #1, inline on the mic lead</div></div><div class="price">¥5–10</div></div>
+
+<h2>🗿 The body <span class="tag t-nice">NICE — simplify freely</span></h2>
+<p class="note">The shell is decorative; electronics strap to a tube core. Cardboard + printed faces still reads as a totem (cut-order law).</p>
+<div class="item"><input type="checkbox"><div><div class="zh">PVC 管 / 硬纸筒 直径~10cm 长~40cm</div><div class="en">PVC pipe or cardboard tube, ~10cm Ø × 40cm</div><div class="why">the totem spine — desktop size, flies to Mumbai in a backpack</div></div><div class="price">¥10–30</div></div>
+<div class="item"><input type="checkbox"><div><div class="zh">剑麻绳 10米 + 热熔胶枪+胶棒 + 美工刀 + 强力双面胶</div><div class="en">Sisal rope 10m + hot glue gun/sticks + box cutter + strong double-sided tape</div><div class="why">the tiki wrap + assembly kit</div></div><div class="price">¥40–70</div></div>
+<div class="item"><input type="checkbox"><div><div class="zh">半透明亚克力板 或 PP磨砂板 A4 ×3（脸面透光用）</div><div class="en">Translucent acrylic / frosted PP sheets A4 ×3 (face plates that glow through)</div><div class="why">LED glow diffuses through = the faces come ALIVE · hackathon may have laser cutter — ask!</div></div><div class="price">¥20–45</div></div>
+
+<h2>🦾 Charisma extras <span class="tag t-skip">CUT FIRST if over budget</span></h2>
+<div class="item"><input type="checkbox"><div><div class="zh">MG996R 舵机 + 支架 + PCA9685 驱动板</div><div class="en">MG996R servo + bracket (+ PCA9685 if stock)</div><div class="why">slow pan toward the speaker — pure charisma, zero demo dependency</div></div><div class="price">¥35–55</div></div>
+
+<div class="totals">
+  <div class="row"><span>💚 LEAN build (used Pi4, USB mic, your own power bank, simple shell)</span><b>≈ ¥480–700</b></div>
+  <div class="row"><span>⭐ FULL build (new Pi 5, ReSpeaker, new power bank, acrylic + servo)</span><b>≈ ¥950–1,400</b></div>
+  <div class="row"><span>🎁 If the track provides a kit (ASK FIRST, Woocon 1 today 15:00)</span><b>≈ ¥150–300</b></div>
+</div>
+
+<div class="box ask">
+  <h3>🗣 Vendor phrases 砍价三句</h3>
+  <div class="say"><span class="cn">这些一起买，能便宜一点吗？</span><span class="pin">Zhèxiē yìqǐ mǎi, néng piányi yìdiǎn ma? — "Buying all together, can you do a better price?"</span></div>
+  <div class="say"><span class="cn">我要树莓派，二手的也可以。</span><span class="pin">Wǒ yào shùméipài, èrshǒu de yě kěyǐ. — "I need a Raspberry Pi, used is fine."</span></div>
+  <div class="say"><span class="cn">有没有 WS2812B 灯带和 TTP223 触摸模块？</span><span class="pin">"Do you have WS2812B strips and TTP223 touch modules?" (show them this line)</span></div>
+</div>
+
+<div class="box sponsor">
+  <h3>🤝 Short on budget — the sponsor ask</h3>
+  <p style="color:var(--dim);font-size:.88rem;margin-bottom:8px">Gap ≈ ¥500–900. Three doors, in order — use at Woocon 1 (today 15:00) and at check-in tomorrow:</p>
+  <p><b>1 · The track kit (free):</b> 万象有声 / Nüwa may provide hardware kits — this is the first ask, it may erase the whole gap.</p>
+  <div class="say"><span class="cn">我们的项目是六个真实AI智能体的一个机器人身体，两周后它会在孟买 Devcon 8 音乐空间正式服务。请问赛道提供硬件套件吗？</span><span class="pin">"Our project gives one robot body to six real AI agents — in two weeks it serves for real at the Devcon 8 Music Space in Mumbai. Does the track provide hardware kits?"</span></div>
+  <p style="margin-top:10px"><b>2 · A parts sponsor (~¥800):</b> what they get — logo/thanks ON the totem at Demo Day + the Maker Festival (24th, 100–300 people) + it travels to Devcon Mumbai (thousands). A Huaqiangbei stall, a track partner, or a fellow builder's company all qualify. The totem literally speaks the sponsor's thank-you in six voices.</p>
+  <p style="margin-top:8px"><b>3 · DRK Lab (the inviter):</b> they already sponsor the trip — a ¥800 parts add-on with "supported by DRK Lab" on the base is a natural, tiny extension. Ask 石佳芸 (Jiayun Shi) only if doors 1–2 close.</p>
+</div>
+
+<div class="box ask">
+  <h3>💡 Market tips</h3>
+  <ul class="tips">
+    <li><b>Test before paying:</b> ask the stall to power the Pi (they all have cables) — dead boards get sold to foreigners.</li>
+    <li><b>One stall, whole basket:</b> module stalls carry LED strips + TTP223 + wires + switches; bundle for the discount.</li>
+    <li><b>Pay by Alipay/WeChat</b> — cash sometimes "has no change."</li>
+    <li><b>Keep receipts/photos</b> of every purchase — for the sponsor and for ShanHaiWoo reimbursement if the kit ask lands retroactively.</li>
+    <li><b>Skip-list if squeezed:</b> servo → acrylic (use cardboard + paper) → second LED strip → ReSpeaker (USB puck fine).</li>
+  </ul>
+</div>
+
+<footer style="text-align:center;color:var(--dim);margin-top:40px;font-size:.82rem">
+  🗿 the ʻOhana Bot · <a href="../plan/" style="color:var(--gold)">the win plan</a> · <a href="../" style="color:var(--gold)">voice auditions</a> 🌺
+</footer>
+</div>
+<div class="sticky">💚 lean <b>¥480–700</b> · ⭐ full <b>¥950–1,400</b> · 🎁 with kit <b>¥150–300</b></div>
+</body>
+</html>
