@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>ʻOhana Watcher kit · SenseCAP Watcher → SHAKA's face</title>
+<style>
+:root{--bg:#0b1220;--card:#121c31;--ink:#e9eefb;--mut:#9fb0d0;--gold:#ffb443;--sea:#4fd1c5;--rose:#ff6b9d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(1200px 600px at 50% -10%,#1b2a4d,var(--bg));color:var(--ink);font:16px/1.55 system-ui,-apple-system,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 18px 60px}h1{font-size:1.7rem;margin:.2em 0}h2{color:var(--gold);font-size:1.15rem;margin:1.6em 0 .4em}
+.card{background:var(--card);border:1px solid #223253;border-radius:14px;padding:16px 18px;margin:12px 0}
+a{color:var(--sea)}code,pre{font:13px/1.5 ui-monospace,Menlo,Consolas,monospace}pre{background:#0a1020;border:1px solid #223253;border-radius:10px;padding:12px;overflow:auto}
+.dl{display:inline-block;background:var(--gold);color:#1a1200;font-weight:700;padding:12px 18px;border-radius:12px;text-decoration:none;margin:6px 8px 6px 0}
+.dl.alt{background:#223253;color:var(--ink)}.law{border-color:var(--rose)}.law b{color:var(--rose)}ol li{margin:.35em 0}.mut{color:var(--mut)}
+.eye{width:92px;height:92px;border-radius:50%;background:radial-gradient(circle at 50% 50%,#000 0 22%,#ffb443 23% 40%,#0a1020 41% 100%);box-shadow:0 0 28px #ffb44366;float:right;margin:0 0 10px 14px}
+</style></head><body><main>
+<div class="eye"></div>
+<h1>🗿👁 ʻOhana Watcher kit</h1>
+<p class="mut">SenseCAP Watcher W1-A (loaner from ShanHaiWoo) → the <b>first physical node</b> of the ʻOhana Bot: a round screen with eyes that talks as SHAKA, and — through the laptop — as all six faces. The 3D totem is the body it grows into.</p>
+
+<p><a class="dl" href="watcher-kit.tar.gz">⬇ watcher-kit.tar.gz (30 MB)</a> <a class="dl alt" href="README.md">README</a> <a class="dl alt" href="xiaozhi-role-prompt.txt">role prompt</a> <a class="dl alt" href="https://myagentohana.com/ohana-bot/totem/">laptop totem</a></p>
+
+<div class="card law"><b>Loaner law.</b> The xiaozhi image overwrites <code>0x9000</code>, where Seeed stores the Watcher's identity (EUI + SenseCraft credentials). <code>flash.sh</code> backs up <code>nvsfactory.bin</code> (3 s) and a full 32 MB image (≈6 min) and <b>refuses to write without the identity backup</b>. Copy <code>backup/</code> to Drive right after. <code>restore.sh</code> hands it back exactly as received.</div>
+
+<h2>0 · On the table</h2>
+<div class="card"><ul>
+<li>Laptop · <code>python3</code> · <code>pip3 install esptool</code> <span class="mut">(China: <code>-i https://pypi.tuna.tsinghua.edu.cn/simple</code>)</span></li>
+<li><b>USB-C data cable</b> into the <b>bottom/side</b> port (back port = power only). Two serial ports appear; the script probes both.</li>
+<li><b>2.4 GHz Wi-Fi</b> (phone hotspot works; iPhone → Maximize Compatibility ON). No 5 GHz on ESP32.</li>
+<li>Google account — xiaozhi.me console has <b>Sign in with Google</b>, no Chinese phone needed (VPN for Google only; the device itself needs none).</li>
+</ul></div>
+
+<h2>1 · Flash (Path A, ≈10 min)</h2>
+<pre>tar xzf watcher-kit.tar.gz && cd watcher-kit
+./flash.sh              # backups → type FLASH → xiaozhi v2.5.2 written at 0x0
+./flash.sh --skip-full  # hurry mode: identity backup only</pre>
+
+<h2>2 · First boot → Wi-Fi → bind</h2>
+<div class="card"><ol>
+<li>Dark screen? hold the <b>wheel ~3 s</b>.</li>
+<li>Phone → Wi-Fi <b>Xiaozhi-xxxx</b> → captive page (or <code>http://192.168.4.1</code>) → pick the 2.4 GHz network → Connect. <span class="mut">Redo later: single-click the wheel on the "starting" screen.</span></li>
+<li>Say <b>“你好小智”</b> (or click the wheel) → it speaks a <b>6-digit code</b>.</li>
+<li><a href="https://xiaozhi.me/console">xiaozhi.me/console</a> → Sign in with Google → <b>新建智能体</b> “SHAKA” → <b>添加设备</b> → the code.</li>
+<li><b>配置角色</b> → paste <a href="xiaozhi-role-prompt.txt">xiaozhi-role-prompt.txt</a> → pick a warm voice → save.</li>
+<li>“你好小智 — Aloha Shaka, what are you?” 🤙</li>
+</ol><p class="mut">Wheel = volume · click = talk/stop · hold 2 s = off · hold 10 s = factory reset (Wi-Fi + binding).</p></div>
+
+<h2>3 · Path B — all six faces through the laptop</h2>
+<pre># terminal 1
+cd totem-web && python3 serve.py                 # http://127.0.0.1:8777
+# terminal 2
+cd watcher-kit/mcp && pip3 install -r requirements.txt
+export MCP_ENDPOINT='wss://api.xiaozhi.me/mcp/?token=…'   # Console → 智能体 → 配置角色 → MCP接入点
+python3 mcp_pipe.py</pre>
+<div class="card">“你好小智 — ask KALA how to play three chords” → xiaozhi calls <code>ask_ohana("kala", …)</code> → laptop <code>/chat</code> → same <code>router.py</code> + <code>memory.json</code> → <b>KALA glows on the 3D totem</b> while the Watcher speaks her words. Outbound websocket only; venue Wi-Fi is enough. Bridge down → in-persona canned line, never an error read aloud. <span class="mut">Tested 22 Oct 07:5x CST against the live brain: DEVA (EN) + KALA (中文) answered, markdown stripped for speech.</span></div>
+
+<h2>4 · Give it back</h2>
+<pre>./restore.sh     # exact 32 MB image, else Seeed V1.1.7 + your nvsfactory.bin</pre>
+<p class="mut">Firmware: <a href="https://github.com/78/xiaozhi-esp32/releases/tag/v2.5.2">78/xiaozhi-esp32 v2.5.2</a> (MIT) · factory bins: <a href="https://github.com/Seeed-Studio/OSHW-SenseCAP-Watcher">Seeed OSHW-SenseCAP-Watcher</a> (Apache-2.0) · MCP pipe: <a href="https://github.com/78/mcp-calculator">78/mcp-calculator</a>. Everything here is CC0 — fork me like crazy 🍴</p>
+</main></body></html>
