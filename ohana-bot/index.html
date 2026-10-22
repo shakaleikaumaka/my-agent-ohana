@@ -44,7 +44,7 @@ nav img{width:32px;height:32px;border-radius:50%;box-shadow:0 0 12px rgba(255,18
 @media (prefers-reduced-motion:reduce){.pole{animation:none}}
 .crown{width:72%;max-width:300px;text-align:center;margin-bottom:-6px;z-index:2}
 .crown svg{width:100%;display:block}
-.seg{width:82%;max-width:330px;margin-top:-4px;cursor:pointer;transition:transform .22s ease,filter .22s ease;position:relative;z-index:1}
+.seg{width:86%;max-width:350px;margin-top:-5px;cursor:pointer;transition:transform .22s ease,filter .22s ease;position:relative;z-index:1}
 .seg svg{width:100%;display:block}
 .seg:hover{transform:translateY(-3px) scale(1.015)}
 .seg.lit{animation:lean .5s ease}
@@ -158,12 +158,12 @@ footer .honest{border-top:1px solid var(--line);padding-top:14px;max-width:760px
 'use strict';
 /* =============== DATA =============== */
 var FACES=[
- {k:'shaka',n:'SHAKA',e:'🤙',c:'#ffb443',voice:'totem/audio/demo/beat1.mp3',alias:['shaka','shaka','阿罗哈','你好']},
- {k:'oso',n:'OSO',e:'🎻',c:'#ff7eb6',voice:'audition/oso-b-brian.mp3',alias:['oso','orchestra','乐团','乐队']},
- {k:'deva',n:'DEVA',e:'🦄',c:'#c792ea',voice:'audition/deva-a-sonia.mp3',alias:['deva','devcon','神谕']},
- {k:'crops',n:'CROPS',e:'🌿',c:'#2f9e6f',voice:'audition/crops-b-liam.mp3',alias:['crops','steward','mandate','章程','价值']},
- {k:'kala',n:'KALA',e:'🪕',c:'#f7d794',voice:'audition/kala-b-natasha.mp3',alias:['kala','ukulele','uke','chord','尤克里里','和弦','琴']},
- {k:'oke',n:'OKE',e:'💙',c:'#4fc3f7',voice:'audition/oke-b-william.mp3',alias:['oke','karaoke','sing','song','卡拉','唱歌','唱']}
+ {k:'shaka',n:'SHAKA',e:'🤙',c:'#ffb443',mouth:'grin',voice:'totem/audio/demo/beat1.mp3',alias:['shaka','shaka','阿罗哈','你好']},
+ {k:'oso',n:'OSO',e:'🎻',c:'#ff7eb6',mouth:'teeth',voice:'audition/oso-b-brian.mp3',alias:['oso','orchestra','乐团','乐队']},
+ {k:'deva',n:'DEVA',e:'🦄',c:'#c792ea',mouth:'oval',voice:'audition/deva-a-sonia.mp3',alias:['deva','devcon','神谕']},
+ {k:'crops',n:'CROPS',e:'🌿',c:'#2f9e6f',mouth:'calm',voice:'audition/crops-b-liam.mp3',alias:['crops','steward','mandate','章程','价值']},
+ {k:'kala',n:'KALA',e:'🪕',c:'#f7d794',mouth:'sing',voice:'audition/kala-b-natasha.mp3',alias:['kala','ukulele','uke','chord','尤克里里','和弦','琴']},
+ {k:'oke',n:'OKE',e:'💙',c:'#4fc3f7',mouth:'tongue',voice:'audition/oke-b-william.mp3',alias:['oke','karaoke','sing','song','卡拉','唱歌','唱']}
 ];
 var TEMPLE_LINES={
  shaka:"Aloooha! 🤙 One body, six souls — and you're talking to it. I'm SHAKA, the host face; my voice is the boss's own clone. Tap my siblings, or fire the ⚡ ceremony below.",
@@ -200,29 +200,73 @@ try{setLang(localStorage.getItem('totem-lang')||((navigator.language||'').toLowe
 
 /* =============== BUILD THE POLE =============== */
 function segSVG(f,i){
- var id='w'+i;
- return '<svg viewBox="0 0 330 118">'
+ var id='w'+i, C=f.c, v=f.mouth||'grin';
+ // ---- carved tiki (kiʻi) face: brow ridge · glaring eyes · flared nose · big mouth; depth = dark recess + edge highlight
+ var s='<svg viewBox="0 0 330 132">'
  +'<defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1">'
- +'<stop offset="0" stop-color="#8a5f3c"/><stop offset=".55" stop-color="#6b4a2f"/><stop offset="1" stop-color="#4c3524"/></linearGradient></defs>'
- +'<path d="M10 6 L320 6 L306 112 L24 112 Z" fill="url(#'+id+')" stroke="#3a2818" stroke-width="3"/>'
- +'<path d="M24 22 H306 M22 96 H308" stroke="#3a2818" stroke-width="1.6" opacity=".5"/>'
- // brow emblem
- +'<text x="165" y="34" text-anchor="middle" font-size="25" fill="#3a2818">'+f.e+'</text>'
- // eyes
- +'<g class="eyes" opacity=".9">'
- +'<ellipse cx="118" cy="56" rx="17" ry="12" fill="#3a2818"/>'
- +'<ellipse cx="212" cy="56" rx="17" ry="12" fill="#3a2818"/>'
+ +'<stop offset="0" stop-color="#96683f"/><stop offset=".45" stop-color="#6f4c2e"/><stop offset="1" stop-color="#472f1e"/></linearGradient>'
+ +'<linearGradient id="'+id+'t" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#caa06e" stop-opacity=".55"/><stop offset=".35" stop-color="#caa06e" stop-opacity="0"/></linearGradient></defs>'
+ // plank + torch highlight + border
+ +'<path d="M10 6 L320 6 L306 126 L24 126 Z" fill="url(#'+id+')" stroke="#2e1f12" stroke-width="3"/>'
+ +'<path d="M10 6 L320 6 L306 126 L24 126 Z" fill="url(#'+id+'t)"/>'
+ // side hatching (carved crosshatch)
+ +'<g stroke="#2e1f12" stroke-width="1.7" opacity=".5">'
+ +'<path d="M22 20 L46 120 M34 16 L58 120 M46 12 L70 120" transform="skewX(-6)"/>'
+ +'<path d="M284 120 L308 20 M272 120 L296 16 M260 120 L284 12" transform="skewX(6)"/>'
  +'</g>'
- +'<g class="glow" style="filter:drop-shadow(0 0 9px '+f.c+') drop-shadow(0 0 22px '+f.c+')">'
- +'<ellipse cx="118" cy="56" rx="10" ry="7" fill="'+f.c+'"/>'
- +'<ellipse cx="212" cy="56" rx="10" ry="7" fill="'+f.c+'"/>'
- +'</g>'
- // nose ridge
- +'<path d="M165 58 L158 76 L172 76 Z" fill="#3a2818" opacity=".85"/>'
- // mouth
- +'<rect x="118" y="82" width="94" height="17" rx="8" fill="#3a2818"/>'
- +'<g class="glow mouthglow" style="filter:drop-shadow(0 0 8px '+f.c+')"><rect x="124" y="86.5" width="82" height="8" rx="4" fill="'+f.c+'"/></g>'
+ // brow ridge: carved band + zigzag
+ +'<path d="M52 12 L278 12 L272 30 L58 30 Z" fill="#3a2818"/>'
+ +'<path d="M52 12 L278 12" stroke="#caa06e" stroke-width="1.6" opacity=".5"/>'
+ +'<path d="M70 30 L80 20 L90 30 L100 20 L110 30 L120 20 L130 30 L140 20 L150 30 L160 20 L170 30 L180 20 L190 30 L200 20 L210 30 L220 20 L230 30 L240 20 L250 30 L260 20 L268 30" fill="none" stroke="#5c3f28" stroke-width="3"/>';
+ // eyes — glaring sockets
+ s+='<g><ellipse cx="112" cy="55" rx="23" ry="17" fill="#2a1c10"/>'
+ +'<ellipse cx="218" cy="55" rx="23" ry="17" fill="#2a1c10"/>'
+ +'<path d="M90 44 Q112 34 134 44 M196 44 Q218 34 240 44" stroke="#caa06e" stroke-width="2" fill="none" opacity=".4"/></g>'
+ +'<g class="eyes" opacity=".92">'
+ +'<ellipse cx="112" cy="55" rx="13" ry="10" fill="#1c1109"/><ellipse cx="218" cy="55" rx="13" ry="10" fill="#1c1109"/></g>'
+ // glow irises
+ +'<g class="glow" style="filter:drop-shadow(0 0 9px '+C+') drop-shadow(0 0 24px '+C+')">'
+ +'<ellipse cx="112" cy="55" rx="12.5" ry="9.5" fill="'+C+'"/><ellipse cx="218" cy="55" rx="12.5" ry="9.5" fill="'+C+'"/>'
+ +'<ellipse cx="112" cy="55" rx="4.5" ry="3.6" fill="#fff8ec" opacity=".85"/><ellipse cx="218" cy="55" rx="4.5" ry="3.6" fill="#fff8ec" opacity=".85"/></g>';
+ // nose — raised bridge + flared nostrils
+ s+='<path d="M154 62 L148 84 Q165 92 182 84 L176 62 Q165 58 154 62 Z" fill="#7d5636" stroke="#2e1f12" stroke-width="2"/>'
+ +'<ellipse cx="152" cy="87" rx="7" ry="5" fill="#2a1c10"/><ellipse cx="178" cy="87" rx="7" ry="5" fill="#2a1c10"/>'
+ +'<path d="M157 64 L153 80" stroke="#caa06e" stroke-width="2" opacity=".45"/>';
+ // ---- mouths (the signature) ----
+ var M='';
+ if(v==='teeth'){ // grimace, teeth top+bottom
+   M='<rect x="88" y="98" width="154" height="24" rx="7" fill="#2a1c10"/>'
+    +'<g fill="#d9c4a0">'+[0,1,2,3,4,5,6].map(function(k){return '<rect x="'+(98+k*19)+'" y="100" width="12" height="8" rx="1.5"/>';}).join('')+[0,1,2,3,4,5,6].map(function(k){return '<rect x="'+(98+k*19)+'" y="112" width="12" height="8" rx="1.5"/>';}).join('')+'</g>'
+    +'<g class="glow mouthglow" style="filter:drop-shadow(0 0 8px '+C+')"><rect x="94" y="106.5" width="142" height="7" rx="3.5" fill="'+C+'"/></g>';
+ } else if(v==='oval'){ // mystic O
+   M='<ellipse cx="165" cy="108" rx="34" ry="18" fill="#2a1c10"/>'
+    +'<ellipse cx="165" cy="108" rx="34" ry="18" fill="none" stroke="#5c3f28" stroke-width="4"/>'
+    +'<g class="glow mouthglow" style="filter:drop-shadow(0 0 9px '+C+')"><ellipse cx="165" cy="108" rx="24" ry="11" fill="'+C+'"/></g>';
+ } else if(v==='calm'){ // wide calm slit
+   M='<rect x="96" y="103" width="138" height="13" rx="6.5" fill="#2a1c10"/>'
+    +'<rect x="96" y="103" width="138" height="4" rx="2" fill="#caa06e" opacity=".35"/>'
+    +'<g class="glow mouthglow" style="filter:drop-shadow(0 0 8px '+C+')"><rect x="102" y="106.5" width="126" height="6" rx="3" fill="'+C+'"/></g>';
+ } else if(v==='sing'){ // open singing oval
+   M='<ellipse cx="165" cy="109" rx="44" ry="17" fill="#2a1c10"/>'
+    +'<path d="M121 106 Q165 92 209 106" stroke="#5c3f28" stroke-width="4" fill="none"/>'
+    +'<g class="glow mouthglow" style="filter:drop-shadow(0 0 9px '+C+')"><ellipse cx="165" cy="110" rx="34" ry="10.5" fill="'+C+'"/></g>';
+ } else if(v==='tongue'){ // tongue out (fierce!)
+   M='<rect x="96" y="98" width="138" height="21" rx="8" fill="#2a1c10"/>'
+    +'<g fill="#d9c4a0">'+[0,1,2,3,4,5].map(function(k){return '<rect x="'+(106+k*20)+'" y="100" width="12" height="7" rx="1.5"/>';}).join('')+'</g>'
+    +'<path d="M140 117 Q140 132 165 132 Q190 132 190 117 Z" fill="#a0503c" stroke="#5c2a1c" stroke-width="2"/>'
+    +'<path d="M165 119 L165 130" stroke="#5c2a1c" stroke-width="2"/>'
+    +'<g class="glow mouthglow" style="filter:drop-shadow(0 0 8px '+C+')"><rect x="102" y="109" width="126" height="6" rx="3" fill="'+C+'"/></g>';
+ } else { // grin — big open grin w/ top teeth
+   M='<rect x="92" y="98" width="146" height="22" rx="9" fill="#2a1c10"/>'
+    +'<g fill="#d9c4a0">'+[0,1,2,3,4,5,6].map(function(k){return '<rect x="'+(101+k*19)+'" y="100" width="12" height="8" rx="1.5"/>';}).join('')+'</g>'
+    +'<path d="M92 100 Q165 90 238 100" stroke="#5c3f28" stroke-width="3.5" fill="none"/>'
+    +'<g class="glow mouthglow" style="filter:drop-shadow(0 0 8px '+C+')"><rect x="99" y="110" width="132" height="7" rx="3.5" fill="'+C+'"/></g>';
+ }
+ s+=M
+ // chin cuts
+ +'<g stroke="#2e1f12" stroke-width="2.4" opacity=".7"><path d="M70 122 L84 112 M260 122 L246 112"/></g>'
  +'</svg>';
+ return s;
 }
 var segsEl=document.getElementById('segs');
 FACES.forEach(function(f,i){
