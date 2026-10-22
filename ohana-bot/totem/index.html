@@ -193,8 +193,12 @@ button.on{background:rgba(255,180,67,.2);border-color:var(--gold);color:var(--go
   border:1px solid var(--line);border-radius:9px;padding:8px 10px}
 #chatIn:focus{outline:none;border-color:rgba(255,180,67,.55)}
 #chatRow button{padding:7px 10px}
+#chatMic{font-size:13px;font-weight:700;letter-spacing:.3px;
+  background:rgba(255,180,67,.14);border-color:var(--gold);color:var(--gold)}
 #chatMic.dead{opacity:.45}
-#chatMic.on{background:rgba(255,107,107,.22);border-color:#ff6b6b;color:#ffd9d9}
+#chatMic.on{background:rgba(255,107,107,.22);border-color:#ff6b6b;color:#ffd9d9;animation:micpulse 1.2s ease-in-out infinite}
+@keyframes micpulse{0%,100%{box-shadow:0 0 0 0 rgba(255,107,107,.5)}50%{box-shadow:0 0 0 7px rgba(255,107,107,0)}}
+#chatLang{font-size:9.5px;opacity:.85}
 #chatFoot{display:flex;align-items:center;gap:5px;padding-top:7px;flex:none;font-size:10px;color:var(--dim)}
 #chatWho{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px}
 button.mini{font-size:10px;padding:4px 7px;border-radius:8px}
@@ -286,10 +290,11 @@ button.mini.on{background:rgba(255,180,67,.18);border-color:var(--gold);color:va
     <div id="chatFaces"></div>
     <div id="chatLog"></div>
     <div id="chatRow">
+      <button id="chatMic" title="push to talk · 按住说话">🎤 TALK</button>
+      <button class="mini" id="chatLang" title="speech language 识别语言">EN</button>
       <input id="chatIn" type="text" autocomplete="off" spellcheck="false"
              placeholder="type to talk · 打字对话 — try &quot;my name is …&quot;">
       <button class="pri" id="chatSend" title="send">▶</button>
-      <button id="chatMic" title="push to talk">🎤</button>
     </div>
     <div id="chatFoot">
       <span id="chatWho">—</span>
@@ -1895,28 +1900,41 @@ async function runDemo(){
 // ------------------------------------------------------------------- mic
 function initMic(){
   const btn = q('#chatMic');
+  const langBtn = q('#chatLang');
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  // speech language: EN default, flip for Mandarin-speaking judges; persists
+  let asrLang = 'en-US';
+  try{ asrLang = localStorage.getItem('ohana-asr-lang') || 'en-US'; }catch(e){}
+  const paintLang = ()=>{ if(langBtn) langBtn.textContent = asrLang === 'zh-CN' ? '中' : 'EN'; };
+  paintLang();
+  if(langBtn) langBtn.onclick = ()=>{
+    asrLang = asrLang === 'zh-CN' ? 'en-US' : 'zh-CN';
+    try{ localStorage.setItem('ohana-asr-lang', asrLang); }catch(e){}
+    paintLang();
+    sys(asrLang === 'zh-CN' ? '识别语言：中文 — 说吧' : 'speech language: English');
+  };
   if(!SR){
     btn.classList.add('dead');
     btn.title = 'this browser has no speech recognition — type to talk (the Pi build uses faster-whisper offline)';
     btn.onclick = ()=> sys('no speech recognition in this browser — type to talk. ' +
       'On the hardware totem this is faster-whisper, fully offline.');
+    if(langBtn) langBtn.style.display = 'none';
     return;
   }
   let rec = null, listening = false;
-  btn.title = 'hold-to-talk (browser speech recognition — needs network)';
+  btn.title = 'push to talk · 按住说话 (browser speech recognition — needs network)';
   btn.onclick = ()=>{
     if(listening){ rec && rec.stop(); return; }
     rec = new SR();
-    rec.lang = 'en-US'; rec.interimResults = false; rec.maxAlternatives = 1;
-    listening = true; btn.classList.add('on');
+    rec.lang = asrLang; rec.interimResults = false; rec.maxAlternatives = 1;
+    listening = true; btn.classList.add('on'); btn.textContent = '🎤 …';
     const f = faceOf(active);
     T.summon(active, 'listening');
     T.caption(f.em + ' ' + f.nm + ' — listening', 'push-to-talk · 按住说话', 'LISTENING 40%', f.col);
     rec.onresult = e => { const t = e.results[0][0].transcript; if(t) send(t); };
     rec.onerror = e => sys('mic: ' + (e.error || 'failed') + ' — type to talk');
-    rec.onend = ()=>{ listening = false; btn.classList.remove('on'); };
-    try{ rec.start(); }catch(e){ listening = false; btn.classList.remove('on'); }
+    rec.onend = ()=>{ listening = false; btn.classList.remove('on'); btn.textContent = '🎤 TALK'; };
+    try{ rec.start(); }catch(e){ listening = false; btn.classList.remove('on'); btn.textContent = '🎤 TALK'; }
   };
 }
 
