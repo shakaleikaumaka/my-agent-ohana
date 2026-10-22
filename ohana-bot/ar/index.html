@@ -310,16 +310,46 @@ Questions?
   </ul>
 </div>
 
+<h2>🤖 BONUS LEVEL — THE ʻOHANA **IN** THE LENS (AIUI agent, ~45 min, MacBook)</h2>
+<div class="card">
+  <p>Talk to the real fleet through the glasses: <b>speak → lens shows "thinking…" → a real ʻohana agent's reply appears (20–60s)</b>. Uses the same public door as the website — already tested end-to-end tonight ✅. No KYC, no store publish, no budget. The teleprompter is untouched by all of this.</p>
+  <div class="step"><div class="n">1</div><div><span class="lbl">MacBook browser (Chrome)</span><br>Open <b>https://aiui-global.rokid.com/</b> → sign in with <b>the same Rokid account</b> you made in the app. (If login loops, try https://aiui.rokid.com/)<br><span class="ok">✅ Workspace with a left sidebar</span></div></div>
+  <div class="step"><div class="n">2</div><div><span class="lbl">Create the agent</span><br>Tap <b>Create / 新建</b> → <b>Create with Coding / 对话创建 (AIUI CODING)</b> → enable the <b>aiui-dev</b> skill if it asks (first time only).</div></div>
+  <div class="step"><div class="n">3</div><div><span class="lbl">Paste THIS prompt into the generator</span><br>↓ copy it, paste, let it build:</div></div>
+  <button class="btn btn-p" id="copybtn2">📋 COPY THE AGENT PROMPT</button>
+  <p id="copied2" style="display:none;color:var(--grn);text-align:center;font-weight:700;margin:6px">✅ Copied — paste it into the Studio generator</p>
+  <div class="step"><div class="n">4</div><div><span class="lbl">Package it</span><br>In the agent: <b>Build &amp; Review → AIX Packaging / Package AIX</b> → wait for <b>Synced</b>.</div></div>
+  <div class="step"><div class="n">5</div><div><span class="lbl">Push to glasses</span><br>iPhone app → <b>Settings → Developer / 开发者 → AIUI</b> (or <span class="zh">更新眼镜资源包</span>) → <b>Update glasses resource</b> → wait for "downloaded successfully".</div></div>
+  <div class="step"><div class="n">6</div><div><span class="lbl">Summon</span><br>Glasses on → say <b>"Hi Rokid, open Ohana"</b> (乐奇，打开 Ohana).<br><span class="ok">✅ Lens shows "🌺 ʻOhana online — speak." Ask anything. The reply of a REAL agent lands in your lens.</span></div></div>
+  <div class="tip">🧯 <b>Likely friction (don't chase past ~1am):</b> Studio login redirect loops → use the other Studio URL · AIX stuck "packaging" → refresh + repackage · agent not found on glasses → redo step 5 with the app killed + reopened. If it's not alive by ~00:30, <b>shelve it</b> — the teleprompter pitch is already the win. We finish this after Demo Day.</div>
+</div>
+<textarea id="agentprompt" style="position:absolute;left:-9999px;top:0" readonly>
+Create a minimal voice agent named "Ohana" (the user opens it by saying "Hi Rokid, open Ohana"). It lets the user talk to my family's real AI agents through the glasses.
+
+FLOW:
+1. On open: show "🌺 ʻOhana online — speak." as large green text on black, then start listening.
+2. When the user speaks, take the ASR transcript and POST it as JSON via fetch to https://myagentohana.com/api/chat/send with header Content-Type: application/json and body {"session":"ar-glasses-shaka","name":"Shaka (AR glasses)","text":TRANSCRIPT}. The response JSON contains {"ok":true,"seq":N} — remember N.
+3. Immediately show "thinking…" on the lens. Then poll GET https://myagentohana.com/api/chat/poll?session=ar-glasses-shaka&after=N every 3 seconds. The response has "messages": a list with fields role, text, seq. Skip any message whose text contains "on the way" or "hang tight" (that's a hold note — you may show it as the thinking state). The first message with role "ohana" that is NOT a hold note is the real reply. Replies usually take 20–60 seconds: keep polling patiently for up to 3 minutes.
+4. Display the reply as large green text on the lens, and speak it aloud via TTS if the runtime supports it. Then listen again for the next question (loop until the user exits the agent).
+5. On any network error: show "the ʻohana is out of range — check the wifi" and retry when the user taps.
+
+UI: minimal — big green text on black, no images, no other external APIs. Keep all state in the page script. HTTPS only as given; do not add domain configuration beyond what a personal/dev agent needs for on-device testing.
+</textarea>
+
 <p class="sub" style="text-align:center;margin-top:20px">🤙 stock app only · feature freeze honored · mahalo &amp; good luck tomorrow</p>
 
 <script>
-document.getElementById('copybtn').addEventListener('click', function(){
-  var t = document.getElementById('script');
-  var done = function(){ document.getElementById('copied').style.display='block'; };
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(t.value).then(done, function(){ t.select(); document.execCommand('copy'); done(); });
-  } else { t.style.left='0'; t.select(); document.execCommand('copy'); t.style.left='-9999px'; done(); }
-});
+function copier(btnId, srcId, noteId){
+  document.getElementById(btnId).addEventListener('click', function(){
+    var t = document.getElementById(srcId);
+    var done = function(){ document.getElementById(noteId).style.display='block'; };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t.value).then(done, function(){ t.style.left='0'; t.select(); document.execCommand('copy'); t.style.left='-9999px'; done(); });
+    } else { t.style.left='0'; t.select(); document.execCommand('copy'); t.style.left='-9999px'; done(); }
+  });
+}
+copier('copybtn','script','copied');
+copier('copybtn2','agentprompt','copied2');
 </script>
 </body>
 </html>
