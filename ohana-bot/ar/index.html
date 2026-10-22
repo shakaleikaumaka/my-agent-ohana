@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>AR GLASSES → DEMO DAY 🕶️</title>
+<style>
+  :root{ --bg:#0b0e14; --card:#141a26; --line:#232c3f; --ink:#e8eefb; --dim:#93a1bd;
+         --grn:#5df0a5; --yel:#ffd166; --red:#ff7a7a; --blu:#7ab8ff; }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{background:var(--bg); color:var(--ink); font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+       max-width:680px; margin:0 auto; padding:14px 14px 90px;}
+  h1{font-size:24px; margin:10px 0 4px}
+  h2{font-size:19px; margin:26px 0 10px; padding:10px 12px; background:var(--card); border-left:4px solid var(--grn); border-radius:8px}
+  h2.b{border-color:var(--blu)} h2.c{border-color:var(--yel)} h2.d{border-color:var(--red)}
+  .sub{color:var(--dim); font-size:14px; margin-bottom:14px}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; margin:10px 0}
+  .step{display:flex; gap:10px; margin:12px 0; align-items:flex-start}
+  .n{flex:0 0 26px; height:26px; border-radius:50%; background:var(--grn); color:#06281a; font-weight:800;
+     display:flex; align-items:center; justify-content:center; font-size:14px; margin-top:2px}
+  .n.bl{background:var(--blu)} .n.yl{background:var(--yel);color:#3a2a00}
+  .zh{font-size:21px; font-weight:700; background:#0a0f1a; border:1px dashed var(--line); border-radius:8px;
+      padding:6px 10px; display:inline-block; margin:4px 0; letter-spacing:1px}
+  .ok{color:var(--grn); font-size:14px} .lbl{color:var(--dim); font-size:13px; text-transform:uppercase; letter-spacing:.06em}
+  .btn{display:block; width:100%; text-align:center; padding:16px; border-radius:12px; font-size:18px; font-weight:800;
+       text-decoration:none; margin:8px 0; border:0; cursor:pointer}
+  .btn-p{background:var(--grn); color:#06281a} .btn-s{background:#1d2740; color:var(--ink); border:1px solid var(--line)}
+  .warn{border-left:4px solid var(--red); padding:10px 12px; background:#1c1216; border-radius:8px; margin:10px 0}
+  .tip{border-left:4px solid var(--yel); padding:10px 12px; background:#1b180e; border-radius:8px; margin:10px 0}
+  .voice{font-size:22px; font-weight:800; color:var(--grn); background:#0a1410; border:1px solid #1d4a34;
+         border-radius:10px; padding:12px; margin:8px 0; text-align:center}
+  .voice small{display:block; color:var(--dim); font-weight:400; font-size:14px}
+  ul{margin:6px 0 6px 20px} li{margin:4px 0}
+  .pill{display:inline-block; background:#1d2740; border-radius:20px; padding:3px 10px; font-size:13px; color:var(--blu); margin:2px 2px}
+  #copied{display:none; color:var(--grn); text-align:center; font-weight:700; margin:6px}
+  a{color:var(--blu)}
+</style>
+</head>
+<body>
+
+<h1>🕶️ Rokid RV101 → DEMO DAY</h1>
+<p class="sub">Pitch is <b>Friday afternoon</b>. Match the shapes — you never need to read Chinese.
+Where you tap · the <b>中文 label to match</b> · what success looks like.</p>
+
+<div class="card">
+  <b>🌙 TONIGHT (do all of this at the hostel, calm wifi):</b>
+  <div class="step"><div class="n">1</div><div>Charge glasses to <b>100%</b> (cable in your day bag after).</div></div>
+  <div class="step"><div class="n">2</div><div>Install the app + pair (<b>GOAL A</b> below) — ~10 min.</div></div>
+  <div class="step"><div class="n">3</div><div>Load the pitch + smart scroll (<b>GOAL B</b>) — ~5 min.</div></div>
+  <div class="step"><div class="n">4</div><div><b>Rehearse once with glasses ON.</b> Tune font size. Feel the smart-scroll lag. This is the step that wins tomorrow.</div></div>
+  <div class="step"><div class="n">5</div><div>Try translation once (<b>GOAL C</b>) so it's not new tomorrow.</div></div>
+</div>
+
+<h2>📜 FIRST — GET THE SCRIPT ONTO YOUR PHONE</h2>
+<div class="card">
+  <p>Two ways. <b>Way 1 is easiest:</b></p>
+  <button class="btn btn-p" id="copybtn">📋 COPY THE PITCH SCRIPT</button>
+  <p id="copied">✅ Copied — now paste it into the app (新建文本 → long-press → 粘贴 Paste)</p>
+  <a class="btn btn-s" href="pitch.txt" download>⬇️ Way 2: download pitch.txt (for 导入文本 import)</a>
+  <p class="sub" style="margin:8px 0 0">Stage directions are in 【brackets】 — you'll see them, you just never say them. Mandarin lines have pinyin under them. 6 minutes ≈ timed for the demo beats.</p>
+</div>
+<textarea id="script" style="position:absolute;left:-9999px;top:0" readonly>
+DEMO DAY PITCH · ʻOHANA BOT · 6 MIN
+【LINES IN 【BRACKETS】 = STAGE DIRECTIONS — DO NOT SAY THEM OUT LOUD】
+
+【GLASSES ON. UKE IN YOUR HANDS. STAND BY THE LAPTOP. DON'T TOUCH IT YET.】
+
+Every AI companion you can buy today
+has the same secret.
+
+Unplug it — and it forgets you.
+
+The cloud reset.
+The app update.
+The factory reset —
+and your friend is a stranger again.
+
+We built the opposite.
+
+灵魂不在壳里
+líng hún bù zài ké lǐ —
+the soul is not in the shell.
+
+I'm going to show you a robot
+you can unplug mid-sentence…
+and it finishes the sentence.
+
+· · · · · · · · · ·
+
+AI companions today
+are amnesiacs in a data center.
+
+Locked in an app.
+English-first.
+Rented by the month.
+
+If you're a community —
+a hacker house, a music space, a school —
+there is no such thing as a member
+of your community
+
+that remembers everyone,
+speaks your language,
+and keeps working when the wifi dies.
+
+We think every community deserves one.
+
+· · · · · · · · · ·
+
+This is the ʻOhana Bot.
+
+One body, six souls —
+一个身体，六个灵魂
+yī gè shēn tǐ, liù gè líng hún.
+
+It's not one chatbot with six voices.
+
+Each face is a REAL agent
+from my ʻohana —
+a family of 175 agents
+I've been running for months.
+
+Real memory.
+Real work history.
+Real personalities.
+
+The bot is where they meet
+the physical world.
+
+Tonight the body is virtual.
+I had 200 dollars —
+so we built the soul first.
+
+The body ships
+as a complete manufacturing plan:
+32 parts,
+an interactive 3D assembly model,
+a bill of materials
+from 577 to 1,580 yuan.
+
+Fund it — and it stands up.
+
+The mind is six agents
+on a free-tier LLM ladder.
+
+And every demo line you're about to hear
+is also pre-rendered —
+so this demo cannot die.
+
+Watch.
+
+· · · · · · · · · ·
+
+【CLICK SHAKA's FACE. BEAT 1 PLAYS. LET IT FINISH.】
+
+That's me — or rather,
+the agent who shares my name
+and my memory.
+
+【CLICK DEVA. BEAT 2 PLAYS.】
+
+DEVA knows Devcon because she's going.
+
+No hallucinated facts —
+she only knows what she knows.
+
+【CLICK CROPS. BEAT 3 PLAYS. LET THE ROOM LAUGH.】
+
+Ask whether YOUR project
+fits the Ethereum mandate —
+and the demo evaluates the evaluator.
+
+【PULL THE PLUG / KILL THE PROCESS. SCREEN GOES DARK.】
+【HOLD THE SILENCE. TWO FULL SECONDS.】
+【POWER BACK ON. BEAT 4: IT BOOTS AND GREETS YOU BY NAME.】
+
+Boot in under a second —
+and it picks up mid-thought,
+and greets you BY NAME.
+
+That's not a trick.
+
+Memory lives on the device,
+in one file the owner controls.
+
+Persistence is the product.
+
+【CLICK KALA. HOLD THE REAL UKULELE UP. BEAT 5 PLAYS.】
+【THEN HAND THE UKE TO A JUDGE.】
+
+A robot that creates musicians.
+
+The ukulele is real.
+The teacher never sleeps.
+
+【CLICK OKE. BEAT 6 — THE CHORUS. GET THEM SINGING.】
+
+Judges don't score this one.
+
+You're in it.
+
+· · · · · · · · · ·
+
+Nine days after this Demo Day,
+this bot — or its body —
+stands in the Devcon 8 Music Space
+in Mumbai,
+
+serving thousands of attendees
+alongside 34 international artists:
+answering schedule questions,
+teaching chords,
+running karaoke.
+
+九天之后，它将站在孟买的舞台上
+jiǔ tiān zhī hòu,
+tā jiāng zhàn zài Mèngmǎi de wǔtái shàng —
+nine days from now,
+it stands on the stage in Mumbai.
+
+This isn't a hackathon toy
+with a pitch deck.
+
+It's a hackathon project
+with a confirmed deployment.
+
+· · · · · · · · · ·
+
+Every community deserves a member
+that never forgets your name,
+speaks your language,
+and survives the power cut.
+
+灵魂不在壳里
+
+The soul is not in the shell —
+it's in the memory,
+and the memory belongs to you.
+
+Mahalo.
+
+Questions?
+</textarea>
+
+<h2>🅰️ GOAL A — INSTALL + PAIR (10 min)</h2>
+<div class="card">
+  <div class="step"><div class="n">1</div><div><span class="lbl">Prep</span><br>Unfold both arms. Hold the <b>right-temple button ~3s</b> → powers on, first boot = pairing mode (<b>blue light blinking</b>).<br><span class="ok">✅ Blue light blinking</span></div></div>
+  <div class="step"><div class="n">2</div><div><span class="lbl">App Store → search</span><br><span class="zh">乐奇AI眼镜</span> or <span class="zh">Rokid AI</span><br>Tap <span class="zh">获取</span> (Get) → install → Open.<br><span class="ok">✅ App opens to a login screen</span></div></div>
+  <div class="step"><div class="n">3</div><div><span class="lbl">Login — watch the +86 wall</span><br>Screen shows phone field <span class="zh">手机号</span> with <b>+86</b>.<br><b>Workaround:</b> look BELOW the phone field for small icons: <span class="zh">邮箱</span> (email) or  Apple. Tap one of those.<br>No-code option: if a verification code screen appears <span class="zh">验证码</span>, check SMS; <span class="zh">重新发送</span> = resend.<br><span class="ok">✅ You're in, main screen visible</span></div></div>
+  <div class="step"><div class="n">4</div><div><span class="lbl">Add the glasses</span><br>Tap the <b>+ icon</b> (top-right or center card):<br><span class="zh">添加设备</span> or <span class="zh">连接眼镜</span><br><span class="ok">✅ Scanning screen appears</span></div></div>
+  <div class="step"><div class="n">5</div><div><span class="lbl">Pick your glasses</span><br>Tap the entry named <b>Rokid / RV101 / 乐奇</b>.<br>iOS Bluetooth popup → tap <span class="zh">配对</span> (Pair).<br><span class="ok">✅ Device card shows battery % — blue light stops blinking — DONE</span></div></div>
+</div>
+
+<h2 class="b">🅱️ GOAL B — PITCH INTO THE TELEPROMPTER (5 min)</h2>
+<div class="card">
+  <div class="step"><div class="n bl">1</div><div><span class="lbl">Screen: app open</span><br>Bottom tab bar, <b>1st icon (house)</b>:<br><span class="zh">首页</span> (Home)</div></div>
+  <div class="step"><div class="n bl">2</div><div><span class="lbl">Home screen</span><br>Tap the card with a <b>document/text symbol</b>:<br><span class="zh">提词器</span> (Teleprompter)<br><span class="ok">✅ Teleprompter page opens</span></div></div>
+  <div class="step"><div class="n bl">3</div><div><span class="lbl">Teleprompter page</span><br>Tap the <b>plus / new</b> button:<br><span class="zh">新建文本</span> (New text)<br><span class="sub">(If you downloaded pitch.txt instead: <span class="zh">导入文本</span> = import → pick it from Files)</span></div></div>
+  <div class="step"><div class="n bl">4</div><div><span class="lbl">Empty text box</span><br>Tap inside → <b>long-press → 粘贴 (Paste)</b>. If you hit COPY above, the whole pitch lands.<br><span class="ok">✅ Script visible</span></div></div>
+  <div class="step"><div class="n bl">5</div><div><span class="lbl">Preview</span><br>Tap <span class="zh">预览</span> (Preview) → set <b>font size</b> so ~4–6 short lines fill the lens.<br><span class="ok">✅ Text looks like it will on the glasses</span></div></div>
+  <div class="step"><div class="n bl">6</div><div><span class="lbl">Send to glasses</span><br>Tap <span class="zh">发送到眼镜</span><br><span class="ok">✅ Checkmark / "sent"</span></div></div>
+  <div class="step"><div class="n bl">7</div><div><span class="lbl">Smart scroll ON</span><br>Gear (top-right) or toggle next to:<br><span class="zh">智能滚动</span> (Smart scroll — follows YOUR voice)<br>Grant mic permission <span class="zh">允许</span> if asked.<br><span class="ok">✅ Toggle goes blue/green</span></div></div>
+  <div class="step"><div class="n bl">8</div><div><span class="lbl">Start it on the glasses</span><br>Glasses on → swipe the touchpad to the app list → tap the 提词器 icon.<br>Or just say it: <b>le-qi da-kai ti-ci-qi</b> 👇<br><span class="ok">✅ GREEN SCROLLING TEXT IN THE LENS</span></div></div>
+  <div class="tip">🎤 <b>Rehearse the full 6 minutes tonight.</b> Smart scroll follows what you SAY — if you ad-lib, it waits; if you skip, it catches up at the next matching line. Speak the Mandarin lines slowly — the pinyin is right there under each one. Exit = double-tap the touchpad.</div>
+</div>
+
+<h2 class="c">🅲 GOAL C — LIVE TRANSLATION (EN ↔ 中文 subtitles)</h2>
+<div class="card">
+  <div class="step"><div class="n yl">1</div><div><span class="zh">首页</span> (Home) → tap the language/"A" card:<br><span class="zh">翻译</span> (Translate)</div></div>
+  <div class="step"><div class="n yl">2</div><div>Set the two language fields at the bottom:<br><span class="zh">中文</span> ↔ <span class="zh">English / 英文</span></div></div>
+  <div class="step"><div class="n yl">3</div><div>Tap the big start button:<br><span class="zh">开始翻译</span> → mic permission <span class="zh">允许</span><br><span class="ok">✅ Someone talks → green subtitles appear in the lens (&lt;1s lag on good wifi)</span></div></div>
+  <div class="tip">Use this in the <b>Q&amp;A after your pitch</b> — a judge asking in Mandarin gets subtitled live in your lens. Offline mode exists (中文/English + 4 more) if venue wifi dies — same 翻译 page.</div>
+</div>
+
+<h2 class="d">🆘 STUCK? — the 6 most likely screens</h2>
+<div class="card">
+  <ul>
+    <li><b>+86 login wall, no email option:</b> any phone that receives SMS works — borrow a local number for the code, or look again for tiny 邮箱 /  icons under the phone field.</li>
+    <li><b>"Glasses not found":</b> blue light must be BLINKING. Fold right temple → press the button 3× fast → in the app tap the circular-arrows refresh.</li>
+    <li><b>Permission dialog (Bluetooth/mic/location):</b> always tap <span class="zh">允许</span> (Allow). Denied earlier? iPhone Settings → Privacy &amp; Security → Bluetooth/Microphone → Rokid app → on.</li>
+    <li><b>Text won't send to glasses:</b> back to Home → confirm device card still shows battery → re-tap <span class="zh">发送到眼镜</span>.</li>
+    <li><b>No 智能滚动 toggle:</b> it's inside the teleprompter's own top-right gear, not the app's main settings.</li>
+    <li><b>Subtitles silent in translation:</b> speak toward the glasses, check the pair is 中文↔英文, look for a small "show on glasses" toggle on the 翻译 page.</li>
+  </ul>
+</div>
+
+<h2>🗣 SAY IT (plain pinyin — no Mandarin needed)</h2>
+<div class="voice">le-qi da-kai ti-ci-qi<small>open the teleprompter 提词器</small></div>
+<div class="voice">le-qi da-kai fan-yi<small>open translation 翻译</small></div>
+<div class="voice">le-qi<small>wake the assistant anytime (or "hi ro-kid")</small></div>
+
+<h2>🌅 STAGE-DAY CHECKLIST (Friday)</h2>
+<div class="card">
+  <div class="step"><div class="n">1</div><div><b>Morning:</b> glasses 100% + charging cable + phone 100%. Battery under active lens use = a few hours — top up at lunch.</div></div>
+  <div class="step"><div class="n">2</div><div><b>One hour before:</b> glasses on, 提词器 open, smart scroll live, font re-checked under venue light (lens = green mono, up to 1500 nits — fine indoors).</div></div>
+  <div class="step"><div class="n">3</div><div><b>On stage:</b> phone unlocked nearby = backup pager. Speak YOUR pace — smart scroll follows you, not the other way round.</div></div>
+  <div class="step"><div class="n">4</div><div><b>Q&amp;A:</b> say <b>le-qi da-kai fan-yi</b> — judge's Mandarin lands as English subtitles in your lens. 🤯 moment for the room, free.</div></div>
+</div>
+<div class="warn">🛟 <b>If the glasses die on stage:</b> the pitch is 6 beats + 6 lines you already know. This same page on your phone = the script (it's above). Glasses = amplifier, not crutch. The demo itself cannot die — that's the whole pitch.</div>
+
+<h2>🛡 Q&amp;A ARMOR (glance at this between questions)</h2>
+<div class="card">
+  <ul>
+    <li><b>How is it different?</b> Six REAL agents, months of shared memory, on-device persistence, bilingual, degrades to pre-rendered audio instead of dying. And a deployment date.</li>
+    <li><b>Cost?</b> ¥577–1,580 of parts. Mind runs on a free LLM lane + $5 airbag. A school can afford it.</li>
+    <li><b>Next?</b> Mumbai Nov 3–6 — real deployment. Body v2 funded via the manufacturing plan; the 3D model IS the build guide.</li>
+    <li><b>Who for?</b> Communities — hacker houses, music spaces, schools, festivals. Shared memory &gt; smart speaker.</li>
+    <li><b>What breaks?</b> LLM lane → free-model failover + pre-rendered audio. Noise → push-to-talk + type. Body unbuilt → that's the fundable plan; software is done.</li>
+  </ul>
+</div>
+
+<p class="sub" style="text-align:center;margin-top:20px">🤙 stock app only · feature freeze honored · mahalo &amp; good luck tomorrow</p>
+
+<script>
+document.getElementById('copybtn').addEventListener('click', function(){
+  var t = document.getElementById('script');
+  var done = function(){ document.getElementById('copied').style.display='block'; };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(t.value).then(done, function(){ t.select(); document.execCommand('copy'); done(); });
+  } else { t.style.left='0'; t.select(); document.execCommand('copy'); t.style.left='-9999px'; done(); }
+});
+</script>
+</body>
+</html>
