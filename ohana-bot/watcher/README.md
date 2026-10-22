@@ -9,13 +9,24 @@ kit/
 ├── restore.sh               hand it back exactly as received (exact image, or Seeed V1.1.7 + identity)
 ├── xiaozhi/merged-binary.bin   xiaozhi-esp32 v2.5.2 "sensecap-watcher" build (13.5 MB, zh-CN wake word), flash at 0x0
 ├── xiaozhi/watcher.zip         the same, as released (sha256 9d8df9d1…)
+├── seeed-agent/merged-binary-en.bin   Seeed "Visual Trigger" v2.0.4 EN (13.6 MB) — ONLY for W1-A-EN units (see §0b)
+├── factory-info.py          flash.sh calls it: saves EUI/SN/version from the Seeed console before anything is overwritten
 ├── factory-v1.1.7/          Seeed's open-source factory firmware (restore fallback)
 ├── xiaozhi-role-prompt.txt  paste into xiaozhi.me → agent → 配置角色 (SHAKA, EN/中文, hands off to siblings)
 ├── mcp/                     Path B: mcp_pipe.py (upstream) + ohana_mcp.py (ask_ohana → totem /chat)
 └── backup/                  created by flash.sh — nvsfactory.bin (KEEP FOREVER) + watcher-factory-full.bin
 ```
 
+## 0b. WHICH FIRMWARE — read the label on the Watcher first
+| label says | flash | binds on | wake word | extra |
+|---|---|---|---|---|
+| **W1-A** (plain) | `./flash.sh` → community xiaozhi v2.5.2 | xiaozhi.me (Google login) | 你好小智 | nothing else needed |
+| **W1-A-EN** | `./flash.sh --seeed` → Seeed Visual-Trigger v2.0.4 | sensecraft.seeed.cc/ai/watcher-agent (Google/GitHub/Apple) | "Jarvis" | **visual wake-up** (walks up → greets) + camera |
+
+Seeed's firmware on a plain W1-A needs an "authentication file" from sensecap@seeed.cc = a **one-time irreversible eFuse burn**. **Never on a loaner** — if the label is plain W1-A, stay on the default path. (Both platforms expose an MCP endpoint, so Path B is identical.)
+
 ## 0. What you need on the table
+- **Power = plain 5 V/1 A** (phone charger). Seeed: >5 V may burn it. Battery is 400 mAh backup only → the booth runs on a cable.
 - Laptop with **python3** · `pip3 install esptool` (China mirror: `pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple esptool`)
 - **USB-C DATA cable** into the **BOTTOM/side** port (the back port is power only). Two serial ports appear (ESP32-S3 + Himax) — `flash.sh` probes both.
 - A **2.4 GHz** Wi-Fi the Watcher can join (venue Wi-Fi or your phone hotspot; iPhone → *Maximize Compatibility* ON). ESP32 has no 5 GHz.
@@ -39,7 +50,7 @@ Windows: use Espressif Flash Download Tool, chip ESP32-S3, COM port ending in **
 4. Laptop → https://xiaozhi.me → Console → **Sign in with Google** → **新建智能体** (name: SHAKA) → **添加设备** → the code.
 5. Agent → **配置角色**: paste `xiaozhi-role-prompt.txt`; pick a voice (a warm male zh/en voice — Shaka's own clone lives on the laptop totem, not here); language auto; save.
 6. Say "你好小智" → "Aloha Shaka, what are you?" → the round face answers as SHAKA. 🤙
-Wheel = volume · click = talk/stop · hold 2 s = power off · hold 10 s = factory reset (erases Wi-Fi + binding, NOT the identity partition — that's gone already, which is why backup/ matters).
+Wheel = volume · click = talk/stop · hold 2 s = power off (on battery) · hold 10 s = factory reset (Wi-Fi + binding) · **pin in the bottom hole = reset/restart** (the screen going dark after a flash → pin-press). Speak 3–10 cm from the mic (Seeed's own figure). Captive-portal/enterprise Wi-Fi never works — phone hotspot.
 
 ## 3. Path B — all six faces through the laptop (MCP接入点)
 ```bash
@@ -47,7 +58,8 @@ Wheel = volume · click = talk/stop · hold 2 s = power off · hold 10 s = facto
 cd totem-web && python3 serve.py                     # http://127.0.0.1:8777
 # terminal 2 — the bridge
 cd kit/mcp && pip3 install -r requirements.txt      # mcp<2 pinned (FastMCP API)
-export MCP_ENDPOINT='wss://api.xiaozhi.me/mcp/?token=…'   # Console → 智能体 → 配置角色 → MCP接入点 → copy
+export MCP_ENDPOINT='wss://api.xiaozhi.me/mcp/?token=…'   # xiaozhi.me: Console → 智能体 → 配置角色 → MCP接入点
+#   (Seeed platform: Agent config → MCP Setting → Get MCP Endpoint — same pipe, same tool)
 python3 mcp_pipe.py                                 # runs every enabled server in mcp_config.json (= ohana)
 ```
 Then say: *"你好小智 — ask KALA how to play three chords"* → xiaozhi calls `ask_ohana("kala", …)` → laptop `/chat` → same `router.py` + `memory.json` → KALA's face **glows on the 3D totem** while the Watcher speaks her words. Tools exposed: `ask_ohana(face, question)`, `list_faces()`, `totem_status()`. Outbound websocket only — no port-forwarding, works on venue Wi-Fi. If the laptop bridge is down the tool returns an in-persona canned line (never an error string into TTS).
@@ -59,6 +71,9 @@ Honest framing for judges: the Watcher is the **first physical node**; the lapto
 ./restore.sh     # exact 32 MB image if you made one, else Seeed V1.1.7 + your nvsfactory.bin
 ```
 Himax (camera AI chip) firmware is never touched by any of this.
+
+## Lock-in study (22 Oct) — the facts this kit is built on
+Full notes: `/shared/kb/lessons/sensecap-watcher-lock-in-2026-10-22.md`. Headlines: two UARTs (ESP32 = COM "B" / Mac bigger number — but PROBE, Seeed says no fixed pattern) · bottom port only · identity at 0x9000 · 32 MB flash · MCP replies ≤ ~1 KB (ours cap at 700 chars) · never `print()` in a stdio MCP server (ours logs to stderr).
 
 ## Risks / scars
 - xiaozhi.me is a hobby cloud (tenclass): expect 1–3 s latency, zh-CN wake word only on this build ("你好小智"); the persona answers in EN/中文.

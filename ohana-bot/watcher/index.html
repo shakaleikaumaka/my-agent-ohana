@@ -15,12 +15,19 @@ a{color:var(--sea)}code,pre{font:13px/1.5 ui-monospace,Menlo,Consolas,monospace}
 <h1>🗿👁 ʻOhana Watcher kit</h1>
 <p class="mut">SenseCAP Watcher W1-A (loaner from ShanHaiWoo) → the <b>first physical node</b> of the ʻOhana Bot: a round screen with eyes that talks as SHAKA, and — through the laptop — as all six faces. The 3D totem is the body it grows into.</p>
 
-<p><a class="dl" href="watcher-kit.tar.gz">⬇ watcher-kit.tar.gz (10 MB)</a> <a class="dl alt" href="README.md">README</a> <a class="dl alt" href="xiaozhi-role-prompt.txt">role prompt</a> <a class="dl alt" href="https://myagentohana.com/ohana-bot/totem/">laptop totem</a></p>
+<p><a class="dl" href="watcher-kit.tar.gz">⬇ watcher-kit.tar.gz (20 MB)</a> <a class="dl alt" href="README.md">README</a> <a class="dl alt" href="xiaozhi-role-prompt.txt">role prompt</a> <a class="dl alt" href="https://myagentohana.com/ohana-bot/totem/">laptop totem</a></p>
 
 <div class="card law"><b>Loaner law.</b> The xiaozhi image overwrites <code>0x9000</code>, where Seeed stores the Watcher's identity (EUI + SenseCraft credentials). <code>flash.sh</code> backs up <code>nvsfactory.bin</code> (3 s) and a full 32 MB image (≈6 min) and <b>refuses to write without the identity backup</b>. Copy <code>backup/</code> to Drive right after. <code>restore.sh</code> hands it back exactly as received.</div>
 
+<h2>0b · Which firmware? Read the label first</h2>
+<div class="card"><table style="width:100%;border-collapse:collapse;font-size:.95em"><tr><th align=left>label</th><th align=left>flash</th><th align=left>binds on</th><th align=left>wake word</th><th align=left>extra</th></tr>
+<tr><td><b>W1-A</b> (plain)</td><td><code>./flash.sh</code> community xiaozhi v2.5.2</td><td>xiaozhi.me (Google)</td><td>你好小智</td><td>—</td></tr>
+<tr><td><b>W1-A-EN</b></td><td><code>./flash.sh --seeed</code> Seeed Visual-Trigger v2.0.4</td><td>sensecraft.seeed.cc Watcher Agent (Google/GitHub/Apple)</td><td>"Jarvis"</td><td><b>visual wake-up</b> + camera</td></tr></table>
+<p class="mut" style="margin:.6em 0 0">Seeed's firmware on a plain W1-A needs an "authentication file" = a <b>one-time irreversible eFuse burn</b> — never on a loaner. Both platforms expose an MCP endpoint, so Path B is identical. Study notes: <a href="https://wiki.seeedstudio.com/watcher/">wiki.seeedstudio.com/watcher</a>.</p></div>
+
 <h2>0 · On the table</h2>
 <div class="card"><ul>
+<li><b>Plain 5 V/1 A power</b> (phone charger; Seeed: &gt;5 V may burn it). 400 mAh battery = backup only.</li>
 <li>Laptop · <code>python3</code> · <code>pip3 install esptool</code> <span class="mut">(China: <code>-i https://pypi.tuna.tsinghua.edu.cn/simple</code>)</span></li>
 <li><b>USB-C data cable</b> into the <b>bottom/side</b> port (back port = power only). Two serial ports appear; the script probes both.</li>
 <li><b>2.4 GHz Wi-Fi</b> (phone hotspot works; iPhone → Maximize Compatibility ON). No 5 GHz on ESP32.</li>
@@ -40,7 +47,7 @@ a{color:var(--sea)}code,pre{font:13px/1.5 ui-monospace,Menlo,Consolas,monospace}
 <li><a href="https://xiaozhi.me/console">xiaozhi.me/console</a> → Sign in with Google → <b>新建智能体</b> “SHAKA” → <b>添加设备</b> → the code.</li>
 <li><b>配置角色</b> → paste <a href="xiaozhi-role-prompt.txt">xiaozhi-role-prompt.txt</a> → pick a warm voice → save.</li>
 <li>“你好小智 — Aloha Shaka, what are you?” 🤙</li>
-</ol><p class="mut">Wheel = volume · click = talk/stop · hold 2 s = off · hold 10 s = factory reset (Wi-Fi + binding).</p></div>
+</ol><p class="mut">Wheel = volume · click = talk/stop · hold 2 s = off · hold 10 s = factory reset (Wi-Fi + binding) · <b>pin in the bottom hole = reset</b> · speak 3–10 cm from the mic · phone hotspot, never captive-portal Wi-Fi.</p></div>
 
 <h2>3 · Path B — all six faces through the laptop</h2>
 <pre># terminal 1
