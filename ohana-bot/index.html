@@ -53,7 +53,6 @@ nav img{width:32px;height:32px;border-radius:50%;box-shadow:0 0 12px rgba(255,18
 .seg.lit .glow,.seg.talking .glow{opacity:1}
 .seg.talking .mouthglow{animation:talkflick .18s infinite alternate}
 @keyframes talkflick{from{opacity:.55}to{opacity:1}}
-.seg .name{position:absolute;left:50%;bottom:7px;transform:translateX(-50%);font-size:12.5px;font-weight:800;letter-spacing:.18em;color:#f8e7c8;text-shadow:0 1px 2px #000;pointer-events:none}
 .base{width:96%;max-width:390px;margin-top:-4px}
 .base svg{width:100%;display:block}
 .pole.thinking .seg .eyes{animation:thinkpulse 1.1s ease-in-out infinite}
@@ -202,13 +201,13 @@ try{setLang(localStorage.getItem('totem-lang')||((navigator.language||'').toLowe
 function segSVG(f,i){
  var id='w'+i, C=f.c, v=f.mouth||'grin';
  // ---- carved tiki (kiʻi) face: brow ridge · glaring eyes · flared nose · big mouth; depth = dark recess + edge highlight
- var s='<svg viewBox="0 0 330 132">'
+ var s='<svg viewBox="0 0 330 140">'
  +'<defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1">'
  +'<stop offset="0" stop-color="#96683f"/><stop offset=".45" stop-color="#6f4c2e"/><stop offset="1" stop-color="#472f1e"/></linearGradient>'
  +'<linearGradient id="'+id+'t" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#caa06e" stop-opacity=".55"/><stop offset=".35" stop-color="#caa06e" stop-opacity="0"/></linearGradient></defs>'
  // plank + torch highlight + border
- +'<path d="M10 6 L320 6 L306 126 L24 126 Z" fill="url(#'+id+')" stroke="#2e1f12" stroke-width="3"/>'
- +'<path d="M10 6 L320 6 L306 126 L24 126 Z" fill="url(#'+id+'t)"/>'
+ +'<path d="M10 6 L320 6 L306 134 L24 134 Z" fill="url(#'+id+')" stroke="#2e1f12" stroke-width="3"/>'
+ +'<path d="M10 6 L320 6 L306 134 L24 134 Z" fill="url(#'+id+'t)"/>'
  // side hatching (carved crosshatch)
  +'<g stroke="#2e1f12" stroke-width="1.7" opacity=".5">'
  +'<path d="M22 20 L46 120 M34 16 L58 120 M46 12 L70 120" transform="skewX(-6)"/>'
@@ -262,9 +261,13 @@ function segSVG(f,i){
     +'<path d="M92 100 Q165 90 238 100" stroke="#5c3f28" stroke-width="3.5" fill="none"/>'
     +'<g class="glow mouthglow" style="filter:drop-shadow(0 0 8px '+C+')"><rect x="99" y="110" width="132" height="7" rx="3.5" fill="'+C+'"/></g>';
  }
- s+=M
+ s+='<g transform="translate(0,-4)">'+M
  // chin cuts
- +'<g stroke="#2e1f12" stroke-width="2.4" opacity=".7"><path d="M70 122 L84 112 M260 122 L246 112"/></g>'
+ +'<g stroke="#2e1f12" stroke-width="2.4" opacity=".7"><path d="M70 122 L84 112 M260 122 L246 112"/></g></g>'
+ // carved name-plate, clear of the mouth
+ +'<rect x="103" y="120" width="124" height="15" rx="4" fill="#3a2818"/>'
+ +'<rect x="103" y="120" width="124" height="15" rx="4" fill="none" stroke="#5c3f28" stroke-width="1.4"/>'
+ +'<text x="165" y="131.5" text-anchor="middle" font-size="11.5" font-weight="800" letter-spacing="2.5" fill="#f0dfc0" font-family="inherit">'+f.n+'</text>'
  +'</svg>';
  return s;
 }
@@ -273,7 +276,7 @@ FACES.forEach(function(f,i){
  var d=document.createElement('div');
  d.className='seg'; d.id='seg-'+f.k; d.setAttribute('role','button'); d.setAttribute('tabindex','0');
  d.setAttribute('aria-label','talk to '+f.n);
- d.innerHTML=segSVG(f,i)+'<div class="name">'+f.n+'</div>';
+ d.innerHTML=segSVG(f,i);
  d.addEventListener('click',function(){tapFace(f);});
  d.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();tapFace(f);}});
  segsEl.appendChild(d);
