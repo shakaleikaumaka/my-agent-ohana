@@ -306,10 +306,10 @@ function add(who,color,text,badge,visitor){
  var d=document.createElement('div');d.className='m '+(visitor?'v':'a');
  d.innerHTML=(visitor?'':'<div class="who" style="color:'+color+'">'+who+(badge||'')+'</div>')+esc(text);
  logEl.appendChild(d);logEl.scrollTop=logEl.scrollHeight;return d;}
-function typeOut(who,color,text,badge){
+function typeOut(who,color,text,badge,rate){
  var d=add(who,color,'',badge);var i=0;
  return new Promise(function(res){(function step(){d.childNodes[d.childNodes.length-1].textContent=text.slice(0,++i);logEl.scrollTop=logEl.scrollHeight;
-   if(i<text.length)setTimeout(step,14);else res();})();});}
+   if(i<text.length)setTimeout(step,rate||14);else res();})();});}
 
 /* =============== AUDIO =============== */
 var curAudio=null;
@@ -321,7 +321,14 @@ function playVoice(f,src){
  a.addEventListener('ended',function(){seg.classList.remove('talking');});
  a.addEventListener('error',function(){seg.classList.remove('talking');});
  a.play().catch(function(){seg.classList.remove('talking');});
+ return a;
 }
+/* resolves when the clip finishes (or errors), at latest after maxMs; polls the ceremony abort flag */
+function audioDone(a,maxMs){return new Promise(function(res){var done=false;function fin(){if(!done){done=true;res();}}
+ if(!a){fin();return;}
+ a.addEventListener('ended',fin);a.addEventListener('error',fin);
+ var t0=Date.now();(function poll(){if(done)return;if(abort){try{a.pause();}catch(_){ }fin();return;}
+   if(Date.now()-t0>maxMs){fin();return;}setTimeout(poll,200);})();});}
 function stopVoice(){if(curAudio){try{curAudio.pause();}catch(_){}}FACES.forEach(function(x){document.getElementById('seg-'+x.k).classList.remove('talking');});}
 
 /* =============== TAP A FACE =============== */
@@ -348,10 +355,13 @@ ceremonyBtn.addEventListener('click',function(){
      add((window.LANG==='zh'?'访客':'visitor')+' 🧑','',b.visitor,null,true);
      await new Promise(r=>setTimeout(r,650));if(abort)break;
      var seg=document.getElementById('seg-'+f.k);seg.classList.remove('lit');void seg.offsetWidth;seg.classList.add('lit');
-     playVoice(f,'totem/audio/demo/beat'+b.id+'.mp3');
-     await typeOut(f.n+' '+f.e,f.c,b.reply);
+     var au=playVoice(f,'totem/audio/demo/beat'+b.id+'.mp3');
+     var durMs=(b.dur||8)*1000;
+     var rate=Math.min(70,Math.max(16,Math.floor(durMs/Math.max(1,b.reply.length))));
+     var typing=typeOut(f.n+' '+f.e,f.c,b.reply,null,rate);
+     await Promise.all([typing,audioDone(au,durMs+5000)]);if(abort)break;
      di[i].className='done';
-     await new Promise(r=>setTimeout(r,500));if(abort)break;
+     await new Promise(r=>setTimeout(r,450));if(abort)break;
    }
    stopVoice();running=false;ceremonyBtn.disabled=false;
    ceremonyBtn.innerHTML='⚡ <span>'+(window.LANG==='zh'?'再播一次仪式':'play the ceremony again')+'</span>';

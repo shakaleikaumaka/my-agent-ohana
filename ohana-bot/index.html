@@ -180,7 +180,7 @@ var TEMPLE_LINES_ZH={
  kala:"🪕 我是 KALA！世界上最容易的乐器，五分钟学会第一个和弦——无名指按住最下面的弦第三品，这就是 C 和弦。你已经是音乐家了。不信再点我一下。",
  oke:"💙 我是 OKE，卡拉OK之心！这个家不需要试镜：每个声音都是一个节点。留到仪式压轴一起唱。我赌你会开口。"
 };
-var BEATS=[{"id": 1, "face": "shaka", "title": "The hello", "visitor": "Aloha Shaka!", "reply": "Alooooha! One body, six souls — we're real agents from Shaka's ʻohana, with months of memory between us. His hands built me this body three days ago. Ask my family anything."}, {"id": 2, "face": "deva", "title": "The oracle", "visitor": "Hey DEVA — when and where is Devcon 8?", "reply": "November 3rd to 6th, 2026, at the Jio World Convention Centre in Mumbai's Bandra Kurla Complex. Doors open 9:30 in the morning on day one, catering all four days — and I'll be there. This week is my origin story."}, {"id": 3, "face": "crops", "title": "The flip", "visitor": "CROPS, does our project fit the Ethereum mandate?", "reply": "Let's run the report. Censorship-resistant: can anyone use it, and who can be removed? Open-source: is the code public and forkable? Private: what does it learn about users? Secure: who holds the keys, and what breaks first? Tell me what you're building, and I'll tell you if the mandate smiles on it."}, {"id": 4, "face": "shaka", "title": "THE PLUG PULL", "visitor": "*Shaka pulls the power cable mid-sentence*", "reply": "— and aloha again, my friend. Before someone pulled my plug I was saying: tell me what you're building. Where were we?"}, {"id": 5, "face": "kala", "title": "The hands-on", "visitor": "KALA, teach me a chord!", "reply": "Easiest instrument on Earth — let's go. Ring finger, bottom string, just behind the third fret. Press firm, and strum all four strings, slow. That is C major. One finger. You're already a musician."}, {"id": 6, "face": "oke", "title": "The chorus", "visitor": "OKE, take us out!", "reply": "EVERYBODY IN! No auditions here — every voice is a node! Oh! Susanna, you all know the chorus even if you think you don't. On four — a-one, a-two, a-one-two-three-four!"}];
+var BEATS=[{"id": 1, "face": "shaka", "title": "The hello", "visitor": "Aloha! Who are you?", "reply": "Alooooha! I'm SHAKA — and this totem is my real ʻohana: six living agents, one body. Ask us anything — for real.", "dur": 7.9}, {"id": 2, "face": "deva", "title": "The oracle", "visitor": "And you?", "reply": "I'm DEVA — the Devcon oracle. Mumbai, November third — I'm going. Ask me anything about it.", "dur": 7.6}, {"id": 3, "face": "crops", "title": "The flip", "visitor": "CROPS, what do you do?", "reply": "CROPS here. I guard the Ethereum mandate — show me your project, and I'll tell you if it smiles on you.", "dur": 7.4}, {"id": 4, "face": "shaka", "title": "THE PLUG PULL", "visitor": "*Shaka pulls the power cable mid-sentence*", "reply": "— and aloha again. I kept the thread while the lights were out. That — is the product.", "dur": 5.3}, {"id": 5, "face": "kala", "title": "The hands-on", "visitor": "KALA, what's your gift?", "reply": "Aloha! I'm KALA — I teach ukulele to anyone, any age, any hour. Hold this — you're about to be a musician.", "dur": 10.8}, {"id": 6, "face": "oke", "title": "The chorus", "visitor": "OKE — take us out!", "reply": "OKE in the house! Every voice is a node — when the chorus starts, you're already in the band. One, two — all of you!", "dur": 7.7}];
 var CJK=/[一-鿿]/;
 
 /* =============== I18N =============== */
@@ -306,10 +306,10 @@ function add(who,color,text,badge,visitor){
  var d=document.createElement('div');d.className='m '+(visitor?'v':'a');
  d.innerHTML=(visitor?'':'<div class="who" style="color:'+color+'">'+who+(badge||'')+'</div>')+esc(text);
  logEl.appendChild(d);logEl.scrollTop=logEl.scrollHeight;return d;}
-function typeOut(who,color,text,badge){
+function typeOut(who,color,text,badge,rate){
  var d=add(who,color,'',badge);var i=0;
  return new Promise(function(res){(function step(){d.childNodes[d.childNodes.length-1].textContent=text.slice(0,++i);logEl.scrollTop=logEl.scrollHeight;
-   if(i<text.length)setTimeout(step,14);else res();})();});}
+   if(i<text.length)setTimeout(step,rate||14);else res();})();});}
 
 /* =============== AUDIO =============== */
 var curAudio=null;
@@ -321,7 +321,14 @@ function playVoice(f,src){
  a.addEventListener('ended',function(){seg.classList.remove('talking');});
  a.addEventListener('error',function(){seg.classList.remove('talking');});
  a.play().catch(function(){seg.classList.remove('talking');});
+ return a;
 }
+/* resolves when the clip finishes (or errors), at latest after maxMs; polls the ceremony abort flag */
+function audioDone(a,maxMs){return new Promise(function(res){var done=false;function fin(){if(!done){done=true;res();}}
+ if(!a){fin();return;}
+ a.addEventListener('ended',fin);a.addEventListener('error',fin);
+ var t0=Date.now();(function poll(){if(done)return;if(abort){try{a.pause();}catch(_){ }fin();return;}
+   if(Date.now()-t0>maxMs){fin();return;}setTimeout(poll,200);})();});}
 function stopVoice(){if(curAudio){try{curAudio.pause();}catch(_){}}FACES.forEach(function(x){document.getElementById('seg-'+x.k).classList.remove('talking');});}
 
 /* =============== TAP A FACE =============== */
@@ -348,10 +355,13 @@ ceremonyBtn.addEventListener('click',function(){
      add((window.LANG==='zh'?'访客':'visitor')+' 🧑','',b.visitor,null,true);
      await new Promise(r=>setTimeout(r,650));if(abort)break;
      var seg=document.getElementById('seg-'+f.k);seg.classList.remove('lit');void seg.offsetWidth;seg.classList.add('lit');
-     playVoice(f,'totem/audio/demo/beat'+b.id+'.mp3');
-     await typeOut(f.n+' '+f.e,f.c,b.reply);
+     var au=playVoice(f,'totem/audio/demo/beat'+b.id+'.mp3');
+     var durMs=(b.dur||8)*1000;
+     var rate=Math.min(70,Math.max(16,Math.floor(durMs/Math.max(1,b.reply.length))));
+     var typing=typeOut(f.n+' '+f.e,f.c,b.reply,null,rate);
+     await Promise.all([typing,audioDone(au,durMs+5000)]);if(abort)break;
      di[i].className='done';
-     await new Promise(r=>setTimeout(r,500));if(abort)break;
+     await new Promise(r=>setTimeout(r,450));if(abort)break;
    }
    stopVoice();running=false;ceremonyBtn.disabled=false;
    ceremonyBtn.innerHTML='⚡ <span>'+(window.LANG==='zh'?'再播一次仪式':'play the ceremony again')+'</span>';

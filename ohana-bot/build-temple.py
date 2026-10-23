@@ -4,8 +4,21 @@ import json, pathlib, re, sys
 
 ROOT = pathlib.Path('/workspace/gh-site/ohana-bot')
 beats_src = json.load(open(ROOT / 'totem' / 'script.json'))['beats']
+
+# bake the real mp3 durations into each beat — the ceremony paces itself to the
+# voice actually finishing (scar 23 Oct: typewriter+500ms was cutting faces off mid-sentence)
+import subprocess
+def mp3_dur(bid):
+    p = ROOT / 'totem' / 'audio' / 'demo' / f'beat{bid}.mp3'
+    try:
+        out = subprocess.run(['ffprobe', '-v', 'quiet', '-show_entries', 'format=duration',
+                              '-of', 'csv=p=0', str(p)], capture_output=True, text=True, timeout=15)
+        return round(float(out.stdout.strip()), 1)
+    except Exception:
+        return 8.0  # safe default ≈ the slowest clone take
+
 BEATS = [{'id': b['id'], 'face': b['face'], 'title': b['title'],
-          'visitor': b['visitor'], 'reply': b['reply']} for b in beats_src]
+          'visitor': b['visitor'], 'reply': b['reply'], 'dur': mp3_dur(b['id'])} for b in beats_src]
 # sanity gates
 assert len(BEATS) == 6, f'expected 6 beats, got {len(BEATS)}'
 for b in BEATS:
