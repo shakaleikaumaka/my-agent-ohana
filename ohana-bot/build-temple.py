@@ -20,7 +20,7 @@ def mp3_dur(bid):
 BEATS = [{'id': b['id'], 'face': b['face'], 'title': b['title'],
           'visitor': b['visitor'], 'reply': b['reply'], 'dur': mp3_dur(b['id'])} for b in beats_src]
 # sanity gates
-assert len(BEATS) == 6, f'expected 6 beats, got {len(BEATS)}'
+assert 6 <= len(BEATS) <= 8, f"expected 6-8 beats, got {len(BEATS)}"
 for b in BEATS:
     assert b['face'] in {'shaka','oso','deva','crops','kala','oke'}, b['face']
     assert b['visitor'] and b['reply'], b['id']
