@@ -333,6 +333,7 @@ function stopVoice(){if(curAudio){try{curAudio.pause();}catch(_){}}FACES.forEach
 
 /* =============== TAP A FACE =============== */
 function tapFace(f){
+ window.activeFace=f.k;
  var seg=document.getElementById('seg-'+f.k);
  seg.classList.remove('lit');void seg.offsetWidth;seg.classList.add('lit');
  playVoice(f,f.voice);
@@ -411,14 +412,14 @@ function escRe(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
    CJK aliases keep substring matching. Questions go LIVE to the desk — the spirit book is for
    summons and teach-asks (uke/karaoke), not for answering schedule questions. (scar 23 Oct:
    "when does Manu play at devcon?" got a canned DEVA greeting instead of the real answer.) */
-function routeFace(t){
+function routeFace(t,forHint){
  var raw=t;t=t.toLowerCase();
  var question=/\?|？/.test(raw)||/^(when|what|who|where|how|why|which|whose|is |are |does |do |can |could |什么|谁|哪|怎么|几|多)/i.test(t);
  var teach=/uke|chord|karaoke|sing|song|和弦|尤克里里|卡拉|唱|琴/.test(t);
  for(var i=0;i<FACES.length;i++){var a=FACES[i].alias;
   for(var k=0;k<a.length;k++){var al=a[k];if(!al)continue;
    var hit=/[\u4e00-\u9fff]/.test(al)?t.indexOf(al.toLowerCase())>=0:new RegExp('\\b'+escRe(al.toLowerCase())+'\\b').test(t);
-   if(hit){if(question&&!teach)return null;return FACES[i];}}}
+   if(hit){if(question&&!teach&&!forHint)return null;return FACES[i];}}}
  return null;}
 function send(){
  var t=(inp.value||'').trim();if(!t||busy)return;
@@ -432,9 +433,12 @@ function send(){
    return;
  }
  // otherwise the FAMILY answers — live from Taurus
+ // carry the summoned face as a hint: the desk answers AS that face from its real persona+pack
+ var hint=routeFace(t,true)||window.activeFace;
+ var wire=hint?'🗿[face:'+hint+'] '+t:t;
  busy=true;sendBtn.disabled=true;
  document.getElementById('pole').classList.add('thinking');
- fetch(HUB+'/send',{method:'POST',headers:{'Content-Type':'application/json'},cache:'no-store',body:JSON.stringify({session:sess,text:t,name:'totem-visitor'})})
+ fetch(HUB+'/send',{method:'POST',headers:{'Content-Type':'application/json'},cache:'no-store',body:JSON.stringify({session:sess,text:wire,name:'totem-visitor'})})
  .then(function(r){
    if(!r.ok)throw 0;
    setTimeout(function(){busy=false;sendBtn.disabled=false;document.getElementById('pole').classList.remove('thinking');},9000);
