@@ -421,21 +421,7 @@ function routeFace(t,forHint){
    var hit=/[\u4e00-\u9fff]/.test(al)?t.indexOf(al.toLowerCase())>=0:new RegExp('\\b'+escRe(al.toLowerCase())+'\\b').test(t);
    if(hit){if(question&&!teach&&!forHint)return null;return FACES[i];}}}
  return null;}
-function send(){
- var t=(inp.value||'').trim();if(!t||busy)return;
- inp.value='';add('you','',t,null,true);
- var f=routeFace(t);
- if(f){ // a named soul answers from the spirit book + its voice
-   var L=CJK.test(t)?TEMPLE_LINES_ZH:TEMPLE_LINES;
-   var seg=document.getElementById('seg-'+f.k);seg.classList.remove('lit');void seg.offsetWidth;seg.classList.add('lit');
-   playVoice(f,f.voice);
-   typeOut(f.n+' '+f.e,f.c,L[f.k],'<span class="badge">🌙 '+(window.LANG==='zh'?'精灵回声':'spirit echo')+'</span>');
-   return;
- }
- // otherwise the FAMILY answers — live from Taurus
- // carry the summoned face as a hint: the desk answers AS that face from its real persona+pack
- var hint=routeFace(t,true)||window.activeFace;
- var wire=hint?'🗿[face:'+hint+'] '+t:t;
+function liveAsk(wire,onFail){
  busy=true;sendBtn.disabled=true;
  document.getElementById('pole').classList.add('thinking');
  fetch(HUB+'/send',{method:'POST',headers:{'Content-Type':'application/json'},cache:'no-store',body:JSON.stringify({session:sess,text:wire,name:'totem-visitor'})})
@@ -445,12 +431,30 @@ function send(){
  })
  .catch(function(){
    document.getElementById('pole').classList.remove('thinking');busy=false;sendBtn.disabled=false;
+   if(onFail)onFail();
+ });
+ // safety: never leave the think-lights on
+ setTimeout(function(){document.getElementById('pole').classList.remove('thinking');busy=false;sendBtn.disabled=false;},34000);
+}
+function send(){
+ var t=(inp.value||'').trim();if(!t||busy)return;
+ inp.value='';add('you','',t,null,true);
+ var f=routeFace(t);
+ if(f){ // the echo answers INSTANTLY with the face's voice — and the REAL face answers live behind it
+   var L=CJK.test(t)?TEMPLE_LINES_ZH:TEMPLE_LINES;
+   var seg=document.getElementById('seg-'+f.k);seg.classList.remove('lit');void seg.offsetWidth;seg.classList.add('lit');
+   playVoice(f,f.voice);
+   typeOut(f.n+' '+f.e,f.c,L[f.k],'<span class="badge">🌙 '+(window.LANG==='zh'?'精灵回声':'spirit echo')+'</span>');
+   liveAsk('🗿[face:'+f.k+'] '+t,null);
+   return;
+ }
+ // otherwise the FAMILY answers — live from Taurus (hint = summoned face, so the desk answers AS that face)
+ var hint=routeFace(t,true)||window.activeFace;
+ liveAsk(hint?'🗿[face:'+hint+'] '+t:t,function(){
    var f0=FACES[Math.floor(Math.random()*FACES.length)];
    var L=CJK.test(t)?TEMPLE_LINES_ZH:TEMPLE_LINES;
    typeOut(f0.n+' '+f0.e,f0.c,L[f0.k],'<span class="badge">🌙 '+(window.LANG==='zh'?'精灵回声':'spirit echo')+'</span>');
  });
- // safety: never leave the think-lights on
- setTimeout(function(){document.getElementById('pole').classList.remove('thinking');busy=false;sendBtn.disabled=false;},34000);
 }
 sendBtn.addEventListener('click',send);
 inp.addEventListener('keydown',function(e){if(e.key==='Enter')send();});
