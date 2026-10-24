@@ -1,0 +1,49 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ohana × Rokid 真机调试卡</title>
+<style>body{font:17px/1.55 -apple-system,"PingFang SC","Noto Sans CJK SC",sans-serif;max-width:720px;margin:0 auto;padding:18px;background:#fffdf7;color:#1b1b1b}h1{font-size:22px;margin:.2em 0}h2{font-size:18px;margin:1.1em 0 .3em;border-left:5px solid #0a7;padding-left:8px}code{background:#eef;padding:1px 5px;border-radius:4px;font-size:15px}li{margin:.25em 0}.k{background:#fff3c4;padding:2px 4px}.box{background:#eefaf3;border:1px solid #bde5cf;border-radius:8px;padding:10px 12px}small{color:#666}</style></head><body>
+<h1>🌺 Ohana 眼镜智能体 — 真机调试求助卡</h1>
+<small>Shaka（Devcon Music Space · 孟买 11月）· 2026-10-24 山海坞</small>
+
+<h2>一、这是什么</h2>
+<p>我本周做了 <b>ʻOhana Bot</b>：六个开源 AI 智能体共用一个"图腾"身体，有持久记忆。现在把这个家族放进 <b>Rokid 眼镜</b>：一个 AIUI 智能体，语音提问 → 转发给真实在线的 AI 家族 → 答案显示在镜片上并朗读。源码公开：github.com/shakaleikaumaka/ohana-lens</p>
+
+<h2>二、当前状态（云端一切正常）</h2>
+<div class="box">
+<ul>
+<li>AIUI Studio（aiui.rokid.com）智能体：<b>Ohana</b></li>
+<li>Agent ID：<code>1cf4a05d6cab40b5ad685a2c1ee9a034</code></li>
+<li>AIX 版本 <b>1.0.3</b>，状态 <b>已同步 · 调试版本已就绪</b></li>
+<li>开发者账号：<code>RokiderBETbtZ0wm</code>（shakaleikaumaka@gmail.com，+1 邮箱注册）</li>
+<li>眼镜：Rokid RV101 <b>Glasses_1212</b>，已配对，App 为英文界面，提词器功能正常</li>
+</ul></div>
+
+<h2>三、问题现象</h2>
+<ol>
+<li>App：眼镜设置 → 开发者 → AIUI → <b>更新眼镜资源包</b> → 提示 <span class="k">"指令已发送到眼镜"</span>，之后<b>没有任何反应</b>，镜片里没有出现"资源包下载成功"。</li>
+<li>说 "Hi Rokid, open Ohana" → 乐奇说<b>不认识 Ohana</b>，或识别成 "open phone assistant"。</li>
+</ol>
+
+<h2>四、我们怀疑的原因（请帮忙确认）</h2>
+<ol>
+<li>手机 App 登录的是我的<b>消费者账号</b>，不是上面的开发者账号 —— <b>真机调试是否必须 App 登录开发者账号？</b></li>
+<li>眼镜没有自己的 Wi-Fi，只靠手机代理 —— <b>下载资源包是否需要眼镜连接 Wi-Fi？</b></li>
+<li>App/眼镜是英文（global）区域，智能体建在 CN Studio —— <b>区域是否要一致？</b></li>
+</ol>
+
+<h2>五、我接下来的操作清单</h2>
+<ol>
+<li>Rokid App → 「我的」→ 退出登录</li>
+<li>重新登录：<b>密码登录</b>，区号 <b>+1</b>，邮箱 <code>shakaleikaumaka@gmail.com</code></li>
+<li>确认「我的」页面显示 <code>RokiderBETbtZ0wm</code></li>
+<li>重新连接眼镜 Glasses_1212</li>
+<li>眼镜设置（眼镜名旁边的齿轮）→ Wi-Fi → 连接手机热点或场地 Wi-Fi</li>
+<li>眼镜设置 → 开发者 → AIUI → <b>更新眼镜资源包</b>，App 保持前台，<b>看镜片</b>等约 60 秒</li>
+<li>镜片出现"下载成功"后：<b>"Hi Rokid, open the family"</b> / "乐奇，打开家族" / "open Ohana"</li>
+</ol>
+
+<h2>六、备用方案：ADB 推送</h2>
+<p>同一开发者页面有 <b>眼镜 ADB 调试</b> 开关。笔记本 + 数据线在现场，可用 <code>aix</code> 命令行直接安装 v1.0.3 的 AIX 包（Studio 可下载）。</p>
+
+<h2>七、如需改 Studio</h2>
+<p>我的系统管理 agent（Admiral）此刻在线，正登录在 Studio：改名称、域名白名单（<code>myagentohana.com</code>）、重新打包，几秒就能完成。</p>
+<p>🙏 非常感谢 — 希望 11 月在孟买 Devcon 舞台上戴着 Rokid 演示。</p>
+</body></html>
