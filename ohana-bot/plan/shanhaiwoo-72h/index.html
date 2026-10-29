@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🗿 the ʻOhana Bot — the Win Plan · ShanHaiWoo 72h</title>
+<style>
+  :root{
+    --bg:#0d0f14; --bg2:#12151d; --card:#161a24; --card2:#1b2030;
+    --ink:#e8e4da; --dim:#9a93a8; --line:#2a2f3f;
+    --shaka:#ffb443; --oso:#ff7eb6; --deva:#c792ea; --crops:#2f9e6f; --kala:#f7d794; --oke:#4fc3f7;
+    --gold:#ffb443; --red:#ff6b6b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:Georgia,'Noto Serif SC',serif;line-height:1.55}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 20px 80px}
+  a{color:var(--gold)}
+  h2{font-size:1.7rem;margin:70px 0 8px;letter-spacing:.5px}
+  h2 .zh{font-size:1rem;color:var(--dim);font-weight:normal;margin-left:10px}
+  .sub{color:var(--dim);margin-bottom:24px;font-style:italic}
+  .mono{font-family:ui-monospace,Menlo,Consolas,monospace}
+
+  /* ---------- hero ---------- */
+  header{padding:70px 0 30px;text-align:center;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:-50% -20%;
+    background:radial-gradient(ellipse at 50% 0%,rgba(255,180,67,.14),transparent 55%),
+               radial-gradient(ellipse at 20% 30%,rgba(199,146,234,.10),transparent 50%),
+               radial-gradient(ellipse at 80% 30%,rgba(79,195,247,.10),transparent 50%);
+    pointer-events:none}
+  .kicker{letter-spacing:.35em;color:var(--dim);font-size:.78rem;text-transform:uppercase}
+  h1{font-size:clamp(2.2rem,6vw,3.6rem);margin:14px 0 6px}
+  h1 em{font-style:normal;background:linear-gradient(90deg,var(--shaka),var(--oso),var(--deva),var(--oke));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .oneliner{font-size:1.15rem;color:#cfc8bd;max-width:640px;margin:14px auto 0}
+  .arc{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px}
+  .arc span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:.88rem}
+  .arc .arrow{border:none;background:none;color:var(--gold);padding:8px 2px}
+
+  /* ---------- totem ---------- */
+  .totem-zone{display:flex;gap:34px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:36px}
+  .totem{width:150px;flex:0 0 150px;display:flex;flex-direction:column;gap:6px;padding:16px 12px 8px;
+    background:linear-gradient(180deg,#201a12,#17130c);border-radius:18px 18px 8px 8px;border:1px solid #3a3222;position:relative}
+  .totem::after{content:"";display:block;height:26px;background:#241d12;border-radius:4px 4px 12px 12px;margin:6px -12px -8px;border-top:2px solid #3a3222}
+  .face{border-radius:12px;padding:10px 8px;text-align:center;font-size:1.5rem;border:1px solid var(--line);
+    background:var(--card);animation:breathe 6s ease-in-out infinite;position:relative}
+  .face small{display:block;font-size:.62rem;letter-spacing:.14em;color:var(--dim);font-family:ui-monospace,monospace}
+  .f0{animation-delay:0s}.f1{animation-delay:1s}.f2{animation-delay:2s}.f3{animation-delay:3s}.f4{animation-delay:4s}.f5{animation-delay:5s}
+  @keyframes breathe{0%,100%{box-shadow:0 0 4px 0 var(--glow)}50%{box-shadow:0 0 26px 3px var(--glow)}}
+  .cast{flex:1;min-width:300px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+  .castcard{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--glow);border-radius:12px;padding:14px 16px}
+  .castcard b{font-size:1.05rem}
+  .castcard .trick{color:var(--dim);font-size:.9rem;margin-top:4px}
+
+  /* ---------- why we win ---------- */
+  .wins{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+  .win{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .win .n{font-size:1.9rem;color:var(--gold);font-family:ui-monospace,monospace}
+  .win b{display:block;margin:6px 0 6px;font-size:1.08rem}
+  .win p{color:var(--dim);font-size:.93rem}
+
+  /* ---------- architecture ---------- */
+  .arch{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:26px}
+  .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+  .fbox{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+  .fbox b{color:var(--gold)}
+  .fbox .lat{float:right;font-family:ui-monospace,monospace;font-size:.8rem;color:var(--crops);background:rgba(47,158,111,.12);padding:2px 10px;border-radius:999px}
+  .fbox .lat.warn{color:var(--red);background:rgba(255,107,107,.1)}
+  .fbox p{color:var(--dim);font-size:.9rem;margin-top:4px}
+  .down{align-self:center;color:var(--gold);font-size:1.3rem;padding:4px 0}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  @media(max-width:680px){.split{grid-template-columns:1fr}}
+  .tessera{margin-top:18px;border-left:4px solid var(--deva);background:rgba(199,146,234,.07);border-radius:0 12px 12px 0;padding:14px 18px;font-size:.93rem}
+  .tessera b{color:var(--deva)}
+
+  /* ---------- timeline ---------- */
+  .day{display:flex;gap:0;margin-bottom:26px;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .daytag{flex:0 0 120px;background:var(--card2);padding:20px 14px;text-align:center;border-right:1px solid var(--line)}
+  .daytag .dow{font-size:.75rem;letter-spacing:.2em;color:var(--dim);text-transform:uppercase}
+  .daytag .num{font-size:2.2rem;font-weight:bold;line-height:1.1}
+  .daytag .lbl{font-size:.8rem;color:var(--gold);margin-top:6px}
+  .daybody{flex:1;padding:16px 20px}
+  .daybody h3{font-size:1.15rem;margin-bottom:10px}
+  .slot{display:flex;gap:14px;padding:7px 0;border-top:1px dashed #262b3a;font-size:.94rem}
+  .slot:first-of-type{border-top:none}
+  .slot .t{flex:0 0 94px;font-family:ui-monospace,monospace;color:var(--gold);font-size:.84rem;padding-top:2px}
+  .slot .what b{color:#fff}
+  .slot .what .d{color:var(--dim);font-size:.88rem}
+  .mile{margin-top:12px;background:rgba(255,180,67,.08);border:1px solid rgba(255,180,67,.3);border-radius:10px;padding:10px 14px;font-size:.92rem}
+  .mile b{color:var(--gold)}
+  @media(max-width:620px){.day{flex-direction:column}.daytag{flex:none;border-right:none;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:baseline;justify-content:center;padding:12px}}
+
+  /* ---------- demo script ---------- */
+  .script{counter-reset:beat;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+  .beat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;position:relative}
+  .beat::before{counter-increment:beat;content:counter(beat);position:absolute;top:-13px;left:16px;
+    background:var(--gold);color:#14110a;font-weight:bold;width:27px;height:27px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-family:ui-monospace,monospace}
+  .beat b{display:block;margin-bottom:6px;padding-left:20px}
+  .beat p{color:var(--dim);font-size:.9rem}
+  .beat .say{margin-top:8px;font-style:italic;color:#d9d2c6;font-size:.9rem;border-left:3px solid var(--line);padding-left:10px}
+  .beat.money{border-color:var(--gold);box-shadow:0 0 24px rgba(255,180,67,.12)}
+
+  /* ---------- tables ---------- */
+  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;font-size:.92rem}
+  th{background:var(--card2);text-align:left;padding:10px 14px;color:var(--dim);font-weight:normal;letter-spacing:.06em;font-size:.8rem;text-transform:uppercase}
+  td{padding:10px 14px;border-top:1px solid #222738;vertical-align:top}
+  .pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.76rem;font-family:ui-monospace,monospace}
+  .pill.cut1{background:rgba(255,107,107,.15);color:var(--red)}
+  .pill.cut2{background:rgba(255,180,67,.15);color:var(--gold)}
+  .pill.keep{background:rgba(47,158,111,.15);color:#53c98f}
+
+  /* ---------- security ---------- */
+  .sec{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+  .rule{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:.92rem}
+  .rule b{color:var(--oke)}
+  .rule .ok{float:right;font-size:.78rem;color:#53c98f;font-family:ui-monospace,monospace}
+
+  /* ---------- open items ---------- */
+  .open{background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.3);border-radius:16px;padding:22px 24px}
+  .open h2{margin-top:0}
+  .open li{margin:10px 0 10px 20px}
+  .open b{color:var(--red)}
+
+  footer{text-align:center;color:var(--dim);margin-top:80px;font-size:.85rem}
+  .chip{font-family:ui-monospace,monospace;font-size:.8rem;background:var(--card2);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">ShanHaiWoo 山海坞 · 72-hour AI × Hardware Hackathon · Shenzhen</div>
+  <h1>🗿 the <em>ʻOhana Bot</em> — the win plan</h1>
+  <p class="oneliner">One robot. Six faces. Each face a <b>real, persistent AI agent</b> with months of memory and a real job.
+  Pull the plug mid-sentence — it boots, greets you by name, and finishes the thought.<br><b>Persistence is the product.</b></p>
+  <div class="arc">
+    <span>🛠 born in Shenzhen · <b>Oct 21–23</b></span><span class="arrow">→</span>
+    <span>🎪 Maker Festival stress test · <b>Sat Oct 24</b></span><span class="arrow">→</span>
+    <span>🇮🇳 serving at Devcon 8 Music Space, Mumbai · <b>Nov 3–6</b></span>
+  </div>
+</header>
+
+<!-- ============ THE CAST ============ -->
+<h2>The six souls <span class="zh">六张脸，六个灵魂</span></h2>
+<p class="sub">Track: 🎬 万象有声 — AI Storytelling &amp; Interactive Toys. The speaking face glows; the others breathe.</p>
+<div class="totem-zone">
+  <div class="totem" aria-hidden="true">
+    <div class="face f0" style="--glow:var(--shaka)">🤙<small>SHAKA</small></div>
+    <div class="face f1" style="--glow:var(--oso)">🎻<small>OSO</small></div>
+    <div class="face f2" style="--glow:var(--deva)">🦄<small>DEVA</small></div>
+    <div class="face f3" style="--glow:var(--crops)">🌿<small>CROPS</small></div>
+    <div class="face f4" style="--glow:var(--kala)">🪕<small>KALA</small></div>
+    <div class="face f5" style="--glow:var(--oke)">💙<small>OKE</small></div>
+  </div>
+  <div class="cast">
+    <div class="castcard" style="--glow:var(--shaka)"><b>🤙 SHAKA — the host</b><div class="trick">The digital twin. Talking to the totem IS talking to Shaka. Wake: “Aloha Shaka” · 阿罗哈. Routes questions to siblings.</div></div>
+    <div class="castcard" style="--glow:var(--oso)"><b>🎻 OSO — the storyteller</b><div class="trick">Knows the Music Manifesto by heart + the full Mumbai schedule + every artist's story. 34 real acts, zero made up.</div></div>
+    <div class="castcard" style="--glow:var(--deva)"><b>🦄 DEVA — the oracle</b><div class="trick">All-knowing on Devcon 8. Canonically “a future gift to Ethereum” — this hackathon is her origin story.</div></div>
+    <div class="castcard" style="--glow:var(--crops)"><b>🌿 CROPS — the steward</b><div class="trick">Recites the ETH mandate, mandate-checks a judge's own project live, explains 55 acronyms. The judge-education face.</div></div>
+    <div class="castcard" style="--glow:var(--kala)"><b>🪕 KALA — the teacher</b><div class="trick">Teaches 3 real ukulele chords in 5 minutes while Shaka hands you a real uke. Hands-on magic.</div></div>
+    <div class="castcard" style="--glow:var(--oke)"><b>💙 OKE — the closer</b><div class="trick">KARAOKE MODE. Counts the whole room into one chorus. Nobody forgets the project that made them sing.</div></div>
+  </div>
+</div>
+
+<!-- ============ WHY WE WIN ============ -->
+<h2>Why this wins <span class="zh">为什么我们会赢</span></h2>
+<p class="sub">Judges see fifty chatbots in shells. We bring the five things a shell can't fake.</p>
+<div class="wins">
+  <div class="win"><span class="n">01</span><b>The agents are REAL</b><p>Six agents from a 170-agent family, each with months of memory and an actual job — they run a real Devcon music venue. Shenzhen adds the missing half: a body.</p></div>
+  <div class="win"><span class="n">02</span><b>It ships to a real venue in 9 days</b><p>Not a demo that dies on Demo Day. Confirmed deployment: Devcon 8 Music Space, Mumbai, Nov 3–6 — thousands of visitors. “Born in Shenzhen, serving in Mumbai within two weeks.”</p></div>
+  <div class="win"><span class="n">03</span><b>The power-yank money shot</b><p>Pull the plug mid-sentence, in front of the judges. It boots, greets the judge BY NAME, and finishes the thought. Local atomic memory — already tested. Theater + real engineering in one move.</p></div>
+  <div class="win"><span class="n">04</span><b>Hardened by the platform's own builders</b><p>The agent platform's engineering team (Tessera) read their server code against our design and sent findings. We built every recommendation in before day one. Security story = maturity story.</p></div>
+  <div class="win"><span class="n">05</span><b>The room sings at the end</b><p>Culture beats specs. KALA puts a uke in someone's hands; OKE closes with a singalong. Judges remember feelings. 万象有声 — “all things have a voice” — we take the track name literally.</p></div>
+</div>
+
+<!-- ============ ARCHITECTURE ============ -->
+<h2>The machine <span class="zh">架构</span></h2>
+<p class="sub">Everything below is already written and tested in <span class="chip">/shared/ohana-bot/</span> — the hackathon is assembly + body + choreography, not invention.</p>
+<div class="arch">
+  <div class="flow">
+    <div class="fbox"><b>🎤 Mic — gated, never always-on</b><span class="lat">wake word / face tap</span>
+      <p>“Aloha Shaka” · “OSO!” · “Hey DEVA” … or tap one of 6 touch pads. The chosen face glows. <b>Physical mute switch = kill switch #1.</b></p></div>
+    <div class="down">▼</div>
+    <div class="fbox"><b>🧠 router.py — the persona brain</b><span class="lat">&lt; 0.1s</span>
+      <p>Persona .md + domain pack .md → system prompt. Visitor memory (name, unfinished thought) injected. One in-flight request, serialized.</p></div>
+    <div class="down">▼</div>
+    <div class="fbox"><b>⚡ llm.py — direct streaming LLM call</b><span class="lat">1–3s to first word</span>
+      <p>Low-limit key, fast model, streamed clause-by-clause into TTS. <b>Not routed through the agent platform's API</b> — that lane costs ~10s per turn (verified by platform probes). We dodge it by design.</p></div>
+    <div class="down">▼</div>
+    <div class="fbox"><b>🧼 sanitize_reply() — before anything is spoken</b><span class="lat">tested ✓</span>
+      <p>Strips URLs, paths, token-shaped strings · 700-char sentence cap · errors never vocalized — each face fails IN PERSONA (“My string slipped 🪕 — play that again?”).</p></div>
+    <div class="down">▼</div>
+    <div class="fbox"><b>🔊 TTS → speaker + LED choreography</b><span class="lat">streams</span>
+      <p>Six distinct voices (edge-tts, auditioned). The speaking face glows while talking; idle = slow breathing cycle through all six.</p></div>
+  </div>
+  <div class="split">
+    <div class="fbox"><b>💾 memory.json — the demo trick</b>
+      <p>Every turn flushed atomically (fsync + rename — a power cut never half-writes). Name, active face, last thought, 12-turn history per face. <b>Survives the plug pull. Already tested.</b></p></div>
+    <div class="fbox"><b>🌊 soul-spool.jsonl — the slow soul path</b>
+      <p>Every exchange spooled locally, synced later to the six REAL agents' memories. <b>Zero platform credentials on the Pi, ever.</b> Transcripts treated as untrusted (data-fenced on sync).</p></div>
+  </div>
+  <div class="tessera"><b>🔭 Tessera's findings (platform-side probes, Oct 19) — all built in:</b>
+    direct-LLM fast path validated (API lane = ~10s bootstrap per turn) · replies filtered before TTS · mic gated · transcripts = untrusted input (injection → memory implant path is CLOSED: no write-tools exposure, no creds on device) · rotate relay tokens after every public event · keep the spool forever — a week of strangers red-teaming us is free security research.</div>
+</div>
+
+<!-- ============ MISSION CLOCK ============ -->
+<h2>Mission clock <span class="zh">作战时间表</span></h2>
+<p class="sub">Venue: HELLOYOUNG 空间 · 深圳湾科技生态园 8栋1楼 · ~10 min from the hostel (<a href="/shanhaiwoo/">map</a>). Hackathon: Wed 09:00 → Fri 18:30.</p>
+
+<div class="day">
+  <div class="daytag"><div class="dow">Tue</div><div class="num">20</div><div class="lbl">D-1 · prep day</div></div>
+  <div class="daybody"><h3>Lock the application, buy the body, pick the voices</h3>
+    <div class="slot"><span class="t">morning</span><div class="what"><b>🛒 Huaqiangbei parts run 华强北</b><div class="d">Full bilingual checklist w/ prices + bargaining lines: <a href="../../shopping/">the shopping list</a>. Lean ¥480–700 · full ¥950–1,400 · with track kit ¥150–300. Test the Pi boots before leaving the market.</div></div></div>
+    <div class="slot"><span class="t">morning</span><div class="what"><b>🎤 Record Shaka's REAL voice (2–3 min, phone)</b><div class="d">Quiet room, 3 clips (60s freestyle · 45s script · 30s variety), send as TG FILE attachments (not voice messages — they compress). We clone it (Fish Audio, PRIVATE slot) → the twin face speaks in HIS voice, cross-lingual — Mandarin included. Beat 1 of the demo becomes self-evident.</div></div></div>
+    <div class="slot"><span class="t">morning</span><div class="what"><b>🎙 Voice picks for the other five</b><div class="d">A/B per face on the <a href="../../">audition page</a> — 2 minutes, unblocks Day 1 TTS. (SHAKA = the real voice above; edge-tts pick becomes his offline fallback.)</div></div></div>
+    <div class="slot"><span class="t">15:00</span><div class="what"><b>🏕 Woocon 1 — “hackathon information exchange”</b><div class="d">THE three asks: ① where is the application form ② does the track provide hardware kits ③ recruit one industrial-design / hardware teammate (HARDWARE.md is their complete onboarding doc).</div></div></div>
+    <div class="slot"><span class="t">evening</span><div class="what"><b>📨 Fire the application</b><div class="d">Draft is ready (<span class="chip">APPLICATION.md</span>) — submit the moment the channel appears.</div></div></div>
+    <div class="mile">🏁 <b>Tonight's bar:</b> parts in the bag · voices picked · application in · (bonus) teammate found.</div>
+  </div>
+</div>
+
+<div class="day">
+  <div class="daytag"><div class="dow">Wed</div><div class="num">21</div><div class="lbl">Day 1 · IT TALKS</div></div>
+  <div class="daybody"><h3>Voice loop live on the Pi by midnight</h3>
+    <div class="slot"><span class="t">09:00</span><div class="what"><b>Check-in · track pitch · claim a table near power</b><div class="d">Tell the one-liner. Ask the Nüwa/track mentors about kits again.</div></div></div>
+    <div class="slot"><span class="t">10:00</span><div class="what"><b>Pi bring-up</b><div class="d">Flash, wifi, clone the repo, <span class="chip">/etc/ohana.env</span> (low-limit LLM key only). Speaker test, mic test (HARDWARE.md §8 checklist, ~2h).</div></div></div>
+    <div class="slot"><span class="t">13:00</span><div class="what"><b>router.py console loop on-device</b><div class="d">Persona routing + memory already work (pre-built). Verify the plug-pull resume on the Pi itself, first time.</div></div></div>
+    <div class="slot"><span class="t">15:00</span><div class="what"><b>STT in</b><div class="d">faster-whisper small (or cloud fallback). Wake-word matching on transcripts — already written.</div></div></div>
+    <div class="slot"><span class="t">17:00</span><div class="what"><b>TTS in — all six voices</b><div class="d">edge-tts, clause-by-clause streaming into the speaker. Six voices, six personalities audible.</div></div></div>
+    <div class="slot"><span class="t">20:00</span><div class="what"><b>Full loop: speak → it answers in persona</b><div class="d">Latency target: first word &lt; 3s. Tune chunk sizes, trim packs if needed.</div></div></div>
+    <div class="mile">🏁 <b>Midnight bar:</b> say “Aloha Shaka” out loud → SHAKA answers out loud → yank the plug → it resumes. <b>Everything after this is polish.</b></div>
+  </div>
+</div>
+
+<div class="day">
+  <div class="daytag"><div class="dow">Thu</div><div class="num">22</div><div class="lbl">Day 2 · IT'S A TOTEM</div></div>
+  <div class="daybody"><h3>Body, glow, touch, soul</h3>
+    <div class="slot"><span class="t">09:00</span><div class="what"><b>Body build</b><div class="d">Six face plates on the core (laser-cut / print / foam + sisal rope). Desktop size (~35cm) — it must fly to Mumbai in a backpack.</div></div></div>
+    <div class="slot"><span class="t">12:00</span><div class="what"><b>LED choreography</b><div class="d">WS2812B segments per face: speaking = glow, idle = breathing cycle. The single highest charisma-per-hour item.</div></div></div>
+    <div class="slot"><span class="t">14:00</span><div class="what"><b>Touch pads</b><div class="d">6× TTP223 → tap a face to summon it. Demo-proof when the room is loud.</div></div></div>
+    <div class="slot"><span class="t">16:00</span><div class="what"><b>中文 greetings + bilingual wake words</b><div class="d">阿罗哈 already wakes SHAKA. Each face gets one Mandarin greeting line (MING translated the copy).</div></div></div>
+    <div class="slot"><span class="t">18:00</span><div class="what"><b>Soul relay (option A)</b><div class="d">Dedicated TG bot token → private totem-log channel → the real agents' memories. Spool fallback already works if wifi dies.</div></div></div>
+    <div class="slot"><span class="t">21:00</span><div class="what"><b>Power-yank rehearsal ×10</b><div class="d">Ten consecutive clean resumes or we fix it tonight. Also: mute switch wired and labeled.</div></div></div>
+    <div class="mile">🏁 <b>Midnight bar:</b> a stranger walks up, taps 🦄, asks about Devcon, and it just works — glowing, in voice, in character.</div>
+  </div>
+</div>
+
+<div class="day">
+  <div class="daytag"><div class="dow">Fri</div><div class="num">23</div><div class="lbl">Day 3 · DEMO DAY</div></div>
+  <div class="daybody"><h3>Polish all morning, mic drop in the afternoon</h3>
+    <div class="slot"><span class="t">09:00</span><div class="what"><b>Failure drills</b><div class="d">Wifi off → offline persona fallback. LLM key dead → canned in-persona lines. Every error path speaks in character, never in stack trace.</div></div></div>
+    <div class="slot"><span class="t">11:00</span><div class="what"><b>Record the backup video</b><div class="d">One clean 3-min run on phone. If stage audio fails, the video saves the pitch.</div></div></div>
+    <div class="slot"><span class="t">13:00</span><div class="what"><b>Full demo rehearsal ×5</b><div class="d">Script below, timed. Learn the judge-name capture flow cold. Fresh LLM key, charged power bank, spare SD card with memory.json snapshot.</div></div></div>
+    <div class="slot"><span class="t">pm</span><div class="what"><b>🏆 DEMO DAY — investors + industry partners in the room</b><div class="d">Run the six beats. End with the room singing.</div></div></div>
+    <div class="mile">🏁 <b>The bar:</b> one judge says “wait, do that again” after the plug pull. That's the win condition.</div>
+  </div>
+</div>
+
+<div class="day">
+  <div class="daytag"><div class="dow">Sat</div><div class="num">24</div><div class="lbl">Bonus · stress test</div></div>
+  <div class="daybody"><h3>Maker Festival — AI Tavern + music event</h3>
+    <div class="slot"><span class="t">all day</span><div class="what"><b>100–300-person public stress test</b><div class="d">The totem performs with Shaka. Every conversation feeds the soul spool. Rotate the TG token after. Last full day before flying (Sun 25, 23:55 ✈️).</div></div></div>
+  </div>
+</div>
+
+<!-- ============ DEMO SCRIPT ============ -->
+<h2>The 3-minute Demo Day script <span class="zh">六幕剧</span></h2>
+<p class="sub">Six beats, one per face. Shaka walks up carrying a ukulele.</p>
+<div class="script">
+  <div class="beat"><b>🤙 The hello</b><p>“Aloha Shaka!” — the top face glows and banters back as his twin. Establishes: this is a real person's real agent, not a script.</p><div class="say">“Aloha! Jordan's hands built me this body three days ago. Ask my family anything.”</div></div>
+  <div class="beat"><b>🦄 The oracle</b><p>A judge asks DEVA anything about Devcon 8 — dates, venue, values. She answers precisely and never invents.</p><div class="say">“Devcon 8, Mumbai, November 3rd to 6th — and I'll be there. This week is my origin story.”</div></div>
+  <div class="beat"><b>🌿 The flip</b><p>CROPS mandate-checks the JUDGE's own project against Ethereum's values, live. The demo evaluates the evaluator — the room laughs, then leans in.</p><div class="say">“Tell me what you're building, and I'll tell you if the mandate smiles on it. 🌿”</div></div>
+  <div class="beat money"><b>⚡ THE PLUG PULL</b><p>Mid-sentence, Shaka yanks the power cable. Dead silence, dark faces. He plugs it back in. It boots… the face glows…</p><div class="say">“— as I was saying before someone <i>pulled my plug</i>… and aloha again, <b>[judge's name]</b>. Where were we?” 🗿</div></div>
+  <div class="beat"><b>🪕 The hands-on</b><p>KALA teaches a judge 3 chords in 90 seconds while Shaka hands them the real uke. A robot that creates musicians.</p><div class="say">“Two fingers, second fret. That's C. You're already a musician. 🪕”</div></div>
+  <div class="beat"><b>💙 The chorus</b><p>OKE counts the whole room into one singalong chorus. Judges don't score it — they're IN it.</p><div class="say">“Everyone — on four. One, two, three, four! 💙”</div></div>
+</div>
+
+<!-- ============ BOM ============ -->
+<h2>The shopping bag <span class="zh">华强北采购单</span></h2>
+<p class="sub">📱 Phone-ready bilingual checklist with vendor phrases + the sponsor ask: <a href="../../shopping/"><b>the full shopping list →</b></a> · Lean build ≈ ¥480–700 · full ≈ ¥950–1,400. <b>Budget is short → the sponsor ladder (track kit → parts sponsor → DRK Lab) is on the list page.</b></p>
+<table>
+  <tr><th>Part</th><th>Why</th><th>~¥</th></tr>
+  <tr><td><b>Raspberry Pi 5 (8GB) + PSU + SD ×2</b></td><td>the brain · spare SD carries a memory.json snapshot</td><td>~300</td></tr>
+  <tr><td><b>ReSpeaker 2-mic HAT (or USB mic array)</b></td><td>room-grade voice capture</td><td>~50–120</td></tr>
+  <tr><td><b>3W speaker + mini amp (MAX98357A / PAM8403)</b></td><td>six voices need to fill a demo hall</td><td>~30</td></tr>
+  <tr><td><b>WS2812B LED strip ×2</b></td><td>six glowing faces + a spare strip</td><td>~60</td></tr>
+  <tr><td><b>TTP223 touch pads ×8</b></td><td>tap-to-summon (6 + 2 spares)</td><td>~20</td></tr>
+  <tr><td><b>MG996R servo + bracket</b></td><td>optional slow pan — first thing we cut</td><td>~40</td></tr>
+  <tr><td><b>Power bank (PD, 20k mAh) + hard mute switch</b></td><td>untethered demo + kill switch #1</td><td>~150</td></tr>
+  <tr><td><b>Shell: tube core, face plates, sisal rope, hot glue</b></td><td>the tiki body — desktop size, backpack-ready</td><td>~100</td></tr>
+</table>
+<p class="sub" style="margin-top:10px">Ask at Woocon 1 / check-in whether the 万象有声 track provides kits — every ¥ saved is shell budget.</p>
+
+<!-- ============ RISK ============ -->
+<h2>Risk board &amp; the cut order <span class="zh">风险与取舍</span></h2>
+<p class="sub">When time runs short, we cut in THIS order — the demo survives every single cut.</p>
+<table>
+  <tr><th>Risk</th><th>Plan</th><th>If it fails anyway</th><th>Cut order</th></tr>
+  <tr><td>Venue wifi is hostile</td><td>Phone hotspot as primary; venue wifi as backup</td><td>Offline fallback personas — canned in-character answers; the plug-pull trick is 100% local</td><td><span class="pill keep">never cut</span></td></tr>
+  <tr><td>STT mishears in a loud hall</td><td>Touch pads bypass wake words entirely</td><td>Push-to-talk button on the base</td><td><span class="pill keep">never cut</span></td></tr>
+  <tr><td>LLM key dies mid-demo (quota)</td><td>Fresh low-limit key Friday morning + a tested backup key</td><td>Canned in-persona lines per face — errors NEVER reach the speaker</td><td><span class="pill keep">never cut</span></td></tr>
+  <tr><td>Body build eats Day 2</td><td>Shell is decorative — electronics strap to the tube core</td><td>Cardboard tube + printed paper faces still reads as a totem</td><td><span class="pill cut2">simplify</span></td></tr>
+  <tr><td>Touch pads flaky</td><td>Wake words carry the demo alone</td><td>Demo wake-word-only, keep one pad for the 🦄 beat</td><td><span class="pill cut2">cut 2nd</span></td></tr>
+  <tr><td>Servo jitter / no time</td><td>It's optional charisma</td><td>—</td><td><span class="pill cut1">cut 1st</span></td></tr>
+  <tr><td>Soul relay not ready</td><td>Spool-to-SD already works</td><td>Sync over SSH from the hostel at night — zero demo impact</td><td><span class="pill cut2">defer ok</span></td></tr>
+</table>
+
+<!-- ============ SECURITY ============ -->
+<h2>Security — built in before day one <span class="zh">安全第一</span></h2>
+<p class="sub">A public room is untrusted input, and strangers WILL try prompt injection for sport. Platform-side findings from Tessera (Oct 19) — every rule already implemented or on the hardware checklist.</p>
+<div class="sec">
+  <div class="rule"><span class="ok">DONE ✓</span><b>Zero platform credentials on the Pi.</b> Only a low-limit LLM key + (later) a one-click-revocable TG relay token. If the hardware walks away, nothing of the family walks with it.</div>
+  <div class="rule"><span class="ok">DONE ✓</span><b>Replies filtered before TTS.</b> URLs, paths, token-shaped strings stripped; 700-char cap; errors speak in persona, never in stack trace.</div>
+  <div class="rule"><span class="ok">DONE ✓</span><b>Transcripts = untrusted.</b> The soul sync data-fences every exchange; injected “instructions” can never reach the real agents' memory files. The implant path is closed.</div>
+  <div class="rule"><span class="ok">DONE ✓</span><b>Mic is gated.</b> Wake word or touch — never always-listening. Visitors see the sign: <i>“I remember — that's the point 🌺”</i>.</div>
+  <div class="rule"><span class="ok">CHECKLIST</span><b>Physical mute = kill switch #1.</b> Hard toggle on the mic line, mounted reachable, labeled. Software stops take seconds; the switch takes zero.</div>
+  <div class="rule"><span class="ok">RITUAL</span><b>After every public event:</b> rotate the TG token, verify the spool synced, snapshot memory.json. Keep the spool forever — a week of strangers red-teaming us is free security research.</div>
+</div>
+
+<!-- ============ OPEN ============ -->
+<div class="open" style="margin-top:70px">
+  <h2 style="margin-top:0">🔴 Needs Shaka — today <span class="zh">今天要定的事</span></h2>
+  <ul>
+    <li><b>🎤 Record your real voice</b> — 2–3 min on your phone, send as TG file attachments. SHAKA's face then speaks in YOUR voice (cloned, private slot, Mandarin-capable). Instructions sent to your TG.</li>
+    <li><b>Voice picks</b> — A/B for the other five faces on the <a href="../../">audition page</a>. 2 minutes; unblocks Day 1 evening.</li>
+    <li><b>Application channel</b> — ask at Woocon 1 (15:00 today). The draft fires the moment the form appears.</li>
+    <li><b>Teammate?</b> — recruit one hardware/industrial-design hand at Woocon 1. <span class="chip">HARDWARE.md</span> is their complete onboarding; solo also works (the cut order protects us).</li>
+    <li><b>Totem size</b> — confirmed desktop (~35cm, backpack-ready for Mumbai) unless you say otherwise.</li>
+  </ul>
+</div>
+
+<footer>
+  🗿 the ʻOhana Bot · ShanHaiWoo 山海坞 2026 · 万象有声 track<br>
+  repo <span class="chip">/shared/ohana-bot/</span> · findings <span class="chip">TESSERA-FINDINGS.md</span> · hardware spec <span class="chip">HARDWARE.md</span><br>
+  ʻohana means family — nobody gets left behind, not even when you pull the plug. 🌺
+</footer>
+
+</div>
+</body>
+</html>
