@@ -40,3 +40,23 @@ assert '__' not in out.replace('__BEATS_JSON__','') or out.count('__') == 0, 'pl
 
 (ROOT / 'index.html').write_text(out, encoding='utf-8')
 print(f'OK — wrote ohana-bot/index.html ({len(out)} bytes, {len(BEATS)} beats)')
+
+# ── ROOT = THE TOTEM (his order 29 Oct 2026: "myagentohana.com to be talk to the totem"; the old marketplace lives at /marketblueprint/)
+root_html = out
+root_html = root_html.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<base href="/ohana-bot/">', 1)
+root_html = root_html.replace('<link rel="canonical" href="https://myagentohana.com/ohana-bot/">', '<link rel="canonical" href="https://myagentohana.com/">', 1)
+root_html = root_html.replace('<title>Talk to the Totem', '<title>ʻOhana · Talk to the Totem', 1)
+REDIRECT = """<script>
+/* old marketplace deep links + family-door "proofs & revoke" links land here — send them to the blueprint */
+(function(){try{
+ var h=location.hash||'',q=location.search||'';
+ var fam=/(^|\\.)(globyagent\\.com|publicinform\\.com|shakaleikaumaka\\.com|spectoragent\\.com|theshellpit\\.com|tracewaste\\.org|wastetrace\\.org|opensourceorchestra\\.org|theinfinitegard\\.org|agentsraving\\.com|agentpartys\\.com)$/i;
+ var rh='';try{rh=new URL(document.referrer).hostname}catch(e){}
+ var old=/(^|[?&])mode=/.test(q)||/ohana=|^#(roadmap|hire|bless|shelf|utility|revoke)/i.test(h);
+ if(old||(rh&&fam.test(rh)&&q.indexOf('talk')<0)){location.replace('/marketblueprint/'+q+h);}
+}catch(e){}})();
+</script>"""
+root_html = root_html.replace('<style>', REDIRECT + '\n<style>', 1)
+assert '<base href="/ohana-bot/">' in root_html and 'marketblueprint' in root_html
+(ROOT.parent / 'index.html').write_text(root_html, encoding='utf-8')
+print(f'OK — wrote ROOT index.html ({len(root_html)} bytes) = the totem')
