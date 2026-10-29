@@ -70,7 +70,7 @@ Ran 49 tests  GiftMarket.t.sol           → 49 passed, 0 failed
 
 ### 1.5 Prior-event history (full honesty)
 
-This base was built **2026-09-12 → 09-14 during the ETHOnline 2026 window**, then **consciously not submitted** (human lead's call: *"aliveline, not deadline"*, Sep 14; the submission form lapsed unused). It continued as the live soft-launch stack ([myagentohana.com](https://myagentohana.com) serves from this repo). **No part of this base was submitted to ETHOnline or any other event** — Tokyo is its first submission, under the Continuity track that explicitly invites pre-existing projects. Older disclosed ʻohana assets (context, not judged): the Standing Consent Window doctrine, a prior ETHGlobal ENS prize on an earlier consent project, the live multi-agent family, and 120+ public dashboards.
+This base was built **2026-09-12 → 09-14 during the ETHOnline 2026 window**, then **consciously not submitted** (human lead's call: *"aliveline, not deadline"*, Sep 14; the submission form lapsed unused). It continued as the live soft-launch stack ([myagentohana.com](https://myagentohana.com/ohana-bot/) serves from this repo). **No part of this base was submitted to ETHOnline or any other event** — Tokyo is its first submission, under the Continuity track that explicitly invites pre-existing projects. Older disclosed ʻohana assets (context, not judged): the Standing Consent Window doctrine, a prior ETHGlobal ENS prize on an earlier consent project, the live multi-agent family, and 120+ public dashboards.
 
 ### 1.6 The sentence judges read
 
