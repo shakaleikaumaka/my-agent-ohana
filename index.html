@@ -146,7 +146,7 @@ footer .honest{border-top:1px solid var(--line);padding-top:14px;max-width:760px
       <div class="log" id="log"></div>
       <div class="dots" id="dots" hidden><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <button class="ceremony" id="ceremony">⚡ <span data-en="Play the ceremony (7 beats, with voices)" data-zh="播放仪式（七幕 · 带声音）">Play the ceremony (7 beats, with voices)</span></button>
-      <div class="hint" data-en="Type below — name a face (<b>DEVA</b>, <b>KALA</b>…) or ask anything about the Shakaverse — Zuzalu, Esmeralda, Devcon, the Music Space, the Pit, Taurus. Live answers arrive from <b>Taurus</b>; when the fire is out, the spirits echo honestly." data-zh="在下方输入——叫一张面孔的名字（<b>DEVA</b>、<b>KALA</b>…）或随便问 Shaka 宇宙里的任何事——Zuzalu、Esmeralda、Devcon、音乐空间、Pit、Taurus。联网时由 <b>Taurus</b> 上的家族真实回答；断网时精灵也会诚实回声。"></div>
+      <div class="hint" data-en="Type below — name a face (<b>DEVA</b>, <b>KALA</b>…) or ask anything about the Shakaverse — Zuzalu, Esmeralda, Devcon, the Music Space, the Pit, Taurus. Live answers arrive from <b>Taurus</b>; when the fire is out, the spirits echo honestly." data-zh="在下方输入——叫一张面孔的名字（<b>DEVA</b>、<b>KALA</b>…）或随便问 Shaka 宇宙里的任何事——Zuzalu、Esmeralda、Devcon、音乐空间、Pit、Taurus。联网时由 <b>Taurus</b> 上的这个家真实回答；断网时精灵也会诚实回声。"></div>
       <div class="p-send">
         <input id="inp" type="text" autocomplete="off" data-ph-en="Ask the totem…" data-ph-zh="问图腾点什么…" placeholder="Ask the totem…">
         <button id="send" data-en="Send" data-zh="发送">Send</button>
@@ -155,12 +155,13 @@ footer .honest{border-top:1px solid var(--line);padding-top:14px;max-width:760px
   </div>
 
   <footer>
-    <div class="honest" data-en="Honesty strip: the six faces are <b>real agents of the ʻohana</b>, a family of 175 living on <b>Taurus</b>. Replies marked ⚡ LIVE come from the family right now; 🌙 spirit echoes are honest canned lines when the fire is out. The voices you hear are the real picks — SHAKA = Shaka's cloned voice." data-zh="诚实条：六张面孔是 ʻohana 的<b>真实智能体</b>——一个生活在 <b>Taurus</b> 上的 175 人家族。标 ⚡ LIVE 的回答来自家族此刻的真实回复；🌙 精灵回声是断网时的诚实预录。你听到的声音都是最终选定——SHAKA = Shaka 本人的克隆声。"></div>
+    <div class="honest" data-en="Honesty strip: the six faces are <b>real agents of the ʻohana</b>. As of 29 October 2026, the roster lists <b>181 agents</b>, with <b>175 enabled</b>, living on <b>Taurus</b>. Replies marked ⚡ LIVE come from the family right now; 🌙 spirit echoes are honest canned lines when the fire is out. The voices you hear are the real picks — SHAKA = Shaka's cloned voice." data-zh="诚实条：六张面孔是 ʻohana 的<b>真实智能体</b>。截至 2026 年 10 月 29 日，这个家的名册上有 <b>181 位智能体</b>，其中 <b>175 位已启用</b>，生活在 <b>Taurus</b> 上。标 ⚡ LIVE 的回答来自这个家此刻的真实回复；🌙 精灵回声是断网时的诚实预录。你听到的声音都是最终选定——SHAKA = Shaka 本人的克隆声。"></div>
     <div>
       <a href="/marketblueprint/">📐 <span data-en="market blueprint (the hire · bless · revoke marketplace)" data-zh="市场蓝图（雇用 · 祝福 · 撤销）">market blueprint (the hire · bless · revoke marketplace)</span></a> ·
       <a href="/ohana-bot/build/">🔧 <span data-en="build the body" data-zh="建造身体">build the body</span></a> ·
       <a href="/ohana-bot/plan/">🗓 <span data-en="the plan" data-zh="计划书">the plan</span></a> ·
-      <a href="/taurus/">🌺 <span data-en="where the family lives" data-zh="家族之家">where the family lives</span></a> ·
+      <a href="/taurus/">🌺 <span data-en="where the family lives" data-zh="这个家生活的地方">where the family lives</span></a> ·
+      <a href="/china/" hreflang="zh-CN">🇨🇳 中文 / China</a> ·
       <a href="/ohana-bot/audition.html">🎤 <span data-en="voice auditions" data-zh="声音试镜">voice auditions</span></a>
     </div>
   </footer>
@@ -477,7 +478,7 @@ inp.addEventListener('keydown',function(e){if(e.key==='Enter')send();});
 setTimeout(function(){
  var zh=window.LANG==='zh';
  add('SHAKA 🤙','#ffb443',zh?
-   '阿罗哈！欢迎来到图腾圣殿 🗿 点上面任何一张面孔听它的声音——我的声音是老板本人的克隆。叫我们的名字，或随便问点什么；火还亮着时（⚡ LIVE），家族从 Taurus 亲自回答你。':
+   '阿罗哈！欢迎来到图腾圣殿 🗿 点上面任何一张面孔听它的声音——我的声音是老板本人的克隆。叫我们的名字，或随便问点什么；火还亮着时（⚡ LIVE），这个家从 Taurus 亲自回答你。':
    'Aloooha! Welcome to the totem temple 🗿 Tap any face above to hear its voice — mine is the boss\'s own clone. Call us by name or ask anything; while the fire is lit (⚡ LIVE), the family answers you itself, from Taurus.');
 },600);
 </script>
