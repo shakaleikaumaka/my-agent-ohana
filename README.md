@@ -46,7 +46,7 @@ What judges score — each bullet links to its commits (lane-tagged, all landing
 
 - **Video (≤4:00, no speedups, real captures only):** _TBD — link added before Sun 09:00 JST submission._ <!-- PODFATHER: replace this TBD with the final video URL before Sun 09:00 JST -->
 
-- **Live demo:** [myagentohana.com](https://myagentohana.com) — the soft-launch stack serves from this repo (required for the ENSv2 track: *"your project showcase must have a link to a live demo"*).
+- **Live demo:** [myagentohana.com](https://myagentohana.com/ohana-bot/) — the soft-launch stack serves from this repo (required for the ENSv2 track: *"your project showcase must have a link to a live demo"*).
 
 - **Orbie's story (born at the event):** the seventh agent, **Orbie 🤖**, has its own short comic storybook — six chapters of the ʻohana's journey with World, Paris '22 → Tokyo '26. It frames the demo's blessing ceremony (a verified human blesses Orbie; the blessing can end in one tap) and the epilogue vow to gift Orbie's keys to World as a DevRel buddy agent.
 
