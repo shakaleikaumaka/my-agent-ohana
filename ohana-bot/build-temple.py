@@ -47,13 +47,13 @@ root_html = root_html.replace('<meta charset="utf-8">', '<meta charset="utf-8">\
 root_html = root_html.replace('<link rel="canonical" href="https://myagentohana.com/ohana-bot/">', '<link rel="canonical" href="https://myagentohana.com/">', 1)
 root_html = root_html.replace('<title>Talk to the Totem', '<title>ʻOhana · Talk to the Totem', 1)
 REDIRECT = """<script>
-/* old marketplace deep links + family-door "proofs & revoke" links land here — send them to the blueprint */
+/* old marketplace deep links + (29 Oct: referrer-from-family-door rule REMOVED — plain visits from shakaleikaumaka.com now land on the totem) — only old deep links land here — send them to the blueprint */
 (function(){try{
  var h=location.hash||'',q=location.search||'';
  var fam=/(^|\\.)(globyagent\\.com|publicinform\\.com|shakaleikaumaka\\.com|spectoragent\\.com|theshellpit\\.com|tracewaste\\.org|wastetrace\\.org|opensourceorchestra\\.org|theinfinitegard\\.org|agentsraving\\.com|agentpartys\\.com)$/i;
  var rh='';try{rh=new URL(document.referrer).hostname}catch(e){}
  var old=/(^|[?&])mode=/.test(q)||/ohana=|^#(roadmap|hire|bless|shelf|utility|revoke)/i.test(h);
- if(old||(rh&&fam.test(rh)&&q.indexOf('talk')<0)){location.replace('/marketblueprint/'+q+h);}
+ if(old){location.replace('/marketblueprint/'+q+h);}
 }catch(e){}})();
 </script>"""
 root_html = root_html.replace('<style>', REDIRECT + '\n<style>', 1)
