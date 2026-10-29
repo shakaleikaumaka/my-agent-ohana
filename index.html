@@ -400,8 +400,9 @@ function pump(initial){
      if(m.role==='visitor')return;
      if(seen[m.seq])return;seen[m.seq]=1;
      if(m.seq>after)after=m.seq;
-     liveOK=true;laneState(true);
-     add('ʻOHANA 🫶','#7ef0b2',m.text,'<span class="badge live">⚡ LIVE · TAURUS</span>');
+     var realAgent=!m.holdNote&&!m.sleepNote;
+     if(realAgent){liveOK=true;laneState(true);}
+     add('ʻOHANA 🫶','#7ef0b2',m.text,realAgent?'<span class="badge live">⚡ LIVE · TAURUS</span>':'<span class="badge">🔔 desk note</span>');
    });
    setTimeout(function(){pump(false);},400);
  }).catch(function(e){
@@ -460,8 +461,8 @@ function send(){
    liveAsk('🗿[face:'+f.k+'] '+t,null);
    return;
  }
- // otherwise the FAMILY answers — live from Taurus (hint = summoned face, so the desk answers AS that face)
- var hint=routeFace(t,true)||window.activeFace;
+ // otherwise the FAMILY answers — live from Taurus (hint = summoned face KEY, never an object)
+ var hinted=routeFace(t,true),hint=(hinted&&hinted.k)||window.activeFace;
  liveAsk(hint?'🗿[face:'+hint+'] '+t:t,function(){
    var f0=FACES[Math.floor(Math.random()*FACES.length)];
    var L=CJK.test(t)?TEMPLE_LINES_ZH:TEMPLE_LINES;
