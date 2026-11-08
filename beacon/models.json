@@ -1,8 +1,8 @@
 {
  "v": 1,
  "law": "model law v3",
- "updated_at": "2026-11-08T17:42:27Z",
- "checked_at": "2026-11-08T17:43:46Z",
+ "updated_at": "2026-11-08T17:51:48Z",
+ "checked_at": "2026-11-08T17:51:48Z",
  "desks": {
   "kprot": {
    "desk": "KARA",
@@ -54,9 +54,9 @@
   },
   "spector": {
    "desk": "Spector",
-   "label": "DeepSeek V4.1 Flash",
+   "label": "Opus 5.5 · sub",
    "tier": "deep",
-   "state": "switching"
+   "state": "home"
   },
   "crops": {
    "desk": "CROPS",
@@ -91,9 +91,9 @@
  },
  "fleet": {
   "deep": {
-   "Opus 5.5 · sub": 142,
-   "DeepSeek V4.1 Flash": 2,
-   "Kimi K3.1 Pro": 1
+   "Opus 5.5 · sub": 143,
+   "Kimi K3.1 Pro": 1,
+   "DeepSeek V4.1 Flash": 1
   },
   "watch": {
    "DeepSeek V4.1 Flash": 20
