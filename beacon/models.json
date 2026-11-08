@@ -1,0 +1,106 @@
+{
+ "v": 1,
+ "law": "model law v3",
+ "updated_at": "2026-11-08T17:42:27Z",
+ "checked_at": "2026-11-08T17:43:46Z",
+ "desks": {
+  "kprot": {
+   "desk": "KARA",
+   "label": "DeepSeek V4.1 Flash",
+   "tier": "watch",
+   "state": "home"
+  },
+  "tele": {
+   "desk": "TELE",
+   "label": "DeepSeek V4.1 Flash",
+   "tier": "watch",
+   "state": "home"
+  },
+  "vlog": {
+   "desk": "VLOGITHA",
+   "label": "DeepSeek V4.1 Flash",
+   "tier": "watch",
+   "state": "home"
+  },
+  "oso": {
+   "desk": "OSO",
+   "label": "DeepSeek V4.1 Flash",
+   "tier": "watch",
+   "state": "home"
+  },
+  "jai": {
+   "desk": "JAI DESK",
+   "label": "DeepSeek V4.1 Flash",
+   "tier": "watch",
+   "state": "home"
+  },
+  "shaka": {
+   "desk": "SHAKA DESK",
+   "label": "DeepSeek V4.1 Flash",
+   "tier": "watch",
+   "state": "home"
+  },
+  "terri": {
+   "desk": "TERRI RELIEF",
+   "label": "DeepSeek V4.1 Flash",
+   "tier": "watch",
+   "state": "home"
+  },
+  "ijlove": {
+   "desk": "Terri",
+   "label": "DeepSeek V4.1 Flash",
+   "tier": "watch",
+   "state": "home"
+  },
+  "spector": {
+   "desk": "Spector",
+   "label": "DeepSeek V4.1 Flash",
+   "tier": "deep",
+   "state": "switching"
+  },
+  "crops": {
+   "desk": "CROPS",
+   "label": "DeepSeek V4.1 Flash",
+   "tier": "watch",
+   "state": "home"
+  },
+  "globy": {
+   "desk": "GLOBY DESK",
+   "label": "DeepSeek V4.1 Flash",
+   "tier": "watch",
+   "state": "home"
+  },
+  "ohana": {
+   "desk": "OHANA DESK · The Totem",
+   "label": "DeepSeek V4.1 Flash",
+   "tier": "watch",
+   "state": "home"
+  },
+  "tracey": {
+   "desk": "TRACEY DESK",
+   "label": "DeepSeek V4.1 Flash",
+   "tier": "watch",
+   "state": "home"
+  },
+  "komoro": {
+   "desk": "KOMORO DESK",
+   "label": "DeepSeek V4.1 Flash",
+   "tier": "watch",
+   "state": "home"
+  }
+ },
+ "fleet": {
+  "deep": {
+   "Opus 5.5 · sub": 142,
+   "DeepSeek V4.1 Flash": 2,
+   "Kimi K3.1 Pro": 1
+  },
+  "watch": {
+   "DeepSeek V4.1 Flash": 20
+  },
+  "build": {
+   "Fable 5.1 · sub": 1
+  }
+ },
+ "note": "public-safe: desk name → model label; no ids or keys"
+}
