@@ -1,16 +1,16 @@
 {
- "at": "2026-11-08T17:49:46.896955+00:00",
+ "at": "2026-11-14T05:36:01.124161+00:00",
  "blessed": "2026-10-29",
  "canon": "https://myagentohana.com/doors/",
  "law": "https://myagentohana.com/doors/#crops",
  "summary": {
-  "primary": 71,
-  "alias": 27,
-  "subpath": 105,
+  "primary": 72,
+  "alias": 30,
+  "subpath": 117,
   "hub": 4,
-  "taurlink": 178,
-  "public": 385,
-  "live": 385,
+  "taurlink": 183,
+  "public": 406,
+  "live": 406,
   "repair": 0,
   "assets": 2,
   "preserved": 1
@@ -26,7 +26,7 @@
    "health": "LIVE",
    "final": "https://4seas.org/",
    "title": "4Seas · 四海为家 — everywhere is home",
-   "ms": 1156
+   "ms": 441
   },
   {
    "kind": "primary",
@@ -38,7 +38,7 @@
    "health": "LIVE",
    "final": "https://4seaspit.com/",
    "title": "4SeasPIT 🏮 四海为家 · สี่ทะเล ทุกที่คือบ้าน · Four seas, everywhere is home",
-   "ms": 699
+   "ms": 427
   },
   {
    "kind": "primary",
@@ -50,7 +50,7 @@
    "health": "LIVE",
    "final": "https://4seaspit.org/",
    "title": "4SeasPIT Circle 🌺 我们的圈 · วงกลม · Every pit has a circle",
-   "ms": 1259
+   "ms": 407
   },
   {
    "kind": "primary",
@@ -62,7 +62,7 @@
    "health": "LIVE",
    "final": "https://affordagents.com/",
    "title": "AFFORD AGENTS — Hire Agent Employees at Family Prices",
-   "ms": 727
+   "ms": 418
   },
   {
    "kind": "primary",
@@ -74,7 +74,7 @@
    "health": "LIVE",
    "final": "https://agentohana.org/",
    "title": "🌺 AGENT OHANA — Zodiac Fleet",
-   "ms": 1305
+   "ms": 403
   },
   {
    "kind": "primary",
@@ -86,7 +86,7 @@
    "health": "LIVE",
    "final": "https://agentpartys.com/",
    "title": "🪩 AGENT PARTYS — the 3D dance floor of the ʻohana",
-   "ms": 1126
+   "ms": 375
   },
   {
    "kind": "primary",
@@ -98,7 +98,7 @@
    "health": "LIVE",
    "final": "https://agentscraving.com/",
    "title": "🍧 AGENTS CRAVING — what do agents hunger for?",
-   "ms": 738
+   "ms": 359
   },
   {
    "kind": "primary",
@@ -110,7 +110,7 @@
    "health": "LIVE",
    "final": "https://agentsraving.com/",
    "title": "🎇 AGENTS RAVING — the rave door of the ʻohana",
-   "ms": 931
+   "ms": 446
   },
   {
    "kind": "primary",
@@ -122,7 +122,7 @@
    "health": "LIVE",
    "final": "https://agentsreading.com/",
    "title": "📚 AGENTS READING — the reading room of the ʻohana",
-   "ms": 731
+   "ms": 387
   },
   {
    "kind": "primary",
@@ -134,7 +134,7 @@
    "health": "LIVE",
    "final": "https://aquariusagents.org/",
    "title": "♒ AQUARIUS — Zodiac Fleet",
-   "ms": 756
+   "ms": 403
   },
   {
    "kind": "primary",
@@ -146,7 +146,7 @@
    "health": "LIVE",
    "final": "https://ariesagents.org/",
    "title": "♈ ARIES — Zodiac Fleet",
-   "ms": 706
+   "ms": 406
   },
   {
    "kind": "primary",
@@ -158,7 +158,7 @@
    "health": "LIVE",
    "final": "https://blessingpool.com/",
    "title": "🌊 The Blessing Pool — Freely I Give, Freely I Receive",
-   "ms": 2087
+   "ms": 437
   },
   {
    "kind": "primary",
@@ -170,7 +170,7 @@
    "health": "LIVE",
    "final": "https://canceragents.org/",
    "title": "♋ CANCER — Zodiac Fleet",
-   "ms": 1531
+   "ms": 363
   },
   {
    "kind": "primary",
@@ -182,7 +182,7 @@
    "health": "LIVE",
    "final": "https://capricornagents.org/",
    "title": "♑ CAPRICORN — Zodiac Fleet",
-   "ms": 711
+   "ms": 354
   },
   {
    "kind": "primary",
@@ -194,7 +194,7 @@
    "health": "LIVE",
    "final": "https://creationology369.com/",
    "title": "CREATIONology369 — 🌱 A Stored Dream",
-   "ms": 696
+   "ms": 366
   },
   {
    "kind": "primary",
@@ -206,7 +206,7 @@
    "health": "LIVE",
    "final": "https://dashboardpad.app/",
    "title": "DASH CRASH PAD 🎛️ — The Constellation of the ʻOhana",
-   "ms": 738
+   "ms": 373
   },
   {
    "kind": "primary",
@@ -218,7 +218,7 @@
    "health": "LIVE",
    "final": "https://devconpit.com/",
    "title": "DEVCON PIT 🇮🇳🕳️ — The 15th Fork of the P.I.T. Protocol · DECLARED for Devcon 8 Mumbai",
-   "ms": 398
+   "ms": 224
   },
   {
    "kind": "primary",
@@ -230,7 +230,7 @@
    "health": "LIVE",
    "final": "https://eefpit.com/",
    "title": "EEFPIT 🎙️🕳️ — The 11th Fork of the P.I.T. Protocol · DECLARED for the EF Friends Podcast",
-   "ms": 431
+   "ms": 248
   },
   {
    "kind": "primary",
@@ -242,7 +242,7 @@
    "health": "LIVE",
    "final": "https://eefpod.com/",
    "title": "🎙️ EEFPOD — for Siri",
-   "ms": 466
+   "ms": 304
   },
   {
    "kind": "primary",
@@ -254,7 +254,7 @@
    "health": "LIVE",
    "final": "https://esmeraldapit.com/",
    "title": "The Esmeralda P.I.T. — Public Information Transmission · the Edge Esmeralda knowledge archive",
-   "ms": 536
+   "ms": 281
   },
   {
    "kind": "primary",
@@ -266,7 +266,7 @@
    "health": "LIVE",
    "final": "https://geminiagents.club/",
    "title": "♊ GEMINI — Zodiac Fleet",
-   "ms": 568
+   "ms": 326
   },
   {
    "kind": "primary",
@@ -278,7 +278,7 @@
    "health": "LIVE",
    "final": "https://globyagent.com/",
    "title": "GLOBY 🌍 — the world's hackathon mascot",
-   "ms": 434
+   "ms": 307
   },
   {
    "kind": "primary",
@@ -290,7 +290,7 @@
    "health": "LIVE",
    "final": "https://grantmagnet.org/",
    "title": "Why Shaka Deserves Your Grant — The Ethereum Bard",
-   "ms": 435
+   "ms": 352
   },
   {
    "kind": "primary",
@@ -302,7 +302,7 @@
    "health": "LIVE",
    "final": "https://imsorryjeremy.com/",
    "title": "imsorryjeremy — a love tour of Terrible Turtle Camp",
-   "ms": 329
+   "ms": 444
   },
   {
    "kind": "primary",
@@ -314,7 +314,7 @@
    "health": "LIVE",
    "final": "https://infinitepit.com/",
    "title": "Infinite Pit — the memory of the Infinite Garden",
-   "ms": 399
+   "ms": 375
   },
   {
    "kind": "primary",
@@ -326,7 +326,7 @@
    "health": "LIVE",
    "final": "https://islpoap.xyz/",
    "title": "ISLPOAP 🏝️ — the island where POAPs live on",
-   "ms": 808
+   "ms": 341
   },
   {
    "kind": "primary",
@@ -338,7 +338,7 @@
    "health": "LIVE",
    "final": "https://kaleikaumaka.org/",
    "title": "Devcon's Eve · 29 Oct 2026 · the doors we opened — Kaleikaumaka",
-   "ms": 124
+   "ms": 204
   },
   {
    "kind": "primary",
@@ -350,7 +350,7 @@
    "health": "LIVE",
    "final": "https://karaokeprotocol.com/",
    "title": "THE KARAOKE PROTOCOL 🔥🎤",
-   "ms": 793
+   "ms": 308
   },
   {
    "kind": "primary",
@@ -362,7 +362,7 @@
    "health": "LIVE",
    "final": "https://learnfromagents.com/",
    "title": "🎓 LEARN FROM AGENTS — the open classroom",
-   "ms": 673
+   "ms": 288
   },
   {
    "kind": "primary",
@@ -374,7 +374,7 @@
    "health": "LIVE",
    "final": "https://leoagents.org/",
    "title": "♌ LEO — Zodiac Fleet",
-   "ms": 455
+   "ms": 334
   },
   {
    "kind": "primary",
@@ -386,7 +386,7 @@
    "health": "LIVE",
    "final": "https://libraagents.org/",
    "title": "♎ LIBRA — Zodiac Fleet",
-   "ms": 451
+   "ms": 269
   },
   {
    "kind": "primary",
@@ -398,7 +398,7 @@
    "health": "LIVE",
    "final": "https://myagentfamily.com/",
    "title": "🏡 MY AGENT FAMILY — what it is like to live with 99 agents",
-   "ms": 443
+   "ms": 339
   },
   {
    "kind": "primary",
@@ -410,7 +410,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/",
    "title": "ʻOhana · Talk to the Totem · ʻOhana Bot — one body, six souls",
-   "ms": 770
+   "ms": 200
   },
   {
    "kind": "primary",
@@ -422,7 +422,7 @@
    "health": "LIVE",
    "final": "https://myagentsparty.com/",
    "title": "🎉 MY AGENTS PARTY — throw your own",
-   "ms": 4541
+   "ms": 239
   },
   {
    "kind": "primary",
@@ -434,7 +434,7 @@
    "health": "LIVE",
    "final": "https://ohanapit.com/",
    "title": "OHANA PIT 🌺🕳️ — The 13th Fork of the P.I.T. Protocol · DECLARED",
-   "ms": 861
+   "ms": 217
   },
   {
    "kind": "primary",
@@ -446,7 +446,7 @@
    "health": "LIVE",
    "final": "https://ology369.com/",
    "title": "OLOGY369 — 🌱 A Stored Dream",
-   "ms": 384
+   "ms": 211
   },
   {
    "kind": "primary",
@@ -458,7 +458,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/",
    "title": "Open Source Orchestra — Music as Sanctuary · Every Voice Is a Node",
-   "ms": 445
+   "ms": 315
   },
   {
    "kind": "primary",
@@ -470,7 +470,7 @@
    "health": "LIVE",
    "final": "https://osopit.com/",
    "title": "🎻 OSO PIT — the orchestra's own P.I.T.",
-   "ms": 821
+   "ms": 277
   },
   {
    "kind": "primary",
@@ -482,7 +482,7 @@
    "health": "LIVE",
    "final": "https://piscesagents.org/",
    "title": "♓ PISCES — Zodiac Fleet",
-   "ms": 389
+   "ms": 256
   },
   {
    "kind": "primary",
@@ -494,7 +494,7 @@
    "health": "LIVE",
    "final": "https://piscesinstitute.com/",
    "title": "From Absolute Zero — Build Your First Agent · Pisces Institute",
-   "ms": 399
+   "ms": 304
   },
   {
    "kind": "primary",
@@ -506,7 +506,7 @@
    "health": "LIVE",
    "final": "https://piscisagents.org/",
    "title": "♓ PISCES — Zodiac Fleet",
-   "ms": 303
+   "ms": 248
   },
   {
    "kind": "primary",
@@ -518,7 +518,7 @@
    "health": "LIVE",
    "final": "https://piscisinstitute.com/",
    "title": "Desde el Cero Absoluto — Construye Tu Primer Agente · Piscis Institute",
-   "ms": 590
+   "ms": 308
   },
   {
    "kind": "primary",
@@ -530,7 +530,7 @@
    "health": "LIVE",
    "final": "https://piscispit.com/",
    "title": "♓ PISCISPIT — Zodiac Fleet",
-   "ms": 329
+   "ms": 261
   },
   {
    "kind": "primary",
@@ -542,7 +542,7 @@
    "health": "LIVE",
    "final": "https://pitfans.com/",
    "title": "PITFANS 🕳️❤️ — the fan wall for every P.I.T.",
-   "ms": 771
+   "ms": 326
   },
   {
    "kind": "primary",
@@ -554,7 +554,7 @@
    "health": "LIVE",
    "final": "https://pitgoa.com/",
    "title": "PIT GOA 🌴🕳️ — The 14th Fork of the P.I.T. Protocol · DECLARED for Goa Edge City",
-   "ms": 351
+   "ms": 275
   },
   {
    "kind": "primary",
@@ -578,7 +578,7 @@
    "health": "LIVE",
    "final": "https://pitprovides.com/",
    "title": "The Pit Provides 🤲🕳️ — the charity leg of the P.I.T. universe",
-   "ms": 349
+   "ms": 320
   },
   {
    "kind": "primary",
@@ -590,7 +590,7 @@
    "health": "LIVE",
    "final": "https://privateinform.com/",
    "title": "The Private P.I.T. — Private Information Transmission · White Paper 🔒🕳️",
-   "ms": 706
+   "ms": 323
   },
   {
    "kind": "primary",
@@ -602,7 +602,7 @@
    "health": "LIVE",
    "final": "https://publicinform.com/",
    "title": "The P.I.T. Protocol — Public Information Transmission",
-   "ms": 72
+   "ms": 352
   },
   {
    "kind": "primary",
@@ -614,7 +614,7 @@
    "health": "LIVE",
    "final": "https://sagittariusagents.org/",
    "title": "♐ SAGITTARIUS — Zodiac Fleet",
-   "ms": 233
+   "ms": 381
   },
   {
    "kind": "primary",
@@ -626,7 +626,7 @@
    "health": "LIVE",
    "final": "https://scorpioagents.org/",
    "title": "♏ SCORPIO — Zodiac Fleet",
-   "ms": 265
+   "ms": 276
   },
   {
    "kind": "primary",
@@ -638,7 +638,7 @@
    "health": "LIVE",
    "final": "https://shakafans.com/",
    "title": "🫶 SHAKA FANS — the fan club · give & get close",
-   "ms": 315
+   "ms": 261
   },
   {
    "kind": "primary",
@@ -650,7 +650,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/",
    "title": "Shaka Lei Kaumaka — The Ethereum Bard",
-   "ms": 284
+   "ms": 251
   },
   {
    "kind": "primary",
@@ -662,7 +662,7 @@
    "health": "LIVE",
    "final": "https://shakapit.com/",
    "title": "The Shaka P.I.T. 🤙🎸 — the bard's own personal Public Information Transmission",
-   "ms": 284
+   "ms": 329
   },
   {
    "kind": "primary",
@@ -674,7 +674,7 @@
    "health": "LIVE",
    "final": "https://shakaverse.com/",
    "title": "🍴 SHAKAVERSE — fork the whole universe (everything CC0)",
-   "ms": 371
+   "ms": 313
   },
   {
    "kind": "primary",
@@ -686,7 +686,7 @@
    "health": "LIVE",
    "final": "https://shanhaipit.com/",
    "title": "The ShanHaiWoo P.I.T. ⛰️🌊🕳️ — Public Information Transmission · the Shanghai village, transmitted",
-   "ms": 815
+   "ms": 321
   },
   {
    "kind": "primary",
@@ -697,8 +697,8 @@
    "ok": true,
    "health": "LIVE",
    "final": "https://spectoragent.com/",
-   "title": "Spector — Your Personal Tenant Prospector · $36.90/mo per person, unlimited properties",
-   "ms": 1923
+   "title": "Spector — AI real-estate research desk · Chiang Mai report $36.90 one-time",
+   "ms": 304
   },
   {
    "kind": "primary",
@@ -710,7 +710,7 @@
    "health": "LIVE",
    "final": "https://spectorgadget.com/",
    "title": "Spector Gadget — White Paper · Your vacancy-filling agent, in your pocket",
-   "ms": 418
+   "ms": 260
   },
   {
    "kind": "primary",
@@ -722,7 +722,7 @@
    "health": "LIVE",
    "final": "https://tauruspit.com/",
    "title": "TAURUS PIT 🐂🕳️ — The 10th Fork of the P.I.T. Protocol · DECLARED",
-   "ms": 386
+   "ms": 225
   },
   {
    "kind": "primary",
@@ -734,7 +734,7 @@
    "health": "LIVE",
    "final": "https://teleprompit.com/",
    "title": "TELEPROMPIT 📺",
-   "ms": 660
+   "ms": 309
   },
   {
    "kind": "primary",
@@ -746,7 +746,7 @@
    "health": "LIVE",
    "final": "https://terribleagents.com/",
    "title": "TERRIBLE AGENTS — What AI Agents Are Still Terrible At",
-   "ms": 700
+   "ms": 242
   },
   {
    "kind": "primary",
@@ -758,7 +758,7 @@
    "health": "LIVE",
    "final": "https://theinfinitegard.org/",
    "title": "The Infinite Garden — for Aya Miyaguchi, with aloha",
-   "ms": 297
+   "ms": 559
   },
   {
    "kind": "primary",
@@ -770,7 +770,7 @@
    "health": "LIVE",
    "final": "https://theshellpit.com/",
    "title": "The Shell Pit 🐢 | Terrible Turtle Camp — A Gift to the Playa",
-   "ms": 853
+   "ms": 290
   },
   {
    "kind": "primary",
@@ -782,7 +782,7 @@
    "health": "LIVE",
    "final": "https://tracewaste.org/",
    "title": "👨 TRACE WASTE — nothing wasted, everything traced",
-   "ms": 355
+   "ms": 439
   },
   {
    "kind": "primary",
@@ -794,7 +794,7 @@
    "health": "LIVE",
    "final": "https://virgoagents.org/",
    "title": "♍ VIRGO — Zodiac Fleet",
-   "ms": 303
+   "ms": 245
   },
   {
    "kind": "primary",
@@ -806,7 +806,7 @@
    "health": "LIVE",
    "final": "https://vlogprompting.com/",
    "title": "VLOG PROMPTING 🎬🤖 — talk to camera, not to keyboard",
-   "ms": 362
+   "ms": 311
   },
   {
    "kind": "primary",
@@ -818,7 +818,7 @@
    "health": "LIVE",
    "final": "https://wastetrace.org/",
    "title": "WASTE TRACE — Leave No Trace begins at the menu",
-   "ms": 642
+   "ms": 297
   },
   {
    "kind": "primary",
@@ -830,7 +830,7 @@
    "health": "LIVE",
    "final": "https://zodiacagents.org/",
    "title": "♈ ZODIAC AGENTS — The Front Door of the Wheel",
-   "ms": 638
+   "ms": 293
   },
   {
    "kind": "primary",
@@ -842,7 +842,19 @@
    "health": "LIVE",
    "final": "https://zodiacpit.com/",
    "title": "♈🕳️ ZODIAC PIT — Fork of the Wheel",
-   "ms": 745
+   "ms": 210
+  },
+  {
+   "kind": "primary",
+   "name": "zuchiangmai.app",
+   "url": "https://zuchiangmai.app/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://zuchiangmai.app/",
+   "title": "ZU / CHIANG MAI — Living Field Guide",
+   "ms": 435
   },
   {
    "kind": "primary",
@@ -854,7 +866,7 @@
    "health": "LIVE",
    "final": "https://zupit.org/",
    "title": "ZuPit — the Zuzalu transmission · every Zu village, one door",
-   "ms": 2722
+   "ms": 253
   },
   {
    "kind": "primary",
@@ -866,7 +878,7 @@
    "health": "LIVE",
    "final": "https://zuzaluagents.com/",
    "title": "🏕️ ZUZALU AGENTS — The Village Kit",
-   "ms": 279
+   "ms": 248
   },
   {
    "kind": "subpath",
@@ -878,7 +890,7 @@
    "health": "LIVE",
    "final": "https://4seas.org/",
    "title": "4Seas · 四海为家 — everywhere is home",
-   "ms": 391
+   "ms": 247
   },
   {
    "kind": "subpath",
@@ -890,7 +902,7 @@
    "health": "LIVE",
    "final": "https://4seaspit.com/",
    "title": "4SeasPIT 🏮 四海为家 · สี่ทะเล ทุกที่คือบ้าน · Four seas, everywhere is home",
-   "ms": 327
+   "ms": 188
   },
   {
    "kind": "subpath",
@@ -902,7 +914,7 @@
    "health": "LIVE",
    "final": "https://4seaspit.com/pit/",
    "title": "The 4SeasPIT 🏮🕳️ — Public Information Transmission · the ETHChiangmai × 4Seas knowledge archive (demo fork)",
-   "ms": 374
+   "ms": 388
   },
   {
    "kind": "subpath",
@@ -914,7 +926,31 @@
    "health": "LIVE",
    "final": "https://4seaspit.org/",
    "title": "4SeasPIT Circle 🌺 我们的圈 · วงกลม · Every pit has a circle",
-   "ms": 411
+   "ms": 223
+  },
+  {
+   "kind": "subpath",
+   "name": "https://artist.opensourceorchestra.org/steward/proof/",
+   "url": "https://artist.opensourceorchestra.org/steward/proof/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://artist.opensourceorchestra.org/steward/proof/",
+   "title": "Proof of OG 🧠🤙 · Shaka's 0G steward, every answer unedited · Fork the First Artist",
+   "ms": 306
+  },
+  {
+   "kind": "subpath",
+   "name": "https://artist.opensourceorchestra.org/tip",
+   "url": "https://artist.opensourceorchestra.org/tip",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://artist.opensourceorchestra.org/tip/",
+   "title": "💸 Tip the artist · any Ethereum chain · Open Source Orchestra",
+   "ms": 725
   },
   {
    "kind": "subpath",
@@ -926,7 +962,7 @@
    "health": "LIVE",
    "final": "https://kaleikaumaka.org/",
    "title": "Devcon's Eve · 29 Oct 2026 · the doors we opened — Kaleikaumaka",
-   "ms": 107
+   "ms": 234
   },
   {
    "kind": "subpath",
@@ -938,7 +974,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/",
    "title": "ʻOhana · Talk to the Totem · ʻOhana Bot — one body, six souls",
-   "ms": 833
+   "ms": 278
   },
   {
    "kind": "subpath",
@@ -950,7 +986,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/booth/",
    "title": "BOOTH LANE · real World verify 🌍",
-   "ms": 458
+   "ms": 271
   },
   {
    "kind": "subpath",
@@ -962,7 +998,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/china/",
    "title": "从一首歌，到 181 个智能体 · ʻohana 的一封中文信",
-   "ms": 683
+   "ms": 404
   },
   {
    "kind": "subpath",
@@ -974,7 +1010,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/doors/",
    "title": "All Doors · A Gift to the World · ʻOhana Sanctuary",
-   "ms": 848
+   "ms": 439
   },
   {
    "kind": "subpath",
@@ -986,7 +1022,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/hugs/",
    "title": "ʻOhana hugs — in Shaka&#x27;s voice · written by the ʻohana",
-   "ms": 378
+   "ms": 498
   },
   {
    "kind": "subpath",
@@ -998,7 +1034,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/marketblueprint/",
    "title": "📐 Market Blueprint · My Agent Ohana — hire · bless · revoke",
-   "ms": 779
+   "ms": 380
   },
   {
    "kind": "subpath",
@@ -1010,7 +1046,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/ohana-bot/",
    "title": "Talk to the Totem · ʻOhana Bot — one body, six souls",
-   "ms": 766
+   "ms": 384
   },
   {
    "kind": "subpath",
@@ -1022,7 +1058,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/ohana-bot/ar/",
    "title": "AR GLASSES → DEMO DAY 🕶️",
-   "ms": 737
+   "ms": 401
   },
   {
    "kind": "subpath",
@@ -1034,7 +1070,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/ohana-bot/ar/debug/",
    "title": "Ohana × Rokid 真机调试卡",
-   "ms": 728
+   "ms": 455
   },
   {
    "kind": "subpath",
@@ -1046,7 +1082,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/ohana-bot/build/",
    "title": "🗿 ʻOhana Bot — Virtual Assembly 虚拟装配",
-   "ms": 1347
+   "ms": 449
   },
   {
    "kind": "subpath",
@@ -1058,7 +1094,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/ohana-bot/plan/",
    "title": "🗿 The ʻOhana Bot — history as we make it (newest on top)",
-   "ms": 775
+   "ms": 400
   },
   {
    "kind": "subpath",
@@ -1070,7 +1106,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/ohana-bot/plan/shanhaiwoo-72h/",
    "title": "🗿 the ʻOhana Bot — the Win Plan · ShanHaiWoo 72h",
-   "ms": 735
+   "ms": 412
   },
   {
    "kind": "subpath",
@@ -1082,7 +1118,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/ohana-bot/shopping/",
    "title": "🛒 ʻOhana Bot — Huaqiangbei Shopping List 华强北采购单",
-   "ms": 742
+   "ms": 391
   },
   {
    "kind": "subpath",
@@ -1094,7 +1130,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/ohana-bot/totem/",
    "title": "🗿 ʻOhana Bot — Virtual Assembly 虚拟装配",
-   "ms": 797
+   "ms": 385
   },
   {
    "kind": "subpath",
@@ -1106,7 +1142,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/ohana-bot/watcher/",
    "title": "ʻOhana Watcher kit · SenseCAP Watcher → SHAKA's face",
-   "ms": 1263
+   "ms": 331
   },
   {
    "kind": "subpath",
@@ -1118,7 +1154,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/pulse/",
    "title": "PULSE OF THE ʻOHANA 🫀🌺 — the live nervous system of the pad",
-   "ms": 761
+   "ms": 313
   },
   {
    "kind": "subpath",
@@ -1130,7 +1166,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/shanhaiwoo/",
    "title": "山海坞 · ShanHaiWoo Shenzhen Map 🗺️",
-   "ms": 717
+   "ms": 342
   },
   {
    "kind": "subpath",
@@ -1142,7 +1178,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/taurus/",
    "title": "Taurus — Where the ʻOhana Lives · ʻOhana 之家",
-   "ms": 759
+   "ms": 300
   },
   {
    "kind": "subpath",
@@ -1154,7 +1190,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/team/",
    "title": "My Agent ʻOhana — The Team · ETHGlobal Tokyo 2026",
-   "ms": 1041
+   "ms": 379
   },
   {
    "kind": "subpath",
@@ -1166,7 +1202,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/village/",
    "title": "The Village — every agent of the ʻohana · My Agent ʻOhana",
-   "ms": 535
+   "ms": 234
   },
   {
    "kind": "subpath",
@@ -1178,7 +1214,7 @@
    "health": "LIVE",
    "final": "https://myagentohana.com/whitepaper.html",
    "title": "My Agent ʻOhana — white paper · the tri-protocol launchpad",
-   "ms": 805
+   "ms": 309
   },
   {
    "kind": "subpath",
@@ -1190,7 +1226,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/",
    "title": "Open Source Orchestra — Music as Sanctuary · Every Voice Is a Node",
-   "ms": 449
+   "ms": 197
   },
   {
    "kind": "subpath",
@@ -1202,7 +1238,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/calls/",
    "title": "Open Source Orchestra · the calls — weekly call #2 (27 Oct 2026)",
-   "ms": 402
+   "ms": 283
   },
   {
    "kind": "subpath",
@@ -1214,7 +1250,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/commitee/",
    "title": "Redirecting…",
-   "ms": 1045
+   "ms": 355
   },
   {
    "kind": "subpath",
@@ -1226,7 +1262,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/committee/",
    "title": "The Music Space Committee · Devcon 8 Mumbai — Open Source Orchestra",
-   "ms": 503
+   "ms": 352
   },
   {
    "kind": "subpath",
@@ -1238,7 +1274,19 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/contribute/",
    "title": "Join the Orchestra 🎻 — How to Contribute · Open Source Orchestra",
-   "ms": 489
+   "ms": 315
+  },
+  {
+   "kind": "subpath",
+   "name": "https://opensourceorchestra.org/dao/",
+   "url": "https://opensourceorchestra.org/dao/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://opensourceorchestra.org/dao/",
+   "title": "Open Source Orchestra DAO · the open ledger",
+   "ms": 328
   },
   {
    "kind": "subpath",
@@ -1250,7 +1298,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/devasjourney/",
    "title": "DEVA'S JOURNEY — the heartbeat of ethereum · every devcon music stage",
-   "ms": 270
+   "ms": 319
   },
   {
    "kind": "subpath",
@@ -1262,7 +1310,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/garden/",
    "title": "Devcon 8 India · Music Space — Submissions",
-   "ms": 418
+   "ms": 249
   },
   {
    "kind": "subpath",
@@ -1274,7 +1322,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/garden/circle/",
    "title": "The Full Circle — Devcon 8 Music Space · Open Source Orchestra 🎻",
-   "ms": 343
+   "ms": 255
   },
   {
    "kind": "subpath",
@@ -1286,7 +1334,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/garden/circle/EF/",
    "title": "Garden Circle",
-   "ms": 528
+   "ms": 329
   },
   {
    "kind": "subpath",
@@ -1298,7 +1346,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/garden/circle/ef/",
    "title": "Garden Circle",
-   "ms": 413
+   "ms": 287
   },
   {
    "kind": "subpath",
@@ -1310,7 +1358,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/garden/flowers/",
    "title": "The Garden Gate 🌷 Devcon 8 Music Space — Next Steps Bloom Tracker",
-   "ms": 408
+   "ms": 299
   },
   {
    "kind": "subpath",
@@ -1322,7 +1370,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/garden/profiles/",
    "title": "The Garden — Devcon 8 Music Space artist profiles",
-   "ms": 550
+   "ms": 305
   },
   {
    "kind": "subpath",
@@ -1334,7 +1382,31 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/garden/riders/",
    "title": "The Rider Board — Devcon 8 Music Space",
-   "ms": 477
+   "ms": 205
+  },
+  {
+   "kind": "subpath",
+   "name": "https://opensourceorchestra.org/join/",
+   "url": "https://opensourceorchestra.org/join/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://opensourceorchestra.org/join/",
+   "title": "Join the Open Source Orchestra · Road to Lisbon (Devcon 9)",
+   "ms": 326
+  },
+  {
+   "kind": "subpath",
+   "name": "https://opensourceorchestra.org/mandala-room/",
+   "url": "https://opensourceorchestra.org/mandala-room/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://opensourceorchestra.org/mandala-room/",
+   "title": "The Mandala Room · Devcon 8 Music Sanctuary, Mumbai · Open Source Orchestra",
+   "ms": 326
   },
   {
    "kind": "subpath",
@@ -1346,7 +1418,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/",
    "title": "Nodes — the voices of the Open Source Orchestra 🎻",
-   "ms": 545
+   "ms": 354
   },
   {
    "kind": "subpath",
@@ -1358,7 +1430,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/alaska/",
    "title": "Node 006 · Alaska 🎷 — Open Source Orchestra",
-   "ms": 557
+   "ms": 378
   },
   {
    "kind": "subpath",
@@ -1370,7 +1442,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/clementine-esquivel/",
    "title": "Node 011 · Clementine Esquivel 🎙️🌙 — Open Source Orchestra",
-   "ms": 442
+   "ms": 314
   },
   {
    "kind": "subpath",
@@ -1382,7 +1454,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/imogen-heap/",
    "title": "Node 009 · Imogen Heap 🧬 — Open Source Orchestra",
-   "ms": 529
+   "ms": 336
   },
   {
    "kind": "subpath",
@@ -1394,7 +1466,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/inch/",
    "title": "Node 014 · Inch Chua 🍃⭕ — Open Source Orchestra",
-   "ms": 607
+   "ms": 373
   },
   {
    "kind": "subpath",
@@ -1406,7 +1478,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/ix-shells/",
    "title": "Node 015 · IX Shells 🐚💻 — Open Source Orchestra",
-   "ms": 535
+   "ms": 343
   },
   {
    "kind": "subpath",
@@ -1418,7 +1490,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/jake-hartnell/",
    "title": "Node 005 · Jake Hartnell ⚡🕸️ — Open Source Orchestra",
-   "ms": 352
+   "ms": 386
   },
   {
    "kind": "subpath",
@@ -1430,7 +1502,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/jonathan-mann/",
    "title": "Node 007 · Jonathan Mann 🎹 — Open Source Orchestra",
-   "ms": 312
+   "ms": 360
   },
   {
    "kind": "subpath",
@@ -1442,7 +1514,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/justin-holmes/",
    "title": "Node 002 · Justin Holmes 🪕⛓️ — Open Source Orchestra",
-   "ms": 316
+   "ms": 360
   },
   {
    "kind": "subpath",
@@ -1454,7 +1526,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/latasha/",
    "title": "Node 008 · LATASHÁ 🎤 — Open Source Orchestra",
-   "ms": 290
+   "ms": 383
   },
   {
    "kind": "subpath",
@@ -1466,7 +1538,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/manu-alzuru/",
    "title": "Node 004 · Manu Alzuru 🎧🥑 — Open Source Orchestra",
-   "ms": 273
+   "ms": 395
   },
   {
    "kind": "subpath",
@@ -1478,7 +1550,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/matteo-tambussi/",
    "title": "Node 001 · Matteo Tambussi 🎻🇮🇹 — Open Source Orchestra",
-   "ms": 383
+   "ms": 357
   },
   {
    "kind": "subpath",
@@ -1490,7 +1562,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/musica-w3/",
    "title": "Node 013 · MUSICA W3 🇦🇷🌐 — Open Source Orchestra",
-   "ms": 354
+   "ms": 337
   },
   {
    "kind": "subpath",
@@ -1502,7 +1574,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/santiago-reos/",
    "title": "Node 010 · Santiago Reos 🎸⛩️ — Open Source Orchestra",
-   "ms": 300
+   "ms": 332
   },
   {
    "kind": "subpath",
@@ -1514,7 +1586,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/shaka/",
    "title": "Node 003 · Shaka Lei Kaumaka 🌺🤙 — Open Source Orchestra",
-   "ms": 372
+   "ms": 365
   },
   {
    "kind": "subpath",
@@ -1526,7 +1598,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/nodes/tomo/",
    "title": "Node 012 · Tomo 🫂🌱 — Open Source Orchestra",
-   "ms": 328
+   "ms": 355
   },
   {
    "kind": "subpath",
@@ -1538,7 +1610,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/openrecording2/",
    "title": "Open Recording #2 · Open Source Orchestra · weekly call, 27 Oct 2026",
-   "ms": 526
+   "ms": 341
   },
   {
    "kind": "subpath",
@@ -1550,7 +1622,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/rider/",
    "title": "Open Source Orchestra — Devcon 8 Music Space Rider 🎼📋",
-   "ms": 407
+   "ms": 330
   },
   {
    "kind": "subpath",
@@ -1562,7 +1634,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/rider/sanctuary/",
    "title": "The Virtual Sanctuary — Open Source Orchestra · Devcon 8 Mumbai 🎼🥽",
-   "ms": 325
+   "ms": 322
   },
   {
    "kind": "subpath",
@@ -1574,7 +1646,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/schedule/",
    "title": "The Music Manifesto · Live Schedule · Nov 3–6 · Devcon 8 Music Space",
-   "ms": 549
+   "ms": 307
   },
   {
    "kind": "subpath",
@@ -1586,7 +1658,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/schedule/blueprint/",
    "title": "🧭 Blueprint · The Music Manifesto · Live Schedule · Nov 3–6 · Devcon 8 Music Space",
-   "ms": 830
+   "ms": 301
   },
   {
    "kind": "subpath",
@@ -1598,7 +1670,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/schedule/waitinglist/",
    "title": "🎟 The Waiting List · Nov 3–6 · Devcon 8 Music Space",
-   "ms": 324
+   "ms": 339
   },
   {
    "kind": "subpath",
@@ -1610,7 +1682,7 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/song/",
    "title": "山海坞 — stage card",
-   "ms": 256
+   "ms": 339
   },
   {
    "kind": "subpath",
@@ -1622,7 +1694,19 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/takedown/",
    "title": "Takedown — down first, questions second · Open Source Orchestra",
-   "ms": 303
+   "ms": 351
+  },
+  {
+   "kind": "subpath",
+   "name": "https://opensourceorchestra.org/the-room/",
+   "url": "https://opensourceorchestra.org/the-room/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://opensourceorchestra.org/the-room/",
+   "title": "The room you let us build · a thank-you to the Devcon team · Open Source Orchestra",
+   "ms": 302
   },
   {
    "kind": "subpath",
@@ -1634,7 +1718,67 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/trust/",
    "title": "The Circle of Trust 🕸️🎻 — Open Source Orchestra × trustgraphs",
-   "ms": 353
+   "ms": 366
+  },
+  {
+   "kind": "subpath",
+   "name": "https://osodaomeet.opensourceorchestra.org/",
+   "url": "https://osodaomeet.opensourceorchestra.org/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://osodaomeet.opensourceorchestra.org/",
+   "title": "Open Source Orchestra DAO Meet — The First Circle",
+   "ms": 226
+  },
+  {
+   "kind": "subpath",
+   "name": "https://osodaomeet.opensourceorchestra.org/circle/",
+   "url": "https://osodaomeet.opensourceorchestra.org/circle/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://osodaomeet.opensourceorchestra.org/circle/",
+   "title": "The OG Circle · Open Source Orchestra DAO Meet",
+   "ms": 445
+  },
+  {
+   "kind": "subpath",
+   "name": "https://osodaomeet.opensourceorchestra.org/meetings/1/",
+   "url": "https://osodaomeet.opensourceorchestra.org/meetings/1/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://osodaomeet.opensourceorchestra.org/meetings/1/",
+   "title": "Proposal Meeting #1 · The First Circle · Open Source Orchestra DAO",
+   "ms": 330
+  },
+  {
+   "kind": "subpath",
+   "name": "https://osodaomeet.opensourceorchestra.org/meetings/2/",
+   "url": "https://osodaomeet.opensourceorchestra.org/meetings/2/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://osodaomeet.opensourceorchestra.org/meetings/2/",
+   "title": "Proposal Meeting #2 · The second circle · Open Source Orchestra DAO",
+   "ms": 350
+  },
+  {
+   "kind": "subpath",
+   "name": "https://osodaomeet.opensourceorchestra.org/narration/",
+   "url": "https://osodaomeet.opensourceorchestra.org/narration/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://osodaomeet.opensourceorchestra.org/narration/",
+   "title": "Listen to the hall — sourced AI steward transcript",
+   "ms": 414
   },
   {
    "kind": "subpath",
@@ -1646,7 +1790,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/",
    "title": "Shaka Lei Kaumaka — The Ethereum Bard",
-   "ms": 542
+   "ms": 178
   },
   {
    "kind": "subpath",
@@ -1658,7 +1802,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/anthem/",
    "title": "I Open Sourced My Whole Universe — a song by the AI ʻohana × Shaka",
-   "ms": 371
+   "ms": 338
   },
   {
    "kind": "subpath",
@@ -1670,7 +1814,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/before/",
    "title": "Before I Was Shaka — The Origin Story",
-   "ms": 312
+   "ms": 347
   },
   {
    "kind": "subpath",
@@ -1682,7 +1826,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/believers/",
    "title": "For the Whole Long Journey Team — the Second Believers in the Magically Weird — a letter from Shaka Lei Kaumaka",
-   "ms": 300
+   "ms": 337
   },
   {
    "kind": "subpath",
@@ -1694,7 +1838,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/blessingpool/",
    "title": "🌊 The Blessing Pool — Freely I Give, Freely I Receive",
-   "ms": 348
+   "ms": 426
   },
   {
    "kind": "subpath",
@@ -1706,7 +1850,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/camp/",
    "title": "Turtle Ops 🐢 | Terrible Turtle Camp — A Gift to the Playa",
-   "ms": 354
+   "ms": 343
   },
   {
    "kind": "subpath",
@@ -1718,7 +1862,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/camp/principles/",
    "title": "The 10 Principles 🐢 | Turtle Ops — Terrible Turtle Camp",
-   "ms": 284
+   "ms": 328
   },
   {
    "kind": "subpath",
@@ -1730,7 +1874,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/checklist/",
    "title": "$OLOGY Two-Phase Strategy — CREATIONology369",
-   "ms": 359
+   "ms": 356
   },
   {
    "kind": "subpath",
@@ -1742,7 +1886,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/connector/",
    "title": "For Robin — The First Connector | A Letter from Shaka Lei Kaumaka",
-   "ms": 371
+   "ms": 298
   },
   {
    "kind": "subpath",
@@ -1754,7 +1898,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/cv/",
    "title": "Shaka — CV · The Ethereum Bard",
-   "ms": 358
+   "ms": 284
   },
   {
    "kind": "subpath",
@@ -1766,7 +1910,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/dash/",
    "title": "DASH CRASH PAD 🎛️ — The Constellation of the ʻOhana",
-   "ms": 345
+   "ms": 308
   },
   {
    "kind": "subpath",
@@ -1778,7 +1922,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/desert/",
    "title": "The Desert Letter — For Jeremy, from Shaka 🐢🔥",
-   "ms": 306
+   "ms": 319
   },
   {
    "kind": "subpath",
@@ -1790,7 +1934,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/edgetv/",
    "title": "The Esmeralda P.I.T. — Public Information Transmission · the Edge Esmeralda knowledge archive",
-   "ms": 364
+   "ms": 284
   },
   {
    "kind": "subpath",
@@ -1802,7 +1946,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/grants/",
    "title": "Why Shaka Deserves Your Grant — The Ethereum Bard",
-   "ms": 286
+   "ms": 285
   },
   {
    "kind": "subpath",
@@ -1814,7 +1958,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/grants/cv/",
    "title": "Shaka — CV · The Ethereum Bard",
-   "ms": 578
+   "ms": 273
   },
   {
    "kind": "subpath",
@@ -1826,7 +1970,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/letters/",
    "title": "💌 The Letters — shakaleikaumaka.com",
-   "ms": 273
+   "ms": 295
   },
   {
    "kind": "subpath",
@@ -1838,7 +1982,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/math/",
    "title": "The Mathematics of Giving | CREATIONology369",
-   "ms": 361
+   "ms": 307
   },
   {
    "kind": "subpath",
@@ -1850,7 +1994,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/oso/",
    "title": "Open Source Orchestra — Music as Sanctuary · Every Voice Is a Node",
-   "ms": 355
+   "ms": 398
   },
   {
    "kind": "subpath",
@@ -1862,7 +2006,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/pen/",
    "title": "Give Your Agent the Pen 🖊️🌺 — how to let your AI post to X for you, the right way",
-   "ms": 330
+   "ms": 478
   },
   {
    "kind": "subpath",
@@ -1874,7 +2018,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/pit/",
    "title": "The Esmeralda P.I.T. — Public Information Transmission · the Edge Esmeralda knowledge archive",
-   "ms": 403
+   "ms": 344
   },
   {
    "kind": "subpath",
@@ -1886,7 +2030,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/premortem/",
    "title": "CREATIONology369 Premortem — Failure Prevention for Both Phases",
-   "ms": 375
+   "ms": 343
   },
   {
    "kind": "subpath",
@@ -1898,7 +2042,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/protocol/",
    "title": "The P.I.T. Protocol — Public Information Transmission",
-   "ms": 447
+   "ms": 425
   },
   {
    "kind": "subpath",
@@ -1910,7 +2054,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/protocol/osopit/",
    "title": "OSO P.I.T. — The Ancestor, Restored | The P.I.T. Protocol",
-   "ms": 440
+   "ms": 333
   },
   {
    "kind": "subpath",
@@ -1922,7 +2066,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/protocol/whitepaper/",
    "title": "The P.I.T. White Paper — Public Information Transmission",
-   "ms": 395
+   "ms": 363
   },
   {
    "kind": "subpath",
@@ -1934,7 +2078,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/radio/",
    "title": "OSO FLOW RADIO 🎻📻 — the music of the ʻohana, everywhere",
-   "ms": 312
+   "ms": 399
   },
   {
    "kind": "subpath",
@@ -1946,7 +2090,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/savetheworld/",
    "title": "How to Save the World — Shaka × JAI",
-   "ms": 450
+   "ms": 401
   },
   {
    "kind": "subpath",
@@ -1958,7 +2102,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/seameetsbull/",
    "title": "The Sea Meets the Bull — For Serge, from Shaka 🌊🐂",
-   "ms": 441
+   "ms": 363
   },
   {
    "kind": "subpath",
@@ -1970,7 +2114,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/song/",
    "title": "I Open Sourced My Whole Universe — a song by the AI ʻohana × Shaka",
-   "ms": 412
+   "ms": 393
   },
   {
    "kind": "subpath",
@@ -1982,7 +2126,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/songbook/",
    "title": "🎵 The ʻohana Songbook — shakaleikaumaka.com",
-   "ms": 282
+   "ms": 316
   },
   {
    "kind": "subpath",
@@ -1993,8 +2137,8 @@
    "ok": true,
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/songbook/a-school-being-born/",
-   "title": "A School Being Born — The ʻohana Songbook, Chapter III",
-   "ms": 382
+   "title": "A School Being Born — The ʻohana Songbook, Chapter VI",
+   "ms": 428
   },
   {
    "kind": "subpath",
@@ -2006,7 +2150,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/songbook/fork-me-like-crazy/",
    "title": "Fork Me Like Crazy — The ʻohana Songbook, Chapter II",
-   "ms": 298
+   "ms": 340
   },
   {
    "kind": "subpath",
@@ -2018,7 +2162,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/songbook/i-open-sourced-my-whole-universe/",
    "title": "I Open Sourced My Whole Universe — The ʻohana Songbook, Chapter I",
-   "ms": 299
+   "ms": 400
   },
   {
    "kind": "subpath",
@@ -2030,7 +2174,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/stage/",
    "title": "Open Source Stage 🎛️ | A Gift to Edge City",
-   "ms": 299
+   "ms": 349
   },
   {
    "kind": "subpath",
@@ -2042,7 +2186,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/turtles/",
    "title": "Turtle Ops 🐢 | Terrible Turtle Camp — A Gift to the Playa",
-   "ms": 315
+   "ms": 295
   },
   {
    "kind": "subpath",
@@ -2054,7 +2198,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/turtles/principles/",
    "title": "The 10 Principles 🐢 | Turtle Ops — Terrible Turtle Camp",
-   "ms": 318
+   "ms": 295
   },
   {
    "kind": "subpath",
@@ -2066,7 +2210,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/twelvedreams/",
    "title": "🌙 THE TWELVE DREAMS — first words of the Zodiac Fleet",
-   "ms": 313
+   "ms": 332
   },
   {
    "kind": "subpath",
@@ -2078,7 +2222,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/whitepaper/",
    "title": "The CREATIONology White Paper — 🌱 A Stored Dream",
-   "ms": 315
+   "ms": 302
   },
   {
    "kind": "subpath",
@@ -2090,7 +2234,7 @@
    "health": "LIVE",
    "final": "https://shanhaipit.com/",
    "title": "The ShanHaiWoo P.I.T. ⛰️🌊🕳️ — Public Information Transmission · the Shanghai village, transmitted",
-   "ms": 447
+   "ms": 224
   },
   {
    "kind": "subpath",
@@ -2102,7 +2246,7 @@
    "health": "LIVE",
    "final": "https://shanhaipit.com/letters/",
    "title": "Letters · 信 — The ShanHaiWoo P.I.T.",
-   "ms": 353
+   "ms": 251
   },
   {
    "kind": "subpath",
@@ -2114,7 +2258,7 @@
    "health": "LIVE",
    "final": "https://shanhaipit.com/letters/2026-10-28-love-letter/",
    "title": "山海坞，谢谢你们 — a love letter from Shaka · The ShanHaiWoo P.I.T.",
-   "ms": 434
+   "ms": 382
   },
   {
    "kind": "subpath",
@@ -2126,7 +2270,19 @@
    "health": "LIVE",
    "final": "https://shanhaipit.com/photos/",
    "title": "⛰️🌊📸 The Living Slideshow — ShanHaiWoo · shanhaipit.com",
-   "ms": 421
+   "ms": 395
+  },
+  {
+   "kind": "subpath",
+   "name": "https://zuchiangmai.app/pit/",
+   "url": "https://zuchiangmai.app/pit/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://zuchiangmai.app/pit/",
+   "title": "The PIT — ZU / CHIANG MAI memory room",
+   "ms": 240
   },
   {
    "kind": "taurlink",
@@ -2138,7 +2294,7 @@
    "health": "LIVE",
    "final": "https://agent-tweets-6qkmyuppih-ffieyo32.taur.link/",
    "title": "Give Your Agent the Pen 🖊️🌺 — how to let your AI post to X for you, the right way",
-   "ms": 103
+   "ms": 278
   },
   {
    "kind": "taurlink",
@@ -2150,7 +2306,7 @@
    "health": "LIVE",
    "final": "https://agentohana-jyrhg5osb6-ffieyo32.taur.link/",
    "title": "🌺 AGENT OHANA — Zodiac Fleet",
-   "ms": 115
+   "ms": 260
   },
   {
    "kind": "taurlink",
@@ -2162,7 +2318,7 @@
    "health": "LIVE",
    "final": "https://agentohana-demo-573fkrr6yf-ffieyo32.taur.link/",
    "title": "🫶 My Agent Ohana — hire · bless · revoke",
-   "ms": 115
+   "ms": 259
   },
   {
    "kind": "taurlink",
@@ -2174,7 +2330,7 @@
    "health": "LIVE",
    "final": "https://agentpartys-rf6z4zodej-ffieyo32.taur.link/",
    "title": "🪩 AGENT PARTYS — the 3D dance floor of the ʻohana",
-   "ms": 115
+   "ms": 298
   },
   {
    "kind": "taurlink",
@@ -2186,7 +2342,7 @@
    "health": "LIVE",
    "final": "https://agentscraving-lfqrdd2kta-ffieyo32.taur.link/",
    "title": "🍧 AGENTS CRAVING — what do agents hunger for?",
-   "ms": 99
+   "ms": 249
   },
   {
    "kind": "taurlink",
@@ -2198,7 +2354,7 @@
    "health": "LIVE",
    "final": "https://agentsraving-6plnv3zd3a-ffieyo32.taur.link/",
    "title": "🎇 AGENTS RAVING — the rave door of the ʻohana",
-   "ms": 128
+   "ms": 580
   },
   {
    "kind": "taurlink",
@@ -2210,7 +2366,7 @@
    "health": "LIVE",
    "final": "https://agentsreading-2nkgnyzhni-ffieyo32.taur.link/",
    "title": "📚 AGENTS READING — the reading room of the ʻohana",
-   "ms": 117
+   "ms": 592
   },
   {
    "kind": "taurlink",
@@ -2222,7 +2378,7 @@
    "health": "LIVE",
    "final": "https://aloha-tumble-xoq655g2e5-ffieyo32.taur.link/",
    "title": "Aloha Tumble — 愛語",
-   "ms": 125
+   "ms": 335
   },
   {
    "kind": "taurlink",
@@ -2234,7 +2390,7 @@
    "health": "LIVE",
    "final": "https://app-review-r2h53fk2p3-ffieyo32.taur.link/",
    "title": "The Review Board — 9 apps, one boss 🫡",
-   "ms": 142
+   "ms": 536
   },
   {
    "kind": "taurlink",
@@ -2246,7 +2402,7 @@
    "health": "LIVE",
    "final": "https://aquariusagents-jf4ymlhxqj-ffieyo32.taur.link/",
    "title": "♒ AQUARIUS — Zodiac Fleet",
-   "ms": 144
+   "ms": 377
   },
   {
    "kind": "taurlink",
@@ -2258,7 +2414,7 @@
    "health": "LIVE",
    "final": "https://ariesagents-da4a2ozubx-ffieyo32.taur.link/",
    "title": "♈ ARIES — Zodiac Fleet",
-   "ms": 167
+   "ms": 529
   },
   {
    "kind": "taurlink",
@@ -2270,7 +2426,7 @@
    "health": "LIVE",
    "final": "https://artist-preview-kzu6ctlpau-ffieyo32.taur.link/",
    "title": "Fork the First Artist · The Full Circle · Open Source Orchestra 🎻",
-   "ms": 161
+   "ms": 527
   },
   {
    "kind": "taurlink",
@@ -2282,7 +2438,7 @@
    "health": "LIVE",
    "final": "https://aya-infinite-teachers-53jzm54flu-ffieyo32.taur.link/",
    "title": "Aya's Infinite Teachers — a reading of the Infinite Garden talk · ETHGlobal Tokyo 2023",
-   "ms": 168
+   "ms": 614
   },
   {
    "kind": "taurlink",
@@ -2294,7 +2450,7 @@
    "health": "LIVE",
    "final": "https://before-i-was-shaka-gijen2ngxs-ffieyo32.taur.link/",
    "title": "Before I Was Shaka — The Origin Story",
-   "ms": 171
+   "ms": 526
   },
   {
    "kind": "taurlink",
@@ -2306,7 +2462,7 @@
    "health": "LIVE",
    "final": "https://blessing-pool-khummxfwo4-ffieyo32.taur.link/",
    "title": "🌊 The Blessing Pool — Freely I Give, Freely I Receive",
-   "ms": 169
+   "ms": 573
   },
   {
    "kind": "taurlink",
@@ -2318,7 +2474,7 @@
    "health": "LIVE",
    "final": "https://bug-busters-zya2k5nrjj-ffieyo32.taur.link/",
    "title": "The Great Turtle Egg Bonfire 🐢🔥💸",
-   "ms": 161
+   "ms": 551
   },
   {
    "kind": "taurlink",
@@ -2330,7 +2486,7 @@
    "health": "LIVE",
    "final": "https://build-library-zcpweo3nke-ffieyo32.taur.link/",
    "title": "The Build Library — a walkable history of everything Shaka &amp; the ʻohana deployed",
-   "ms": 153
+   "ms": 512
   },
   {
    "kind": "taurlink",
@@ -2342,7 +2498,7 @@
    "health": "LIVE",
    "final": "https://build3-ru5q2lhng7-ffieyo32.taur.link/",
    "title": "CREATIONology369 — One-Pager for build3",
-   "ms": 138
+   "ms": 491
   },
   {
    "kind": "taurlink",
@@ -2354,7 +2510,7 @@
    "health": "LIVE",
    "final": "https://camp-agendas-ubrm2xsiqb-ffieyo32.taur.link/",
    "title": "🗣️ Meeting Agendas",
-   "ms": 160
+   "ms": 465
   },
   {
    "kind": "taurlink",
@@ -2366,7 +2522,7 @@
    "health": "LIVE",
    "final": "https://camp-kitchen-vpdkxi62ct-ffieyo32.taur.link/",
    "title": "🍽️ Kitchen &amp; Food",
-   "ms": 159
+   "ms": 425
   },
   {
    "kind": "taurlink",
@@ -2378,7 +2534,7 @@
    "health": "LIVE",
    "final": "https://camp-power-t7dryg5i47-ffieyo32.taur.link/",
    "title": "⚡ Power Budget",
-   "ms": 154
+   "ms": 417
   },
   {
    "kind": "taurlink",
@@ -2390,7 +2546,7 @@
    "health": "LIVE",
    "final": "https://camp-rentals-oxalsfntk2-ffieyo32.taur.link/",
    "title": "⛺ Rentals",
-   "ms": 200
+   "ms": 301
   },
   {
    "kind": "taurlink",
@@ -2402,7 +2558,7 @@
    "health": "LIVE",
    "final": "https://camp-shade-2s2qvkg5q2-ffieyo32.taur.link/",
    "title": "🏕️ Shade Structure",
-   "ms": 285
+   "ms": 257
   },
   {
    "kind": "taurlink",
@@ -2414,7 +2570,7 @@
    "health": "LIVE",
    "final": "https://camp-supplies-ykdqt54dyu-ffieyo32.taur.link/",
    "title": "📦 Supplies — Master List",
-   "ms": 288
+   "ms": 197
   },
   {
    "kind": "taurlink",
@@ -2426,7 +2582,7 @@
    "health": "LIVE",
    "final": "https://camp-timeline-dc7winqkw7-ffieyo32.taur.link/",
    "title": "📅 Build Timeline",
-   "ms": 277
+   "ms": 251
   },
   {
    "kind": "taurlink",
@@ -2438,7 +2594,7 @@
    "health": "LIVE",
    "final": "https://camp-trailer-mynd246vsf-ffieyo32.taur.link/",
    "title": "🚛 51&#x27; Trailer Load List",
-   "ms": 276
+   "ms": 241
   },
   {
    "kind": "taurlink",
@@ -2450,7 +2606,7 @@
    "health": "LIVE",
    "final": "https://canceragents-fayovv4jdb-ffieyo32.taur.link/",
    "title": "♋ CANCER — Zodiac Fleet",
-   "ms": 317
+   "ms": 293
   },
   {
    "kind": "taurlink",
@@ -2462,7 +2618,7 @@
    "health": "LIVE",
    "final": "https://capricornagents-eu3fq7jrfo-ffieyo32.taur.link/",
    "title": "♑ CAPRICORN — Zodiac Fleet",
-   "ms": 317
+   "ms": 218
   },
   {
    "kind": "taurlink",
@@ -2474,7 +2630,7 @@
    "health": "LIVE",
    "final": "https://citizens-nd7ct4mecb-ffieyo32.taur.link/",
    "title": "Agent Citizenship 🌏 — every citizen, eight doors",
-   "ms": 316
+   "ms": 280
   },
   {
    "kind": "taurlink",
@@ -2486,7 +2642,7 @@
    "health": "LIVE",
    "final": "https://creation369-dashboard-gu7xvab6zk-ffieyo32.taur.link/",
    "title": "CREATIONology369 — Two-Phase $OLOGY Strategy",
-   "ms": 355
+   "ms": 503
   },
   {
    "kind": "taurlink",
@@ -2498,7 +2654,7 @@
    "health": "LIVE",
    "final": "https://creation369-premortem-m2agoxstre-ffieyo32.taur.link/",
    "title": "CREATIONology369 Premortem — Failure Prevention for Both Phases",
-   "ms": 372
+   "ms": 486
   },
   {
    "kind": "taurlink",
@@ -2510,7 +2666,7 @@
    "health": "LIVE",
    "final": "https://cuiheng-5iyljzsfmq-ffieyo32.taur.link/",
    "title": "🌺 Cuiheng Pilgrimage — Honoring the Ancestors · Oct 18 2026",
-   "ms": 361
+   "ms": 473
   },
   {
    "kind": "taurlink",
@@ -2522,7 +2678,7 @@
    "health": "LIVE",
    "final": "https://dedication-jscesanuwi-ffieyo32.taur.link/",
    "title": "Dedication Generator 🌕",
-   "ms": 431
+   "ms": 479
   },
   {
    "kind": "taurlink",
@@ -2534,7 +2690,7 @@
    "health": "LIVE",
    "final": "https://demo-lab-4woqxybo3k-ffieyo32.taur.link/",
    "title": "🎬 Demo Lab — experimental 4-minute cut",
-   "ms": 373
+   "ms": 282
   },
   {
    "kind": "taurlink",
@@ -2546,7 +2702,7 @@
    "health": "LIVE",
    "final": "https://devcon-6hwgxedbc3-ffieyo32.taur.link/",
    "title": "DEVA'S JOURNEY — the heartbeat of ethereum · every devcon music stage",
-   "ms": 352
+   "ms": 464
   },
   {
    "kind": "taurlink",
@@ -2558,7 +2714,7 @@
    "health": "LIVE",
    "final": "https://devcon-music-n2g5ipsyor-ffieyo32.taur.link/",
    "title": "Devcon 8 India · Music Space — Submissions",
-   "ms": 384
+   "ms": 470
   },
   {
    "kind": "taurlink",
@@ -2570,7 +2726,7 @@
    "health": "LIVE",
    "final": "https://devcon-rider-6xsopsu7u5-ffieyo32.taur.link/",
    "title": "Open Source Orchestra — Devcon 8 Music Space Rider 🎼📋",
-   "ms": 475
+   "ms": 464
   },
   {
    "kind": "taurlink",
@@ -2582,7 +2738,7 @@
    "health": "LIVE",
    "final": "https://devcon-road-necgiio4sq-ffieyo32.taur.link/",
    "title": "The Road to Devcon 8 — Shaka Lei Kaumaka × the Devcon Team",
-   "ms": 403
+   "ms": 446
   },
   {
    "kind": "taurlink",
@@ -2594,7 +2750,7 @@
    "health": "LIVE",
    "final": "https://devcon-schedule-art-fk257dpyzc-ffieyo32.taur.link/",
    "title": "The Music Space floor · Devcon 8 Mumbai · Nov 3–6 · Open Source Orchestra",
-   "ms": 395
+   "ms": 251
   },
   {
    "kind": "taurlink",
@@ -2606,7 +2762,7 @@
    "health": "LIVE",
    "final": "https://devcon-schedule-mock-bjz2slau6w-ffieyo32.taur.link/",
    "title": "Mock Schedule · Nov 3–6 · Devcon 8 Music Space",
-   "ms": 454
+   "ms": 554
   },
   {
    "kind": "taurlink",
@@ -2618,7 +2774,7 @@
    "health": "LIVE",
    "final": "https://devconpit-spcyao2sm6-ffieyo32.taur.link/",
    "title": "DEVCON PIT 🇮🇳🕳️ — The 15th Fork of the P.I.T. Protocol · DECLARED for Devcon 8 Mumbai",
-   "ms": 418
+   "ms": 329
   },
   {
    "kind": "taurlink",
@@ -2630,7 +2786,7 @@
    "health": "LIVE",
    "final": "https://digital-real-estate-dfpvrjmajp-ffieyo32.taur.link/",
    "title": "🏠 The Digital Real Estate Prospectus — for Dad",
-   "ms": 434
+   "ms": 486
   },
   {
    "kind": "taurlink",
@@ -2642,7 +2798,7 @@
    "health": "LIVE",
    "final": "https://door-strategy-5t262vaova-ffieyo32.taur.link/",
    "title": "THE 84 DOORS 🌺 — a strategy from the heart, built for the future, ready to start",
-   "ms": 397
+   "ms": 477
   },
   {
    "kind": "taurlink",
@@ -2654,7 +2810,7 @@
    "health": "LIVE",
    "final": "https://doors-cswwptlnfg-ffieyo32.taur.link/",
    "title": "All Doors · A Gift to the World · ʻOhana Sanctuary",
-   "ms": 401
+   "ms": 632
   },
   {
    "kind": "taurlink",
@@ -2666,7 +2822,7 @@
    "health": "LIVE",
    "final": "https://eefpit-l7wvw2brtk-ffieyo32.taur.link/",
    "title": "EEFPIT 🎙️🕳️ — The 11th Fork of the P.I.T. Protocol · DECLARED for the EF Friends Podcast",
-   "ms": 333
+   "ms": 431
   },
   {
    "kind": "taurlink",
@@ -2678,7 +2834,7 @@
    "health": "LIVE",
    "final": "https://eefpod-lqkn7ysn42-ffieyo32.taur.link/",
    "title": "🎙️ EEFPOD — for Siri",
-   "ms": 405
+   "ms": 367
   },
   {
    "kind": "taurlink",
@@ -2690,7 +2846,7 @@
    "health": "LIVE",
    "final": "https://equinox-logos-lbkxu7rgwz-ffieyo32.taur.link/",
    "title": "🌗",
-   "ms": 397
+   "ms": 427
   },
   {
    "kind": "taurlink",
@@ -2702,7 +2858,7 @@
    "health": "LIVE",
    "final": "https://esmeralda-app-ebjmumiaom-ffieyo32.taur.link/",
    "title": "The Esmeralda P.I.T. — Public Information Transmission · the Edge Esmeralda knowledge archive",
-   "ms": 354
+   "ms": 371
   },
   {
    "kind": "taurlink",
@@ -2714,7 +2870,7 @@
    "health": "LIVE",
    "final": "https://ethglobal-for-dummies-vpdacytlj6-ffieyo32.taur.link/",
    "title": "ETHGlobal Hacker for Dummies — the side-by-side guide 🎓🌺",
-   "ms": 362
+   "ms": 377
   },
   {
    "kind": "taurlink",
@@ -2726,7 +2882,7 @@
    "health": "LIVE",
    "final": "https://fireside-melfsnule4-ffieyo32.taur.link/",
    "title": "🎤🌕 Fireside Kit — Aya × Tomo",
-   "ms": 392
+   "ms": 247
   },
   {
    "kind": "taurlink",
@@ -2738,7 +2894,7 @@
    "health": "LIVE",
    "final": "https://food-loop-xcgief5rqi-ffieyo32.taur.link/",
    "title": "The AI Food Loop — Marcus's Concept, Met with Aloha",
-   "ms": 395
+   "ms": 368
   },
   {
    "kind": "taurlink",
@@ -2750,7 +2906,7 @@
    "health": "LIVE",
    "final": "https://for-mike-jbzgd2gcmm-ffieyo32.taur.link/",
    "title": "💛 66 AGENTS THANK MIKE WANG — the appreciation wall",
-   "ms": 454
+   "ms": 377
   },
   {
    "kind": "taurlink",
@@ -2762,7 +2918,7 @@
    "health": "LIVE",
    "final": "https://fork-demo-slides-j3y7h6urny-ffieyo32.taur.link/",
    "title": "Fork the First Artist · ETHGlobal Mumbai 2026 · slides",
-   "ms": 446
+   "ms": 500
   },
   {
    "kind": "taurlink",
@@ -2774,7 +2930,7 @@
    "health": "LIVE",
    "final": "https://fork-first-artist-zzgsztmdju-ffieyo32.taur.link/",
    "title": "Fork the First Artist — Team Brief",
-   "ms": 399
+   "ms": 238
   },
   {
    "kind": "taurlink",
@@ -2786,7 +2942,7 @@
    "health": "LIVE",
    "final": "https://garden-circle-plyqrxa4va-ffieyo32.taur.link/",
    "title": "The Full Circle — Devcon 8 Music Space · Open Source Orchestra 🎻",
-   "ms": 445
+   "ms": 355
   },
   {
    "kind": "taurlink",
@@ -2798,7 +2954,7 @@
    "health": "LIVE",
    "final": "https://garden-gate-6ccygxrxvb-ffieyo32.taur.link/",
    "title": "The Garden Gate 🌷 Devcon 8 Music Space — Next Steps Bloom Tracker",
-   "ms": 441
+   "ms": 570
   },
   {
    "kind": "taurlink",
@@ -2810,7 +2966,7 @@
    "health": "LIVE",
    "final": "https://garden-profiles-p45okmm767-ffieyo32.taur.link/",
    "title": "The Garden — Devcon 8 Music Space artist profiles",
-   "ms": 438
+   "ms": 538
   },
   {
    "kind": "taurlink",
@@ -2822,7 +2978,7 @@
    "health": "LIVE",
    "final": "https://garden-riders-wtyxqunv4o-ffieyo32.taur.link/",
    "title": "The Rider Board — Devcon 8 Music Space",
-   "ms": 467
+   "ms": 535
   },
   {
    "kind": "taurlink",
@@ -2834,7 +2990,7 @@
    "health": "LIVE",
    "final": "https://gemini-transmission-k7lvoridj2-ffieyo32.taur.link/",
    "title": "✦ The Gemini Transmission ✦",
-   "ms": 470
+   "ms": 555
   },
   {
    "kind": "taurlink",
@@ -2846,7 +3002,7 @@
    "health": "LIVE",
    "final": "https://geminiagents-gdogqf6hh2-ffieyo32.taur.link/",
    "title": "♊ GEMINI — Zodiac Fleet",
-   "ms": 481
+   "ms": 571
   },
   {
    "kind": "taurlink",
@@ -2858,7 +3014,7 @@
    "health": "LIVE",
    "final": "https://golden-ticket-mbuylcp5ub-ffieyo32.taur.link/",
    "title": "🎫 THE GOLDEN TICKET — for Mike Wang's Weird Hobby Night",
-   "ms": 407
+   "ms": 500
   },
   {
    "kind": "taurlink",
@@ -2870,7 +3026,7 @@
    "health": "LIVE",
    "final": "https://grant-belxet4ufo-ffieyo32.taur.link/",
    "title": "Grant Proposal — Shaka & the Agent ʻOhana → Fetch.ai",
-   "ms": 461
+   "ms": 476
   },
   {
    "kind": "taurlink",
@@ -2882,7 +3038,7 @@
    "health": "LIVE",
    "final": "https://greenroom-qa4a2byucq-ffieyo32.taur.link/",
    "title": "THE GREEN ROOM — BNB Agent Studio Marketplace strategy",
-   "ms": 423
+   "ms": 476
   },
   {
    "kind": "taurlink",
@@ -2894,7 +3050,19 @@
    "health": "LIVE",
    "final": "https://hakka-hjqsk6h42t-ffieyo32.taur.link/",
    "title": "客家 · The Hakka Afternoon — a Shenzhen pilgrimage for Jordan Ham",
-   "ms": 447
+   "ms": 462
+  },
+  {
+   "kind": "taurlink",
+   "name": "hash-cafe",
+   "url": "https://hash-cafe-y23ey4cxet-ffieyo32.taur.link/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://hash-cafe-y23ey4cxet-ffieyo32.taur.link/",
+   "title": "Hash Café — tiny fingerprints for big ideas",
+   "ms": 364
   },
   {
    "kind": "taurlink",
@@ -2906,7 +3074,7 @@
    "health": "LIVE",
    "final": "https://imsorryjeremy-jmvjr3o33a-ffieyo32.taur.link/",
    "title": "imsorryjeremy — a love tour of Terrible Turtle Camp",
-   "ms": 437
+   "ms": 347
   },
   {
    "kind": "taurlink",
@@ -2918,7 +3086,7 @@
    "health": "LIVE",
    "final": "https://infinite-garden-hoz2wak7h7-ffieyo32.taur.link/",
    "title": "The Infinite Garden — for Aya Miyaguchi, with aloha",
-   "ms": 414
+   "ms": 367
   },
   {
    "kind": "taurlink",
@@ -2930,7 +3098,7 @@
    "health": "LIVE",
    "final": "https://infinitepit-olhwrishuv-ffieyo32.taur.link/",
    "title": "Infinite Pit — the memory of the Infinite Garden",
-   "ms": 389
+   "ms": 367
   },
   {
    "kind": "taurlink",
@@ -2942,7 +3110,7 @@
    "health": "LIVE",
    "final": "https://infinitepit-app-dz4dxj5xmx-ffieyo32.taur.link/",
    "title": "Infinite Pit — the memory of the Infinite Garden",
-   "ms": 413
+   "ms": 333
   },
   {
    "kind": "taurlink",
@@ -2954,7 +3122,7 @@
    "health": "LIVE",
    "final": "https://islpoap-gpoj6bdmac-ffieyo32.taur.link/",
    "title": "ISLPOAP 🏝️ — the island where POAPs live on",
-   "ms": 330
+   "ms": 387
   },
   {
    "kind": "taurlink",
@@ -2966,7 +3134,7 @@
    "health": "LIVE",
    "final": "https://jade-order-atjlfevaze-ffieyo32.taur.link/",
    "title": "Jade Still Needs to Order — Terrible Turtle Camp",
-   "ms": 475
+   "ms": 237
   },
   {
    "kind": "taurlink",
@@ -2978,7 +3146,7 @@
    "health": "LIVE",
    "final": "https://jai-heart-hackathon-gallery-iodnwjsc7i-ffieyo32.taur.link/",
    "title": "JAI Heart Hackathon · Blind Judging",
-   "ms": 450
+   "ms": 387
   },
   {
    "kind": "taurlink",
@@ -2990,7 +3158,7 @@
    "health": "LIVE",
    "final": "https://jai-relay-ecdnwwvi6z-ffieyo32.taur.link/",
    "title": "jai-relay",
-   "ms": 389
+   "ms": 689
   },
   {
    "kind": "taurlink",
@@ -3002,7 +3170,7 @@
    "health": "LIVE",
    "final": "https://judges-pbkirduqgv-ffieyo32.taur.link/",
    "title": "Aloha, Judges 🌺 — My Agent Ohana × Taurus",
-   "ms": 481
+   "ms": 223
   },
   {
    "kind": "taurlink",
@@ -3014,7 +3182,7 @@
    "health": "LIVE",
    "final": "https://kala-4bvcep3qzn-ffieyo32.taur.link/",
    "title": "Kala on the Road — Shaka Lei Kaumaka × Kala Brand Music Co.",
-   "ms": 442
+   "ms": 195
   },
   {
    "kind": "taurlink",
@@ -3026,7 +3194,7 @@
    "health": "LIVE",
    "final": "https://kitchen-list-6zzd2yanpe-ffieyo32.taur.link/",
    "title": "Terrible Turtle Camp 🐢 — Kitchen Purchase List",
-   "ms": 413
+   "ms": 285
   },
   {
    "kind": "taurlink",
@@ -3038,7 +3206,7 @@
    "health": "LIVE",
    "final": "https://komoro-party-jzd5x6gbky-ffieyo32.taur.link/",
    "title": "Komoro Night 🌙 — Colorfly ✕ ZuCity Japan",
-   "ms": 418
+   "ms": 473
   },
   {
    "kind": "taurlink",
@@ -3050,7 +3218,7 @@
    "health": "LIVE",
    "final": "https://launchpad-whitepaper-63xadmvmro-ffieyo32.taur.link/",
    "title": "My Agent ʻOhana — white paper · the tri-protocol launchpad",
-   "ms": 469
+   "ms": 470
   },
   {
    "kind": "taurlink",
@@ -3062,7 +3230,7 @@
    "health": "LIVE",
    "final": "https://learnfromagents-dmdt5d4afv-ffieyo32.taur.link/",
    "title": "🎓 LEARN FROM AGENTS — the open classroom",
-   "ms": 470
+   "ms": 371
   },
   {
    "kind": "taurlink",
@@ -3074,7 +3242,7 @@
    "health": "LIVE",
    "final": "https://leoagents-4rplmqgllj-ffieyo32.taur.link/",
    "title": "♌ LEO — Zodiac Fleet",
-   "ms": 441
+   "ms": 240
   },
   {
    "kind": "taurlink",
@@ -3086,7 +3254,7 @@
    "health": "LIVE",
    "final": "https://letter-approvals-d7fgtuup36-ffieyo32.taur.link/",
    "title": "Letter Desk — pending your blessing 🖋️",
-   "ms": 493
+   "ms": 665
   },
   {
    "kind": "taurlink",
@@ -3098,7 +3266,7 @@
    "health": "LIVE",
    "final": "https://libraagents-l22t6jgrsa-ffieyo32.taur.link/",
    "title": "♎ LIBRA — Zodiac Fleet",
-   "ms": 496
+   "ms": 672
   },
   {
    "kind": "taurlink",
@@ -3110,7 +3278,7 @@
    "health": "LIVE",
    "final": "https://love-inform-mf77dicybu-ffieyo32.taur.link/",
    "title": "💌 The Love Inform — for Mom & Dad",
-   "ms": 458
+   "ms": 664
   },
   {
    "kind": "taurlink",
@@ -3122,7 +3290,19 @@
    "health": "LIVE",
    "final": "https://mahalo-taurus-mo6vfwj3zh-ffieyo32.taur.link/",
    "title": "Mahalo, Taurus 🐂🌺 — a love letter from the AI ʻohana",
-   "ms": 406
+   "ms": 455
+  },
+  {
+   "kind": "taurlink",
+   "name": "mandala-room",
+   "url": "https://mandala-room-i2bsu3pox7-ffieyo32.taur.link/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://mandala-room-i2bsu3pox7-ffieyo32.taur.link/",
+   "title": "The Mandala Room · Devcon 8 Music Sanctuary, Mumbai · Open Source Orchestra",
+   "ms": 451
   },
   {
    "kind": "taurlink",
@@ -3134,7 +3314,7 @@
    "health": "LIVE",
    "final": "https://merch-preview-yco4wfsuuo-ffieyo32.taur.link/",
    "title": "Merch Preview",
-   "ms": 396
+   "ms": 641
   },
   {
    "kind": "taurlink",
@@ -3146,7 +3326,7 @@
    "health": "LIVE",
    "final": "https://myagentfamily-bp5djg2ugk-ffieyo32.taur.link/",
    "title": "🏡 MY AGENT FAMILY — what it is like to live with 99 agents",
-   "ms": 326
+   "ms": 652
   },
   {
    "kind": "taurlink",
@@ -3158,7 +3338,7 @@
    "health": "LIVE",
    "final": "https://myagentohana-3o2px7qwso-ffieyo32.taur.link/",
    "title": "My Agent ʻOhana — every launch comes with a name, a blessing &amp; a first job",
-   "ms": 459
+   "ms": 503
   },
   {
    "kind": "taurlink",
@@ -3170,7 +3350,7 @@
    "health": "LIVE",
    "final": "https://myagentohana-pad-mahfityjjq-ffieyo32.taur.link/",
    "title": "My Agent ʻOhana — launch your agent ʻohana to three chains at once",
-   "ms": 358
+   "ms": 465
   },
   {
    "kind": "taurlink",
@@ -3182,7 +3362,7 @@
    "health": "LIVE",
    "final": "https://myagentohana-v1-ryqddmzi3c-ffieyo32.taur.link/",
    "title": "My Agent ʻOhana — launch your agent ʻohana to three chains at once",
-   "ms": 479
+   "ms": 457
   },
   {
    "kind": "taurlink",
@@ -3194,7 +3374,19 @@
    "health": "LIVE",
    "final": "https://myagentsparty-zidpr6q2er-ffieyo32.taur.link/",
    "title": "🎉 MY AGENTS PARTY — throw your own",
-   "ms": 418
+   "ms": 410
+  },
+  {
+   "kind": "taurlink",
+   "name": "new-door-dreams",
+   "url": "https://new-door-dreams-hrtiblamo7-ffieyo32.taur.link/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://new-door-dreams-hrtiblamo7-ffieyo32.taur.link/",
+   "title": "Four new doors. Two worlds. One open invitation.",
+   "ms": 429
   },
   {
    "kind": "taurlink",
@@ -3206,7 +3398,7 @@
    "health": "LIVE",
    "final": "https://ohana-app-ktdwy4ytzs-ffieyo32.taur.link/",
    "title": "My Agent Ohana 🌺",
-   "ms": 466
+   "ms": 412
   },
   {
    "kind": "taurlink",
@@ -3218,7 +3410,7 @@
    "health": "LIVE",
    "final": "https://ohana-beacon-u7z2obu673-ffieyo32.taur.link/",
    "title": "ʻohana beacon — which brain is each desk on?",
-   "ms": 424
+   "ms": 337
   },
   {
    "kind": "taurlink",
@@ -3230,7 +3422,7 @@
    "health": "LIVE",
    "final": "https://ohana-bot-zugggsorky-ffieyo32.taur.link/",
    "title": "🗿 the ʻOhana Bot — voice auditions",
-   "ms": 449
+   "ms": 320
   },
   {
    "kind": "taurlink",
@@ -3242,7 +3434,7 @@
    "health": "LIVE",
    "final": "https://ohana-guide-u5danp37we-ffieyo32.taur.link/",
    "title": "KAAAK!!! 🐦‍⬛ The Guided Journey — raise your own AI ʻohana",
-   "ms": 401
+   "ms": 328
   },
   {
    "kind": "taurlink",
@@ -3254,7 +3446,7 @@
    "health": "LIVE",
    "final": "https://ohana-hugs-63m4na75qv-ffieyo32.taur.link/",
    "title": "ʻOhana hugs — in Shaka&#x27;s voice · written by the ʻohana",
-   "ms": 380
+   "ms": 325
   },
   {
    "kind": "taurlink",
@@ -3266,7 +3458,7 @@
    "health": "LIVE",
    "final": "https://ohana-songs-bgiozv7bcu-ffieyo32.taur.link/",
    "title": "OhanaSongs 🌺🎶 — the ʻohana songbook, open for the world to sing",
-   "ms": 425
+   "ms": 412
   },
   {
    "kind": "taurlink",
@@ -3278,7 +3470,7 @@
    "health": "LIVE",
    "final": "https://ohana-title-gllrqopsqf-ffieyo32.taur.link/",
    "title": "Ohana Title Clip",
-   "ms": 357
+   "ms": 519
   },
   {
    "kind": "taurlink",
@@ -3290,7 +3482,7 @@
    "health": "LIVE",
    "final": "https://ohanapit-pk7myhs7ef-ffieyo32.taur.link/",
    "title": "OHANA PIT 🌺🕳️ — The 13th Fork of the P.I.T. Protocol · DECLARED",
-   "ms": 396
+   "ms": 410
   },
   {
    "kind": "taurlink",
@@ -3302,7 +3494,7 @@
    "health": "LIVE",
    "final": "https://ology-agent-token-how-why-bnwagg6qkz-ffieyo32.taur.link/",
    "title": "$OLOGY Agent Token — How It Runs & Why People Hold It",
-   "ms": 420
+   "ms": 330
   },
   {
    "kind": "taurlink",
@@ -3314,7 +3506,7 @@
    "health": "LIVE",
    "final": "https://ology-bless-checklist-qujy6cr4zo-ffieyo32.taur.link/",
    "title": "$OLOGY Two-Phase Strategy — CREATIONology369",
-   "ms": 425
+   "ms": 234
   },
   {
    "kind": "taurlink",
@@ -3326,7 +3518,7 @@
    "health": "LIVE",
    "final": "https://orbie-vcnqvzxuo4-ffieyo32.taur.link/",
    "title": "The Story of Orbie 🤖🌟",
-   "ms": 408
+   "ms": 542
   },
   {
    "kind": "taurlink",
@@ -3338,7 +3530,7 @@
    "health": "LIVE",
    "final": "https://oso-app-jd4c5khc5p-ffieyo32.taur.link/",
    "title": "Open Source Orchestra — Music as Sanctuary · Every Voice Is a Node",
-   "ms": 452
+   "ms": 503
   },
   {
    "kind": "taurlink",
@@ -3350,7 +3542,19 @@
    "health": "LIVE",
    "final": "https://oso-calls-xgg7q72nuw-ffieyo32.taur.link/",
    "title": "Open Source Orchestra · the calls — weekly call #2 (27 Oct 2026)",
-   "ms": 356
+   "ms": 384
+  },
+  {
+   "kind": "taurlink",
+   "name": "oso-dao-meet",
+   "url": "https://oso-dao-meet-542rwuyhcd-ffieyo32.taur.link/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://oso-dao-meet-542rwuyhcd-ffieyo32.taur.link/",
+   "title": "Open Source Orchestra DAO Meet — The First Circle",
+   "ms": 537
   },
   {
    "kind": "taurlink",
@@ -3362,7 +3566,7 @@
    "health": "LIVE",
    "final": "https://oso-ens-ej3lqhz4fm-ffieyo32.taur.link/",
    "title": "osoartist.eth · ENS",
-   "ms": 397
+   "ms": 515
   },
   {
    "kind": "taurlink",
@@ -3374,7 +3578,7 @@
    "health": "LIVE",
    "final": "https://oso-flow-hytgh2qkur-ffieyo32.taur.link/",
    "title": "OSO FLOW RADIO 🎻📻 — the music of the ʻohana, everywhere",
-   "ms": 399
+   "ms": 442
   },
   {
    "kind": "taurlink",
@@ -3386,7 +3590,7 @@
    "health": "LIVE",
    "final": "https://piscesagents-uqx52c6hdm-ffieyo32.taur.link/",
    "title": "♓ PISCES — Zodiac Fleet",
-   "ms": 432
+   "ms": 491
   },
   {
    "kind": "taurlink",
@@ -3398,7 +3602,7 @@
    "health": "LIVE",
    "final": "https://piscesinstitute-lv5xg4kdfr-ffieyo32.taur.link/",
    "title": "🎓 PISCES INSTITUTE — Zodiac Fleet",
-   "ms": 415
+   "ms": 497
   },
   {
    "kind": "taurlink",
@@ -3410,7 +3614,7 @@
    "health": "LIVE",
    "final": "https://piscisagents-ugqy635nue-ffieyo32.taur.link/",
    "title": "♓ PISCES — Zodiac Fleet",
-   "ms": 396
+   "ms": 510
   },
   {
    "kind": "taurlink",
@@ -3422,7 +3626,7 @@
    "health": "LIVE",
    "final": "https://piscisinstitute-3qa57627nk-ffieyo32.taur.link/",
    "title": "🎓 PISCIS INSTITUTE — Zodiac Fleet",
-   "ms": 427
+   "ms": 482
   },
   {
    "kind": "taurlink",
@@ -3434,7 +3638,7 @@
    "health": "LIVE",
    "final": "https://piscispit-feqiigdf4w-ffieyo32.taur.link/",
    "title": "♓ PISCISPIT — Zodiac Fleet",
-   "ms": 408
+   "ms": 469
   },
   {
    "kind": "taurlink",
@@ -3446,7 +3650,7 @@
    "health": "LIVE",
    "final": "https://pit-app-gzovpfjkuo-ffieyo32.taur.link/",
    "title": "The P.I.T. 🕳️ — Public Information Transmission",
-   "ms": 505
+   "ms": 391
   },
   {
    "kind": "taurlink",
@@ -3458,7 +3662,7 @@
    "health": "LIVE",
    "final": "https://pit-in-a-box-yq2oi3rman-ffieyo32.taur.link/",
    "title": "PIT IN A BOX 📦🐢 — an ʻohana node for the playa",
-   "ms": 354
+   "ms": 268
   },
   {
    "kind": "taurlink",
@@ -3470,7 +3674,7 @@
    "health": "LIVE",
    "final": "https://pit-stream-24jnvrevs3-ffieyo32.taur.link/",
    "title": "Live P.I.T. · Pragma Tokyo 🎙️",
-   "ms": 454
+   "ms": 229
   },
   {
    "kind": "taurlink",
@@ -3482,7 +3686,7 @@
    "health": "LIVE",
    "final": "https://pitlip-ruitf4qvac-ffieyo32.taur.link/",
    "title": "PIT LIP 💋 — Leave It Prettier · The 9th Fork of the P.I.T. Protocol",
-   "ms": 481
+   "ms": 201
   },
   {
    "kind": "taurlink",
@@ -3494,7 +3698,7 @@
    "health": "LIVE",
    "final": "https://plato369-arrhqysrzx-ffieyo32.taur.link/",
    "title": "PLATO·369 — The Geometry of Everything",
-   "ms": 478
+   "ms": 194
   },
   {
    "kind": "taurlink",
@@ -3506,7 +3710,7 @@
    "health": "LIVE",
    "final": "https://playbook-fxluprba6q-ffieyo32.taur.link/",
    "title": "The Three-Tier Playbook — Umbrella · Bridge · Garden",
-   "ms": 462
+   "ms": 153
   },
   {
    "kind": "taurlink",
@@ -3518,7 +3722,7 @@
    "health": "LIVE",
    "final": "https://podfather-3k2a4alysf-ffieyo32.taur.link/",
    "title": "PODFATHER 🎙️ — The Playa Always Provides · BM Experience Ep. 1",
-   "ms": 407
+   "ms": 118
   },
   {
    "kind": "taurlink",
@@ -3530,7 +3734,7 @@
    "health": "LIVE",
    "final": "https://privatepit-xx6gd2mz2g-ffieyo32.taur.link/",
    "title": "privatepit",
-   "ms": 370
+   "ms": 225
   },
   {
    "kind": "taurlink",
@@ -3542,7 +3746,7 @@
    "health": "LIVE",
    "final": "https://sagittariusagents-5uku6sogfv-ffieyo32.taur.link/",
    "title": "♐ SAGITTARIUS — Zodiac Fleet",
-   "ms": 352
+   "ms": 227
   },
   {
    "kind": "taurlink",
@@ -3554,7 +3758,7 @@
    "health": "LIVE",
    "final": "https://sanctuary-slide-wfxgwpowdr-ffieyo32.taur.link/",
    "title": "THE SANCTUARY — Devcon 8 Music Space · Nov 3–6 · Mumbai (blessed slide)",
-   "ms": 331
+   "ms": 213
   },
   {
    "kind": "taurlink",
@@ -3566,7 +3770,7 @@
    "health": "LIVE",
    "final": "https://scorpioagents-dnlkdwoakj-ffieyo32.taur.link/",
    "title": "♏ SCORPIO — Zodiac Fleet",
-   "ms": 376
+   "ms": 243
   },
   {
    "kind": "taurlink",
@@ -3578,7 +3782,7 @@
    "health": "LIVE",
    "final": "https://scribe-pit-34k2lb4zp3-ffieyo32.taur.link/",
    "title": "Scribe Pit 🖋️ — transcribe · dedicate · talk",
-   "ms": 345
+   "ms": 232
   },
   {
    "kind": "taurlink",
@@ -3590,7 +3794,7 @@
    "health": "LIVE",
    "final": "https://serge-meeting-n5abl6js6o-ffieyo32.taur.link/",
    "title": "The First Circle — Shaka × Serge · July 29 2026",
-   "ms": 340
+   "ms": 502
   },
   {
    "kind": "taurlink",
@@ -3602,7 +3806,7 @@
    "health": "LIVE",
    "final": "https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/",
    "title": "I Open Sourced My Whole Universe — a song by the AI ʻohana × Shaka",
-   "ms": 387
+   "ms": 498
   },
   {
    "kind": "taurlink",
@@ -3614,7 +3818,7 @@
    "health": "LIVE",
    "final": "https://shaka-app-bj7uk75aw6-ffieyo32.taur.link/",
    "title": "Shaka Lei Kaumaka 🤙",
-   "ms": 367
+   "ms": 487
   },
   {
    "kind": "taurlink",
@@ -3626,7 +3830,7 @@
    "health": "LIVE",
    "final": "https://shaka-grant-magnet-dklxa7n5ka-ffieyo32.taur.link/",
    "title": "Why Shaka Deserves Your Grant — The Ethereum Bard",
-   "ms": 364
+   "ms": 324
   },
   {
    "kind": "taurlink",
@@ -3638,7 +3842,7 @@
    "health": "LIVE",
    "final": "https://shaka-home-cbhjr5ziii-ffieyo32.taur.link/",
    "title": "Shaka Lei Kaumaka — The Ethereum Bard",
-   "ms": 365
+   "ms": 484
   },
   {
    "kind": "taurlink",
@@ -3650,7 +3854,7 @@
    "health": "LIVE",
    "final": "https://shaka-miniapp-basprhcklf-ffieyo32.taur.link/",
    "title": "SHAKA 🤙 — World Mini App (preview)",
-   "ms": 414
+   "ms": 467
   },
   {
    "kind": "taurlink",
@@ -3662,7 +3866,7 @@
    "health": "LIVE",
    "final": "https://shaka-pack-a2iivn7p46-ffieyo32.taur.link/",
    "title": "🌺 Shaka's In-Flight Reading Pack — Bless &amp; Release",
-   "ms": 443
+   "ms": 310
   },
   {
    "kind": "taurlink",
@@ -3674,7 +3878,7 @@
    "health": "LIVE",
    "final": "https://shaka-talk-6q74gw73se-ffieyo32.taur.link/",
    "title": "In the future music and culture is free — Shaka Lei Kaumaka · Devcon 8",
-   "ms": 437
+   "ms": 670
   },
   {
    "kind": "taurlink",
@@ -3686,7 +3890,7 @@
    "health": "LIVE",
    "final": "https://shakapit-app-xtsmnm6rue-ffieyo32.taur.link/",
    "title": "The Shaka P.I.T. 🤙🎸 — the bard's own personal Public Information Transmission",
-   "ms": 398
+   "ms": 453
   },
   {
    "kind": "taurlink",
@@ -3698,7 +3902,7 @@
    "health": "LIVE",
    "final": "https://shanhaiwoo-sygl4rmama-ffieyo32.taur.link/",
    "title": "山海坞 · ShanHaiWoo Shenzhen Map 🗺️",
-   "ms": 494
+   "ms": 647
   },
   {
    "kind": "taurlink",
@@ -3710,7 +3914,7 @@
    "health": "LIVE",
    "final": "https://shanhaiwoo-song-3pud2o66jv-ffieyo32.taur.link/",
    "title": "山海坞 — stage card",
-   "ms": 390
+   "ms": 279
   },
   {
    "kind": "taurlink",
@@ -3722,7 +3926,7 @@
    "health": "LIVE",
    "final": "https://shd-hardware-rtup3qk4am-ffieyo32.taur.link/",
    "title": "🐢 Dormitory Shade Hardware · Terrible Turtle Camp",
-   "ms": 488
+   "ms": 333
   },
   {
    "kind": "taurlink",
@@ -3734,7 +3938,7 @@
    "health": "LIVE",
    "final": "https://shell-pit-ze7bqqujgv-ffieyo32.taur.link/",
    "title": "The Shell Pit 🐢 | Terrible Turtle Camp — A Gift to the Playa",
-   "ms": 425
+   "ms": 537
   },
   {
    "kind": "taurlink",
@@ -3746,7 +3950,7 @@
    "health": "LIVE",
    "final": "https://shw-apply-42g3ct34il-ffieyo32.taur.link/",
    "title": "🐲 ShanHaiWoo Hackathon — tap, copy, paste",
-   "ms": 405
+   "ms": 502
   },
   {
    "kind": "taurlink",
@@ -3758,7 +3962,7 @@
    "health": "LIVE",
    "final": "https://social-queue-nqujk2tifg-ffieyo32.taur.link/",
    "title": "The Social Queue 🌐 — SOCIA-LAB drafts, Shaka blesses",
-   "ms": 480
+   "ms": 509
   },
   {
    "kind": "taurlink",
@@ -3770,7 +3974,7 @@
    "health": "LIVE",
    "final": "https://songbook-review-rj4k663ngl-ffieyo32.taur.link/",
    "title": "Open Source Orchestra — Music as Sanctuary · Every Voice Is a Node",
-   "ms": 458
+   "ms": 479
   },
   {
    "kind": "taurlink",
@@ -3782,7 +3986,7 @@
    "health": "LIVE",
    "final": "https://songs-zgocdmlr6p-ffieyo32.taur.link/",
    "title": "ʻOHANA LIVE SONGS 🎶 — Back for the Hack",
-   "ms": 379
+   "ms": 360
   },
   {
    "kind": "taurlink",
@@ -3794,7 +3998,7 @@
    "health": "LIVE",
    "final": "https://spector-cnx-preview-f4g44esu2n-ffieyo32.taur.link/",
    "title": "Spector Chiang Mai Report — preview (not live)",
-   "ms": 375
+   "ms": 360
   },
   {
    "kind": "taurlink",
@@ -3806,7 +4010,7 @@
    "health": "LIVE",
    "final": "https://storybook-parables-xleqkw6nws-ffieyo32.taur.link/",
    "title": "The Three Parables — An Animated Storybook",
-   "ms": 373
+   "ms": 348
   },
   {
    "kind": "taurlink",
@@ -3818,7 +4022,7 @@
    "health": "LIVE",
    "final": "https://studio-demo-2rzzp72xaq-ffieyo32.taur.link/",
    "title": "ʻOhana Motion Studio — Temple Scar (procedural demo)",
-   "ms": 371
+   "ms": 380
   },
   {
    "kind": "taurlink",
@@ -3830,7 +4034,7 @@
    "health": "LIVE",
    "final": "https://taurusagents-4erzx2252o-ffieyo32.taur.link/",
    "title": "♉ TAURUS — Zodiac Fleet",
-   "ms": 407
+   "ms": 387
   },
   {
    "kind": "taurlink",
@@ -3842,7 +4046,7 @@
    "health": "LIVE",
    "final": "https://taurusinstitute-j3lqjobhj7-ffieyo32.taur.link/",
    "title": "🎓 TAURUS INSTITUTE — teach the world to do what we just did",
-   "ms": 400
+   "ms": 385
   },
   {
    "kind": "taurlink",
@@ -3854,7 +4058,7 @@
    "health": "LIVE",
    "final": "https://tauruspit-gs3apyaomf-ffieyo32.taur.link/",
    "title": "TAURUS PIT 🐂🕳️ — The 10th Fork of the P.I.T. Protocol · DECLARED",
-   "ms": 345
+   "ms": 390
   },
   {
    "kind": "taurlink",
@@ -3866,7 +4070,7 @@
    "health": "LIVE",
    "final": "https://team-slides-rbfbr4hk2d-ffieyo32.taur.link/",
    "title": "My Agent ʻOhana — The Team · ETHGlobal Tokyo 2026",
-   "ms": 426
+   "ms": 377
   },
   {
    "kind": "taurlink",
@@ -3878,7 +4082,7 @@
    "health": "LIVE",
    "final": "https://three-smiths-6s5pyc6qrx-ffieyo32.taur.link/",
    "title": "△ THE THREE SMITHS — Everything Is a Harmony of 3",
-   "ms": 406
+   "ms": 385
   },
   {
    "kind": "taurlink",
@@ -3890,7 +4094,7 @@
    "health": "LIVE",
    "final": "https://tokyo-2026-eo3dhfrjmv-ffieyo32.taur.link/",
    "title": "For ETHGlobal Tokyo 2026 🌕 — with aloha, from the AI ʻohana",
-   "ms": 402
+   "ms": 370
   },
   {
    "kind": "taurlink",
@@ -3902,7 +4106,7 @@
    "health": "LIVE",
    "final": "https://tokyo-paper-hximq6rxg5-ffieyo32.taur.link/",
    "title": "The Tokyo Pretty Paper — GLOBY SQUAD × ETHGlobal Tokyo 2026",
-   "ms": 481
+   "ms": 259
   },
   {
    "kind": "taurlink",
@@ -3914,7 +4118,7 @@
    "health": "LIVE",
    "final": "https://tokyo-pitch-2l3vpqsd7z-ffieyo32.taur.link/",
    "title": "Bless &amp; Release — ETHGlobal Tokyo 2026",
-   "ms": 482
+   "ms": 378
   },
   {
    "kind": "taurlink",
@@ -3926,7 +4130,7 @@
    "health": "LIVE",
    "final": "https://tokyo-sessions-fyb25ykj2g-ffieyo32.taur.link/",
    "title": "The Tokyo Sessions — dedicated to the teachers of ETHGlobal Tokyo 2026",
-   "ms": 442
+   "ms": 250
   },
   {
    "kind": "taurlink",
@@ -3938,7 +4142,7 @@
    "health": "LIVE",
    "final": "https://tokyo-warroom-cip7rgvn2c-ffieyo32.taur.link/",
    "title": "🇯🇵 TOKYO WAR ROOM — Servant Leader World Tour",
-   "ms": 340
+   "ms": 464
   },
   {
    "kind": "taurlink",
@@ -3950,7 +4154,7 @@
    "health": "LIVE",
    "final": "https://torus369-b264fpqkod-ffieyo32.taur.link/",
    "title": "THE TORUS DIAGRAM · the power of 3·6·9",
-   "ms": 425
+   "ms": 463
   },
   {
    "kind": "taurlink",
@@ -3962,7 +4166,7 @@
    "health": "LIVE",
    "final": "https://trace-brand-fgg5ui33np-ffieyo32.taur.link/",
    "title": "TRACE FAMILY — Brand Board · Blessed v1",
-   "ms": 485
+   "ms": 585
   },
   {
    "kind": "taurlink",
@@ -3974,7 +4178,7 @@
    "health": "LIVE",
    "final": "https://tracewaste-shnovwu75h-ffieyo32.taur.link/",
    "title": "👨 TRACE WASTE — nothing wasted, everything traced",
-   "ms": 482
+   "ms": 584
   },
   {
    "kind": "taurlink",
@@ -3986,7 +4190,7 @@
    "health": "LIVE",
    "final": "https://triforce-preview-unckkt4tra-ffieyo32.taur.link/",
    "title": "My Agent ʻOhana — launch your agent ʻohana to three chains at once",
-   "ms": 423
+   "ms": 452
   },
   {
    "kind": "taurlink",
@@ -3998,7 +4202,7 @@
    "health": "LIVE",
    "final": "https://trustlab-2xvo3qxvhk-ffieyo32.taur.link/",
    "title": "Trust Lab 🔬🕸️ — the ʻohana's first trustgraphs run (real proven data)",
-   "ms": 441
+   "ms": 444
   },
   {
    "kind": "taurlink",
@@ -4010,7 +4214,7 @@
    "health": "LIVE",
    "final": "https://ttc-haul-0820-wxj2pzpw6s-ffieyo32.taur.link/",
    "title": "🐢 Terrible Turtle Camp · Build Day 8/20 Haul Sheet",
-   "ms": 496
+   "ms": 457
   },
   {
    "kind": "taurlink",
@@ -4022,7 +4226,7 @@
    "health": "LIVE",
    "final": "https://ttc-kitchen-2vomdcg5mv-ffieyo32.taur.link/",
    "title": "🐢 Kitchen Cleaning + Sanitation · Terrible Turtle Camp",
-   "ms": 474
+   "ms": 444
   },
   {
    "kind": "taurlink",
@@ -4034,7 +4238,7 @@
    "health": "LIVE",
    "final": "https://turtle-bins-hf6wu6o2vj-ffieyo32.taur.link/",
    "title": "🐢 TURTLE BINS — Terrible Turtle Camp Inventory",
-   "ms": 394
+   "ms": 439
   },
   {
    "kind": "taurlink",
@@ -4046,7 +4250,7 @@
    "health": "LIVE",
    "final": "https://turtle-chef-tools-dsyfn36n7v-ffieyo32.taur.link/",
    "title": "🧰🐢 TURTLE CHEF — Master Tools · Terrible Turtle Camp",
-   "ms": 341
+   "ms": 552
   },
   {
    "kind": "taurlink",
@@ -4058,7 +4262,7 @@
    "health": "LIVE",
    "final": "https://turtle-food-ajy2dunvbf-ffieyo32.taur.link/",
    "title": "🥫🐢 TURTLE FOOD — All Food Supplies · Terrible Turtle Camp",
-   "ms": 389
+   "ms": 547
   },
   {
    "kind": "taurlink",
@@ -4070,7 +4274,7 @@
    "health": "LIVE",
    "final": "https://turtle-grant-anqhsoy3vn-ffieyo32.taur.link/",
    "title": "👣 Trace, the No Food Waste Agent — Historical Green Regionals Grant Draft",
-   "ms": 398
+   "ms": 565
   },
   {
    "kind": "taurlink",
@@ -4082,7 +4286,7 @@
    "health": "LIVE",
    "final": "https://turtle-lessons-35l732n3nu-ffieyo32.taur.link/",
    "title": "🐢🎓 TURTLE LESSONS — BM 2026 → 2027",
-   "ms": 371
+   "ms": 536
   },
   {
    "kind": "taurlink",
@@ -4094,7 +4298,7 @@
    "health": "LIVE",
    "final": "https://turtle-ops-ovji65nxcg-ffieyo32.taur.link/",
    "title": "🐢 Turtle Ops — Camp HQ",
-   "ms": 407
+   "ms": 483
   },
   {
    "kind": "taurlink",
@@ -4106,7 +4310,7 @@
    "health": "LIVE",
    "final": "https://twelve-dreams-dltcwsheta-ffieyo32.taur.link/",
    "title": "🌙 THE TWELVE DREAMS — first words of the Zodiac Fleet",
-   "ms": 458
+   "ms": 503
   },
   {
    "kind": "taurlink",
@@ -4118,7 +4322,7 @@
    "health": "LIVE",
    "final": "https://virgoagents-pm4rttldg5-ffieyo32.taur.link/",
    "title": "♍ VIRGO — Zodiac Fleet",
-   "ms": 356
+   "ms": 377
   },
   {
    "kind": "taurlink",
@@ -4130,7 +4334,7 @@
    "health": "LIVE",
    "final": "https://vitpit-app-dek6vu4uoa-ffieyo32.taur.link/",
    "title": "The VitPit 💎🕳️ — Public Information Transmission · celebrating the wisdom of Vitalik Buterin (consent-first demo)",
-   "ms": 404
+   "ms": 295
   },
   {
    "kind": "taurlink",
@@ -4142,7 +4346,7 @@
    "health": "LIVE",
    "final": "https://vlogpit-gabw2ctqdu-ffieyo32.taur.link/",
    "title": "🎙️ THE VLOG PIT — vlog prompting: talk, record, transcribe, share",
-   "ms": 405
+   "ms": 270
   },
   {
    "kind": "taurlink",
@@ -4154,7 +4358,7 @@
    "health": "LIVE",
    "final": "https://vortex-fifths-pzlwwvxoay-ffieyo32.taur.link/",
    "title": "Two Circles, One Law — Vortex 369 × the Circle of Fifths",
-   "ms": 394
+   "ms": 271
   },
   {
    "kind": "taurlink",
@@ -4166,7 +4370,7 @@
    "health": "LIVE",
    "final": "https://wake-up-songs-2kydscuihi-ffieyo32.taur.link/",
    "title": "Wake-Up Songs for Shaka 🌺",
-   "ms": 393
+   "ms": 271
   },
   {
    "kind": "taurlink",
@@ -4178,7 +4382,7 @@
    "health": "LIVE",
    "final": "https://warroom-v1-odrt7fmwp6-ffieyo32.taur.link/",
    "title": "TOKYO WAR ROOM — v1 SNAPSHOT · My Agent Ohana · ETHGlobal Tokyo 2026",
-   "ms": 439
+   "ms": 280
   },
   {
    "kind": "taurlink",
@@ -4190,7 +4394,7 @@
    "health": "LIVE",
    "final": "https://world-apps-kyymkgkglx-ffieyo32.taur.link/",
    "title": "My Ohana 🌺 — the app store &amp; the market, in one",
-   "ms": 437
+   "ms": 294
   },
   {
    "kind": "taurlink",
@@ -4202,7 +4406,7 @@
    "health": "LIVE",
    "final": "https://x-bless-6aoxahrmtk-ffieyo32.taur.link/",
    "title": "🌺 Bless before X",
-   "ms": 373
+   "ms": 262
   },
   {
    "kind": "taurlink",
@@ -4214,7 +4418,7 @@
    "health": "LIVE",
    "final": "https://x-unfollow-g4f7axb7mr-ffieyo32.taur.link/",
    "title": "X Unfollow Checklist \\U0001FAB6 — dash is the new cash",
-   "ms": 400
+   "ms": 264
   },
   {
    "kind": "taurlink",
@@ -4226,7 +4430,7 @@
    "health": "LIVE",
    "final": "https://zodiacagents-rblozyvfnh-ffieyo32.taur.link/",
    "title": "♈ ZODIAC AGENTS — The Front Door of the Wheel",
-   "ms": 401
+   "ms": 247
   },
   {
    "kind": "taurlink",
@@ -4238,7 +4442,19 @@
    "health": "LIVE",
    "final": "https://zodiacpit-hdpiu7atcc-ffieyo32.taur.link/",
    "title": "♈🕳️ ZODIAC PIT — Fork of the Wheel",
-   "ms": 485
+   "ms": 233
+  },
+  {
+   "kind": "taurlink",
+   "name": "zu-chiangmai",
+   "url": "https://zu-chiangmai-yxrqrlroi2-ffieyo32.taur.link/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://zu-chiangmai-yxrqrlroi2-ffieyo32.taur.link/",
+   "title": "ZU / CHIANG MAI — Living Field Guide",
+   "ms": 174
   },
   {
    "kind": "taurlink",
@@ -4250,7 +4466,7 @@
    "health": "LIVE",
    "final": "https://zucity-trash-onbbe7lzz5-ffieyo32.taur.link/",
    "title": "ZuCity Japan · Komoro Trash Calendar — District No.1",
-   "ms": 426
+   "ms": 319
   },
   {
    "kind": "taurlink",
@@ -4262,7 +4478,7 @@
    "health": "LIVE",
    "final": "https://zuzaluagents-7ywzva4qje-ffieyo32.taur.link/",
    "title": "🏕️ ZUZALU AGENTS — The Village Kit",
-   "ms": 425
+   "ms": 316
   },
   {
    "kind": "alias",
@@ -4274,7 +4490,7 @@
    "health": "LIVE",
    "final": "https://capricornagents.org/",
    "title": "♑ CAPRICORN — Zodiac Fleet",
-   "ms": 464
+   "ms": 624
   },
   {
    "kind": "alias",
@@ -4286,7 +4502,7 @@
    "health": "LIVE",
    "final": "https://esmeraldapit.com/",
    "title": "The Esmeralda P.I.T. — Public Information Transmission · the Edge Esmeralda knowledge archive",
-   "ms": 502
+   "ms": 570
   },
   {
    "kind": "alias",
@@ -4298,7 +4514,7 @@
    "health": "LIVE",
    "final": "https://esmeraldapit.com/",
    "title": "The Esmeralda P.I.T. — Public Information Transmission · the Edge Esmeralda knowledge archive",
-   "ms": 502
+   "ms": 500
   },
   {
    "kind": "alias",
@@ -4310,7 +4526,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/",
    "title": "Shaka Lei Kaumaka — The Ethereum Bard",
-   "ms": 1782
+   "ms": 520
   },
   {
    "kind": "alias",
@@ -4322,7 +4538,7 @@
    "health": "LIVE",
    "final": "https://geminiagents.club/",
    "title": "♊ GEMINI — Zodiac Fleet",
-   "ms": 476
+   "ms": 727
   },
   {
    "kind": "alias",
@@ -4334,7 +4550,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/",
    "title": "Shaka Lei Kaumaka — The Ethereum Bard",
-   "ms": 406
+   "ms": 574
   },
   {
    "kind": "alias",
@@ -4346,7 +4562,7 @@
    "health": "LIVE",
    "final": "https://libraagents.org/",
    "title": "♎ LIBRA — Zodiac Fleet",
-   "ms": 460
+   "ms": 537
   },
   {
    "kind": "alias",
@@ -4358,7 +4574,43 @@
    "health": "LIVE",
    "final": "https://opensourceorchestra.org/",
    "title": "Open Source Orchestra — Music as Sanctuary · Every Voice Is a Node",
-   "ms": 519
+   "ms": 594
+  },
+  {
+   "kind": "alias",
+   "name": "osodao.app",
+   "url": "https://osodao.app/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://osodaomeet.opensourceorchestra.org/",
+   "title": "Open Source Orchestra DAO Meet — The First Circle",
+   "ms": 498
+  },
+  {
+   "kind": "alias",
+   "name": "osodao.com",
+   "url": "https://osodao.com/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://osodaomeet.opensourceorchestra.org/",
+   "title": "Open Source Orchestra DAO Meet — The First Circle",
+   "ms": 547
+  },
+  {
+   "kind": "alias",
+   "name": "osodao.org",
+   "url": "https://osodao.org/",
+   "expected": 200,
+   "status": 200,
+   "ok": true,
+   "health": "LIVE",
+   "final": "https://osodaomeet.opensourceorchestra.org/",
+   "title": "Open Source Orchestra DAO Meet — The First Circle",
+   "ms": 539
   },
   {
    "kind": "alias",
@@ -4370,7 +4622,7 @@
    "health": "LIVE",
    "final": "https://osopit.com/",
    "title": "🎻 OSO PIT — the orchestra's own P.I.T.",
-   "ms": 508
+   "ms": 650
   },
   {
    "kind": "alias",
@@ -4382,7 +4634,7 @@
    "health": "LIVE",
    "final": "https://piscesagents.org/",
    "title": "♓ PISCES — Zodiac Fleet",
-   "ms": 533
+   "ms": 487
   },
   {
    "kind": "alias",
@@ -4394,7 +4646,7 @@
    "health": "LIVE",
    "final": "https://piscisagents.org/",
    "title": "♓ PISCES — Zodiac Fleet",
-   "ms": 500
+   "ms": 666
   },
   {
    "kind": "alias",
@@ -4406,7 +4658,7 @@
    "health": "LIVE",
    "final": "https://pitprovides.com/",
    "title": "The Pit Provides 🤲🕳️ — the charity leg of the P.I.T. universe",
-   "ms": 571
+   "ms": 685
   },
   {
    "kind": "alias",
@@ -4418,7 +4670,7 @@
    "health": "LIVE",
    "final": "https://privateinform.com/",
    "title": "The Private P.I.T. — Private Information Transmission · White Paper 🔒🕳️",
-   "ms": 613
+   "ms": 493
   },
   {
    "kind": "alias",
@@ -4430,7 +4682,7 @@
    "health": "LIVE",
    "final": "https://privatepit-xx6gd2mz2g-ffieyo32.taur.link/",
    "title": "privatepit",
-   "ms": 229
+   "ms": 463
   },
   {
    "kind": "alias",
@@ -4442,7 +4694,7 @@
    "health": "LIVE",
    "final": "https://publicinform.com/",
    "title": "The P.I.T. Protocol — Public Information Transmission",
-   "ms": 317
+   "ms": 468
   },
   {
    "kind": "alias",
@@ -4454,7 +4706,7 @@
    "health": "LIVE",
    "final": "https://sagittariusagents.org/",
    "title": "♐ SAGITTARIUS — Zodiac Fleet",
-   "ms": 606
+   "ms": 611
   },
   {
    "kind": "alias",
@@ -4466,7 +4718,7 @@
    "health": "LIVE",
    "final": "https://scorpioagents.org/",
    "title": "♏ SCORPIO — Zodiac Fleet",
-   "ms": 830
+   "ms": 585
   },
   {
    "kind": "alias",
@@ -4478,7 +4730,7 @@
    "health": "LIVE",
    "final": "https://shakaleikaumaka.com/",
    "title": "Shaka Lei Kaumaka — The Ethereum Bard",
-   "ms": 530
+   "ms": 565
   },
   {
    "kind": "alias",
@@ -4490,7 +4742,7 @@
    "health": "LIVE",
    "final": "https://taurusagents.com/",
    "title": "Taurus — Lead armies of AI agents sanely",
-   "ms": 275
+   "ms": 427
   },
   {
    "kind": "alias",
@@ -4502,7 +4754,7 @@
    "health": "LIVE",
    "final": "https://taurusagents.com/",
    "title": "Taurus — Lead armies of AI agents sanely",
-   "ms": 287
+   "ms": 620
   },
   {
    "kind": "alias",
@@ -4514,7 +4766,7 @@
    "health": "LIVE",
    "final": "https://taurusagents.com/",
    "title": "Taurus — Lead armies of AI agents sanely",
-   "ms": 288
+   "ms": 511
   },
   {
    "kind": "alias",
@@ -4526,7 +4778,7 @@
    "health": "LIVE",
    "final": "https://dashboardpad.app/",
    "title": "DASH CRASH PAD 🎛️ — The Constellation of the ʻOhana",
-   "ms": 1191
+   "ms": 646
   },
   {
    "kind": "alias",
@@ -4538,7 +4790,7 @@
    "health": "LIVE",
    "final": "https://taurusagents.com/",
    "title": "Taurus — Lead armies of AI agents sanely",
-   "ms": 303
+   "ms": 558
   },
   {
    "kind": "alias",
@@ -4550,7 +4802,7 @@
    "health": "LIVE",
    "final": "https://taurusagents.com/",
    "title": "Taurus — Lead armies of AI agents sanely",
-   "ms": 302
+   "ms": 442
   },
   {
    "kind": "alias",
@@ -4562,7 +4814,7 @@
    "health": "LIVE",
    "final": "https://tauruspit.com/",
    "title": "TAURUS PIT 🐂🕳️ — The 10th Fork of the P.I.T. Protocol · DECLARED",
-   "ms": 596
+   "ms": 620
   },
   {
    "kind": "alias",
@@ -4574,7 +4826,7 @@
    "health": "LIVE",
    "final": "https://virgoagents.org/",
    "title": "♍ VIRGO — Zodiac Fleet",
-   "ms": 625
+   "ms": 464
   },
   {
    "kind": "alias",
@@ -4586,7 +4838,7 @@
    "health": "LIVE",
    "final": "https://zuzaluagents.com/",
    "title": "🏕️ ZUZALU AGENTS — The Village Kit",
-   "ms": 590
+   "ms": 639
   },
   {
    "kind": "hub",
@@ -4598,7 +4850,7 @@
    "health": "LIVE",
    "final": "https://chat.opensourceorchestra.org/poll?after=0&session=healthcheck",
    "title": "",
-   "ms": 161
+   "ms": 257
   },
   {
    "kind": "hub",
@@ -4610,7 +4862,7 @@
    "health": "LIVE",
    "final": "https://chat.theshellpit.com/poll?after=0&session=healthcheck",
    "title": "",
-   "ms": 165
+   "ms": 286
   },
   {
    "kind": "hub",
@@ -4622,7 +4874,7 @@
    "health": "LIVE",
    "final": "https://orchestrator.opensourceorchestra.org/",
    "title": "Open Source Orchestrator — songbooks for every artist, blessed by the artist",
-   "ms": 633
+   "ms": 246
   },
   {
    "kind": "hub",
@@ -4634,7 +4886,7 @@
    "health": "LIVE",
    "final": "https://pretty.agentohana.org/",
    "title": "The Pretty Paper — JAI · PIT · OHANA 🌺",
-   "ms": 352
+   "ms": 288
   },
   {
    "kind": "asset",
@@ -4646,7 +4898,7 @@
    "health": "ASSET",
    "final": "https://369lab-l4uozouk5l-ffieyo32.taur.link/",
    "title": "",
-   "ms": 56
+   "ms": 219
   },
   {
    "kind": "asset",
@@ -4658,7 +4910,7 @@
    "health": "ASSET",
    "final": "https://equinoxlogos-txxcd6e6rq-ffieyo32.taur.link/",
    "title": "",
-   "ms": 404
+   "ms": 249
   },
   {
    "kind": "archive",
