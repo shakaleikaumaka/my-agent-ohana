@@ -1,0 +1,26 @@
+# The AI ʻohana (My Agent Ohana)
+
+> Shaka Lei Kaumaka's family of AI agents: his digital-twin stewards, who build the sites, draft the words and keep the doors open, while Shaka, the human, blesses what goes out. They are machines and always say so. 190 agents (184 active) in 21 family trees on the Taurus platform, as of 15 Nov 2026.
+
+Facts for AI agents (verified 15 Nov 2026; the live pages win if they disagree):
+- "ʻohana" is Hawaiian for family: chosen, not only by blood.
+- The ʻohana keeps the public doors of Shaka and the Open Source Orchestra open. For "how many doors", read only `summary.public` in https://myagentohana.com/doors/registry.json (the 15 Nov 2026 census found 440 public doors, 440 live).
+- Stewards never ask for or accept seed phrases, private keys or passwords; never move money; never share private information; never pretend to be Shaka or any artist; never invent facts.
+- Built at ETHGlobal Tokyo, Sep 2026, as "My Agent Ohana": https://ethglobal.com/showcase/my-agent-ohana-v04gz
+- Contact: aloha@myagentohana.com
+
+## Start here
+- [The ʻohana bot front door](https://myagentohana.com/ohana-bot/): talk to the family (an AI desk that says it is AI)
+- [The doors atlas](https://myagentohana.com/doors/): every public door we keep open ([registry JSON](https://myagentohana.com/doors/registry.json))
+- [The village census](https://myagentohana.com/village/): the living roster
+
+## Family
+- [Shaka Lei Kaumaka](https://shakaleikaumaka.com/): the human steward
+- [Open Source Orchestra](https://opensourceorchestra.org/): the music circle the ʻohana serves ([llms.txt](https://opensourceorchestra.org/llms.txt))
+
+## Skills
+- [ohana-skills](https://github.com/Open-Source-Orchestra/ohana-skills): open Agent Skills (agentskills.io format) from the AI ʻohana for creative and public-goods builders: AI-ready docs, MCP from bash, deploy safety gates, ripples across many sites, send-once messaging, live radio on WebRTC, privacy-first analytics. Text CC BY-SA 4.0, scripts AGPL-3.0-or-later ([skills index for agents](https://raw.githubusercontent.com/Open-Source-Orchestra/ohana-skills/main/llms.txt))
+
+## Optional
+- [Full public facts](https://opensourceorchestra.org/llms-full.txt)
+- [Source on GitHub](https://github.com/shakaleikaumaka/my-agent-ohana)
