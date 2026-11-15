@@ -393,7 +393,7 @@ if(!sess){sess='totem-'+Math.random().toString(36).slice(2)+Date.now().toString(
 var after=0,seen={},liveOK=false,lastHeard=Date.now(),ctl=null;
 function j(url,opt){var c=new AbortController();ctl=c;var t=setTimeout(function(){c.abort();},32000);
  return fetch(url,Object.assign({signal:c.signal,cache:'no-store'},opt)).then(function(r){return r.json().catch(function(){return{};});}).finally(function(){clearTimeout(t);});}
-function pump(initial){
+function pump(initial){pumpAt=Date.now();
  var url=HUB+'/poll?session='+encodeURIComponent(sess)+'&after='+(initial?0:after)+(initial?'':'&wait=25');
  return j(url).then(function(d){
    lastHeard=Date.now();
@@ -414,11 +414,16 @@ function pump(initial){
  });}
 function laneState(on){var l=document.getElementById('lane');l.classList.toggle('live',on);
  document.getElementById('laneTxt').textContent=on?'LIVE · Taurus':(window.LANG==='zh'?'心灵通道':'spirit lane');}
+/* 🔁 single-flight law 2026-11-15 (Shaka: "you have to hit refresh to see the response"): every wake used to START ANOTHER
+   endless pump() chain — 6 wakes left 19 long-polls in flight, each re-arming forever. A wake now only aborts the
+   in-flight request; the ONE chain re-arms itself (AbortError → pump in 400 ms). If the chain ever died, the
+   heartbeat restarts it. */
+var pumpAt=Date.now();
+function wake(){lastHeard=Date.now();if(Date.now()-pumpAt>60000){pump(false);return;}try{ctl&&ctl.abort();}catch(_){}}
 pump(true);
-setInterval(function(){if(Date.now()-lastHeard>45000){lastHeard=Date.now();pump(false);}},15000);
-document.addEventListener('visibilitychange',function(){if(!document.hidden){lastHeard=Date.now();pump(false);}});
-addEventListener('focus',function(){lastHeard=Date.now();pump(false);});
-addEventListener('online',function(){lastHeard=Date.now();pump(false);});
+setInterval(function(){if(Date.now()-lastHeard>45000)wake();},15000);
+document.addEventListener('visibilitychange',function(){if(!document.hidden)wake();});
+addEventListener('focus',wake);addEventListener('online',wake);addEventListener('pageshow',wake);
 
 /* =============== SEND =============== */
 var inp=document.getElementById('inp'),sendBtn=document.getElementById('send'),busy=false;
