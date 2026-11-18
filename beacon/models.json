@@ -1,8 +1,8 @@
 {
  "v": 1,
  "law": "model law v3",
- "updated_at": "2026-11-14T04:27:23Z",
- "checked_at": "2026-11-14T04:27:23Z",
+ "updated_at": "2026-11-18T09:57:50Z",
+ "checked_at": "2026-11-18T09:57:50Z",
  "desks": {
   "kprot": {
    "desk": "KARA",
@@ -36,8 +36,8 @@
   },
   "shaka": {
    "desk": "SHAKA DESK",
-   "label": "DeepSeek V4.1 Flash",
-   "tier": "watch",
+   "label": "Grok",
+   "tier": "Groka bell",
    "state": "home"
   },
   "terri": {
