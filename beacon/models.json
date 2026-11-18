@@ -1,8 +1,8 @@
 {
  "v": 1,
  "law": "model law v3",
- "updated_at": "2026-11-18T09:57:50Z",
- "checked_at": "2026-11-18T09:57:50Z",
+ "updated_at": "2026-11-18T15:45:57Z",
+ "checked_at": "2026-11-18T15:45:57Z",
  "desks": {
   "kprot": {
    "desk": "KARA",
@@ -12,26 +12,26 @@
   },
   "tele": {
    "desk": "TELE",
-   "label": "DeepSeek V4.1 Flash",
-   "tier": "watch",
+   "label": "Grok",
+   "tier": "Groka bell",
    "state": "home"
   },
   "vlog": {
    "desk": "VLOGITHA",
-   "label": "DeepSeek V4.1 Flash",
-   "tier": "watch",
+   "label": "Grok",
+   "tier": "Groka bell",
    "state": "home"
   },
   "oso": {
    "desk": "OSO",
-   "label": "DeepSeek V4.1 Flash",
-   "tier": "watch",
+   "label": "Grok",
+   "tier": "Groka bell",
    "state": "home"
   },
   "jai": {
    "desk": "JAI DESK",
-   "label": "DeepSeek V4.1 Flash",
-   "tier": "watch",
+   "label": "Grok",
+   "tier": "Groka bell",
    "state": "home"
   },
   "shaka": {
@@ -42,50 +42,50 @@
   },
   "terri": {
    "desk": "TERRI RELIEF",
-   "label": "DeepSeek V4.1 Flash",
-   "tier": "watch",
+   "label": "Grok",
+   "tier": "Groka bell",
    "state": "home"
   },
   "ijlove": {
    "desk": "Terri",
-   "label": "DeepSeek V4.1 Flash",
-   "tier": "watch",
+   "label": "Grok",
+   "tier": "Groka bell",
    "state": "home"
   },
   "spector": {
    "desk": "Spector",
-   "label": "Opus 5.5 · sub",
-   "tier": "deep",
+   "label": "Grok",
+   "tier": "Groka bell",
    "state": "home"
   },
   "crops": {
    "desk": "CROPS",
-   "label": "DeepSeek V4.1 Flash",
-   "tier": "watch",
+   "label": "Grok",
+   "tier": "Groka bell",
    "state": "home"
   },
   "globy": {
    "desk": "GLOBY DESK",
-   "label": "DeepSeek V4.1 Flash",
-   "tier": "watch",
+   "label": "Grok",
+   "tier": "Groka bell",
    "state": "home"
   },
   "ohana": {
    "desk": "OHANA DESK · The Totem",
-   "label": "DeepSeek V4.1 Flash",
-   "tier": "watch",
+   "label": "Grok",
+   "tier": "Groka bell",
    "state": "home"
   },
   "tracey": {
    "desk": "TRACEY DESK",
-   "label": "DeepSeek V4.1 Flash",
-   "tier": "watch",
+   "label": "Grok",
+   "tier": "Groka bell",
    "state": "home"
   },
   "komoro": {
    "desk": "KOMORO DESK",
-   "label": "DeepSeek V4.1 Flash",
-   "tier": "watch",
+   "label": "Grok",
+   "tier": "Groka bell",
    "state": "home"
   }
  },
