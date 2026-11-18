@@ -70,4 +70,4 @@ See [`CONTRIBUTING.md`](./CONTRIBUTING.md), [`CONTRIBUTORS.md`](./CONTRIBUTORS.m
 
 ## License
 
-Code: **GPL-3.0-or-later** ([`LICENSE`](./LICENSE)). Content: **CC0** ([`LICENSE-CONTENT`](./LICENSE-CONTENT)). Vendored and third-party files keep their own licenses ([`NOTICE`](./NOTICE)).
+Code: **GPL-3.0-or-later** ([`LICENSE`](./LICENSE)). Content: **CC BY-SA 4.0** ([`LICENSE-CONTENT`](./LICENSE-CONTENT); credit: Shaka Lei Kaumaka & the Open Source Orchestra ʻohana). Vendored and third-party files keep their own licenses ([`NOTICE`](./NOTICE)). Works already published under an earlier licence stay under that licence, irrevocably.
