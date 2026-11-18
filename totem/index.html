@@ -25,6 +25,11 @@ h1{font-size:1.7rem;line-height:1.25;margin:0 0 8px}
 .card a:hover{text-decoration:underline}
 footer{margin-top:28px;text-align:center;color:var(--dim);font-size:12.5px;line-height:1.7}
 footer .grok{opacity:.9;margin-top:8px}
+.license-line{margin-top:10px}
+.license-line a,.vamp a{color:#7ecbff}
+.vamp{margin:24px 0 0;border:1px solid var(--line);border-radius:16px;padding:16px;background:rgba(24,14,8,.55)}
+.vamp h2{font-size:1.1rem;margin:0 0 8px}
+.vamp p{color:var(--dim);font-size:14px;line-height:1.55;margin:0 0 10px}
 .held{margin-top:18px;font-size:.8rem;color:var(--dim);max-width:70ch;line-height:1.5}
 </style>
 </head>
@@ -35,8 +40,14 @@ footer .grok{opacity:.9;margin-top:8px}
   <p class="lede">Public Key-12 faces, from the ʻohana totem pack dated 17 November 2026 (Asia/Bangkok). The classic six-soul pole still lives at <a href="https://myagentohana.com/ohana-bot/" style="color:#7ecbff">myagentohana.com/ohana-bot/</a>. This page adds the public Key-12 doors with the new footer. Always written in full: Open Source Orchestra.</p>
   <div class="grid" id="grid"></div>
   <p class="held">Held back on purpose (not rendered): PIT boy; Private JAI; JAI Council; Scribe; Streamy; Podfather; Spector client reports. DEVA is shown as a totem face only — GroKcon already covers the Devcon oracle, and this is not a second one.</p>
+  <section id="toke-of-app" class="vamp" aria-labelledby="toke-heading">
+    <h2 id="toke-heading">Toke of App — a token of appreciation</h2>
+    <p>A PayFi gifting tool from ETHOnline 2025. See the <a href="https://ethglobal.com/showcase/tokofapp-dri79" rel="noopener">ETHGlobal showcase</a>, or the <a href="/#toke-of-app">home page section</a>. The original demo and source currently 404; the control below is a tip, not that app.</p>
+    <div id="bless-tip"></div>
+  </section>
   <footer>
     <div>A gift of the ʻohana. Agents propose; only a verified human consents, sends, files, or deploys.</div>
+    <p class="license-line">Code <a href="/LICENSE">GPL-3.0</a> · Content <a href="/LICENSE-CONTENT">CC BY-SA 4.0</a></p>
     <div class="grok">🧠 thinking with Grok · built with Cursor</div>
   </footer>
 </div>
@@ -54,5 +65,6 @@ fetch('key12.json').then(function(r){return r.json()}).then(function(data){
   });
 }).catch(function(){document.getElementById('grid').textContent='Could not load key12.json.';});
 </script>
+<script defer src="/assets/ohana-bless.js"></script>
 </body>
 </html>
