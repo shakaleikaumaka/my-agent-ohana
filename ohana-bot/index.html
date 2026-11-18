@@ -97,6 +97,19 @@ nav img{width:32px;height:32px;border-radius:50%;box-shadow:0 0 12px rgba(255,18
 footer{margin-top:26px;text-align:center;color:var(--dim);font-size:12.5px;line-height:2}
 footer a{color:var(--oke);text-decoration:none}
 footer .honest{border-top:1px solid var(--line);padding-top:14px;max-width:760px;margin:18px auto 0}
+
+/* vamp 1-4 */
+[data-lang][hidden]{display:none !important}
+.hero{margin:4px 0 18px;text-align:center}
+.hero h1{font-size:clamp(1.45rem,3.4vw,2rem);line-height:1.2;font-weight:800;letter-spacing:.01em}
+.hero .promise{color:var(--dim);font-size:15px;line-height:1.5;max-width:42rem;margin:8px auto 0}
+.vamp{margin:28px auto 0;max-width:760px;border:1px solid var(--line);background:var(--card);border-radius:20px;padding:18px 18px 16px}
+.vamp h2{font-size:1.15rem;margin:0 0 8px}
+.vamp p{color:var(--dim);font-size:14px;line-height:1.55;margin:0 0 10px}
+.vamp a{color:var(--oke)}
+.license-line{margin-top:12px;font-size:13px;color:var(--dim)}
+.license-line a{color:var(--oke)}
+footer .grok{opacity:.9;margin-top:8px;font-size:12.5px;color:var(--dim)}
 </style>
 </head>
 <body>
@@ -109,6 +122,10 @@ footer .honest{border-top:1px solid var(--line);padding-top:14px;max-width:760px
     <div class="pill"><button id="bEn" class="on" type="button">EN</button><button id="bZh" type="button">中文</button></div>
   </nav>
 
+  <header class="hero">
+    <h1>My Agent ʻOhana</h1>
+    <p class="promise">Hire an agent, bless it, stop it with one word — or just talk to the family.</p>
+  </header>
   <div class="stage">
     <div class="polebox">
       <div class="sweep"><i></i></div>
@@ -121,7 +138,10 @@ footer .honest{border-top:1px solid var(--line);padding-top:14px;max-width:760px
         <div id="segs"></div>
         <div class="base"><svg viewBox="0 0 390 44"><path d="M4 44 L22 6 L368 6 L386 44 Z" fill="#5c3f28" stroke="#3a2818" stroke-width="3"/><text x="195" y="31" text-anchor="middle" font-size="15" fill="#d9c4a0" letter-spacing="3" font-family="inherit" id="baseTxt">ONE BODY · SIX SOULS</text></svg></div>
       </div>
-      <div class="caption" id="cap" data-en="Tap a face — it answers in its own voice. <b>SHAKA speaks in Shaka's exact cloned voice.</b>" data-zh="点一张面孔——它用自己的声音回答。<b>SHAKA 用的是 Shaka 本人的克隆声音。</b>">Tap a face — it answers in its own voice. <b>SHAKA speaks in Shaka's exact cloned voice.</b></div>
+            <div class="caption" id="cap">
+        <span data-lang="en">Tap a face — it answers in its own voice. <b>SHAKA speaks in Shaka's exact cloned voice.</b></span>
+        <span data-lang="zh" hidden>点一张面孔——它用自己的声音回答。<b>SHAKA 用的是 Shaka 本人的克隆声音。</b></span>
+      </div>
     </div>
 
     <div class="panel">
@@ -132,10 +152,13 @@ footer .honest{border-top:1px solid var(--line);padding-top:14px;max-width:760px
         </div>
         <div class="lane" id="lane">🌙 <span id="laneTxt" data-en="spirit lane" data-zh="心灵通道">spirit lane</span></div>
       </div>
-      <div class="log" id="log"></div>
+      <div class="log" id="log" role="log" aria-live="polite" aria-relevant="additions"></div>
       <div class="dots" id="dots" hidden><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <button class="ceremony" id="ceremony">⚡ <span data-en="Play the ceremony (7 beats, with voices)" data-zh="播放仪式（七幕 · 带声音）">Play the ceremony (7 beats, with voices)</span></button>
-      <div class="hint" data-en="Type below — name a face (<b>DEVA</b>, <b>KALA</b>…) or ask anything about the Shakaverse — Zuzalu, Esmeralda, Devcon, the Music Space, the Pit, Taurus. Live answers arrive from <b>Taurus</b>; when the fire is out, the spirits echo honestly." data-zh="在下方输入——叫一张面孔的名字（<b>DEVA</b>、<b>KALA</b>…）或随便问 Shaka 宇宙里的任何事——Zuzalu、Esmeralda、Devcon、音乐空间、Pit、Taurus。联网时由 <b>Taurus</b> 上的这个家真实回答；断网时精灵也会诚实回声。"></div>
+            <div class="hint">
+        <span data-lang="en">Type below — name a face (<b>DEVA</b>, <b>KALA</b>…) or ask anything about the Shakaverse — Zuzalu, Esmeralda, Devcon, the Music Space, the Pit, Taurus. Live answers arrive from <b>Taurus</b>; when the fire is out, the spirits echo honestly.</span>
+        <span data-lang="zh" hidden>在下方输入——叫一张面孔的名字（<b>DEVA</b>、<b>KALA</b>…）或随便问 Shaka 宇宙里的任何事——Zuzalu、Esmeralda、Devcon、音乐空间、Pit、Taurus。联网时由 <b>Taurus</b> 上的这个家真实回答；断网时精灵也会诚实回声。</span>
+      </div>
       <div class="p-send">
         <input id="inp" type="text" autocomplete="off" data-ph-en="Ask the totem…" data-ph-zh="问图腾点什么…" placeholder="Ask the totem…">
         <button id="send" data-en="Send" data-zh="发送">Send</button>
@@ -144,7 +167,10 @@ footer .honest{border-top:1px solid var(--line);padding-top:14px;max-width:760px
   </div>
 
   <footer>
-    <div class="honest" data-en="Honesty strip: the six faces are <b>real agents of the ʻohana</b>. As of 14 November 2026, the roster lists <b>188 agents</b>, with <b>182 enabled</b>, living on <b>Taurus</b>. Replies marked ⚡ LIVE come from the family right now; 🌙 spirit echoes are honest canned lines when the fire is out. The voices you hear are the real picks — SHAKA = Shaka's cloned voice." data-zh="诚实条：六张面孔是 ʻohana 的<b>真实智能体</b>。截至 2026 年 11 月 14 日，这个家的名册上有 <b>188 位智能体</b>，其中 <b>182 位已启用</b>，生活在 <b>Taurus</b> 上。标 ⚡ LIVE 的回答来自这个家此刻的真实回复；🌙 精灵回声是断网时的诚实预录。你听到的声音都是最终选定——SHAKA = Shaka 本人的克隆声。"></div>
+        <div class="honest">
+      <span data-lang="en">Honesty strip: the six faces are <b>real agents of the ʻohana</b>. As of 14 November 2026, the roster lists <b>188 agents</b>, with <b>182 enabled</b>, living on <b>Taurus</b>. Replies marked ⚡ LIVE come from the family right now; 🌙 spirit echoes are honest canned lines when the fire is out. The voices you hear are the real picks — SHAKA = Shaka's cloned voice.</span>
+      <span data-lang="zh" hidden>诚实条：六张面孔是 ʻohana 的<b>真实智能体</b>。截至 2026 年 11 月 14 日，这个家的名册上有 <b>188 位智能体</b>，其中 <b>182 位已启用</b>，生活在 <b>Taurus</b> 上。标 ⚡ LIVE 的回答来自这个家此刻的真实回复；🌙 精灵回声是断网时的诚实预录。你听到的声音都是最终选定——SHAKA = Shaka 本人的克隆声。</span>
+    </div>
     <div>
       <a href="/marketblueprint/">📐 <span data-en="market blueprint (the hire · bless · revoke marketplace)" data-zh="市场蓝图（雇用 · 祝福 · 撤销）">market blueprint (the hire · bless · revoke marketplace)</span></a> ·
       <a href="/ohana-bot/build/">🔧 <span data-en="build the body" data-zh="建造身体">build the body</span></a> ·
@@ -153,7 +179,16 @@ footer .honest{border-top:1px solid var(--line);padding-top:14px;max-width:760px
       <a href="/china/" hreflang="zh-CN">🇨🇳 中文 / China</a> ·
       <a href="/ohana-bot/audition.html">🎤 <span data-en="voice auditions" data-zh="声音试镜">voice auditions</span></a>
     </div>
+    <p class="license-line">Code <a href="/LICENSE">GPL-3.0</a> · Content <a href="/LICENSE-CONTENT">CC BY-SA 4.0</a></p>
+    <div class="grok">🧠 thinking with Grok · built with Cursor</div>
   </footer>
+  <section id="toke-of-app" class="vamp" aria-labelledby="toke-heading">
+    <h2 id="toke-heading">Toke of App — a token of appreciation</h2>
+    <p>Toke of App is a PayFi gifting tool from ETHOnline 2025: gift USDC, including split or recurring sends. It is listed on the ETHGlobal showcase. The original Vercel demo and GitHub source currently return 404, so those flows are not offered here.</p>
+    <p><a href="https://ethglobal.com/showcase/tokofapp-dri79" rel="noopener">ETHGlobal showcase: TokeOfApp (ETHOnline 2025)</a></p>
+    <p>To send a tip now, use the control below. It is a tip of USDC on Base to <b>shaka.osoartist.eth</b> — not a token sale, and not the original Toke of App payroll app.</p>
+    <div id="bless-tip"></div>
+  </section>
 </div>
 
 <script>
@@ -190,6 +225,9 @@ var CJK=/[一-鿿]/;
 var els=[].slice.call(document.querySelectorAll('[data-en]'));
 function setLang(l){
   els.forEach(function(e){var t=e.getAttribute('data-'+l);if(t!=null)e.innerHTML=t;});
+  [].slice.call(document.querySelectorAll('[data-lang]')).forEach(function(e){
+    e.hidden = e.getAttribute('data-lang') !== l;
+  });
   document.getElementById('inp').placeholder=document.getElementById('inp').getAttribute('data-ph-'+l);
   document.documentElement.lang=(l==='zh'?'zh-CN':'en');
   document.getElementById('bEn').classList.toggle('on',l==='en');
@@ -476,6 +514,7 @@ setTimeout(function(){
    'Aloooha! Welcome to the totem temple 🗿 Tap any face above to hear its voice — mine is the boss\'s own clone. Call us by name or ask anything; while the fire is lit (⚡ LIVE), the family answers you itself, from Taurus.');
 },600);
 </script>
+<script defer src="/assets/ohana-bless.js"></script>
 <script defer src="/ohana-beacon.js" data-hub="ohana" data-anchor=".stage .panel" data-place="append"></script>
 <script src="https://live.zuchiangmai.app/widget.js" async></script>
 <script src="https://lang.opensourceorchestra.org/lang.js" async></script>
