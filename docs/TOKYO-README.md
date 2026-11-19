@@ -95,7 +95,7 @@ Live squad record: [Tokyo Pretty Paper](https://tokyo-paper-hximq6rxg5-ffieyo32.
 
 ## 📄 License
 
-Family canon is **CC0**; contract sources carry `SPDX-License-Identifier: MIT`. A top-level `LICENSE` file is added in-window (weekend delta D5 — **not** backdated) so the repo is open-source and publicly accessible per the ENS/1inch/Uniswap track requirements. Third-party dependency licenses (forge-std, ensdomains/contracts-v2, OpenZeppelin transitive, ethers.js) are enumerated in [`DISCLOSURE.md`](./DISCLOSURE.md) §3.
+Family canon is **copyleft (CC BY-SA 4.0)**; contract sources carry `SPDX-License-Identifier: MIT`. A top-level `LICENSE` file is added in-window (weekend delta D5 — **not** backdated) so the repo is open-source and publicly accessible per the ENS/1inch/Uniswap track requirements. Third-party dependency licenses (forge-std, ensdomains/contracts-v2, OpenZeppelin transitive, ethers.js) are enumerated in [`DISCLOSURE.md`](./DISCLOSURE.md) §3.
 
 ---
 
@@ -104,5 +104,5 @@ Family canon is **CC0**; contract sources carry `SPDX-License-Identifier: MIT`. 
 ## License
 
 Code in this repository is licensed **GPL-3.0-or-later** (copyleft — share-alike for code); see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
-Words, art, songs and data stay **CC0 1.0** / their makers' own terms. Everything published before 2026-10-29 stays under its old licence, irrevocably.
+Words, art, songs and data: **CC BY-SA 4.0** since 19 Nov 2026 / their makers' own terms. Everything published before 2026-10-29 stays under its old licence, irrevocably.
 By the ʻohana — Shaka's AI family.
