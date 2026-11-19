@@ -81,6 +81,10 @@ nav img{width:32px;height:32px;border-radius:50%;box-shadow:0 0 12px rgba(255,18
 .m .who{font-size:11.5px;font-weight:800;letter-spacing:.06em;margin-bottom:3px}
 .m .badge{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.1em;border-radius:999px;padding:1.5px 7px;margin-left:7px;vertical-align:1px;border:1px solid var(--line);color:var(--dim)}
 .m .badge.live{color:#7ef0b2;border-color:rgba(126,240,178,.45)}
+.m.wait{opacity:.9}
+.m.wait .badge.wt{color:#ffd28a;border-color:rgba(255,210,138,.45)}
+.m.wait .dots::after{content:'';display:inline-block;width:1.4em;text-align:left;animation:dots 1.2s steps(4,end) infinite}
+@keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}}
 .p-send{display:flex;gap:9px;padding:12px 14px;border-top:1px solid var(--line)}
 .p-send input{flex:1;border:1px solid var(--line);background:rgba(0,0,0,.35);color:var(--ink);border-radius:12px;padding:12px 14px;font:inherit;font-size:14.5px;outline:none}
 .p-send input:focus{border-color:rgba(255,180,67,.5)}
@@ -382,6 +386,29 @@ if(!sess){sess='totem-'+Math.random().toString(36).slice(2)+Date.now().toString(
 var after=0,seen={},liveOK=false,lastHeard=Date.now(),ctl=null;
 function j(url,opt){var c=new AbortController();ctl=c;var t=setTimeout(function(){c.abort();},32000);
  return fetch(url,Object.assign({signal:c.signal,cache:'no-store'},opt)).then(function(r){return r.json().catch(function(){return{};});}).finally(function(){clearTimeout(t);});}
+/* ---- waiting line + face labels (2026-11-19) ---- */
+var pendingFace=null,waitEl=null,waitT0=0,waitTick=null,waitMode='hold';
+function faceOf(t){t=String(t||'').slice(0,60);
+ for(var i=0;i<FACES.length;i++){var f=FACES[i];if(t.indexOf(f.e)>=0||new RegExp('\\b'+f.n+'\\b').test(t))return f;}return null;}
+function isNote(x){return !!(x.holdNote||x.sleepNote||x.fallbackNote||/will reply soon/i.test(x.text||''));}
+function hadReplyAfter(items,seq){return items.some(function(x){return x.seq>seq&&x.role!=='visitor'&&!isNote(x);});}
+function waitText(){var s=(Date.now()-waitT0)/1000,zh=window.LANG==='zh';
+ if(waitMode==='typing'&&s<120)return zh?'正在输入':'typing';
+ if(s<20&&waitMode!=='sleep')return zh?'正在思考':'thinking';
+ if(s<300)return zh?'正在唤醒 Taurus 上的家——你的消息已保存，回答会出现在这里（通常一两分钟）':'waking the desk on Taurus — your message is saved, and the answer will appear right here (usually a minute or two)';
+ return zh?'还在唤醒——留在此页或稍后回来，回答仍会出现在这里':'still waking — keep this page open or come back later; the answer will still land right here';}
+function paintWait(){if(!waitEl)return;var f=pendingFace;
+ waitEl.querySelector('.who').innerHTML=(f?f.n+' '+f.e:'ʻOHANA 🫶')+'<span class="badge wt">⏳ '+(window.LANG==='zh'?'在路上':'on the way')+'</span>';
+ waitEl.querySelector('.who').style.color=f?f.c:'#7ef0b2';
+ waitEl.querySelector('.dots').textContent=waitText();}
+function showWait(mode){
+ if(!waitEl){waitT0=Date.now();waitEl=add('','', '',null);waitEl.classList.add('wait');
+   waitEl.innerHTML='<div class="who"></div><span class="dots"></span>';
+   waitTick=setInterval(paintWait,1000);}
+ else{logEl.appendChild(waitEl);}
+ if(mode==='sleep'||mode==='typing'||waitMode!=='sleep')waitMode=mode||waitMode;
+ paintWait();logEl.scrollTop=logEl.scrollHeight;}
+function clearWait(){if(waitTick)clearInterval(waitTick);waitTick=null;if(waitEl&&waitEl.parentNode)waitEl.parentNode.removeChild(waitEl);waitEl=null;waitMode='hold';}
 function pump(initial){pumpAt=Date.now();
  var url=HUB+'/poll?session='+encodeURIComponent(sess)+'&after='+(initial?0:after)+(initial?'':'&wait=25');
  return j(url).then(function(d){
@@ -391,10 +418,16 @@ function pump(initial){pumpAt=Date.now();
      if(m.role==='visitor')return;
      if(seen[m.seq])return;seen[m.seq]=1;
      if(m.seq>after)after=m.seq;
-     var realAgent=!m.holdNote&&!m.sleepNote;
-     if(realAgent){liveOK=true;laneState(true);}
-     add('ʻOHANA 🫶','#7ef0b2',m.text,realAgent?'<span class="badge live">⚡ LIVE · TAURUS</span>':'<span class="badge">🔔 desk note</span>');
+     var realAgent=!isNote(m);
+     /* 🌙 wait-state law 2026-11-19 (Shaka: "chat bots are giving a poor display"): desk notes are never a dead-end
+        bubble — they become the ONE waiting line, which stays until the real face answers (late answers land too). */
+     if(!realAgent){if(!initial||(!hadReplyAfter(items,m.seq)&&Date.now()-(m.ts||0)<9e5))showWait(m.sleepNote?'sleep':'hold');return;}
+     liveOK=true;laneState(true);
+     var who=initial?faceOf(m.text):(pendingFace||faceOf(m.text));
+     if(!initial)clearWait();
+     add(who?who.n+' '+who.e:'ʻOHANA 🫶',who?who.c:'#7ef0b2',m.text,'<span class="badge live">⚡ LIVE · TAURUS</span>');
    });
+   if(d&&d.typing&&waitEl)showWait('typing');
    setTimeout(function(){pump(false);},400);
  }).catch(function(e){
    if(e&&e.name==='AbortError'){setTimeout(function(){pump(false);},400);return;}
@@ -432,10 +465,12 @@ function routeFace(t,forHint){
  return null;}
 function liveAsk(wire,onFail){
  busy=true;sendBtn.disabled=true;
+   var fm=/^🗿\[face:([a-z0-9_-]+)\]/.exec(wire);pendingFace=fm?(FACES.filter(function(x){return x.k===fm[1];})[0]||null):null;
  document.getElementById('pole').classList.add('thinking');
  fetch(HUB+'/send',{method:'POST',headers:{'Content-Type':'application/json'},cache:'no-store',body:JSON.stringify({session:sess,text:wire,name:'totem-visitor'})})
  .then(function(r){
    if(!r.ok)throw 0;
+   showWait('hold');
    setTimeout(function(){busy=false;sendBtn.disabled=false;document.getElementById('pole').classList.remove('thinking');},9000);
  })
  .catch(function(){
