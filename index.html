@@ -420,10 +420,11 @@ function showWait(mode){
  if(mode==='sleep'||mode==='typing'||waitMode!=='sleep')waitMode=mode||waitMode;
  paintWait();logEl.scrollTop=logEl.scrollHeight;}
 function clearWait(){if(waitTick)clearInterval(waitTick);waitTick=null;if(waitEl&&waitEl.parentNode)waitEl.parentNode.removeChild(waitEl);waitEl=null;waitMode='hold';}
-function pump(initial){pumpAt=Date.now();
+var pumpGen=0;/* 🔁 generation law 2026-11-22 (Shaka: "had to refresh to see the response"): a wake used to wait up to 60 s before daring a new pump; now every wake starts a NEW generation at once and the old chain (even one parked on a fetch that ignores abort) can never re-arm. */
+function pump(initial){pumpAt=Date.now();var g=pumpGen;
  var url=HUB+'/poll?session='+encodeURIComponent(sess)+'&after='+(initial?0:after)+(initial?'':'&wait=25');
  return j(url).then(function(d){
-   lastHeard=Date.now();
+   if(g!==pumpGen)return;lastHeard=Date.now();
    var items=(d&&d.messages)||[];
    items.forEach(function(m){
      if(m.role==='visitor')return;
@@ -439,11 +440,12 @@ function pump(initial){pumpAt=Date.now();
      add(who?who.n+' '+who.e:'ʻOHANA 🫶',who?who.c:'#7ef0b2',m.text,'<span class="badge live">⚡ LIVE · TAURUS</span>');
    });
    if(d&&d.typing&&waitEl)showWait('typing');
-   setTimeout(function(){pump(false);},400);
+   setTimeout(function(){if(g===pumpGen)pump(false);},400);
  }).catch(function(e){
-   if(e&&e.name==='AbortError'){setTimeout(function(){pump(false);},400);return;}
-   if(hubFallback())setTimeout(function(){pump(false);},800);
-   else setTimeout(function(){pump(false);},4000);
+   if(g!==pumpGen)return;
+   if(e&&e.name==='AbortError'){setTimeout(function(){if(g===pumpGen)pump(false);},400);return;}
+   if(hubFallback())setTimeout(function(){if(g===pumpGen)pump(false);},800);
+   else setTimeout(function(){if(g===pumpGen)pump(false);},4000);
  });}
 function laneState(on){var l=document.getElementById('lane');l.classList.toggle('live',on);
  document.getElementById('laneTxt').textContent=on?'LIVE · Taurus':(window.LANG==='zh'?'心灵通道':'spirit lane');}
@@ -452,7 +454,7 @@ function laneState(on){var l=document.getElementById('lane');l.classList.toggle(
    in-flight request; the ONE chain re-arms itself (AbortError → pump in 400 ms). If the chain ever died, the
    heartbeat restarts it. */
 var pumpAt=Date.now();
-function wake(){lastHeard=Date.now();if(Date.now()-pumpAt>60000){pump(false);return;}try{ctl&&ctl.abort();}catch(_){}}
+function wake(){lastHeard=Date.now();pumpGen++;try{ctl&&ctl.abort();}catch(_){}pump(false);}
 pump(true);
 setInterval(function(){if(Date.now()-lastHeard>45000)wake();},15000);
 document.addEventListener('visibilitychange',function(){if(!document.hidden)wake();});
