@@ -14,7 +14,7 @@ const req = await IDKit.request({
   rp_context: { rp_id, nonce: sig.nonce, created_at: sig.createdAt, expires_at: sig.expiresAt, signature: sig.sig },
   allow_legacy_proofs: true,
   environment: 'sandbox'
-}).preset(selfieCheckLegacy({ signal: '0x1216C288be58c47a65f8Ea008b404d098D177A1C' }));
+}).preset(selfieCheckLegacy({ signal: '0x25965899f4600b3AA5362ee4f34be95E5E62c934' }));
 console.log('request built in', Date.now() - t0, 'ms');
 console.log('requestId:', req.requestId);
 console.log('connectorURI:', req.connectorURI.slice(0, 120) + '…');
