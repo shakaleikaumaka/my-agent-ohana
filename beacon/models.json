@@ -1,8 +1,8 @@
 {
  "v": 1,
  "law": "model law v3",
- "updated_at": "2026-11-21T05:16:35Z",
- "checked_at": "2026-11-21T05:17:08Z",
+ "updated_at": "2026-11-23T05:18:11Z",
+ "checked_at": "2026-11-23T05:18:52Z",
  "desks": {
   "kprot": {
    "desk": "KARA",
@@ -91,7 +91,7 @@
  },
  "fleet": {
   "deep": {
-   "Opus 5.5 · sub": 156,
+   "Opus 5.5 · sub": 158,
    "Kimi K3.1 Pro": 1,
    "DeepSeek V4.1 Flash": 2
   },
