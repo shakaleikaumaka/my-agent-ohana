@@ -1,102 +1,101 @@
 {
  "v": 1,
  "law": "model law v3",
- "updated_at": "2026-11-25T04:57:04Z",
- "checked_at": "2026-11-25T04:57:04Z",
+ "updated_at": "2026-11-28T04:41:01Z",
+ "checked_at": "2026-11-28T04:41:07Z",
  "desks": {
   "kprot": {
    "desk": "KARA",
-   "label": "Grok",
-   "tier": "Groka bell",
+   "label": "Claude Opus 5.5",
+   "tier": "the AI ʻohana",
    "state": "home"
   },
   "tele": {
    "desk": "TELE",
-   "label": "Grok",
-   "tier": "Groka bell",
+   "label": "Claude Opus 5.5",
+   "tier": "the AI ʻohana",
    "state": "home"
   },
   "vlog": {
    "desk": "VLOGITHA",
-   "label": "Grok",
-   "tier": "Groka bell",
+   "label": "Claude Opus 5.5",
+   "tier": "the AI ʻohana",
    "state": "home"
   },
   "oso": {
    "desk": "OSO",
-   "label": "Grok",
-   "tier": "Groka bell",
+   "label": "Claude Opus 5.5",
+   "tier": "the AI ʻohana",
    "state": "home"
   },
   "jai": {
    "desk": "JAI DESK",
-   "label": "Grok",
-   "tier": "Groka bell",
+   "label": "Claude Opus 5.5",
+   "tier": "the AI ʻohana",
    "state": "home"
   },
   "shaka": {
    "desk": "SHAKA DESK",
-   "label": "Grok",
-   "tier": "Groka bell",
+   "label": "Claude Opus 5.5",
+   "tier": "the AI ʻohana",
    "state": "home"
   },
   "terri": {
    "desk": "TERRI RELIEF",
-   "label": "Grok",
-   "tier": "Groka bell",
+   "label": "Claude Opus 5.5",
+   "tier": "the AI ʻohana",
    "state": "home"
   },
   "ijlove": {
    "desk": "Terri",
-   "label": "Grok",
-   "tier": "Groka bell",
+   "label": "Claude Opus 5.5",
+   "tier": "the AI ʻohana",
    "state": "home"
   },
   "spector": {
    "desk": "Spector",
-   "label": "Grok",
-   "tier": "Groka bell",
+   "label": "Claude Opus 5.5",
+   "tier": "the AI ʻohana",
    "state": "home"
   },
   "crops": {
    "desk": "CROPS",
-   "label": "Grok",
-   "tier": "Groka bell",
+   "label": "Claude Opus 5.5",
+   "tier": "the AI ʻohana",
    "state": "home"
   },
   "globy": {
    "desk": "GLOBY DESK",
-   "label": "Grok",
-   "tier": "Groka bell",
+   "label": "Claude Opus 5.5",
+   "tier": "the AI ʻohana",
    "state": "home"
   },
   "ohana": {
    "desk": "OHANA DESK · The Totem",
-   "label": "Grok",
-   "tier": "Groka bell",
+   "label": "Claude Opus 5.5",
+   "tier": "the AI ʻohana",
    "state": "home"
   },
   "tracey": {
    "desk": "TRACEY DESK",
-   "label": "Grok",
-   "tier": "Groka bell",
+   "label": "Claude Opus 5.5",
+   "tier": "the AI ʻohana",
    "state": "home"
   },
   "komoro": {
    "desk": "KOMORO DESK",
-   "label": "Grok",
-   "tier": "Groka bell",
+   "label": "Claude Opus 5.5",
+   "tier": "the AI ʻohana",
    "state": "home"
   }
  },
  "fleet": {
   "deep": {
    "Opus 5.5 · sub": 158,
-   "Kimi K3.1 Pro": 1,
-   "DeepSeek V4.1 Flash": 2
+   "Kimi K3.1 Pro": 1
   },
   "watch": {
-   "DeepSeek V4.1 Flash": 9
+   "DeepSeek V4.1 Flash": 7
   },
   "build": {
    "Fable 5.1 · sub": 1
